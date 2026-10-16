@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#080e19" />
+<meta name="description" content="Fire Link designs, installs and maintains fire detection, alarm and suppression systems to help protect people, property and operations." />
+<title>Fire Link | Protection That Connects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080e19;
+    --bg-soft: #0d1523;
+    --surface: rgba(18, 29, 46, .72);
+    --surface-2: #111d2d;
+    --text: #f5f7fb;
+    --muted: #9aa8bb;
+    --line: rgba(170, 190, 218, .15);
+    --red: #ff3d42;
+    --orange: #ff7548;
+    --gold: #ffb454;
+    --teal: #76e2d1;
+    --radius: 22px;
+    --max: 1180px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif;
+    line-height: 1.6; overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: -2;
+    background: radial-gradient(ellipse at 75% 8%, rgba(255, 61, 66, .10), transparent 32%),
+                radial-gradient(ellipse at 0% 45%, rgba(43, 88, 144, .10), transparent 35%),
+                linear-gradient(180deg, #080e19 0%, #09111e 65%, #080e19 100%);
+  }
+  ::selection { background: rgba(255, 61, 66, .35); color: white; }
+  a { color: inherit; text-decoration: none; }
+  button, input, select, textarea { font: inherit; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+  .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+  .noise {
+    position: fixed; inset: 0; z-index: -1; opacity: .035; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+  }
+  #embers { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; opacity: .65; }
+  .cursor-glow { position: fixed; width: 300px; height: 300px; border-radius: 50%; pointer-events: none; z-index: -1; opacity: 0; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(255, 72, 61, .085), transparent 68%); transition: opacity .25s; }
+  .topbar { position: fixed; inset: 0 0 auto; z-index: 50; transition: background .3s, border-color .3s, box-shadow .3s; border-bottom: 1px solid transparent; }
+  .topbar.scrolled { background: rgba(8, 14, 25, .82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-color: var(--line); box-shadow: 0 10px 35px rgba(0,0,0,.18); }
+  .nav { height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; }
+  .brand-mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; position: relative; overflow: hidden; background: linear-gradient(145deg, rgba(255,61,66,.22), rgba(255,117,72,.07)); border: 1px solid rgba(255, 100, 79, .35); box-shadow: inset 0 0 20px rgba(255,61,66,.08); }
+  .brand-mark::after { content: ''; position: absolute; width: 42px; height: 42px; border-radius: 50%; background: var(--red); filter: blur(24px); opacity: .23; }
+  .brand-mark svg { position: relative; z-index: 1; }
+  .brand-name { font: 800 18px/1 'Manrope', sans-serif; letter-spacing: .09em; }
+  .brand-name span { color: var(--red); }
+  .brand-sub { margin-top: 5px; color: #8391a5; font-size: 9px; letter-spacing: .19em; font-weight: 700; }
+  .nav-links { display: flex; align-items: center; gap: clamp(18px, 3vw, 34px); }
+  .nav-links a:not(.nav-cta) { color: #b7c2d1; font-size: 13px; font-weight: 600; transition: color .2s; }
+  .nav-links a:not(.nav-cta):hover { color: #fff; }
+  .nav-cta, .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 0; cursor: pointer; border-radius: 13px; font-weight: 700; transition: transform .25s, box-shadow .25s, background .25s, border-color .25s; }
+  .nav-cta { padding: 12px 17px; background: #f5f7fb; color: #111827; font-size: 12px; }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,247,251,.15); }
+  .menu-toggle { display: none; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: white; cursor: pointer; }
+  .menu-toggle svg { display: block; margin: auto; }
+
+  .hero { min-height: 780px; padding: 154px 0 92px; position: relative; display: flex; align-items: center; }
+  .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(35px, 6vw, 80px); align-items: center; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: #ff9a82; font-size: 10px; font-weight: 800; letter-spacing: .19em; text-transform: uppercase; }
+  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); box-shadow: 0 0 13px var(--red); animation: blink 2.2s ease-in-out infinite; }
+  h1, h2, h3, p { margin-top: 0; }
+  h1 { margin: 23px 0 23px; max-width: 680px; font: 800 clamp(44px, 5.6vw, 76px)/1.055 'Manrope', sans-serif; letter-spacing: -.065em; }
+  .gradient-text { background: linear-gradient(100deg, #fff 4%, #ffb7a6 45%, #ff554e 93%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero-copy { max-width: 530px; color: #a7b2c3; font-size: 16px; line-height: 1.85; margin-bottom: 32px; }
+  .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 13px; }
+  .btn { min-height: 52px; padding: 0 22px; font-size: 13px; }
+  .btn-primary { color: #fff; background: linear-gradient(110deg, #ff3c43, #f15b42); box-shadow: 0 10px 28px rgba(255, 61, 66, .20); }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 34px rgba(255, 61, 66, .32); }
+  .btn-ghost { color: #e5eaf2; background: rgba(255,255,255,.035); border: 1px solid rgba(184,198,218,.2); }
+  .btn-ghost:hover { background: rgba(255,255,255,.075); border-color: rgba(184,198,218,.38); transform: translateY(-2px); }
+  .btn svg { transition: transform .25s; }
+  .btn:hover svg { transform: translateX(3px); }
+  .hero-meta { display: flex; align-items: center; gap: 22px; margin-top: 38px; color: #8997aa; font-size: 11px; }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-meta svg { color: #ff8f75; }
+
+  /* Animated system illustration */
+  .visual-wrap { min-height: 500px; display: grid; place-items: center; position: relative; perspective: 1000px; }
+  .visual-halo { position: absolute; width: min(88%, 470px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(255,63,66,.14), rgba(255,63,66,.04) 43%, transparent 69%); animation: halo 5s ease-in-out infinite; }
+  .orbit { position: absolute; width: 430px; max-width: 94%; aspect-ratio: 1; border: 1px solid rgba(255, 124, 102, .15); border-radius: 50%; transform: rotateX(63deg) rotateZ(-22deg); }
+  .orbit.orbit-two { width: 360px; border-color: rgba(100, 161, 206, .18); transform: rotateX(63deg) rotateZ(30deg); }
+  .orbit-dot { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: #ff9a78; box-shadow: 0 0 18px #ff553f; top: 17%; left: 21%; animation: orbiting 9s linear infinite; }
+  .orbit-two .orbit-dot { background: #7ee4d4; box-shadow: 0 0 18px #7ee4d4; top: auto; bottom: 12%; left: auto; right: 18%; animation-duration: 12s; }
+  .system-card { width: min(100%, 440px); border: 1px solid rgba(177,197,221,.2); border-radius: 24px; padding: 20px; position: relative; z-index: 2; background: linear-gradient(145deg, rgba(20,31,48,.92), rgba(11,19,31,.88)); box-shadow: 0 32px 90px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.055); transform-style: preserve-3d; transition: transform .18s ease-out; }
+  .system-card::before { content: ''; pointer-events: none; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(255,255,255,.09), transparent 42%); }
+  .sys-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 17px; border-bottom: 1px solid var(--line); }
+  .sys-label { color: #8898ad; font-size: 9px; letter-spacing: .16em; font-weight: 800; }
+  .sys-title { font: 700 14px 'Manrope', sans-serif; margin-top: 5px; }
+  .sys-live { display: flex; align-items: center; gap: 7px; border: 1px solid rgba(118,226,209,.18); background: rgba(118,226,209,.07); border-radius: 99px; padding: 6px 9px; font-size: 9px; color: #8ae6d8; font-weight: 700; letter-spacing: .06em; }
+  .sys-live i { width: 5px; height: 5px; border-radius: 50%; background: #76e2d1; box-shadow: 0 0 8px #76e2d1; }
+  .building { margin: 20px 0 17px; border-radius: 16px; min-height: 202px; position: relative; overflow: hidden; border: 1px solid rgba(152,178,208,.13); background: linear-gradient(140deg, rgba(34,53,76,.38), rgba(12,21,34,.48)); }
+  .building-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(154,181,207,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(154,181,207,.06) 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(90deg, transparent, black 15%, black 90%, transparent); }
+  .floor { position: absolute; left: 12%; right: 12%; border: 1px solid rgba(149,178,207,.3); height: 30%; bottom: 13%; transform: skewY(-4deg); background: linear-gradient(90deg, rgba(44,67,91,.16), rgba(39,59,81,.36)); }
+  .floor.f2 { bottom: 43%; left: 17%; right: 17%; height: 25%; }
+  .floor.f3 { bottom: 68%; left: 28%; right: 28%; height: 15%; }
+  .room { position: absolute; top: 0; bottom: 0; border-right: 1px solid rgba(149,178,207,.24); }
+  .r1 { left: 25%; } .r2 { left: 50%; } .r3 { left: 75%; }
+  .detector { position: absolute; width: 13px; height: 13px; border-radius: 50%; border: 2px solid #ff9a78; background: #ff594f; box-shadow: 0 0 0 5px rgba(255,73,67,.1), 0 0 15px rgba(255,73,67,.8); z-index: 3; animation: detector 2.6s ease-out infinite; }
+  .detector.d1 { top: 21%; left: 35%; } .detector.d2 { top: 51%; right: 27%; animation-delay: .6s; } .detector.d3 { bottom: 21%; left: 58%; animation-delay: 1.2s; }
+  .route-line { position: absolute; left: 37%; top: 26%; width: 29%; height: 39%; border-top: 1px dashed rgba(255,137,111,.7); border-right: 1px dashed rgba(255,137,111,.7); border-radius: 0 14px 0 0; transform: skewY(-5deg); }
+  .building-caption { position: absolute; left: 13px; bottom: 12px; font-size: 8px; letter-spacing: .12em; color: #8ea1b9; font-weight: 800; }
+  .system-layers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+  .layer { text-align: left; min-width: 0; cursor: pointer; border: 1px solid rgba(151,176,206,.14); background: rgba(255,255,255,.025); border-radius: 12px; padding: 12px 10px; transition: background .25s, border-color .25s, transform .25s; color: inherit; }
+  .layer:hover, .layer.active { background: rgba(255,71,65,.09); border-color: rgba(255,107,88,.42); transform: translateY(-2px); }
+  .layer .layer-icon { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: rgba(255,98,78,.12); color: #ff9279; margin-bottom: 9px; }
+  .layer strong { display: block; font-size: 10px; font-weight: 700; }
+  .layer small { display: block; margin-top: 3px; color: #8190a5; font-size: 8px; }
+  .floating-tag { position: absolute; z-index: 3; padding: 11px 14px; border: 1px solid rgba(161,185,213,.2); border-radius: 13px; background: rgba(12,21,34,.85); backdrop-filter: blur(10px); box-shadow: 0 14px 36px rgba(0,0,0,.2); animation: float 5s ease-in-out infinite; }
+  .floating-tag.tag-left { top: 20%; left: -1%; }
+  .floating-tag.tag-right { right: -3%; bottom: 18%; animation-delay: -2.5s; }
+  .tag-line { display: flex; align-items: center; gap: 8px; }
+  .tag-icon { width: 27px; height: 27px; display: grid; place-items: center; border-radius: 9px; background: rgba(118,226,209,.11); color: var(--teal); }
+  .tag-icon.red { background: rgba(255,91,74,.12); color: #ff8975; }
+  .tag-title { font-size: 10px; font-weight: 800; }
+  .tag-sub { font-size: 8px; color: #8595aa; margin-top: 2px; }
+
+  .trust-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.014); }
+  .trust-inner { min-height: 92px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .trust-label { color: #74839a; font-size: 10px; letter-spacing: .14em; font-weight: 800; text-transform: uppercase; max-width: 150px; }
+  .trust-item { display: flex; align-items: center; gap: 10px; color: #c7d0de; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .trust-item svg { color: #ff8e74; }
+
+  section.content-section { padding: 112px 0; position: relative; }
+  .section-head { max-width: 690px; margin-bottom: 44px; }
+  .section-kicker { color: #ff8f77; font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 14px; }
+  h2 { font: 800 clamp(32px, 4vw, 49px)/1.13 'Manrope', sans-serif; letter-spacing: -.05em; margin-bottom: 18px; }
+  .section-desc { color: var(--muted); font-size: 15px; max-width: 600px; line-height: 1.85; margin-bottom: 0; }
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+  .service-card { position: relative; overflow: hidden; min-height: 270px; border-radius: 19px; padding: 24px 21px; background: linear-gradient(155deg, rgba(20,32,49,.77), rgba(12,20,33,.72)); border: 1px solid var(--line); transition: transform .35s, border-color .35s, background .35s; transform-style: preserve-3d; }
+  .service-card::before { content: ''; position: absolute; width: 170px; height: 170px; right: -90px; top: -100px; border-radius: 50%; background: var(--glow, rgba(255,67,69,.18)); filter: blur(30px); opacity: 0; transition: opacity .35s; }
+  .service-card:hover { transform: translateY(-8px); border-color: rgba(255,118,92,.4); background: linear-gradient(155deg, rgba(26,39,57,.92), rgba(12,20,33,.9)); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon { width: 49px; height: 49px; display: grid; place-items: center; border-radius: 14px; color: #ff947b; background: rgba(255,85,72,.11); border: 1px solid rgba(255,106,85,.13); margin-bottom: 29px; position: relative; }
+  .service-card:nth-child(2) .service-icon { color: #ffbf70; background: rgba(255,177,84,.09); }
+  .service-card:nth-child(3) .service-icon { color: #83d9ef; background: rgba(87,193,222,.09); }
+  .service-card:nth-child(4) .service-icon { color: #82e2c8; background: rgba(87,213,177,.09); }
+  .service-card h3 { font: 700 17px/1.35 'Manrope', sans-serif; letter-spacing: -.025em; margin-bottom: 11px; }
+  .service-card p { color: #91a0b4; font-size: 12px; line-height: 1.8; margin-bottom: 23px; }
+  .card-link { display: inline-flex; align-items: center; gap: 8px; color: #ff9a82; font-size: 11px; font-weight: 800; }
+  .card-link svg { transition: transform .2s; }
+  .card-link:hover svg { transform: translateX(4px); }
+
+  .why-section { overflow: hidden; }
+  .why-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 8vw, 105px); align-items: center; }
+  .blueprint-card { min-height: 420px; position: relative; border: 1px solid rgba(152,178,207,.18); border-radius: 25px; background: radial-gradient(ellipse at 50% 48%, rgba(43,70,99,.45), rgba(13,22,36,.3) 60%), #0c1523; overflow: hidden; display: grid; place-items: center; }
+  .blueprint-card::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(136,169,203,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(136,169,203,.07) 1px, transparent 1px); background-size: 27px 27px; mask-image: radial-gradient(ellipse, black, transparent 85%); }
+  .blueprint-ring { position: absolute; width: 250px; height: 250px; border: 1px solid rgba(255,111,90,.28); border-radius: 50%; box-shadow: 0 0 60px rgba(255,66,65,.08), inset 0 0 40px rgba(255,66,65,.04); animation: rotate 28s linear infinite; }
+  .blueprint-ring::before, .blueprint-ring::after { content: ''; position: absolute; inset: 22px; border: 1px dashed rgba(129,192,214,.3); border-radius: 50%; }
+  .blueprint-ring::after { inset: 51px; border-style: solid; border-color: rgba(129,192,214,.2); }
+  .shield-core { position: relative; z-index: 2; width: 120px; height: 140px; display: grid; place-items: center; filter: drop-shadow(0 0 28px rgba(255,63,66,.22)); }
+  .blueprint-point { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: #ff735f; box-shadow: 0 0 17px rgba(255,89,72,.9); }
+  .bp1 { top: 23%; left: 29%; } .bp2 { right: 23%; top: 42%; background: #78e3d0; box-shadow: 0 0 17px rgba(120,227,208,.9); } .bp3 { bottom: 20%; left: 43%; }
+  .blueprint-note { position: absolute; left: 20px; right: 20px; bottom: 18px; display: flex; justify-content: space-between; gap: 15px; color: #7e91a9; font-size: 9px; letter-spacing: .11em; font-weight: 800; text-transform: uppercase; }
+  .feature-list { margin-top: 30px; display: grid; gap: 19px; }
+  .feature { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; }
+  .feature-number { color: #ff8e75; border: 1px solid rgba(255,111,90,.25); background: rgba(255,89,72,.07); border-radius: 10px; width: 36px; height: 36px; display: grid; place-items: center; font-size: 10px; font-weight: 800; }
+  .feature h3 { margin: 2px 0 5px; font: 700 14px 'Manrope', sans-serif; }
+  .feature p { margin: 0; color: #8e9db1; font-size: 12px; line-height: 1.75; }
+
+  .process { background: linear-gradient(180deg, transparent, rgba(14,23,37,.5), transparent); }
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; gap: 16px; }
+  .process-grid::before { content: ''; position: absolute; left: 9%; right: 9%; top: 28px; height: 1px; background: linear-gradient(90deg, rgba(255,80,72,.05), rgba(255,117,88,.5), rgba(255,80,72,.05)); }
+  .process-step { position: relative; padding: 0 18px 16px 0; }
+  .process-number { width: 56px; height: 56px; border: 1px solid rgba(255,110,89,.35); background: #111b2b; border-radius: 17px; display: grid; place-items: center; color: #ff947b; margin-bottom: 25px; position: relative; z-index: 1; box-shadow: 0 0 0 8px #080e19; }
+  .process-step h3 { font: 700 16px 'Manrope', sans-serif; margin-bottom: 10px; }
+  .process-step p { color: #8e9db1; font-size: 12px; line-height: 1.8; max-width: 230px; }
+
+  .industries { padding: 54px 0 !important; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.012); }
+  .industries-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+  .industries-title { font: 700 14px 'Manrope', sans-serif; max-width: 165px; }
+  .industry-pills { display: flex; gap: 9px; flex-wrap: wrap; justify-content: flex-end; }
+  .industry-pill { padding: 9px 14px; border: 1px solid rgba(162,184,211,.16); background: rgba(255,255,255,.025); border-radius: 999px; color: #a7b4c6; font-size: 10px; font-weight: 700; transition: border-color .2s, color .2s, background .2s; }
+  .industry-pill:hover { color: #fff; border-color: rgba(255,111,90,.4); background: rgba(255,61,66,.07); }
+
+  .contact-section { padding-bottom: 100px !important; }
+  .contact-panel { border-radius: 28px; border: 1px solid rgba(255,128,104,.22); overflow: hidden; position: relative; background: radial-gradient(ellipse at 95% 10%, rgba(255,76,67,.16), transparent 35%), linear-gradient(125deg, #111c2d, #0c1422 70%); padding: clamp(28px, 5vw, 60px); }
+  .contact-panel::after { content: ''; position: absolute; width: 330px; height: 330px; border-radius: 50%; border: 1px solid rgba(255,100,80,.10); right: -120px; bottom: -210px; box-shadow: 0 0 0 35px rgba(255,100,80,.025), 0 0 0 75px rgba(255,100,80,.018); pointer-events: none; }
+  .contact-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 55px; align-items: start; position: relative; z-index: 1; }
+  .contact-copy h2 { max-width: 440px; }
+  .contact-copy p { color: #9ba9bc; font-size: 14px; line-height: 1.85; max-width: 420px; }
+  .contact-points { display: grid; gap: 12px; margin-top: 28px; color: #c2ccda; font-size: 12px; }
+  .contact-points span { display: flex; align-items: center; gap: 10px; }
+  .contact-points svg { color: #ff9279; }
+  .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+  .field { display: grid; gap: 7px; }
+  .field.full { grid-column: 1 / -1; }
+  .field label { font-size: 10px; color: #9eacc0; font-weight: 700; letter-spacing: .045em; }
+  .field input, .field select, .field textarea { width: 100%; border: 1px solid rgba(164,185,212,.17); background: rgba(5,11,20,.38); color: #eef3fb; outline: none; border-radius: 11px; padding: 12px 13px; min-height: 45px; transition: border-color .2s, background .2s, box-shadow .2s; font-size: 12px; }
+  .field input::placeholder, .field textarea::placeholder { color: #607087; }
+  .field select { color-scheme: dark; }
+  .field textarea { min-height: 93px; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: rgba(255,111,90,.62); background: rgba(5,11,20,.62); box-shadow: 0 0 0 3px rgba(255,81,71,.08); }
+  .contact-form .btn { width: 100%; grid-column: 1 / -1; margin-top: 3px; }
+  .form-note { grid-column: 1 / -1; margin: -3px 0 0; color: #6e7e93; font-size: 10px; line-height: 1.6; }
+  .form-status { grid-column: 1 / -1; border: 1px solid rgba(118,226,209,.25); background: rgba(118,226,209,.07); color: #a8eee3; padding: 12px 14px; border-radius: 10px; font-size: 12px; display: none; }
+  .form-status.show { display: block; animation: reveal .35s ease both; }
+
+  footer { border-top: 1px solid var(--line); padding: 30px 0; }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+  .footer-copy { color: #728198; font-size: 10px; }
+  .footer-links { display: flex; gap: 20px; color: #92a0b4; font-size: 10px; }
+  .footer-links a:hover { color: white; }
+  .back-top { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 11px; display: grid; place-items: center; color: #b5c1d0; transition: border-color .2s, color .2s, transform .2s; }
+  .back-top:hover { color: white; border-color: #ff8a73; transform: translateY(-3px); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: .08s; } .delay-2 { transition-delay: .16s; } .delay-3 { transition-delay: .24s; }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
+  @keyframes halo { 0%,100% { transform: scale(.95); opacity: .7; } 50% { transform: scale(1.08); opacity: 1; } }
+  @keyframes orbiting { from { transform: rotate(0deg) translateX(170px) rotate(0deg); } to { transform: rotate(360deg) translateX(170px) rotate(-360deg); } }
+  @keyframes detector { 0% { box-shadow: 0 0 0 0 rgba(255,73,67,.28), 0 0 15px rgba(255,73,67,.8); } 70%,100% { box-shadow: 0 0 0 12px rgba(255,73,67,0), 0 0 15px rgba(255,73,67,.4); } }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+  @keyframes rotate { to { transform: rotate(360deg); } }
+  @keyframes reveal { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 1000px) {
+    .hero { min-height: 0; padding-top: 140px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 25px; }
+    .hero-content { max-width: 760px; }
+    .visual-wrap { min-height: 470px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: 1fr 1fr; gap: 34px; }
+    .trust-inner { flex-wrap: wrap; justify-content: center; padding: 24px 0; }
+    .trust-label { max-width: none; width: 100%; text-align: center; }
+    .contact-grid { gap: 30px; }
+  }
+  @media (max-width: 720px) {
+    .container { width: min(var(--max), calc(100% - 34px)); }
+    .nav { height: 70px; }
+    .menu-toggle { display: block; }
+    .nav-links { position: absolute; top: 78px; left: 17px; right: 17px; display: flex; align-items: stretch; flex-direction: column; gap: 0; padding: 10px; background: rgba(10,17,29,.97); border: 1px solid var(--line); border-radius: 17px; box-shadow: 0 18px 45px rgba(0,0,0,.35); opacity: 0; visibility: hidden; transform: translateY(-9px); transition: opacity .2s, transform .2s, visibility .2s; }
+    .nav-links.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-links a:not(.nav-cta) { padding: 13px 12px; border-radius: 9px; }
+    .nav-links a:not(.nav-cta):hover { background: rgba(255,255,255,.04); }
+    .nav-cta { margin-top: 5px; min-height: 43px; }
+    .hero { padding: 123px 0 60px; }
+    h1 { font-size: clamp(42px, 11.4vw, 64px); }
+    .hero-copy { font-size: 14px; }
+    .hero-meta { gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .visual-wrap { min-height: 430px; margin: 0 -6px; }
+    .system-card { padding: 14px; border-radius: 19px; }
+    .building { min-height: 185px; }
+    .floating-tag.tag-left { top: 8%; left: 0; }
+    .floating-tag.tag-right { right: 0; bottom: 7%; }
+    .orbit { width: 355px; }
+    .orbit.orbit-two { width: 300px; }
+    .trust-inner { gap: 17px 24px; }
+    .trust-item { font-size: 10px; }
+    .trust-item svg { width: 16px; }
+    section.content-section { padding: 77px 0; }
+    .section-head { margin-bottom: 30px; }
+    .section-desc { font-size: 13px; }
+    .services-grid { gap: 10px; }
+    .service-card { min-height: 260px; padding: 18px 15px; }
+    .service-icon { margin-bottom: 22px; }
+    .service-card h3 { font-size: 15px; }
+    .service-card p { font-size: 11px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .blueprint-card { min-height: 350px; }
+    .blueprint-ring { width: 220px; height: 220px; }
+    .feature-list { margin-top: 25px; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); row-gap: 24px; }
+    .process-grid::before { display: none; }
+    .process-step { padding-right: 7px; }
+    .process-number { margin-bottom: 17px; }
+    .industries-inner { display: block; }
+    .industries-title { max-width: none; margin-bottom: 18px; }
+    .industry-pills { justify-content: flex-start; }
+    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .contact-panel { border-radius: 22px; }
+    .footer-inner { flex-wrap: wrap; }
+    .footer-copy { width: calc(100% - 60px); }
+    .footer-links { order: 3; width: 100%; flex-wrap: wrap; }
+  }
+  @media (max-width: 390px) {
+    .brand-name { font-size: 16px; }
+    .brand-mark { width: 38px; height: 38px; }
+    .hero-actions .btn { width: 100%; }
+    .system-layers { gap: 5px; }
+    .layer { padding: 9px 7px; }
+    .layer strong { font-size: 9px; }
+    .floating-tag { padding: 8px 9px; }
+    .tag-title { font-size: 9px; }
+    .contact-form { grid-template-columns: 1fr; }
+    .field.full { grid-column: auto; }
+    .contact-form .btn, .form-note, .form-status { grid-column: auto; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    #embers { display: none; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="noise" aria-hidden="true"></div>
+<canvas id="embers" aria-hidden="true"></canvas>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="Fire Link home">
+      <span class="brand-mark">
+        <svg width="26" height="28" viewBox="0 0 32 34" fill="none" aria-hidden="true"><path d="M18.1 2.5c1.2 6-3.5 7.5-2.1 12.1 1-2.2 3.1-3.4 5-4.4 5.2 5.2 7.2 10.2 5.2 15.1A11 11 0 0 1 15.8 32C8.7 32 3.5 26.7 4.6 19.7c.6-3.6 3.2-6.7 6.7-9.8-.2 4.6 1.3 6 2.9 6.8C12.7 10 17.2 8.4 18.1 2.5Z" fill="url(#flame)"/><path d="M17.2 19.2c.6 2.6-2 4.2-1.1 6.3.6-.8 1.2-1.4 2.2-1.9 1.8 2.2 1.7 4.4-.4 5.7-2.2 1.3-5-.1-5.1-2.6-.1-2.6 2-4.8 4.4-7.5Z" fill="#FFF0DE"/><defs><linearGradient id="flame" x1="6" y1="4" x2="27" y2="31" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB45D"/><stop offset=".48" stop-color="#FF684B"/><stop offset="1" stop-color="#F33143"/></linearGradient></defs></svg>
+      </span>
+      <span><span class="brand-name">FIRE <span>LINK</span></span><span class="brand-sub">FIRE &amp; LIFE SAFETY</span></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#services">Solutions</a><a href="#approach">Our approach</a><a href="#industries">Industries</a><a href="#contact">Contact</a>
+      <a class="nav-cta" href="#contact">Get a consultation <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="dot"></span> Fire protection. Thoughtfully connected.</div>
+        <h1>Safety isn't a feature.<br><span class="gradient-text">It's everything.</span></h1>
+        <p class="hero-copy">From the first alert to the final inspection, Fire Link brings fire detection, alarm and suppression systems together in one considered approach to protecting what matters most.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Plan your protection <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          <a class="btn btn-ghost" href="#services">Explore solutions <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14m-7-7 7 7 7-7"/></svg></a>
+        </div>
+        <div class="hero-meta">
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 4.5 6v5.5c0 5 3.2 8 7.5 9.5 4.3-1.5 7.5-4.5 7.5-9.5V6L12 3Z"/><path d="m8.5 12 2.3 2.3 4.8-5"/></svg> Safety-first thinking</span>
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Lifecycle support</span>
+        </div>
+      </div>
+
+      <div class="visual-wrap" id="visualWrap" aria-label="Animated illustration of a connected fire protection system">
+        <div class="visual-halo"></div>
+        <div class="orbit"><span class="orbit-dot"></span></div>
+        <div class="orbit orbit-two"><span class="orbit-dot"></span></div>
+        <div class="floating-tag tag-left"><div class="tag-line"><span class="tag-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m15.36-6.36-2.12 2.12M7.76 16.24l-2.12 2.12m12.72 0-2.12-2.12M7.76 7.76 5.64 5.64"/><circle cx="12" cy="12" r="4"/></svg></span><span><span class="tag-title">Early detection</span><span class="tag-sub">Know sooner</span></span></div></div>
+        <div class="system-card" id="systemCard">
+          <div class="sys-head"><div><div class="sys-label">THE FIRE LINK APPROACH</div><div class="sys-title" id="systemTitle">Connected protection</div></div><span class="sys-live"><i></i> SYSTEM OVERVIEW</span></div>
+          <div class="building">
+            <div class="building-grid"></div><div class="floor"><i class="room r1"></i><i class="room r2"></i><i class="room r3"></i></div><div class="floor f2"><i class="room r1"></i><i class="room r2"></i><i class="room r3"></i></div><div class="floor f3"><i class="room r1"></i><i class="room r2"></i></div>
+            <span class="detector d1"></span><span class="detector d2"></span><span class="detector d3"></span><span class="route-line"></span><span class="building-caption" id="buildingCaption">ILLUSTRATIVE PROTECTION LAYOUT</span>
+          </div>
+          <div class="system-layers">
+            <button class="layer active" data-system="Detection" data-caption="SENSORS & EARLY WARNING" type="button"><span class="layer-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2m0-14-2 2M5 19l2-2"/></svg></span><strong>Detection</strong><small>Spot the risk</small></button>
+            <button class="layer" data-system="Alarm & alert" data-caption="ALERTS & EVACUATION SIGNALS" type="button"><span class="layer-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/><path d="M3 4 1.5 2.5M21 4l1.5-1.5"/></svg></span><strong>Alarm &amp; alert</strong><small>Signal clearly</small></button>
+            <button class="layer" data-system="Suppression" data-caption="DESIGNED RESPONSE & CONTROL" type="button"><span class="layer-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2.5c1.1 4-2.3 5.5-1.4 8.2.8-1.3 2-2.1 3.4-2.8 3.2 3.3 4.6 6.1 3.2 9.2A6.1 6.1 0 0 1 11.4 21c-4.2 0-6.9-3.2-6.1-7 .4-2.1 1.7-3.8 3.8-5.8-.1 2.6.7 3.5 1.7 4C10 8.8 12.5 7.2 12 2.5Z"/></svg></span><strong>Suppression</strong><small>Control the threat</small></button>
+          </div>
+        </div>
+        <div class="floating-tag tag-right"><div class="tag-line"><span class="tag-icon red"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4.5 6v5.5c0 5 3.2 8 7.5 9.5 4.3-1.5 7.5-4.5 7.5-9.5V6L12 3Z"/><path d="m8.5 12 2.3 2.3 4.8-5"/></svg></span><span><span class="tag-title">Protection by design</span><span class="tag-sub">Planned around your site</span></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-strip"><div class="container trust-inner">
+    <div class="trust-label">Protection across the lifecycle</div>
+    <div class="trust-item"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m4 18 5-5 3 3 8-9"/><path d="M14 7h6v6"/></svg> Assess &amp; design</div>
+    <div class="trust-item"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/></svg> Install &amp; integrate</div>
+    <div class="trust-item"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/><path d="m8 3 2 2m6-2-2 2"/></svg> Inspect &amp; maintain</div>
+  </div></div>
+
+  <section class="content-section" id="services">
+    <div class="container">
+      <div class="section-head reveal"><div class="section-kicker">What we do</div><h2>Every layer of protection.<br><span class="gradient-text">One clear direction.</span></h2><p class="section-desc">Fire safety works best as a coordinated system. Explore the core solutions that can be tailored to your building, people, processes and risk profile.</p></div>
+      <div class="services-grid">
+        <article class="service-card reveal" style="--glow:rgba(255,65,68,.22)"><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9 7 7m10 10 2.1 2.1m0-14.2L17 7M7 17l-2.1 2.1"/></svg></div><h3>Fire detection</h3><p>Detection layouts designed to identify risk early and support a faster, more informed response.</p><a class="card-link" href="#contact" data-service="Fire detection">Discuss detection <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a></article>
+        <article class="service-card reveal delay-1" style="--glow:rgba(255,171,79,.18)"><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4M3 4 1.5 2.5M21 4l1.5-1.5"/></svg></div><h3>Fire alarm systems</h3><p>Audible and visual alerting solutions that help occupants understand when action is needed.</p><a class="card-link" href="#contact" data-service="Fire alarm systems">Discuss alarm systems <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a></article>
+        <article class="service-card reveal delay-2" style="--glow:rgba(87,193,222,.2)"><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v4m0 10v4M5 7l2 2m10 6 2 2M3 12h4m10 0h4M7 17l2-2m6-6 2-2"/><path d="M12 7.5c2.8 0 4.5 2.1 4.5 4.5S14.8 16.5 12 16.5 7.5 14.4 7.5 12 9.2 7.5 12 7.5Z"/></svg></div><h3>Suppression systems</h3><p>Suppression options selected to suit the protected space, hazards and project requirements.</p><a class="card-link" href="#contact" data-service="Suppression systems">Discuss suppression <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a></article>
+        <article class="service-card reveal delay-3" style="--glow:rgba(87,213,177,.18)"><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 4 6v5.5c0 5 3.2 8 8 9.5 4.8-1.5 8-4.5 8-9.5V6l-8-3Z"/><path d="M8 12h8M12 8v8"/></svg></div><h3>Inspection &amp; maintenance</h3><p>Planned checks and maintenance support to help keep systems ready throughout their lifecycle.</p><a class="card-link" href="#contact" data-service="Inspection and maintenance">Plan maintenance <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section why-section" id="approach">
+    <div class="container why-grid">
+      <div class="blueprint-card reveal" aria-label="Decorative fire protection shield illustration"><div class="blueprint-ring"></div><span class="blueprint-point bp1"></span><span class="blueprint-point bp2"></span><span class="blueprint-point bp3"></span><div class="shield-core"><svg width="112" height="130" viewBox="0 0 112 130" fill="none" aria-hidden="true"><path d="M56 5 99 21v33c0 31-18.5 54-43 67C31.5 108 13 85 13 54V21L56 5Z" fill="url(#shieldFill)" stroke="url(#shieldStroke)" stroke-width="1.5"/><path d="M56 22 84 32v22c0 21-11.8 37-28 47C39.8 91 28 75 28 54V32l28-10Z" fill="#0d1827" stroke="rgba(255,255,255,.2)"/><path d="M58 36c2.1 10.5-6.2 13.7-3.8 21.5 1.7-4 5.6-6 9.1-8 9.4 9.4 13 18.5 9.4 27.3A19.9 19.9 0 0 1 53 90c-12.9 0-22.4-9.6-20.4-22.3 1.1-6.5 5.8-12.2 12.2-17.8-.4 8.4 2.4 11 5.3 12.4-2.8-12.1 5.4-15 9.9-26.3Z" fill="url(#flame2)"/><defs><linearGradient id="shieldFill" x1="12" y1="5" x2="101" y2="121" gradientUnits="userSpaceOnUse"><stop stop-color="#ff7b61" stop-opacity=".25"/><stop offset="1" stop-color="#ff3d42" stop-opacity=".03"/></linearGradient><linearGradient id="shieldStroke" x1="13" y1="5" x2="99" y2="121" gradientUnits="userSpaceOnUse"><stop stop-color="#ffb180"/><stop offset="1" stop-color="#ff3d42"/></linearGradient><linearGradient id="flame2" x1="34" y1="35" x2="78" y2="91" gradientUnits="userSpaceOnUse"><stop stop-color="#ffc26d"/><stop offset="1" stop-color="#ff4148"/></linearGradient></defs></svg></div><div class="blueprint-note"><span>Purpose-built protection</span><span>01 / 03</span></div></div>
+      <div class="reveal delay-1"><div class="section-kicker">The Fire Link difference</div><h2>Designed for your site.<br><span class="gradient-text">Ready for real life.</span></h2><p class="section-desc">No two buildings carry the same risks. A considered fire strategy starts with understanding your environment and continues well beyond installation.</p>
+        <div class="feature-list">
+          <div class="feature"><div class="feature-number">01</div><div><h3>Start with the risk</h3><p>Understand the building, occupancy, operations and hazards before recommending a solution.</p></div></div>
+          <div class="feature"><div class="feature-number">02</div><div><h3>Connect the right systems</h3><p>Coordinate detection, notification and suppression around a clear project plan.</p></div></div>
+          <div class="feature"><div class="feature-number">03</div><div><h3>Support the full lifecycle</h3><p>Keep documentation, inspections and maintenance part of the protection conversation.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section process">
+    <div class="container">
+      <div class="section-head reveal"><div class="section-kicker">How we work</div><h2>A clear process.<br><span class="gradient-text">From plan to protection.</span></h2><p class="section-desc">A straightforward project path helps everyone understand what happens next, from early assessment through ongoing care.</p></div>
+      <div class="process-grid">
+        <article class="process-step reveal"><div class="process-number"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5M8 10.5h5M10.5 8v5"/></svg></div><h3>Discover</h3><p>Discuss the site, scope, priorities and applicable project requirements.</p></article>
+        <article class="process-step reveal delay-1"><div class="process-number"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20h16M6 17V4h12v13M9 8h6M9 11h6M9 14h3"/></svg></div><h3>Design</h3><p>Develop a coordinated proposal and system approach suited to the space.</p></article>
+        <article class="process-step reveal delay-2"><div class="process-number"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3 17 6-6 4 4 8-9"/><path d="M15 6h6v6"/></svg></div><h3>Deliver</h3><p>Coordinate installation, integration, testing and handover activities.</p></article>
+        <article class="process-step reveal delay-3"><div class="process-number"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.5 9A7 7 0 0 1 18 6l2 6M4 12l2 6a7 7 0 0 0 12.5-3"/></svg></div><h3>Maintain</h3><p>Plan periodic inspections and servicing to support continuing readiness.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section industries" id="industries"><div class="container industries-inner"><div class="industries-title">Protection shaped around your environment.</div><div class="industry-pills"><span class="industry-pill">Commercial buildings</span><span class="industry-pill">Industrial facilities</span><span class="industry-pill">Warehouses &amp; logistics</span><span class="industry-pill">Retail &amp; hospitality</span><span class="industry-pill">Residential developments</span><span class="industry-pill">Critical equipment areas</span></div></div></section>
+
+  <section class="content-section contact-section" id="contact">
+    <div class="container"><div class="contact-panel reveal"><div class="contact-grid">
+      <div class="contact-copy"><div class="section-kicker">Let's make a plan</div><h2>Make safety part of the plan from day one.</h2><p>Tell us a little about your site or project. Start a conversation about the right fire protection approach for your needs.</p><div class="contact-points"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m5 12 4 4L19 6"/></svg> New installations and project upgrades</span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m5 12 4 4L19 6"/></svg> Maintenance and system reviews</span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m5 12 4 4L19 6"/></svg> Clear next steps for your team</span></div></div>
+      <form class="contact-form" id="contactForm">
+        <div class="field"><label for="name">YOUR NAME</label><input id="name" name="name" autocomplete="name" placeholder="Full name" required /></div>
+        <div class="field"><label for="company">COMPANY</label><input id="company" name="company" autocomplete="organization" placeholder="Company name" /></div>
+        <div class="field"><label for="email">WORK EMAIL</label><input id="email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required /></div>
+        <div class="field"><label for="phone">PHONE</label><input id="phone" type="tel" name="phone" autocomplete="tel" placeholder="Phone number" /></div>
+        <div class="field full"><label for="service">WHAT DO YOU NEED?</label><select id="service" name="service" required><option value="" disabled selected>Select a service</option><option>Fire detection</option><option>Fire alarm systems</option><option>Suppression systems</option><option>Inspection and maintenance</option><option>New project / full system</option><option>Other enquiry</option></select></div>
+        <div class="field full"><label for="message">PROJECT DETAILS</label><textarea id="message" name="message" placeholder="Tell us about your site, project or requirements..."></textarea></div>
+        <button class="btn btn-primary" type="submit">Prepare enquiry <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg></button>
+        <p class="form-note">Demo form: connect this form to your email, CRM or backend before publishing to receive enquiries.</p>
+        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+      </form>
+    </div></div></div>
+  </section>
+</main>
+<footer><div class="container footer-inner"><a class="brand" href="#home"><span class="brand-mark"><svg width="24" height="25" viewBox="0 0 32 34" fill="none" aria-hidden="true"><path d="M18.1 2.5c1.2 6-3.5 7.5-2.1 12.1 1-2.2 3.1-3.4 5-4.4 5.2 5.2 7.2 10.2 5.2 15.1A11 11 0 0 1 15.8 32C8.7 32 3.5 26.7 4.6 19.7c.6-3.6 3.2-6.7 6.7-9.8-.2 4.6 1.3 6 2.9 6.8C12.7 10 17.2 8.4 18.1 2.5Z" fill="#ff684b"/></svg></span><span><span class="brand-name">FIRE <span>LINK</span></span><span class="brand-sub">FIRE &amp; LIFE SAFETY</span></span></a><div class="footer-copy">© <span id="year"></span> Fire Link. Designed around what matters.</div><div class="footer-links"><a href="#services">Solutions</a><a href="#approach">Approach</a><a href="#contact">Contact</a></div><a class="back-top" href="#home" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m18 15-6-6-6 6"/></svg></a></div></footer>
+<script>
+(() => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const topbar = document.getElementById('topbar');
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  const cursorGlow = document.getElementById('cursorGlow');
+  const systemCard = document.getElementById('systemCard');
+  const visualWrap = document.getElementById('visualWrap');
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const onScroll = () => topbar.classList.toggle('scrolled', window.scrollY > 18);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  menuToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    menuToggle.innerHTML = open
+      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>'
+      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open'); menuToggle.setAttribute('aria-expanded', 'false'); menuToggle.setAttribute('aria-label', 'Open navigation menu');
+    menuToggle.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+  }));
+
+  // Scroll reveal: sections animate in as they enter the viewport.
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    }), { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  } else document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+
+  // Hero lighting follows the pointer on desktop.
+  if (window.matchMedia('(pointer: fine)').matches && !reduceMotion) {
+    window.addEventListener('pointermove', e => {
+      cursorGlow.style.opacity = '1'; cursorGlow.style.left = e.clientX + 'px'; cursorGlow.style.top = e.clientY + 'px';
+    }, { passive: true });
+    window.addEventListener('pointerleave', () => cursorGlow.style.opacity = '0');
+    visualWrap.addEventListener('pointermove', e => {
+      const r = systemCard.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;
+      const y = (e.clientY - r.top) / r.height;
+      systemCard.style.setProperty('--mx', (x * 100) + '%');
+      systemCard.style.setProperty('--my', (y * 100) + '%');
+      systemCard.style.transform = `rotateX(${(0.5-y)*4}deg) rotateY(${(x-0.5)*5}deg)`;
+    });
+    visualWrap.addEventListener('pointerleave', () => { systemCard.style.transform = 'rotateX(0deg) rotateY(0deg)'; });
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX-r.left)/r.width, y = (e.clientY-r.top)/r.height;
+        card.style.transform = `translateY(-8px) perspective(700px) rotateX(${(0.5-y)*3}deg) rotateY(${(x-0.5)*3}deg)`;
+      });
+      card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+    });
+  }
+
+  // Change the hero system diagram when each protection layer is selected.
+  const systemTitle = document.getElementById('systemTitle');
+  const buildingCaption = document.getElementById('buildingCaption');
+  document.querySelectorAll('.layer').forEach(button => button.addEventListener('click', () => {
+    document.querySelectorAll('.layer').forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
+    systemTitle.textContent = button.dataset.system;
+    buildingCaption.textContent = button.dataset.caption;
+    systemCard.animate([{ opacity: .82, transform: 'scale(.985)' }, { opacity: 1, transform: 'scale(1)' }], { duration: 260, easing: 'ease-out' });
+  }));
+
+  // Service CTAs preselect the related enquiry category.
+  document.querySelectorAll('[data-service]').forEach(link => link.addEventListener('click', () => {
+    const selector = document.getElementById('service');
+    const wanted = link.dataset.service;
+    const option = [...selector.options].find(o => o.text.toLowerCase() === wanted.toLowerCase());
+    if (option) selector.value = option.value || option.text;
+  }));
+
+  // Front-end form demo. No data is transmitted until connected to a backend/email service.
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const name = String(data.get('name') || '').trim();
+    const service = String(data.get('service') || 'your project');
+    status.textContent = `Thanks, ${name}. Your ${service.toLowerCase()} enquiry has been prepared in this demo. Connect the form to a mail or CRM endpoint for real submission.`;
+    status.classList.add('show');
+    status.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+  });
+
+  // Lightweight ember particles, paused when the tab is hidden.
+  const canvas = document.getElementById('embers');
+  if (canvas && !reduceMotion) {
+    const ctx = canvas.getContext('2d');
+    let w = 0, h = 0, particles = [], raf = 0, visible = true;
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.6);
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = Math.floor(w*dpr); canvas.height = Math.floor(h*dpr);
+      canvas.style.width = w+'px'; canvas.style.height = h+'px'; ctx.setTransform(dpr,0,0,dpr,0,0);
+      const amount = Math.min(62, Math.max(22, Math.floor(w/22)));
+      particles = Array.from({length: amount}, () => newParticle(true));
+    };
+    const newParticle = (randomY = false) => ({
+      x: Math.random()*w, y: randomY ? Math.random()*h : h + Math.random()*70,
+      r: Math.random()*1.6+.45, vx: (Math.random()-.5)*.25, vy: -(Math.random()*.38+.12),
+      a: Math.random()*.45+.13, life: Math.random()*300+120, hue: Math.random()>.83 ? 34 : 7
+    });
+    const draw = () => {
+      if (!visible) return;
+      ctx.clearRect(0,0,w,h);
+      for (let i=0;i<particles.length;i++) {
+        const p=particles[i]; p.x+=p.vx; p.y+=p.vy; p.life-=1;
+        const fade = Math.min(1, p.life/55);
+        ctx.beginPath(); ctx.fillStyle = `hsla(${p.hue}, 100%, ${p.hue===34?67:63}%, ${p.a*fade})`;
+        ctx.shadowBlur = 9; ctx.shadowColor = `hsla(${p.hue},100%,60%,.5)`;
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+        if (p.y < -10 || p.life <= 0) particles[i]=newParticle();
+      }
+      ctx.shadowBlur=0; raf=requestAnimationFrame(draw);
+    };
+    resize(); draw(); window.addEventListener('resize', resize, {passive:true});
+    document.addEventListener('visibilitychange', () => {
+      visible = !document.hidden;
+      if (!visible) cancelAnimationFrame(raf); else draw();
+    });
+  }
+})();
+</script>
+</body>
+</html>
