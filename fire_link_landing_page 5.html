@@ -1,0 +1,2660 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Fire Link | Engineered Fire Protection Services & Certified Equipment Shop</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter, Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        burgundy: {
+                            50: '#fdf2f4',
+                            100: '#fce7eb',
+                            200: '#f8d0d8',
+                            300: '#f2a8b8',
+                            400: '#e9758f',
+                            500: '#d94668',
+                            600: '#b82547',
+                            700: '#9f1d35',
+                            800: '#881327', /* Primary Brand Deep Crimson/Burgundy */
+                            900: '#5e0b1a', /* Deep Burgundy Dark */
+                            950: '#3b050f',
+                        }
+                    },
+                    boxShadow: {
+                        'burgundy-lg': '0 20px 40px -15px rgba(136, 19, 39, 0.22)',
+                        'burgundy-sm': '0 8px 20px -4px rgba(136, 19, 39, 0.14)',
+                        'card-clean': '0 4px 20px -2px rgba(15, 23, 42, 0.05)',
+                        'card-hover': '0 18px 35px -10px rgba(15, 23, 42, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Refined Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #881327;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5e0b1a;
+        }
+
+        /* Hide scrollbar for touch pill strips on mobile */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Executive Dark Slate & Deep Burgundy Hero Mesh */
+        .executive-hero-bg {
+            background-color: #0f172a;
+            background-image:
+                radial-gradient(circle at 14% 22%, rgba(136, 19, 39, 0.55) 0%, transparent 48%),
+                radial-gradient(circle at 86% 78%, rgba(94, 11, 26, 0.65) 0%, transparent 52%),
+                linear-gradient(135deg, #0f172a 0%, #1e1b2e 48%, #470915 100%);
+        }
+
+        /* Technical Engineering Grid Overlay */
+        .blueprint-grid {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+        }
+
+        /* Smooth View Tab Transition */
+        @keyframes viewFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .view-animate {
+            animation: viewFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Subtle Interactive Spotlight on Cards */
+        .spotlight-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(136, 19, 39, 0.06),
+                transparent 45%
+            );
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .spotlight-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Print Styles for Official BOQ Summary */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #boqPrintModal, #boqPrintModal * {
+                visibility: visible;
+            }
+            #boqPrintModal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white !important;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-burgundy-800 selection:text-white pb-20 lg:pb-0">
+
+    <!-- ================= TOP EXECUTIVE COMPLIANCE & HOTLINE BAR ================= -->
+    <!-- <div class="bg-slate-950 text-slate-300 border-b border-slate-800/80 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-burgundy-800 text-white font-semibold uppercase tracking-wider text-[10px]">
+                    <i data-lucide="shield-check" class="w-3 h-3 text-amber-400"></i>
+                    UL / FM / NFPA COMPLIANT
+                </span>
+                <span class="hidden md:inline text-slate-400">Grade-A Civil Defense Approved Fire Protection Engineering & Equipment Supply</span>
+            </div>
+            <div class="flex items-center gap-4 ml-auto sm:ml-0">
+                <a href="tel:18005553473" class="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors font-medium">
+                    <i data-lucide="phone-call" class="w-3.5 h-3.5 text-burgundy-400"></i>
+                    <span>24/7 Dispatch: <strong class="text-white font-mono">1-800-555-FIRE</strong></span>
+                </a>
+                <span class="hidden sm:inline text-slate-700">|</span>
+                <button onclick="switchMainView('shop')" class="hidden sm:inline-flex items-center gap-1 text-amber-400 hover:text-amber-300 font-semibold transition-colors">
+                    <span>Direct Equipment Store</span>
+                    <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- ================= STICKY TOP HEADER (LAPTOP & MOBILE) ================= -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
+            
+            <!-- Brand Logo -->
+            <button onclick="switchMainView('landing'); window.scrollTo({top: 0, behavior: 'smooth'});" class="flex items-center gap-3 text-left group focus:outline-none shrink-0">
+                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-burgundy-800 group-hover:bg-burgundy-700 flex items-center justify-center text-white shadow-burgundy-sm transition-all">
+                    <svg class="w-6 h-6 text-white" viewBox="0 0 36 36" fill="none">
+                        <path d="M18 3C18 3 28 11.5 28 21C28 26.5228 23.5228 31 18 31C12.4772 31 8 26.5228 8 21C8 17.2 10.1 13.6 13.2 11.2C12.8 14.2 14.5 16.5 16.5 17C14.8 12.8 18 3 18 3Z" fill="currentColor"/>
+                        <path d="M18 17C20.8 19.2 22 21.8 22 24.2C22 26.4 20.2 28.2 18 28.2C15.8 28.2 14 26.4 14 24.2C14 21.8 15.6 19.3 18 17Z" fill="#F59E0B"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="font-display font-extrabold text-xl sm:text-2xl tracking-tight text-slate-900 flex items-center">
+                        FIRE<span class="text-burgundy-800 ml-0.5">LINK</span>
+                    </div>
+                    <span class="block text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-slate-500 font-semibold -mt-1">
+                        Engineering & Systems
+                    </span>
+                </div>
+            </button>
+
+            <!-- CENTER: TWO-TAB SOLO ARCHITECTURE SWITCHER (Always visible on Laptop & Tablet, compact on Phone) -->
+            <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200/80">
+                <button
+                    id="topTabLanding"
+                    onclick="switchMainView('landing')"
+                    class="px-3 sm:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all bg-burgundy-800 text-white shadow-xs"
+                >
+                    <i data-lucide="building-2" class="w-4 h-4"></i>
+                    <span>Company <span class="hidden md:inline">& Services</span></span>
+                </button>
+                <button
+                    id="topTabShop"
+                    onclick="switchMainView('shop')"
+                    class="px-3 sm:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all text-slate-600 hover:text-slate-900"
+                >
+                    <i data-lucide="shopping-bag" class="w-4 h-4 text-burgundy-800"></i>
+                    <span>Equipment Shop</span>
+                    <span class="px-1.5 py-0.5 text-[10px] rounded-md bg-burgundy-100 text-burgundy-800 font-mono font-bold">12</span>
+                </button>
+            </div>
+
+            <!-- Desktop Quick Section Links (Only shown when on Landing View on Large Screens) -->
+            <nav id="desktopLandingNav" class="hidden xl:flex items-center gap-6 text-sm font-semibold text-slate-600">
+                <a href="#services-section" onclick="navigateLandingSection('services-section')" class="hover:text-burgundy-800 transition-colors">Services</a>
+                <a href="#workflow-section" onclick="navigateLandingSection('workflow-section')" class="hover:text-burgundy-800 transition-colors">Process</a>
+                <a href="#sectors-section" onclick="navigateLandingSection('sectors-section')" class="hover:text-burgundy-800 transition-colors">Sectors</a>
+                <a href="#consultation-section" onclick="navigateLandingSection('consultation-section')" class="hover:text-burgundy-800 transition-colors">Consultation</a>
+            </nav>
+
+            <!-- Right Actions: BOQ Cart Drawer Trigger & Consultation CTA -->
+            <div class="flex items-center gap-2.5 shrink-0">
+                <button
+                    onclick="toggleBoqDrawer(true)"
+                    class="relative px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all shadow-xs"
+                    title="Open Bill of Quantities & Equipment Cart"
+                >
+                    <i data-lucide="clipboard-list" class="w-4 h-4 text-amber-400"></i>
+                    <span class="hidden sm:inline">BOQ / Cart</span>
+                    <span id="headerBoqBadge" class="min-w-5 h-5 px-1 rounded-full bg-burgundy-700 text-white font-mono font-bold text-xs flex items-center justify-center">0</span>
+                </button>
+
+                <button
+                    onclick="navigateLandingSection('consultation-section')"
+                    class="hidden md:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-burgundy-800 hover:bg-burgundy-700 text-white font-display font-bold text-xs sm:text-sm shadow-burgundy-sm transition-all"
+                >
+                    <span>Request Site Survey</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ===================================================================================== -->
+    <!-- VIEW 1: CORPORATE LANDING PAGE ("LANDING PAGE SOLO" — SERVICES, WORKFLOW, SECTORS)    -->
+    <!-- ===================================================================================== -->
+    <main id="viewLanding" class="view-animate">
+
+        <!-- 1. EXECUTIVE HERO SECTION (Dark Slate & Deep Burgundy Architectural Aesthetic) -->
+        <section class="relative executive-hero-bg text-white overflow-hidden py-14 sm:py-20 lg:py-24 border-b border-burgundy-900/60">
+            <!-- Technical Blueprint Grid Overlay -->
+            <div class="absolute inset-0 blueprint-grid pointer-events-none"></div>
+            <!-- Interactive Subtle Node Canvas -->
+            <canvas id="heroBlueprintCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-75"></canvas>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                    
+                    <!-- Left Column: Core Engineering Value Proposition -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-xs text-amber-300 text-[11px] sm:text-xs font-semibold tracking-wider uppercase">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>UL / FM / NFPA COMPLIANT • CIVIL DEFENSE APPROVED CONTRACTOR</span>
+                        </div>
+
+                        <h1 class="font-display text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight leading-[1.12] text-white">
+                            Engineered Fire Protection &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-amber-200 to-white">Life Safety Systems.</span>
+                        </h1>
+
+                        <p class="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl">
+                            <strong class="text-white font-semibold">Fire Link</strong> is a premier turnkey electromechanical fire engineering firm. We design, supply, install, commission, and maintain code-compliant fire detection, clean agent gas suppression, and UL/FM pumping networks for critical facilities.
+                        </p>
+
+                        <!-- Primary Hero Actions -->
+                        <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+                            <button
+                                onclick="navigateLandingSection('services-section')"
+                                class="px-7 py-4 rounded-xl bg-burgundy-800 hover:bg-burgundy-700 text-white font-display font-bold text-sm sm:text-base shadow-burgundy-lg flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5"
+                            >
+                                <span>Explore Our Services</span>
+                                <i data-lucide="arrow-down-right" class="w-5 h-5 text-amber-300"></i>
+                            </button>
+
+                            <button
+                                onclick="switchMainView('shop')"
+                                class="px-7 py-4 rounded-xl bg-white hover:bg-slate-100 text-slate-900 font-display font-bold text-sm sm:text-base shadow-lg flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5"
+                            >
+                                <i data-lucide="shopping-bag" class="w-5 h-5 text-burgundy-800"></i>
+                                <span>Open Equipment Shop</span>
+                                <span class="px-2 py-0.5 rounded-md bg-burgundy-50 text-burgundy-800 font-mono text-xs font-bold">12 Products</span>
+                            </button>
+                        </div>
+
+                        <!-- Accreditation & Compliance Strip -->
+                        <div class="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                            <div class="flex items-center gap-2.5 bg-white/5 px-3.5 py-2.5 rounded-xl border border-white/10">
+                                <i data-lucide="badge-check" class="w-4 h-4 text-amber-400 shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-white block">NFPA Standards</span>
+                                    <span class="text-slate-400 text-[11px]">13, 20, 25, 72, 2001</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2.5 bg-white/5 px-3.5 py-2.5 rounded-xl border border-white/10">
+                                <i data-lucide="shield" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-white block">UL &amp; FM Listed</span>
+                                    <span class="text-slate-400 text-[11px]">Certified Systems</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2.5 bg-white/5 px-3.5 py-2.5 rounded-xl border border-white/10">
+                                <i data-lucide="layers" class="w-4 h-4 text-amber-400 shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-white block">BIM LOD 400</span>
+                                    <span class="text-slate-400 text-[11px]">Hydraulic Modeling</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2.5 bg-white/5 px-3.5 py-2.5 rounded-xl border border-white/10">
+                                <i data-lucide="file-check-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-white block">Civil Defense</span>
+                                    <span class="text-slate-400 text-[11px]">Direct Licensing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Architectural Engineering Division Overview Panel -->
+                    <div class="lg:col-span-5">
+                        <div class="rounded-2xl bg-slate-900/90 backdrop-blur-md border border-white/15 p-6 sm:p-7 shadow-2xl space-y-5">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                <div>
+                                    <span class="text-[11px] font-mono uppercase tracking-widest text-amber-400 block">Turnkey MEP Division</span>
+                                    <h2 class="font-display font-bold text-lg sm:text-xl text-white">Engineering Capabilities Matrix</h2>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 font-mono text-xs font-semibold">
+                                    ISO 9001:2015
+                                </span>
+                            </div>
+
+                            <!-- 3 Executive Division Highlights -->
+                            <div class="space-y-3">
+                                <div onclick="navigateLandingSection('services-section')" class="cursor-pointer group p-4 rounded-xl bg-white/5 hover:bg-burgundy-800/40 border border-white/10 hover:border-burgundy-500/50 transition-all flex items-start gap-3.5">
+                                    <div class="w-10 h-10 rounded-lg bg-burgundy-800 text-white flex items-center justify-center shrink-0 mt-0.5">
+                                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-display font-bold text-sm text-white group-hover:text-amber-300 transition-colors">Detection &amp; Voice Evacuation</h3>
+                                            <span class="text-[11px] font-mono text-slate-400">NFPA 72</span>
+                                        </div>
+                                        <p class="text-xs text-slate-300 mt-1">Multi-loop addressable panels, VESDA aspirating smoke detection &amp; PAVA integration.</p>
+                                    </div>
+                                </div>
+
+                                <div onclick="navigateLandingSection('services-section')" class="cursor-pointer group p-4 rounded-xl bg-white/5 hover:bg-burgundy-800/40 border border-white/10 hover:border-burgundy-500/50 transition-all flex items-start gap-3.5">
+                                    <div class="w-10 h-10 rounded-lg bg-burgundy-800 text-white flex items-center justify-center shrink-0 mt-0.5">
+                                        <i data-lucide="droplets" class="w-5 h-5"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-display font-bold text-sm text-white group-hover:text-amber-300 transition-colors">Pumping &amp; Suppression Networks</h3>
+                                            <span class="text-[11px] font-mono text-slate-400">NFPA 13 / 20</span>
+                                        </div>
+                                        <p class="text-xs text-slate-300 mt-1">UL/FM horizontal split-case pump rooms, wet/pre-action grids &amp; high-bay ESFR networks.</p>
+                                    </div>
+                                </div>
+
+                                <div onclick="navigateLandingSection('services-section')" class="cursor-pointer group p-4 rounded-xl bg-white/5 hover:bg-burgundy-800/40 border border-white/10 hover:border-burgundy-500/50 transition-all flex items-start gap-3.5">
+                                    <div class="w-10 h-10 rounded-lg bg-burgundy-800 text-white flex items-center justify-center shrink-0 mt-0.5">
+                                        <i data-lucide="wind" class="w-5 h-5"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-display font-bold text-sm text-white group-hover:text-amber-300 transition-colors">Clean Agent Gas &amp; Special Hazards</h3>
+                                            <span class="text-[11px] font-mono text-slate-400">NFPA 2001</span>
+                                        </div>
+                                        <p class="text-xs text-slate-300 mt-1">FM-200®, Novec™ 1230 total flooding skids, high-pressure CO2 &amp; UL-300 kitchen systems.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Direct Switch to Shop Bar inside Hero Card -->
+                            <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2 text-xs">
+                                <span class="text-slate-300">Need direct B2B hardware procurement?</span>
+                                <button onclick="switchMainView('shop')" class="text-amber-400 hover:text-amber-300 font-bold inline-flex items-center gap-1">
+                                    <span>Launch Shop Tab</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. KEY METRICS BAR -->
+        <section class="bg-white border-b border-slate-200 py-8 sm:py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                    <div class="flex items-center gap-4 p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+                        <div class="w-12 h-12 rounded-xl bg-burgundy-50 text-burgundy-800 flex items-center justify-center shrink-0">
+                            <i data-lucide="building" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">450+</div>
+                            <p class="text-xs font-medium text-slate-500">Turnkey Projects Delivered</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+                            <i data-lucide="file-badge" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">100%</div>
+                            <p class="text-xs font-medium text-slate-500">Civil Defense Approval Rate</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0">
+                            <i data-lucide="clock" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">24/7</div>
+                            <p class="text-xs font-medium text-slate-500">Emergency AMC Support</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+                        <div class="w-12 h-12 rounded-xl bg-burgundy-50 text-burgundy-800 flex items-center justify-center shrink-0">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">15+ Yrs</div>
+                            <p class="text-xs font-medium text-slate-500">Fire Engineering Excellence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. CORE TURNKEY SERVICES SECTION (SOLO LANDING FOCUS) -->
+        <section id="services-section" class="py-16 sm:py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-burgundy-50 border border-burgundy-200 text-burgundy-800 text-xs font-bold uppercase tracking-wider mb-3">
+                            <i data-lucide="wrench" class="w-3.5 h-3.5"></i>
+                            <span>Core Engineering Divisions</span>
+                        </span>
+                        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+                            Turnkey Fire Protection <span class="text-burgundy-800">Services</span>
+                        </h2>
+                    </div>
+                    <p class="text-slate-600 max-w-md text-sm sm:text-base">
+                        From initial hydraulic calculation and Authority Having Jurisdiction (AHJ) design submittals to site piping, commissioning, and annual maintenance.
+                    </p>
+                </div>
+
+                <!-- 6 Interactive Bento / Grid Service Cards -->
+                <div id="servicesGridContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+                    <!-- Injected via JS -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. INTERACTIVE 4-STAGE TURNKEY EXECUTION WORKFLOW -->
+        <section id="workflow-section" class="py-16 sm:py-24 bg-white border-y border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-burgundy-800 text-xs font-bold uppercase tracking-wider">
+                        Project Delivery Methodology
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                        4-Stage Turnkey Execution Workflow
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base mt-2">
+                        Click any stage below to inspect our engineering deliverables, quality assurance protocols, and regulatory milestones.
+                    </p>
+                </div>
+
+                <!-- Interactive Step Selector Pills -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8" id="workflowStepsTabs">
+                    <!-- Populated via JS -->
+                </div>
+
+                <!-- Dynamic Active Stage Detail Panel -->
+                <div id="workflowDetailPanel" class="rounded-2xl bg-slate-900 text-white p-6 sm:p-10 border border-slate-800 shadow-xl">
+                    <!-- Populated via JS -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. SECTORS & FACILITIES PROTECTED (INTERACTIVE SHOWCASE) -->
+        <section id="sectors-section" class="py-16 sm:py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-6">
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-burgundy-50 border border-burgundy-200 text-burgundy-800 text-xs font-bold uppercase tracking-wider mb-3">
+                            <i data-lucide="factory" class="w-3.5 h-3.5"></i>
+                            <span>Industry Specialization</span>
+                        </span>
+                        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                            Sectors &amp; Critical Facilities Protected
+                        </h2>
+                    </div>
+
+                    <!-- Sector Filter Tabs -->
+                    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="sectorFilterTabs">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Active Sector Showcase Panel -->
+                <div id="sectorShowcaseCard" class="rounded-2xl bg-white border border-slate-200 shadow-card-clean overflow-hidden">
+                    <!-- Injected via JS -->
+                </div>
+
+                <!-- Executive Banner to Switch to Equipment Shop Tab -->
+                <div class="mt-14 rounded-2xl bg-gradient-to-r from-slate-900 via-burgundy-900 to-slate-900 text-white p-7 sm:p-10 shadow-burgundy-lg flex flex-col lg:flex-row items-center justify-between gap-6">
+                    <div class="space-y-2 max-w-2xl text-center lg:text-left">
+                        <span class="inline-flex items-center gap-1.5 text-amber-400 text-xs font-mono font-bold uppercase tracking-widest">
+                            <i data-lucide="package-check" class="w-4 h-4"></i>
+                            <span>Direct B2B &amp; Project Equipment Supply</span>
+                        </span>
+                        <h3 class="font-display text-2xl sm:text-3xl font-extrabold">
+                            Looking to Purchase Certified Fire Safety Equipment Directly?
+                        </h3>
+                        <p class="text-slate-300 text-xs sm:text-sm">
+                            Switch to our dedicated <strong class="text-white">Equipment Shop Tab</strong> to browse UL/FM fire pumps, addressable panels, FM-200 cylinders, extinguishers, and build an instant Bill of Quantities (BOQ).
+                        </p>
+                    </div>
+                    <button
+                        onclick="switchMainView('shop')"
+                        class="w-full sm:w-auto px-7 py-4 rounded-xl bg-white hover:bg-amber-300 text-slate-950 font-display font-extrabold text-sm shadow-lg flex items-center justify-center gap-2.5 shrink-0 transition-all"
+                    >
+                        <i data-lucide="shopping-bag" class="w-5 h-5 text-burgundy-800"></i>
+                        <span>Open Equipment Shop (12 Models)</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 6. DIRECT ENGINEERING CONSULTATION & SITE SURVEY FORM -->
+        <section id="consultation-section" class="py-16 sm:py-24 bg-white border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+                    
+                    <!-- Left Column: Executive Contact Card -->
+                    <div class="lg:col-span-5 rounded-2xl bg-slate-900 text-white p-7 sm:p-9 space-y-7 relative overflow-hidden">
+                        <div class="absolute inset-0 blueprint-grid pointer-events-none"></div>
+                        <div class="relative z-10 space-y-3">
+                            <span class="px-3 py-1 rounded-md bg-burgundy-800 text-amber-300 text-xs font-mono font-bold uppercase">
+                                Engineering &amp; Tenders Desk
+                            </span>
+                            <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white">
+                                Request an Engineering Consultation or Site Survey
+                            </h2>
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                                Whether you need a turnkey contracting proposal, Civil Defense compliance audit, or custom BOQ pricing, our senior fire protection engineers respond within 4 business hours.
+                            </p>
+                        </div>
+
+                        <div class="relative z-10 space-y-4 pt-4 border-t border-white/10 text-xs sm:text-sm">
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-burgundy-800/80 border border-burgundy-600/40 flex items-center justify-center text-amber-300 shrink-0">
+                                    <i data-lucide="phone-call" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Central Contracting Desk</span>
+                                    <span class="font-mono font-bold text-base text-white">+1 (800) 555-3473 • Ext. 101</span>
+                                    <span class="block text-xs text-slate-400">24/7 Emergency AMC Support: Ext. 999</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-burgundy-800/80 border border-burgundy-600/40 flex items-center justify-center text-amber-300 shrink-0">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Tenders &amp; Estimation Email</span>
+                                    <span class="font-mono font-bold text-sm text-white">tenders@firelink-engineering.com</span>
+                                    <span class="block text-xs text-slate-400">procurement@firelink-engineering.com</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-burgundy-800/80 border border-burgundy-600/40 flex items-center justify-center text-amber-300 shrink-0">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Headquarters &amp; Warehouse</span>
+                                    <span class="font-semibold text-sm text-white">Fire Link Engineering Tower, Industrial Zone B4</span>
+                                    <span class="block text-xs text-slate-400">Sun – Thu: 8:00 AM – 6:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Attached BOQ Items Preview Box -->
+                        <div class="relative z-10 p-4 rounded-xl bg-white/5 border border-white/10">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold text-amber-300 flex items-center gap-1.5">
+                                    <i data-lucide="clipboard-check" class="w-4 h-4"></i>
+                                    <span>Attached BOQ / Cart Items</span>
+                                </span>
+                                <button type="button" onclick="toggleBoqDrawer(true)" class="text-xs text-slate-300 underline hover:text-white">
+                                    Manage List
+                                </button>
+                            </div>
+                            <div id="consultationBoqPreview" class="text-xs text-slate-300 space-y-1 max-h-32 overflow-y-auto">
+                                <p class="italic text-slate-400">No items attached yet. You can attach services or shop products at any time.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Consultation & RFQ Form -->
+                    <div class="lg:col-span-7">
+                        <form id="consultationForm" onsubmit="handleConsultationSubmit(event)" class="rounded-2xl bg-slate-50 border border-slate-200/90 p-6 sm:p-9 shadow-card-clean space-y-5">
+                            <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+                                <div>
+                                    <span class="text-xs font-bold uppercase tracking-wider text-burgundy-800">Fast-Track Engineering Response</span>
+                                    <h3 class="font-display text-xl sm:text-2xl font-extrabold text-slate-900">Submit Project Inquiry / RFQ</h3>
+                                </div>
+                                <div class="w-11 h-11 rounded-xl bg-burgundy-50 border border-burgundy-200 flex items-center justify-center text-burgundy-800">
+                                    <i data-lucide="send" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Full Name / Title *</label>
+                                    <input type="text" required placeholder="Eng. Tarek El-Masry" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-burgundy-800 focus:outline-none text-sm text-slate-900">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Company / Organization *</label>
+                                    <input type="text" required placeholder="Apex Construction & MEP" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-burgundy-800 focus:outline-none text-sm text-slate-900">
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Official Email *</label>
+                                    <input type="email" required placeholder="t.elmasry@company.com" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-burgundy-800 focus:outline-none text-sm text-slate-900">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Phone / WhatsApp *</label>
+                                    <input type="tel" required placeholder="+20 100 555 0199" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-burgundy-800 focus:outline-none text-sm text-slate-900">
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Required Scope *</label>
+                                    <select class="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-burgundy-800 focus:outline-none text-sm text-slate-900 font-medium">
+                                        <option>Turnkey Supply &amp; Electromechanical Installation</option>
+                                        <option>Equipment Supply Only (Per Attached BOQ)</option>
+                                        <option>Annual Maintenance Contract (AMC) &amp; Licensing</option>
+                                        <option>Engineering Design, BIM &amp; Hydraulic Calculation</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Facility Sector</label>
+                                    <select class="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-burgundy-800 focus:outline-none text-sm text-slate-900 font-medium">
+                                        <option>Industrial Factory / Manufacturing Plant</option>
+                                        <option>High-Bay Logistics Warehouse</option>
+                                        <option>Tier-III/IV Data Center / Server Hub</option>
+                                        <option>Commercial Tower / Hospital / Mall</option>
+                                        <option>Power Generation / Utility Substation</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Project Details &amp; Attached BOQ Requisition</label>
+                                <textarea id="consultationTextarea" rows="4" placeholder="Describe your project timeline, site location, or specific UL/FM hardware requirements..." class="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-burgundy-800 focus:outline-none text-sm text-slate-900"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-burgundy-800 hover:bg-burgundy-700 text-white font-display font-bold text-sm sm:text-base shadow-burgundy-sm flex items-center justify-center gap-2 transition-all">
+                                <span>Transmit Official Engineering Inquiry</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+
+                            <!-- Instant Submission Confirmation -->
+                            <div id="consultationSuccessAlert" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-950 text-xs sm:text-sm flex items-start justify-between gap-3">
+                                <div class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <strong class="font-bold block">Inquiry Registered (Ref #FL-ENG-2026):</strong>
+                                        <span>Our Fire Link estimation &amp; technical office has received your request and will contact you within 4 business hours.</span>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="this.parentElement.classList.add('hidden')" class="text-xs font-bold underline shrink-0">Dismiss</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================================================================================== -->
+    <!-- VIEW 2: DEDICATED EQUIPMENT SHOP TAB ("SHOP / CATALOG" — 12 CERTIFIED PRODUCTS)       -->
+    <!-- ===================================================================================== -->
+    <main id="viewShop" class="hidden view-animate min-h-screen bg-slate-50">
+        
+        <!-- 1. SHOP EXECUTIVE HEADER BANNER -->
+        <section class="executive-hero-bg text-white py-10 sm:py-12 border-b border-burgundy-900/60 relative overflow-hidden">
+            <div class="absolute inset-0 blueprint-grid pointer-events-none"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                    <div class="space-y-2 max-w-2xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 border border-white/15 text-amber-300 text-xs font-mono font-semibold">
+                            <i data-lucide="package-check" class="w-3.5 h-3.5"></i>
+                            <span>DIRECT B2B &amp; PROJECT HARDWARE STORE • 2026 CATALOG</span>
+                        </div>
+                        <h1 class="font-display text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+                            Fire Link Certified Equipment Shop
+                        </h1>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Order UL Listed, FM Approved, and EN-54 certified fire safety hardware directly or build a multi-item <strong class="text-white">Bill of Quantities (BOQ)</strong> with instant printable estimation.
+                        </p>
+                    </div>
+
+                    <!-- Pricing Mode Toggle (Reference Prices vs B2B Quote Mode) + Back to Company -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <div class="bg-slate-900/90 border border-white/15 p-1.5 rounded-xl flex items-center gap-2">
+                            <span class="text-xs font-medium text-slate-300 pl-2">Display Mode:</span>
+                            <button
+                                id="modePriceBtn"
+                                onclick="setShopPricingMode(true)"
+                                class="px-3 py-1.5 rounded-lg text-xs font-bold bg-burgundy-800 text-white transition-all"
+                            >
+                                Unit Prices ($)
+                            </button>
+                            <button
+                                id="modeBoqBtn"
+                                onclick="setShopPricingMode(false)"
+                                class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition-all"
+                            >
+                                B2B BOQ Mode
+                            </button>
+                        </div>
+
+                        <button
+                            onclick="toggleBoqDrawer(true)"
+                            class="px-4 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-display font-extrabold text-xs sm:text-sm flex items-center gap-2 shadow-md transition-all"
+                        >
+                            <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
+                            <span>Review BOQ (<span id="shopBannerBoqCount">0</span>)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SMART STICKY FILTER, SEARCH & SORT BAR -->
+        <section class="sticky top-16 sm:top-20 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 space-y-3">
+                
+                <!-- Top Row: Search Input + Certification Filter + Sort Dropdown -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+                    <!-- Search Bar -->
+                    <div class="md:col-span-6 relative">
+                        <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                        <input
+                            id="shopSearchInput"
+                            type="text"
+                            oninput="handleShopSearch(this.value)"
+                            placeholder="Search by product name, SKU (e.g. FL-9000), or standard (NFPA, UL)..."
+                            class="w-full pl-10 pr-9 py-2.5 rounded-xl bg-slate-100 focus:bg-white border border-slate-200 focus:border-burgundy-800 text-xs sm:text-sm text-slate-900 focus:outline-none transition-all"
+                        >
+                        <button id="clearShopSearchBtn" onclick="clearShopSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-burgundy-800">
+                            <i data-lucide="x-circle" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- Approval Filter Dropdown -->
+                    <div class="grid grid-cols-2 md:col-span-6 gap-2.5">
+                        <div class="flex items-center bg-slate-100 rounded-xl px-3 py-2 border border-slate-200">
+                            <i data-lucide="award" class="w-4 h-4 text-burgundy-800 mr-2 shrink-0"></i>
+                            <select id="shopCertFilter" onchange="handleShopCertChange(this.value)" class="w-full bg-transparent text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none">
+                                <option value="all">All Certifications</option>
+                                <option value="UL">UL Listed Only</option>
+                                <option value="FM">FM Approved</option>
+                                <option value="EN">LPCB / EN-54 / EN-3</option>
+                            </select>
+                        </div>
+
+                        <!-- Sort Dropdown -->
+                        <div class="flex items-center bg-slate-100 rounded-xl px-3 py-2 border border-slate-200">
+                            <i data-lucide="arrow-up-down" class="w-4 h-4 text-slate-500 mr-2 shrink-0"></i>
+                            <select id="shopSortSelect" onchange="handleShopSortChange(this.value)" class="w-full bg-transparent text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none">
+                                <option value="featured">Sort: Featured Systems</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="name-asc">Name: A to Z</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Row: Horizontally Scrollable Category Pills on Mobile, Clean Wrap on Desktop -->
+                <div class="flex items-center justify-between gap-4 pt-1">
+                    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="shopCategoryPills">
+                        <button onclick="setShopCategory('all')" data-cat="all" class="shop-cat-pill shrink-0 px-3.5 py-2 rounded-xl bg-burgundy-800 text-white font-display font-bold text-xs shadow-xs transition-all">
+                            All Equipment (12)
+                        </button>
+                        <button onclick="setShopCategory('alarm')" data-cat="alarm" class="shop-cat-pill shrink-0 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-display font-semibold text-xs transition-all">
+                            Fire Alarm &amp; Detection
+                        </button>
+                        <button onclick="setShopCategory('pumps')" data-cat="pumps" class="shop-cat-pill shrink-0 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-display font-semibold text-xs transition-all">
+                            Fire Pumps &amp; Valves
+                        </button>
+                        <button onclick="setShopCategory('suppression')" data-cat="suppression" class="shop-cat-pill shrink-0 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-display font-semibold text-xs transition-all">
+                            Gas &amp; Kitchen Suppression
+                        </button>
+                        <button onclick="setShopCategory('extinguishers')" data-cat="extinguishers" class="shop-cat-pill shrink-0 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-display font-semibold text-xs transition-all">
+                            Fire Extinguishers
+                        </button>
+                        <button onclick="setShopCategory('cabinets')" data-cat="cabinets" class="shop-cat-pill shrink-0 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-display font-semibold text-xs transition-all">
+                            Hose Reels &amp; Cabinets
+                        </button>
+                        <button onclick="setShopCategory('sprinklers')" data-cat="sprinklers" class="shop-cat-pill shrink-0 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-display font-semibold text-xs transition-all">
+                            Sprinklers &amp; Nozzles
+                        </button>
+                    </div>
+
+                    <span id="shopCountLabel" class="hidden lg:inline-block text-xs font-mono font-semibold text-slate-500 shrink-0">
+                        12 Certified Products
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. 12 PROFESSIONAL PRODUCT CARDS GRID -->
+        <section class="py-10 sm:py-14">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div id="shopProductsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+                    <!-- Populated via JavaScript -->
+                </div>
+
+                <!-- Empty Search/Filter State -->
+                <div id="shopEmptyState" class="hidden text-center py-16 px-4 rounded-2xl bg-white border border-slate-200 max-w-lg mx-auto my-8">
+                    <div class="w-14 h-14 rounded-2xl bg-burgundy-50 text-burgundy-800 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="package-search" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-extrabold text-slate-900">No Matching Fire Safety Equipment</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm mt-1 mb-5">
+                        No products matched your current filter combination. Reset filters to view all 12 UL/FM certified systems.
+                    </p>
+                    <button onclick="resetAllShopFilters()" class="px-5 py-2.5 rounded-xl bg-burgundy-800 hover:bg-burgundy-700 text-white font-display font-bold text-xs shadow-xs">
+                        Reset All Shop Filters
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= EXECUTIVE FOOTER ================= -->
+    <footer class="bg-slate-950 text-slate-400 border-t border-slate-800 pt-14 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-slate-800/80">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-lg bg-burgundy-800 flex items-center justify-center text-white">
+                            <i data-lucide="flame" class="w-5 h-5 text-amber-400"></i>
+                        </div>
+                        <span class="font-display font-extrabold text-xl text-white">FIRE<span class="text-burgundy-500">LINK</span></span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Engineered Fire Protection &amp; Life Safety Systems. Turnkey MEP contracting, hydraulic design, Civil Defense approvals, and direct UL/FM equipment supply.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-3">Turnkey Services</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><button onclick="navigateLandingSection('services-section')" class="hover:text-white transition-colors">Addressable Fire Alarm Systems</button></li>
+                        <li><button onclick="navigateLandingSection('services-section')" class="hover:text-white transition-colors">Sprinkler &amp; Hydrant Networks</button></li>
+                        <li><button onclick="navigateLandingSection('services-section')" class="hover:text-white transition-colors">FM-200 &amp; Novec 1230 Suppression</button></li>
+                        <li><button onclick="navigateLandingSection('services-section')" class="hover:text-white transition-colors">UL/FM Fire Pump Packages</button></li>
+                        <li><button onclick="navigateLandingSection('services-section')" class="hover:text-white transition-colors">AMC &amp; Civil Defense Licensing</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-3">Equipment Shop</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><button onclick="switchMainView('shop'); setShopCategory('alarm');" class="hover:text-amber-400 transition-colors">FACP Control Panels &amp; Detectors</button></li>
+                        <li><button onclick="switchMainView('shop'); setShopCategory('pumps');" class="hover:text-amber-400 transition-colors">UL/FM Fire Pumps &amp; OS&amp;Y Valves</button></li>
+                        <li><button onclick="switchMainView('shop'); setShopCategory('suppression');" class="hover:text-amber-400 transition-colors">Clean Agent Cylinders &amp; Kitchen Hood</button></li>
+                        <li><button onclick="switchMainView('shop'); setShopCategory('extinguishers');" class="hover:text-amber-400 transition-colors">ABC Powder &amp; CO2 Extinguishers</button></li>
+                        <li><button onclick="switchMainView('shop'); setShopCategory('cabinets');" class="hover:text-amber-400 transition-colors">Fire Hose Cabinets &amp; Hydrants</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-3">24/7 Emergency &amp; Tenders</h4>
+                    <p class="text-xs text-slate-400 mb-3">Immediate dispatch for system impairments, cylinder refilling, and Civil Defense inspections.</p>
+                    <a href="tel:18005553473" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-burgundy-800 hover:bg-burgundy-700 text-white font-display font-bold text-xs transition-all">
+                        <i data-lucide="phone-call" class="w-4 h-4 text-amber-300"></i>
+                        <span>1-800-555-FIRE</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>© 2026 Fire Link Engineering &amp; Fire Fighting Systems Co. All rights reserved.</p>
+                <p>Compliant with NFPA, UL, FM Global &amp; Civil Defense Regulations.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= FIXED MOBILE BOTTOM APP NAVIGATION BAR (PHONES) ================= -->
+    <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-2 py-1.5 shadow-[0_-4px_20px_rgba(15,23,42,0.08)]">
+        <div class="grid grid-cols-5 gap-1 max-w-md mx-auto">
+            <button id="mobNavHome" onclick="switchMainView('landing'); window.scrollTo({top:0, behavior:'smooth'});" class="flex flex-col items-center justify-center py-1.5 rounded-xl text-burgundy-800 font-semibold">
+                <i data-lucide="building-2" class="w-5 h-5"></i>
+                <span class="text-[10px] mt-0.5">Company</span>
+            </button>
+
+            <button id="mobNavServices" onclick="navigateLandingSection('services-section')" class="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 hover:text-slate-900 font-medium">
+                <i data-lucide="wrench" class="w-5 h-5"></i>
+                <span class="text-[10px] mt-0.5">Services</span>
+            </button>
+
+            <button id="mobNavShop" onclick="switchMainView('shop')" class="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 hover:text-slate-900 font-medium relative">
+                <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                <span class="text-[10px] mt-0.5 font-bold">Shop</span>
+            </button>
+
+            <button onclick="toggleBoqDrawer(true)" class="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 hover:text-slate-900 font-medium relative">
+                <div class="relative">
+                    <i data-lucide="clipboard-list" class="w-5 h-5"></i>
+                    <span id="mobNavBoqBadge" class="absolute -top-1.5 -right-2.5 min-w-4 h-4 px-1 rounded-full bg-burgundy-800 text-white font-mono text-[9px] font-bold flex items-center justify-center">0</span>
+                </div>
+                <span class="text-[10px] mt-0.5">BOQ Cart</span>
+            </button>
+
+            <button id="mobNavContact" onclick="navigateLandingSection('consultation-section')" class="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 hover:text-slate-900 font-medium">
+                <i data-lucide="send" class="w-5 h-5"></i>
+                <span class="text-[10px] mt-0.5">RFQ</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ================= TECHNICAL DATASHEET & ENGINEERING SCOPE MODAL ================= -->
+    <div id="specModal" class="fixed inset-0 z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-950/75 backdrop-blur-xs">
+        <div class="bg-white rounded-t-3xl sm:rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200 view-animate max-h-[90vh] flex flex-col">
+            <!-- Modal Header -->
+            <div class="bg-slate-900 text-white px-6 py-5 flex items-start justify-between gap-4 border-b border-burgundy-800">
+                <div>
+                    <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                        <span id="modalCodeBadge" class="px-2.5 py-0.5 rounded-md bg-burgundy-800 text-amber-300 font-mono font-bold text-xs">SKU</span>
+                        <span id="modalCertBadge" class="px-2.5 py-0.5 rounded-md bg-white/10 text-white font-semibold text-xs">UL / FM Listed</span>
+                    </div>
+                    <h3 id="modalTitle" class="font-display text-lg sm:text-2xl font-extrabold text-white">Equipment / Service Title</h3>
+                </div>
+                <button onclick="closeSpecModal()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Close">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Modal Scrollable Content -->
+            <div class="p-6 sm:p-7 overflow-y-auto space-y-5 flex-1">
+                <p id="modalDescription" class="text-slate-600 text-xs sm:text-sm leading-relaxed"></p>
+
+                <div>
+                    <h4 class="font-display font-bold text-xs uppercase tracking-wider text-burgundy-800 mb-2.5 flex items-center gap-1.5">
+                        <i data-lucide="sliders" class="w-4 h-4"></i>
+                        <span>Technical Datasheet &amp; Compliance Specifications</span>
+                    </h4>
+                    <div id="modalSpecsTable" class="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-slate-50 overflow-hidden text-xs sm:text-sm">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-burgundy-50/70 border border-burgundy-100">
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-burgundy-800 block mb-1">Approved Facility Applications</span>
+                    <p id="modalApplications" class="text-xs sm:text-sm font-medium text-slate-800"></p>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-3">
+                <button onclick="closeSpecModal()" class="px-4 py-2.5 rounded-xl bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold text-xs sm:text-sm">
+                    Close
+                </button>
+                <button id="modalAddBoqBtn" class="px-6 py-2.5 rounded-xl bg-burgundy-800 hover:bg-burgundy-700 text-white font-display font-bold text-xs sm:text-sm shadow-burgundy-sm flex items-center gap-2">
+                    <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                    <span>Add to BOQ / Cart</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SLIDE-OVER CART & BILL OF QUANTITIES (BOQ) DRAWER ================= -->
+    <div id="boqDrawerBackdrop" onclick="toggleBoqDrawer(false)" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-xs"></div>
+    <aside id="boqDrawer" class="fixed top-0 right-0 bottom-0 z-50 w-full max-w-md bg-white shadow-2xl border-l border-slate-200 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+        
+        <!-- Drawer Header -->
+        <div class="p-5 sm:p-6 bg-slate-900 text-white border-b border-burgundy-800 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-burgundy-800 flex items-center justify-center text-amber-300">
+                    <i data-lucide="clipboard-list" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-display font-extrabold text-base sm:text-lg">Bill of Quantities (BOQ) &amp; Cart</h3>
+                    <p class="text-xs text-slate-400">Equipment Procurement &amp; Engineering Scope</p>
+                </div>
+            </div>
+            <button onclick="toggleBoqDrawer(false)" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Drawer Line Items -->
+        <div id="boqDrawerItemsList" class="p-5 sm:p-6 flex-1 overflow-y-auto space-y-3">
+            <!-- Populated dynamically -->
+        </div>
+
+        <!-- Drawer Footer Summary & Actions -->
+        <div class="p-5 sm:p-6 bg-slate-50 border-t border-slate-200 space-y-3">
+            <div class="space-y-1.5 text-xs">
+                <div class="flex items-center justify-between text-slate-600">
+                    <span>Selected Line Items:</span>
+                    <span id="drawerItemCount" class="font-mono font-bold text-slate-900">0 Items</span>
+                </div>
+                <div class="flex items-center justify-between text-sm font-bold text-slate-900 pt-1 border-t border-slate-200">
+                    <span>Estimated Hardware Reference Total:</span>
+                    <span id="drawerSubtotalAmount" class="font-mono text-base text-burgundy-800">$0.00</span>
+                </div>
+                <p class="text-[11px] text-slate-500">
+                    *Official contractor volume discounts &amp; installation labor calculated upon RFQ submission.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5 pt-1">
+                <button
+                    onclick="openPrintableBoqModal()"
+                    class="py-3 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 font-display font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
+                >
+                    <i data-lucide="printer" class="w-4 h-4 text-burgundy-800"></i>
+                    <span>Print / View BOQ</span>
+                </button>
+                <button
+                    onclick="attachBoqToConsultation()"
+                    class="py-3 px-3 rounded-xl bg-burgundy-800 hover:bg-burgundy-700 text-white font-display font-bold text-xs flex items-center justify-center gap-1.5 shadow-burgundy-sm transition-all"
+                >
+                    <span>Submit Official RFQ</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ================= PRINTABLE BILL OF QUANTITIES (BOQ) SUMMARY MODAL ================= -->
+    <div id="boqPrintModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-xs">
+        <div class="bg-white rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-200 max-h-[90vh] flex flex-col">
+            <div class="p-6 bg-slate-900 text-white flex items-center justify-between no-print">
+                <div class="flex items-center gap-2.5">
+                    <i data-lucide="file-spreadsheet" class="w-5 h-5 text-amber-400"></i>
+                    <h3 class="font-display font-bold text-lg">Official Bill of Quantities (BOQ) Schedule</h3>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="window.print()" class="px-4 py-2 rounded-lg bg-burgundy-800 hover:bg-burgundy-700 text-white text-xs font-bold flex items-center gap-1.5">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        <span>Print / Save PDF</span>
+                    </button>
+                    <button onclick="closePrintableBoqModal()" class="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1" id="boqPrintableBody">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TOAST FEEDBACK NOTIFICATION ================= -->
+    <div id="toastBanner" class="fixed bottom-20 lg:bottom-6 right-4 sm:right-6 z-50 hidden px-4 py-3 rounded-xl bg-slate-900 text-white border border-burgundy-700 shadow-xl flex items-center gap-2.5 text-xs sm:text-sm font-semibold">
+        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+        <span id="toastText">Added to BOQ!</span>
+    </div>
+
+    <!-- ================= APPLICATION LOGIC & DATA ================= -->
+    <script>
+        // =========================================================================
+        // 1. 6 CORE TURNKEY ENGINEERING SERVICES (VIEW 1: LANDING PAGE)
+        // =========================================================================
+        const fireLinkServices = [
+            {
+                id: 'srv-alarm',
+                code: 'ENG-DIV-01',
+                title: 'Addressable & Conventional Fire Alarm Systems',
+                standard: 'NFPA 72 / EN-54',
+                icon: 'bell-ring',
+                summary: 'Complete engineering, loop architecture, cabling, and programming of intelligent addressable fire detection, voice evacuation (PAVA), and aspirating smoke systems.',
+                deliverables: [
+                    'Honeywell / Notifier / Simplex / Fire Link FACP Integration',
+                    'Multi-Criteria Optical Smoke, Thermal & Beam Detection',
+                    'Phased Voice Evacuation & Emergency Strobe Networks',
+                    'VESDA Early Warning Aspirating Detection for Server Vaults'
+                ],
+                specs: [
+                    ['Governing Codes', 'NFPA 72 National Fire Alarm & Signaling Code, EN-54'],
+                    ['Cabling Standard', 'UL/LPCB Fire-Resistant FP200 Red Shielded 2x1.5mm²'],
+                    ['Integration Scope', 'BMS Modbus/BACnet, HVAC Damper Trip, Access Control Release'],
+                    ['Testing & Handover', '100% Point-by-Point Cause & Effect Matrix Verification']
+                ],
+                applications: 'High-Rise Towers, Hospitals, Commercial Malls, Airports, Universities, and Industrial Plants.'
+            },
+            {
+                id: 'srv-water',
+                code: 'ENG-DIV-02',
+                title: 'Water-Based Firefighting & Sprinkler Networks',
+                standard: 'NFPA 13 / NFPA 14',
+                icon: 'droplets',
+                summary: 'Electromechanical piping, grooved fitting installation, and hydraulic balancing for automatic wet, dry, pre-action, and deluge sprinkler grids and hydrant rings.',
+                deliverables: [
+                    'Wet, Dry-Pipe, Pre-Action & High-Velocity Deluge Systems',
+                    'ESFR High-Bay Storage Warehouse Sprinkler Networks',
+                    'Class I & III Standpipe Risers, Hose Reels & Landing Valves',
+                    'External Underground HDPE / Seamless Steel Hydrant Mains'
+                ],
+                specs: [
+                    ['Governing Codes', 'NFPA 13 (Sprinklers), NFPA 14 (Standpipes), NFPA 24'],
+                    ['Pipe Specification', 'ASTM A53 / A106 Grade B Schedule 40 Seamless Red RAL 3000'],
+                    ['Hydrostatic Testing', '200 PSI (13.8 Bar) for 2 Hours Witnessed by Consultant'],
+                    ['Zone Control', 'Monitored OS&Y Gate Valves, Flow Switches & Tamper Supervision']
+                ],
+                applications: 'Logistics Centers, Manufacturing Plants, Underground Basements, Commercial Towers, and Hangars.'
+            },
+            {
+                id: 'srv-gas',
+                code: 'ENG-DIV-03',
+                title: 'Clean Agent & Gas Suppression Systems',
+                standard: 'NFPA 2001 / UL-300',
+                icon: 'wind',
+                summary: 'Zero-residue total flooding gas suppression systems engineered to extinguish Class A, B, and C fires in under 10 seconds without damaging sensitive electronics.',
+                deliverables: [
+                    'FM-200® (HFC-227ea) & Novec™ 1230 (FK-5-1-12) Clean Agent Skids',
+                    'High-Pressure CO2 Total Flooding & Local Application Banks',
+                    'UL-300 Wet Chemical Commercial Kitchen Hood Suppression',
+                    'Enclosure Door-Fan Room Integrity Retention Testing'
+                ],
+                specs: [
+                    ['Governing Codes', 'NFPA 2001 (Clean Agents), NFPA 12 (CO2), NFPA 17A'],
+                    ['Discharge Duration', '≤ 10 Seconds Uniform 360° Nozzle Distribution'],
+                    ['Actuation Control', 'Cross-Zoned Smoke Detection + Solenoid Release + Manual Pull'],
+                    ['Cylinder Pressures', '25 Bar, 42 Bar & 50 Bar Super-Pressurized Seamless Cylinders']
+                ],
+                applications: 'Tier-III/IV Data Centers, Telecom Switching Rooms, Transformer Vaults, Archives, and Hotel Kitchens.'
+            },
+            {
+                id: 'srv-pumps',
+                code: 'ENG-DIV-04',
+                title: 'UL / FM Fire Pump Stations',
+                standard: 'NFPA 20 Certified',
+                icon: 'gauge',
+                summary: 'Supply, mechanical pump room erection, laser shaft alignment, and flow-meter commissioning of UL Listed and FM Approved Electric, Diesel, and Jockey pump packages.',
+                deliverables: [
+                    'Horizontal Split-Case & Vertical Turbine Fire Pump Sets',
+                    'Main Electric + Standby Turbo-Diesel + Jockey Pump Skids',
+                    'UL/FM Microprocessor Pump Controllers with Automatic ATS',
+                    'Suction/Discharge Headers, PRVs & Closed-Loop Flow Meters'
+                ],
+                specs: [
+                    ['Governing Code', 'NFPA 20 Standard for the Installation of Stationary Pumps'],
+                    ['Flow Capacities', '250 US GPM up to 3,000 US GPM Rated Duty Points'],
+                    ['Pressure Ratings', '7 Bar to 16 Bar (100 PSI – 230 PSI) Head'],
+                    ['Site Commissioning', 'Full Churn, 100% & 150% Rated Flow Performance Curve Test']
+                ],
+                applications: 'District Cooling/Pumping Stations, High-Rise Complexes, Petrochemical Terminals, and Industrial Estates.'
+            },
+            {
+                id: 'srv-bim',
+                code: 'ENG-DIV-05',
+                title: 'Engineering Design, BIM & Hydraulic Calculations',
+                standard: 'Elite / Revit LOD 400',
+                icon: 'compass',
+                summary: 'In-house fire protection consultancy delivering code compliance reports, Elite™ hydraulic calculations, clash-free BIM LOD 400 models, and Civil Defense submittals.',
+                deliverables: [
+                    'Elite Software™ Sprinkler & Clean Agent Gas Hydraulic Calcs',
+                    'Issued-for-Construction (IFC) Shop Drawings & Riser Diagrams',
+                    'Revit 3D BIM LOD 400 Clash Detection & MEP Coordination',
+                    'Material Submittals (MAS), Method Statements & As-Built Packages'
+                ],
+                specs: [
+                    ['Engineering Software', 'AutoCAD MEP, Autodesk Revit BIM, Elite Fire, VdS/FHC Gas'],
+                    ['Regulatory Codes', 'NFPA Full Suite, IBC, Local Civil Defense & Insurance FM Datasheets'],
+                    ['Deliverable Format', 'Stamped PDFs, Native DWG/RVT Models & Hydraulic Calculation Binders'],
+                    ['Turnaround SLA', '5 to 7 Business Days per Building Submittal Package']
+                ],
+                applications: 'Engineering Consultants, Main MEP Contractors, Industrial Developers, and Facility Owners.'
+            },
+            {
+                id: 'srv-amc',
+                code: 'ENG-DIV-06',
+                title: 'Annual Maintenance (AMC) & Civil Defense Licensing',
+                standard: 'NFPA 25 / Grade-A',
+                icon: 'clipboard-check',
+                summary: 'Preventive quarterly inspections, 24/7 emergency breakdown callouts, hydrostatic cylinder testing/refilling, and official Civil Defense annual occupancy certificate renewal.',
+                deliverables: [
+                    'Monthly, Quarterly & Annual NFPA 25 Preventive Maintenance',
+                    '24/7 Emergency Technician Dispatch (< 4 Hours On-Site SLA)',
+                    'Extinguisher, FM-200 & CO2 Hydrostatic Testing & Refilling',
+                    'Official Civil Defense Walkthrough & Annual License Renewal'
+                ],
+                specs: [
+                    ['Maintenance Code', 'NFPA 25 Inspection, Testing, and Maintenance of Water-Based Systems'],
+                    ['Alarm Testing', 'NFPA 72 Chapter 14 Detector Sensitivity & Battery Load Tests'],
+                    ['Documentation', 'Digital Tagged Inspection Logs, Pump Churn Curves & Compliance Certificates'],
+                    ['Contractor License', 'Grade-A Civil Defense Licensed Contracting & Maintenance Entity']
+                ],
+                applications: 'Existing Commercial Buildings, Factories, Logistics Parks, Hospitals, Schools, and Retail Chains.'
+            }
+        ];
+
+        // =========================================================================
+        // 2. 4-STAGE INTERACTIVE WORKFLOW DATA
+        // =========================================================================
+        const workflowStages = [
+            {
+                step: '01',
+                title: 'Site Survey & Hydraulic Design',
+                subtitle: 'Hazard Assessment & Code Engineering',
+                icon: 'drafting-compass',
+                duration: 'Week 1 – 2',
+                description: 'Our senior fire protection engineers conduct an on-site hazard classification audit, verify architectural layouts, perform Elite™ hydraulic calculations, and prepare stamped shop drawings for Consultant and Civil Defense design approval.',
+                deliverables: [
+                    'Occupancy & Hazard Classification Report (Light, Ordinary, Extra Hazard)',
+                    'Elite™ Hydraulic Calculation Sheets & Pump Duty Sizing',
+                    'IFC Sprinkler, Alarm Loop & Clean Agent Shop Drawings',
+                    'Cause & Effect Matrix & Voltage Drop / Battery Calculations'
+                ],
+                benchmark: '100% First-Submission AHJ & Consultant Compliance Target'
+            },
+            {
+                step: '02',
+                title: 'Certified Equipment Supply',
+                subtitle: 'UL / FM / EN-54 Hardware Procurement',
+                icon: 'package-check',
+                duration: 'Week 2 – 4',
+                description: 'Direct dispatch from Fire Link regional warehouses. Every pump skid, valve, schedule-40 seamless pipe, addressable panel, and gas cylinder arrives with original UL/FM certificates of conformity and Material Inspection Requests (MIR).',
+                deliverables: [
+                    'UL/FM Listed Fire Pump Skids, Controllers & OS&Y Valves',
+                    'ASTM A53 Sch. 40 Red Epoxy Coated Seamless Piping & Grooved Fittings',
+                    'Addressable FACP Panels, Smoke/Heat Detectors & FP200 Cabling',
+                    'Factory-Filled FM-200 / Novec 1230 Cylinders & Portable Extinguishers'
+                ],
+                benchmark: 'Direct Stock Availability on 90%+ Core Fire Safety Hardware'
+            },
+            {
+                step: '03',
+                title: 'Electromechanical Installation & Piping',
+                subtitle: 'Certified Site Execution & Quality Control',
+                icon: 'hard-hat',
+                duration: 'Project Schedule',
+                description: 'Dedicated site engineers, certified welders, pipefitters, and low-current technicians execute mechanical riser erection, sprinkler grid piping, pump room assembly, and addressable loop wiring under strict QA/QC inspection.',
+                deliverables: [
+                    'Seismic Bracing, UL Hanger Rod Installation & Grooved Piping Network',
+                    'Pump Room Mechanical Erection, Manifold Alignment & PRV Setup',
+                    'Fire-Rated Conduit & FP200 Loop Wiring with Isolator Verification',
+                    '200 PSI (13.8 Bar) 2-Hour Hydrostatic Pressure Testing & Flushing'
+                ],
+                benchmark: 'Zero-Leak Hydrostatic Guarantee & ISO 9001 Site QA/QC'
+            },
+            {
+                step: '04',
+                title: 'Testing, Commissioning & Civil Defense Approval',
+                subtitle: 'Final Handover & AMC Lifecycle Care',
+                icon: 'shield-check',
+                duration: 'Final Handover',
+                description: 'Comprehensive pre-commissioning, full cause-and-effect simulation, room integrity door-fan testing, and official Civil Defense inspector walkthrough to issue your facility’s Fire Safety Occupancy Certificate.',
+                deliverables: [
+                    'Pump Flow Curve Testing (Churn, 100% & 150% Rated Capacity)',
+                    '100% Smoke/Heat Detector Stimulation & Voice Evacuation dB Audit',
+                    'Signed As-Built Drawings, O&M Manuals & Client Operator Training',
+                    'Official Civil Defense Clearance Certificate & 24/7 AMC Activation'
+                ],
+                benchmark: '100% Civil Defense Final Inspection Clearance Record'
+            }
+        ];
+
+        // =========================================================================
+        // 3. SECTORS & FACILITIES PROTECTED DATA
+        // =========================================================================
+        const protectedSectors = [
+            {
+                id: 'industrial',
+                name: 'Industrial Plants & Factories',
+                icon: 'factory',
+                hazardClass: 'Extra Hazard Group 1 & 2',
+                systemsUsed: ['UL/FM 1500–2500 GPM Pump Stations', 'Foam-Water Deluge & Hydrant Ring Mains', 'Flame & Gas Detection Networks', 'High-Pressure CO2 Suppression'],
+                overview: 'Heavy manufacturing lines, chemical storage yards, and production plants require rugged, high-flow water/foam deluge networks, explosion-proof optical flame detection, and redundant diesel/electric fire pump packages.',
+                codes: 'NFPA 11, NFPA 13, NFPA 15, NFPA 20, NFPA 30',
+                statLabel: '140+ Industrial Complexes Protected'
+            },
+            {
+                id: 'warehouses',
+                name: 'High-Bay Warehouses & Logistics',
+                icon: 'warehouse',
+                hazardClass: 'High-Piled Storage / ESFR',
+                systemsUsed: ['ESFR K14 / K16.8 Early Suppression Sprinklers', 'In-Rack Sprinkler Grids', 'Linear Heat Detection & Aspirating Smoke', 'External Pillar Hydrants & Hose Cabinets'],
+                overview: 'Modern 12m–18m clear-height fulfillment centers demand Early Suppression Fast Response (ESFR) ceiling sprinklers, optical beam / VESDA smoke detection, and high-pressure hydrant perimeters to protect high-density racked inventory.',
+                codes: 'NFPA 13 (Chapter 20–25 Storage), FM Data Sheet 8-9',
+                statLabel: '1.8M+ m² Logistics Space Covered'
+            },
+            {
+                id: 'datacenters',
+                name: 'Tier-III/IV Data Centers',
+                icon: 'server',
+                hazardClass: 'Mission-Critical Electronics',
+                systemsUsed: ['Novec™ 1230 & FM-200® Clean Agent Skids', 'VESDA Laser Aspirating Smoke Detection', 'Double-Interlock Pre-Action Sprinkler Backup', 'Sub-Floor & Ceiling Cross-Zoned Sensing'],
+                overview: 'Zero downtime and zero water damage are non-negotiable in server vaults and telecom hubs. We deploy ultra-sensitive aspirating smoke detection paired with 10-second Novec 1230 / FM-200 gas discharge and room integrity testing.',
+                codes: 'NFPA 75 (IT Equipment), NFPA 76 (Telecom), NFPA 2001',
+                statLabel: '85+ Server & Telecom Vaults Secured'
+            },
+            {
+                id: 'commercial',
+                name: 'Commercial Towers & Hospitals',
+                icon: 'building-2',
+                hazardClass: 'Life Safety & Phased Evacuation',
+                systemsUsed: ['Multi-Loop Networked Addressable FACP', 'Phased Voice Evacuation (PAVA) & Fire Telephones', 'Quick-Response Concealed/Pendent Sprinklers', 'UL-300 Kitchen Hood & Stairwell Pressurization'],
+                overview: 'High-occupancy hospitals, hotels, and corporate towers rely on intelligent phased voice evacuation, smoke control damper integration, pressure-regulated standpipe risers, and recessed architectural fire cabinets.',
+                codes: 'NFPA 101 (Life Safety Code), NFPA 13, NFPA 14, NFPA 72',
+                statLabel: '190+ Towers, Malls & Hospitals Delivered'
+            },
+            {
+                id: 'power',
+                name: 'Power & Utility Substations',
+                icon: 'zap',
+                hazardClass: 'High-Voltage Transformer & Cable Risk',
+                systemsUsed: ['High-Velocity Water Spray Deluge Systems', 'Linear Heat Sensing Cable (LHS) in Cable Trays', 'Modular FM-200 / IG-541 Inert Gas Systems', 'Explosion-Proof Call Points & Beacons'],
+                overview: 'Oil-filled power transformers, HV switchgear halls, and underground cable tunnels require rapid high-velocity emulsifying deluge spray valves, linear thermal cables, and dedicated gas flooding banks.',
+                codes: 'NFPA 850 (Electric Generating Plants), NFPA 15',
+                statLabel: '40+ Substations & Energy Facilities'
+            }
+        ];
+
+        // =========================================================================
+        // 4. 12 CERTIFIED PRODUCTS FOR THE DEDICATED EQUIPMENT SHOP TAB (VIEW 2)
+        // =========================================================================
+        const shopProducts = [
+            {
+                id: 'prd-01',
+                sku: 'FL-9000-8L',
+                category: 'alarm',
+                categoryLabel: 'Fire Alarm & Detection',
+                name: 'Addressable Fire Alarm Control Panel (1–8 Loops)',
+                cert: 'UL 864 / EN54-2',
+                certTag: 'UL',
+                price: 1850,
+                unit: 'Per Panel',
+                svgType: 'panel',
+                specsSummary: '1 to 8 Expandable Loops • Up to 2,016 Addressable Devices • 7" Color Touch Display • 72-Hr Battery Backup',
+                description: 'Intelligent modular microprocessor-based Addressable Fire Alarm Control Panel (FACP) with 7-inch graphic touchscreen, cause-and-effect Boolean logic, 10,000-event log, and peer-to-peer network card support.',
+                datasheet: [
+                    ['SKU / Model', 'FL-9000-8L Intelligent Modular FACP'],
+                    ['Loop Capacity', '1 to 8 Loops (252 Addressable Points per Loop)'],
+                    ['Display & UI', '7" Full-Color Capacitive Touchscreen + LED Zone Indicators'],
+                    ['Power Supply', '230V AC 50/60Hz + 24V DC 6.5A Charger (Fits 2 x 38Ah Batteries)'],
+                    ['Approvals', 'UL 864 10th Edition, FM Approved, LPCB EN54-2 & EN54-4']
+                ],
+                applications: 'Commercial high-rises, hospitals, shopping malls, campuses, and industrial facilities.'
+            },
+            {
+                id: 'prd-02',
+                sku: 'FL-S400-MC',
+                category: 'alarm',
+                categoryLabel: 'Fire Alarm & Detection',
+                name: 'Multi-Criteria Optical Smoke & Thermal Detector (With Base)',
+                cert: 'UL 268 / LPCB',
+                certTag: 'UL',
+                price: 54,
+                unit: 'Per Complete Unit',
+                svgType: 'detector',
+                specsSummary: 'Photoelectric Smoke + 58°C Rate-of-Rise Heat • Built-in Short-Circuit Isolator • 360° Dual LED',
+                description: 'Digital addressable dual-criteria detector combining optical scatter smoke chamber with rate-of-rise thermistor, automatic drift compensation, built-in loop isolator, and twist-lock mounting base.',
+                datasheet: [
+                    ['SKU / Model', 'FL-S400-MC Addressable Multi-Sensor + Base'],
+                    ['Sensing Elements', 'Optical Infrared Scatter + NTC Rate-of-Rise (A1R 58°C)'],
+                    ['Loop Protection', 'Integrated Bi-Directional Short-Circuit Isolator'],
+                    ['Operating Voltage', '17 – 28V DC Loop Powered (300µA Quiescent)'],
+                    ['Approvals', 'UL 268 7th Ed., LPCB EN54-7 & EN54-5, Civil Defense Listed']
+                ],
+                applications: 'Offices, hotel corridors, guest rooms, electrical rooms, and commercial spaces.'
+            },
+            {
+                id: 'prd-03',
+                sku: 'FL-MCP-HS',
+                category: 'alarm',
+                categoryLabel: 'Fire Alarm & Detection',
+                name: 'Addressable Resettable Call Point & 110dB LED Horn Strobe Set',
+                cert: 'UL 1971 / EN54-11',
+                certTag: 'EN',
+                price: 78,
+                unit: 'Per Combo Set',
+                svgType: 'callpoint',
+                specsSummary: 'Non-Breaking Resettable Pull Station + 110dB Multi-Tone Sounder & Synchronized High-Output LED Strobe',
+                description: 'Paired evacuation kit containing an addressable resettable manual call point (with test key and protective hinged cover) and a wall-mount 110dB(A) 32-tone sounder with high-candela LED strobe.',
+                datasheet: [
+                    ['SKU / Model', 'FL-MCP-HS Addressable Call Point + Sounder Strobe'],
+                    ['Call Point Type', 'Resettable Non-Breaking Element with Hinged Clear Flap'],
+                    ['Sounder Output', 'Up to 110 dB(A) @ 1m, 32 Dip-Switch Selectable Tones'],
+                    ['Strobe Rating', 'Synchronized 1Hz Flash (15 / 30 / 75 / 110 Candela Selectable)'],
+                    ['Ingress Rating', 'IP24 Indoor Standard (IP67 Weatherproof Variant Available)']
+                ],
+                applications: 'Emergency exits, stairwell landings, plant floors, and public corridors.'
+            },
+            {
+                id: 'prd-04',
+                sku: 'FL-PMP-750',
+                category: 'pumps',
+                categoryLabel: 'Fire Pumps & Valves',
+                name: 'UL/FM Listed Fire Pump Set (750 GPM @ 10 Bar — E+D+J Skid)',
+                cert: 'UL / FM / NFPA 20',
+                certTag: 'FM',
+                price: 26400,
+                unit: 'Per Complete Skid',
+                svgType: 'pump',
+                specsSummary: 'Horizontal Split-Case Electric + Turbo Diesel + Vertical Jockey Pump + UL/FM Controllers & Manifold',
+                description: 'Turnkey NFPA 20 fire pump room package featuring Horizontal Split-Case Electric Pump, Standby Diesel Engine Pump, stainless Jockey Pump, UL/FM microprocessor controllers, and pre-piped valve manifold.',
+                datasheet: [
+                    ['SKU / Model', 'FL-PMP-750-10B Complete NFPA 20 Pump Package'],
+                    ['Rated Duty Point', '750 US GPM @ 10 Bar (145 PSI) — Other capacities 500–2500 GPM'],
+                    ['Materials', 'Ductile Iron ASTM A536 Casing, Bronze ASTM B62 Impeller, SS316 Shaft'],
+                    ['Control Panels', 'UL/FM Soft-Start Electric Controller + Automatic Diesel Controller'],
+                    ['Manifold Included', 'OS&Y Gate Valves, Check Valves, Flow Meter Loop, Relief Valve & Gauges']
+                ],
+                applications: 'Main fire pump rooms for high-rise buildings, factories, warehouses, and hospitals.'
+            },
+            {
+                id: 'prd-05',
+                sku: 'FL-VLV-150',
+                category: 'pumps',
+                categoryLabel: 'Fire Pumps & Valves',
+                name: '6" (DN150) UL/FM Wet Alarm Check Valve & OS&Y Riser Trim Set',
+                cert: 'UL / FM 300 PSI',
+                certTag: 'FM',
+                price: 920,
+                unit: 'Per Complete Trim Set',
+                svgType: 'valve',
+                specsSummary: 'DN150 Flanged/Grooved 300 PSI Ductile Iron • Complete with Retard Chamber, Pressure Switch & Gong',
+                description: 'Heavy-duty 300 PSI UL/FM Wet Alarm Check Valve assembly with galvanized trim, retard chamber, hydraulic water motor alarm gong, UL pressure switch, and monitored OS&Y gate valve.',
+                datasheet: [
+                    ['SKU / Model', 'FL-VLV-150 Alarm Check + OS&Y Riser Assembly'],
+                    ['Nominal Size', '6 Inch (DN150) — Available in 3", 4", 6", 8" & 10"'],
+                    ['Working Pressure', '300 PSI (20.7 Bar) UL Listed & FM Approved'],
+                    ['Body & Coating', 'Ductile Iron ASTM A536, Fusion-Bonded Epoxy Red Inside & Out'],
+                    ['Included Trim', 'Retard Chamber, Water Motor Gong, UL Pressure Switch & Dual Gauges']
+                ],
+                applications: 'Main building wet sprinkler risers, zone control manifolds, and pump room headers.'
+            },
+            {
+                id: 'prd-06',
+                sku: 'FL-FM200-120L',
+                category: 'suppression',
+                categoryLabel: 'Gas & Kitchen Suppression',
+                name: 'FM-200® (HFC-227ea) 120L Clean Agent Cylinder & Release Kit',
+                cert: 'UL Listed / FM',
+                certTag: 'FM',
+                price: 3450,
+                unit: 'Per Charged Cylinder Kit',
+                svgType: 'fm200',
+                specsSummary: '120 Liter Seamless Cylinder Filled w/ HFC-227ea • 25/42 Bar • Electric Solenoid, Flexible Hose & Nozzle',
+                description: 'Total flooding clean agent gas suppression system stored in a seamless red steel cylinder factory-charged with HFC-227ea (FM-200), complete with brass head valve, 24V solenoid actuator, pressure switch, and 360° nozzle.',
+                datasheet: [
+                    ['SKU / Model', 'FL-FM200-120L Clean Agent Suppression Package'],
+                    ['Extinguishing Agent', 'HFC-227ea (Heptafluoropropane) — Zero Ozone Depletion, Electrically Non-Conductive'],
+                    ['Cylinder Volume', '120 Liters (Charges 72 kg to 115 kg Agent depending on room volume)'],
+                    ['Working Pressure', '25 Bar (360 PSI) or 42 Bar (600 PSI) Nitrogen Super-Pressurized'],
+                    ['Included Hardware', 'Solenoid Actuator, Manual Lever, Low-Pressure Switch, Bracket & 360° Nozzle']
+                ],
+                applications: 'Server rooms, data centers, UPS battery rooms, switchgear rooms, and medical suites.'
+            },
+            {
+                id: 'prd-07',
+                sku: 'FL-NVC-1230',
+                category: 'suppression',
+                categoryLabel: 'Gas & Kitchen Suppression',
+                name: 'Novec™ 1230 (FK-5-1-12) 100L Eco-Clean Agent Suppression Skid',
+                cert: 'UL / FM / Green Cert.',
+                certTag: 'UL',
+                price: 4290,
+                unit: 'Per Complete Skid',
+                svgType: 'novec',
+                specsSummary: 'Global Warming Potential (GWP) = 1 • 5-Day Atmospheric Lifetime • Highest Safety Margin for Occupied Rooms',
+                description: 'Environmentally sustainable FK-5-1-12 (Novec 1230 equivalent) clean agent gas suppression system engineered for mission-critical data centers and occupied control rooms.',
+                datasheet: [
+                    ['SKU / Model', 'FL-NVC-1230-100L Sustainable Clean Agent System'],
+                    ['Chemical Agent', 'FK-5-1-12 Fluoroketone Clean Extinguishing Fluid'],
+                    ['Environmental Profile', '0.0 ODP, GWP = 1.0, 5-Day Atmospheric Lifetime'],
+                    ['Design Concentration', '4.5% to 5.6% v/v per NFPA 2001 (10-Second Discharge)'],
+                    ['Approvals', 'UL 2166 Listed, FM Approved & LPCB Certified']
+                ],
+                applications: 'Tier-III/IV Data Centers, air traffic control towers, museums, archives, and bank vaults.'
+            },
+            {
+                id: 'prd-08',
+                sku: 'FL-KCH-UL300',
+                category: 'suppression',
+                categoryLabel: 'Gas & Kitchen Suppression',
+                name: 'UL-300 Wet Chemical Commercial Kitchen Hood Suppression System',
+                cert: 'UL-300 / NFPA 17A',
+                certTag: 'UL',
+                price: 1680,
+                unit: 'Per 3-Gallon System',
+                svgType: 'kitchen',
+                specsSummary: '3.0 Gallon Wet Chemical Cylinder • Stainless Control Cabinet • Fusible Link Line, Manual Pull & Gas Valve',
+                description: 'Pre-engineered automatic low-pH potassium-acetate wet chemical suppression system designed to extinguish grease fires in commercial cooking hoods, plenums, ducts, and deep-fat fryers.',
+                datasheet: [
+                    ['SKU / Model', 'FL-KCH-UL300-3G Commercial Kitchen System'],
+                    ['Standard Compliance', 'UL-300 Listed, NFPA 17A & NFPA 96 Compliant'],
+                    ['Included Package', '3.0 Gal Cylinder, Release Mechanism, 6 Hood/Appliance Nozzles, Fusible Links'],
+                    ['Safety Interlocks', 'Mechanical/Electric LPG Gas Shut-Off Valve + FACP Alarm Microswitch'],
+                    ['Manual Actuation', 'Remote Stainless Steel Pull Station for Kitchen Exit']
+                ],
+                applications: 'Hotel kitchens, commercial restaurants, hospital cafeterias, and central catering facilities.'
+            },
+            {
+                id: 'prd-09',
+                sku: 'FL-EXT-ABC6',
+                category: 'extinguishers',
+                categoryLabel: 'Fire Extinguishers',
+                name: '6kg ABC Dry Chemical Powder Fire Extinguisher (UL / EN3)',
+                cert: 'UL / EN3 / Civil Defense',
+                certTag: 'EN',
+                price: 42,
+                unit: 'Per Extinguisher',
+                svgType: 'extinguisher',
+                specsSummary: '85% MAP Mono-Ammonium Phosphate ABC Powder • Rating 43A 233B C • Heavy-Duty Steel Cylinder + Wall Bracket',
+                description: 'Multipurpose stored-pressure 6kg ABC dry chemical powder fire extinguisher with nickel-plated brass valve, pressure gauge, EPDM high-pressure discharge hose, and UV-resistant RAL 3000 finish.',
+                datasheet: [
+                    ['SKU / Model', 'FL-EXT-ABC6 Stored-Pressure 6kg Powder'],
+                    ['Extinguishing Agent', '6.0 kg Mono-Ammonium Phosphate (85% MAP) ABC Dry Powder'],
+                    ['Fire Rating', 'Class A (Solids), Class B (Liquids), Class C (Gases) & Live Electrical'],
+                    ['Working / Burst Pressure', '15 Bar Service Pressure / 55 Bar Minimum Burst Pressure'],
+                    ['Approvals', 'BS EN3-7 Kitemark, CE Marked & Civil Defense Approved']
+                ],
+                applications: 'Offices, factories, warehouses, residential towers, schools, and commercial vehicles.'
+            },
+            {
+                id: 'prd-10',
+                sku: 'FL-EXT-CO2-5',
+                category: 'extinguishers',
+                categoryLabel: 'Fire Extinguishers',
+                name: '5kg Carbon Dioxide (CO2) Seamless Alloy Fire Extinguisher',
+                cert: 'UL / BS EN3-7',
+                certTag: 'EN',
+                price: 88,
+                unit: 'Per Extinguisher',
+                svgType: 'co2',
+                specsSummary: '99.9% Pure Residue-Free CO2 Gas • Lightweight Manganese Alloy Seamless Cylinder • Frost-Free Horn',
+                description: 'High-pressure seamless alloy steel 5kg Carbon Dioxide (CO2) fire extinguisher engineered for electrical switchgear, server racks, laboratories, and Class B flammable liquid hazards.',
+                datasheet: [
+                    ['SKU / Model', 'FL-EXT-CO2-5 Seamless 5kg CO2 Extinguisher'],
+                    ['Extinguishing Agent', '5.0 kg Pure Clean Carbon Dioxide (CO2) — Zero Residue'],
+                    ['Cylinder Material', '34CrMo4 Seamless Alloy Steel (250 Bar Hydro-Tested)'],
+                    ['Valve & Horn', 'Chrome-Plated Brass Lever Valve w/ 175 Bar Safety Disc & Non-Conductive Horn'],
+                    ['Fire Rating', '89B & Live Electrical Equipment up to 35kV']
+                ],
+                applications: 'Electrical rooms, server rooms, elevators, laboratories, and industrial control panels.'
+            },
+            {
+                id: 'prd-11',
+                sku: 'FL-CAB-D2',
+                category: 'cabinets',
+                categoryLabel: 'Hose Reels & Cabinets',
+                name: 'Double Vertical Fire Hose Reel & Extinguisher Cabinet (Full Kit)',
+                cert: 'UL / BS EN 671-1',
+                certTag: 'UL',
+                price: 395,
+                unit: 'Per Complete Cabinet Kit',
+                svgType: 'cabinet',
+                specsSummary: '800x1600x300mm Red Steel Cabinet • 1"x30m Swing Hose Reel + 1.5"x30m Flat Hose + 2.5" Landing Valve',
+                description: 'Complete indoor fire fighting station housed in a double-compartment electro-galvanized steel cabinet, pre-fitted with a 30m automatic/manual swing hose reel, 2.5" brass landing valve, 1.5" flat canvas hose, and extinguisher bay.',
+                datasheet: [
+                    ['SKU / Model', 'FL-CAB-D2 Complete Indoor Fire Hose Station'],
+                    ['Cabinet Dimensions', '800mm (W) x 1600mm (H) x 300mm (D) — Surface or Recessed'],
+                    ['Hose Reel Included', '1" (25mm) x 30m EN 671-1 Red Semi-Rigid Hose w/ Brass Jet/Spray Nozzle'],
+                    ['Landing Valve & Flat Hose', '2.5" Brass Oblique PRV Landing Valve + 1.5" x 30m UL/FM Lined Hose'],
+                    ['Material & Finish', '1.5mm Electro-Galvanized Steel, Electrostatic RAL 3000 Burgundy/Red Coat']
+                ],
+                applications: 'Corridors, building cores, underground parking garages, malls, and industrial halls.'
+            },
+            {
+                id: 'prd-12',
+                sku: 'FL-SPK-68C',
+                category: 'sprinklers',
+                categoryLabel: 'Sprinklers & Nozzles',
+                name: 'UL/FM Quick-Response Pendent & Upright Sprinklers (Box of 50)',
+                cert: 'UL Listed / FM',
+                certTag: 'FM',
+                price: 310,
+                unit: 'Per Box of 50 Heads',
+                svgType: 'sprinkler',
+                specsSummary: 'K5.6 (1/2" NPT) • 68°C (155°F) Red 3mm Glass Bulb • Chrome Plated w/ Two-Piece Recessed Escutcheons',
+                description: 'Contractor box of 50 UL Listed and FM Approved quick-response automatic fire sprinkler heads with 3mm frangible glass bulbs, forged brass frames, and adjustable chrome rosetta escutcheon plates.',
+                datasheet: [
+                    ['SKU / Model', 'FL-SPK-68C-BOX50 (50 Sprinkler Heads + 50 Escutcheons)'],
+                    ['K-Factor & Thread', 'K5.6 (80 Metric) Standard 1/2" NPT Thread'],
+                    ['Thermal Element', '3mm Quick-Response Glass Bulb Rated at 68°C (155°F) Red'],
+                    ['Max Working Pressure', '175 PSI (12.1 Bar) UL/FM — 250 PSI High-Pressure Option Available'],
+                    ['Finish & Styles', 'Bright Chrome Plated (Pendent, Upright or Sidewall Selectable)']
+                ],
+                applications: 'Commercial offices, hotels, hospitals, retail stores, and residential ceilings.'
+            }
+        ];
+
+        // =========================================================================
+        // 5. CUSTOM TECHNICAL SVG ILLUSTRATIONS FOR PRODUCTS
+        // =========================================================================
+        function getEquipmentSvg(type) {
+            switch (type) {
+                case 'panel':
+                    return `
+                    <svg viewBox="0 0 220 140" class="w-40 h-28 mx-auto drop-shadow-xs">
+                        <rect x="42" y="10" width="136" height="120" rx="8" fill="#881327" stroke="#5E0B1A" stroke-width="3"/>
+                        <rect x="50" y="18" width="120" height="104" rx="5" fill="#9F1D35" stroke="#F2A8B8" stroke-width="1"/>
+                        <rect x="60" y="28" width="72" height="44" rx="4" fill="#0F172A" stroke="#E9758F" stroke-width="1.5"/>
+                        <rect x="66" y="35" width="38" height="5" rx="1.5" fill="#F59E0B"/>
+                        <rect x="66" y="44" width="56" height="4" rx="1.5" fill="#38BDF8"/>
+                        <rect x="66" y="52" width="48" height="4" rx="1.5" fill="#10B981"/>
+                        <rect x="66" y="60" width="30" height="4" rx="1.5" fill="#F43F5E"/>
+                        <circle cx="148" cy="34" r="3.5" fill="#10B981"/>
+                        <circle cx="148" cy="45" r="3.5" fill="#F43F5E"/>
+                        <circle cx="148" cy="56" r="3.5" fill="#F59E0B"/>
+                        <circle cx="148" cy="67" r="3.5" fill="#38BDF8"/>
+                        <rect x="60" y="82" width="52" height="28" rx="3" fill="#5E0B1A"/>
+                        <circle cx="146" cy="96" r="8" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+                        <text x="66" y="99" fill="#FDF2F4" font-size="7.5" font-family="monospace" font-weight="bold">FL-9000</text>
+                    </svg>`;
+                case 'detector':
+                    return `
+                    <svg viewBox="0 0 220 140" class="w-40 h-28 mx-auto drop-shadow-xs">
+                        <ellipse cx="110" cy="48" rx="64" ry="16" fill="#E2E8F0" stroke="#94A3B8" stroke-width="2"/>
+                        <path d="M52 48 L66 90 C66 104 154 104 154 90 L168 48 Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+                        <rect x="76" y="64" width="7" height="15" rx="2" fill="#334155"/>
+                        <rect x="91" y="66" width="7" height="15" rx="2" fill="#334155"/>
+                        <rect x="106" y="67" width="8" height="15" rx="2" fill="#334155"/>
+                        <rect x="122" y="66" width="7" height="15" rx="2" fill="#334155"/>
+                        <rect x="137" y="64" width="7" height="15" rx="2" fill="#334155"/>
+                        <ellipse cx="110" cy="98" rx="26" ry="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+                        <circle cx="94" cy="91" r="4" fill="#881327"/>
+                        <circle cx="126" cy="91" r="4" fill="#881327"/>
+                        <circle cx="110" cy="103" r="6" fill="#9F1D35"/>
+                    </svg>`;
+                case 'callpoint':
+                    return `
+                    <svg viewBox="0 0 220 140" class="w-40 h-28 mx-auto drop-shadow-xs">
+                        <rect x="30" y="30" width="72" height="78" rx="7" fill="#881327" stroke="#5E0B1A" stroke-width="2.5"/>
+                        <rect x="43" y="43" width="46" height="40" rx="3" fill="#FFFFFF" stroke="#881327" stroke-width="1.5"/>
+                        <circle cx="66" cy="63" r="7" fill="#881327"/>
+                        <text x="48" y="99" fill="#FDF2F4" font-size="7" font-family="monospace" font-weight="bold">RESET MCP</text>
+                        <rect x="120" y="22" width="68" height="92" rx="9" fill="#9F1D35" stroke="#5E0B1A" stroke-width="2.5"/>
+                        <circle cx="154" cy="52" r="18" fill="#5E0B1A" stroke="#F2A8B8" stroke-width="1.5"/>
+                        <circle cx="154" cy="52" r="8" fill="#881327"/>
+                        <rect x="135" y="80" width="38" height="22" rx="5" fill="#FEF3C7" stroke="#D97706" stroke-width="2"/>
+                        <text x="143" y="94" fill="#881327" font-size="7.5" font-weight="bold">FIRE</text>
+                    </svg>`;
+                case 'pump':
+                    return `
+                    <svg viewBox="0 0 220 140" class="w-40 h-28 mx-auto drop-shadow-xs">
+                        <rect x="20" y="112" width="180" height="12" rx="3" fill="#0F172A"/>
+                        <rect x="30" y="24" width="160" height="13" rx="4" fill="#881327" stroke="#5E0B1A" stroke-width="2"/>
+                        <rect x="36" y="66" width="44" height="46" rx="5" fill="#881327" stroke="#5E0B1A" stroke-width="2"/>
+                        <circle cx="58" cy="89" r="13" fill="#9F1D35" stroke="#FDF2F4" stroke-width="2"/>
+                        <rect x="52" y="37" width="12" height="29" fill="#881327"/>
+                        <rect x="98" y="50" width="22" height="62" rx="4" fill="#334155" stroke="#94A3B8" stroke-width="1.5"/>
+                        <rect x="138" y="62" width="46" height="50" rx="5" fill="#9F1D35" stroke="#5E0B1A" stroke-width="2"/>
+                        <rect x="155" y="37" width="12" height="25" fill="#881327"/>
+                        <circle cx="161" cy="87" r="11" fill="#F59E0B" stroke="#5E0B1A" stroke-width="2"/>
+                        <circle cx="58" cy="24" r="6" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
+                        <circle cx="109" cy="24" r="6" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
+                        <circle cx="161" cy="24" r="6" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
+                    </svg>`;
+                case 'valve':
+                    return `
+                    <svg viewBox="0 0 220 140" class="w-40 h-28 mx-auto drop-shadow-xs">
+                        <rect x="76" y="112" width="66" height="11" rx="2.5" fill="#5E0B1A"/>
+                        <rect x="76" y="38" width="66" height="11" rx="2.5" fill="#5E0B1A"/>
+                        <ellipse cx="109" cy="80" rx="36" ry="26" fill="#881327" stroke="#5E0B1A" stroke-width="2.5"/>
+                        <circle cx="164" cy="58" r="18" fill="#9F1D35" stroke="#5E0B1A" stroke-width="2"/>
+                        <circle cx="164" cy="58" r="5" fill="#F59E0B"/>
+                        <ellipse cx="55" cy="70" rx="7" ry="24" fill="none" stroke="#881327" stroke-width="4.5"/>
+                        <line x1="55" y1="70" x2="75" y2="70" stroke="#D97706" stroke-width="4.5"/>
+                        <circle cx="109" cy="74" r="8" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
+                    </svg>`;
+                case 'fm200':
+                case 'novec':
+                    return `
+                    <svg viewBox="0 0 220 140" class="w-40 h-28 mx-auto drop-shadow-xs">
+                        <rect x="46" y="14" width="128" height="9" rx="3" fill="#334155"/>
+                        <path d="M56 44 C56 32 86 32 86 44 L86 124 L56 124 Z" fill="#881327" stroke="#5E0B1A" stroke-width="2"/>
+                        <rect x="66" y="23" width="10" height="13" fill="#D97706"/>
+                        <rect x="56" y="64" width="30" height="16" fill="#FFFFFF"/>
+                        <text x="59" y="75" fill="#881327" font-size="6.5" font-family="monospace" font-weight="bold">${type === 'novec' ? 'NOVEC' : 'FM200'}</text>
+                        <path d="M95 44 C95 32 125 32 125 44 L125 124 L95 124 Z" fill="#881327" stroke="#5E0B1A" stroke-width="2"/>
+                        <rect x="105" y="23" width="10" height="13" fill="#D97706"/>
+                        <rect x="95" y="64" width="30" height="16" fill="#FFFFFF"/>
+                        <text x="98" y="75" fill="#881327" font-size="6.5" font-family="monospace" font-weight="bold">CLEAN</text>
+                        <path d="M134 44 C134 32 164 32 164 44 L164 124 L134 124 Z" fill="#881327" stroke="#5E0B1A" stroke-width="2"/>
+                        <rect x="144" y="23" width="10" height="13" fill="#D97706"/>
+                        <rect x="134" y="64" width="30" height="16" fill="#FFFFFF"/>
+                        <text x="138" y="75" fill="#881327" font-size="6.5" font-family="monospace" font-weight="bold">42BAR</text>
+                        <rect x="50" y="94" width="120" height="5" rx="2" fill="#0F172A"/>
+                    </svg>`;
+                case 'kitchen':
+                    return `
+                    <svg viewBox="0 0 220 140" class="w-40 h-28 mx-auto drop-shadow-xs">
+                        <polygon points="28,42 156,42 142,16 42,16" fill="#E2E8F0" stroke="#64748B" stroke-width="2"/>
+                        <path d="M55 42 L55 58 M92 42 L92 58 M130 42 L130 58" stroke="#334155" stroke-width="2.5"/>
+                        <polygon points="50,58 60,58 63,66 47,66" fill="#D97706"/>
+                        <polygon points="87,58 97,58 100,66 84,66" fill="#D97706"/>
+                        <polygon points="125,58 135,58 138,66 122,66" fill="#D97706"/>
+                        <rect x="164" y="44" width="30" height="78" rx="5" fill="#881327" stroke="#5E0B1A" stroke-width="2"/>
+                        <rect x="168" y="22" width="22" height="18" rx="3" fill="#334155"/>
+                        <text x="168" y="86" fill="#FFFFFF" font-size="6.5" font-family="monospace" font-weight="bold">UL300</text>
+                    </svg>`;
+                case 'extinguisher':
+                    return `
+                    <svg viewBox="0 0 220 140" class="w-40 h-28 mx-auto drop-shadow-xs">
+                        <path d="M84 44 C84 30 136 30 136 44 L136 126 L84 126 Z" fill="#881327" stroke="#5E0B1A" stroke-width="2.5"/>
+                        <rect x="104" y="20" width="12" height="14" fill="#CBD5E1"/>
+                        <path d="M104 22 L134 14 M104 26 L132 28" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M84 44 C66 52 66 100 70 120" fill="none" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+                        <rect x="84" y="62" width="52" height="32" fill="#FFFFFF"/>
+                        <text x="92" y="76" fill="#881327" font-size="8" font-family="monospace" font-weight="bold">POWDER</text>
+                        <text x="94" y="88" fill="#334155" font-size="7" font-weight="bold">ABC 6KG</text>
+                    </svg>`;
+                case 'co2':
+                    return `
+                    <svg viewBox="0 0 220 140" class="w-40 h-28 mx-auto drop-shadow-xs">
+                        <path d="M88 46 C88 30 132 30 132 46 L132 126 L88 126 Z" fill="#881327" stroke="#5E0B1A" stroke-width="2.5"/>
+                        <rect x="105" y="22" width="10" height="14" fill="#D97706"/>
+                        <polygon points="132,38 164,26 164,50" fill="#0F172A"/>
+                        <rect x="88" y="64" width="44" height="28" fill="#0F172A"/>
+                        <text x="97" y="78" fill="#FFFFFF" font-size="8.5" font-family="monospace" font-weight="bold">CO2</text>
+                        <text x="96" y="88" fill="#F59E0B" font-size="6.5" font-family="monospace">5.0 KG</text>
+                    </svg>`;
+                case 'cabinet':
+                    return `
+                    <svg viewBox="0 0 220 140" class="w-40 h-28 mx-auto drop-shadow-xs">
+                        <rect x="44" y="12" width="132" height="116" rx="6" fill="#881327" stroke="#5E0B1A" stroke-width="3"/>
+                        <rect x="53" y="21" width="54" height="98" rx="3" fill="#FDF2F4" stroke="#5E0B1A" stroke-width="1.5"/>
+                        <circle cx="80" cy="64" r="20" fill="#881327" stroke="#5E0B1A" stroke-width="2.5"/>
+                        <circle cx="80" cy="64" r="12" fill="none" stroke="#F2A8B8" stroke-width="2" stroke-dasharray="3 2"/>
+                        <circle cx="80" cy="64" r="4.5" fill="#F59E0B"/>
+                        <rect x="113" y="21" width="54" height="98" rx="3" fill="#FDF2F4" stroke="#5E0B1A" stroke-width="1.5"/>
+                        <rect x="130" y="64" width="20" height="46" rx="3.5" fill="#881327"/>
+                        <circle cx="140" cy="40" r="10" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+                    </svg>`;
+                case 'sprinkler':
+                default:
+                    return `
+                    <svg viewBox="0 0 220 140" class="w-40 h-28 mx-auto drop-shadow-xs">
+                        <rect x="93" y="14" width="34" height="22" rx="3" fill="#D97706" stroke="#78350F" stroke-width="2"/>
+                        <polygon points="85,36 135,36 127,48 93,48" fill="#F59E0B" stroke="#78350F" stroke-width="2"/>
+                        <path d="M96 48 C78 68 78 96 96 110 L124 110 C142 96 142 68 124 48" fill="none" stroke="#D97706" stroke-width="5.5"/>
+                        <rect x="104" y="54" width="12" height="42" rx="6" fill="#881327" stroke="#5E0B1A" stroke-width="2"/>
+                        <circle cx="110" cy="66" r="2.5" fill="#F2A8B8"/>
+                        <rect x="80" y="112" width="60" height="6" rx="3" fill="#B45309"/>
+                    </svg>`;
+            }
+        }
+
+        // =========================================================================
+        // 6. TWO-TAB SOLO VIEW NAVIGATION CONTROLLER
+        // =========================================================================
+        let currentMainView = 'landing';
+
+        function switchMainView(viewName, scrollToTop = true) {
+            currentMainView = viewName;
+            const landingEl = document.getElementById('viewLanding');
+            const shopEl = document.getElementById('viewShop');
+            const topTabLanding = document.getElementById('topTabLanding');
+            const topTabShop = document.getElementById('topTabShop');
+            const desktopLandingNav = document.getElementById('desktopLandingNav');
+
+            // Mobile bottom bar buttons
+            const mobHome = document.getElementById('mobNavHome');
+            const mobShop = document.getElementById('mobNavShop');
+
+            if (viewName === 'shop') {
+                landingEl.classList.add('hidden');
+                shopEl.classList.remove('hidden');
+                desktopLandingNav.classList.add('xl:hidden');
+
+                topTabShop.className = 'px-3 sm:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all bg-burgundy-800 text-white shadow-xs';
+                topTabLanding.className = 'px-3 sm:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all text-slate-600 hover:text-slate-900';
+
+                mobShop.className = 'flex flex-col items-center justify-center py-1.5 rounded-xl text-burgundy-800 font-bold relative';
+                mobHome.className = 'flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 font-medium';
+            } else {
+                shopEl.classList.add('hidden');
+                landingEl.classList.remove('hidden');
+                desktopLandingNav.classList.remove('xl:hidden');
+
+                topTabLanding.className = 'px-3 sm:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all bg-burgundy-800 text-white shadow-xs';
+                topTabShop.className = 'px-3 sm:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all text-slate-600 hover:text-slate-900';
+
+                mobHome.className = 'flex flex-col items-center justify-center py-1.5 rounded-xl text-burgundy-800 font-bold';
+                mobShop.className = 'flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 font-medium relative';
+            }
+
+            if (scrollToTop) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            lucide.createIcons();
+        }
+
+        function navigateLandingSection(sectionId) {
+            if (currentMainView !== 'landing') {
+                switchMainView('landing', false);
+            }
+            setTimeout(() => {
+                const target = document.getElementById(sectionId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 60);
+        }
+
+        // =========================================================================
+        // 7. RENDER LANDING PAGE SECTIONS (SERVICES, WORKFLOW, SECTORS)
+        // =========================================================================
+        function renderLandingServices() {
+            const container = document.getElementById('servicesGridContainer');
+            container.innerHTML = fireLinkServices.map(srv => `
+                <article class="spotlight-card rounded-2xl bg-white border border-slate-200/90 hover:border-burgundy-800/50 shadow-card-clean hover:shadow-card-hover flex flex-col justify-between p-6 sm:p-7">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-5">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-mono font-bold text-[11px]">
+                                ${srv.code}
+                            </span>
+                            <span class="px-2.5 py-1 rounded-md bg-burgundy-50 border border-burgundy-200 text-burgundy-800 font-semibold text-[11px]">
+                                ${srv.standard}
+                            </span>
+                        </div>
+
+                        <div class="flex items-start justify-between gap-4 mb-3">
+                            <h3 class="font-display text-lg sm:text-xl font-extrabold text-slate-900 leading-snug">
+                                ${srv.title}
+                            </h3>
+                            <div class="w-11 h-11 rounded-xl bg-burgundy-800 text-white flex items-center justify-center shrink-0 shadow-burgundy-sm">
+                                <i data-lucide="${srv.icon}" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5">
+                            ${srv.summary}
+                        </p>
+
+                        <div class="space-y-2 pt-4 border-t border-slate-100 mb-6">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+                                Key Engineering Deliverables
+                            </span>
+                            ${srv.deliverables.map(d => `
+                                <div class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                                    <i data-lucide="check" class="w-4 h-4 text-burgundy-800 shrink-0 mt-0.5"></i>
+                                    <span>${d}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2.5">
+                        <button
+                            onclick="openServiceScopeModal('${srv.id}')"
+                            class="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-display font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+                        >
+                            <i data-lucide="file-text" class="w-3.5 h-3.5 text-burgundy-800"></i>
+                            <span>Engineering Scope</span>
+                        </button>
+                        <button
+                            onclick="addToBoqCart('${srv.id}', 'service', 1)"
+                            class="py-2.5 px-3.5 rounded-xl bg-burgundy-800 hover:bg-burgundy-700 text-white font-display font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
+                            title="Attach Service to BOQ Inquiry"
+                        >
+                            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                            <span>Attach</span>
+                        </button>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        let activeWorkflowIndex = 0;
+        function renderWorkflowSection(index = 0) {
+            activeWorkflowIndex = index;
+            const tabsContainer = document.getElementById('workflowStepsTabs');
+            const detailPanel = document.getElementById('workflowDetailPanel');
+
+            tabsContainer.innerHTML = workflowStages.map((stg, idx) => {
+                const isActive = idx === activeWorkflowIndex;
+                return `
+                <button
+                    onclick="renderWorkflowSection(${idx})"
+                    class="text-left p-4 sm:p-5 rounded-2xl border transition-all ${
+                        isActive
+                            ? 'bg-burgundy-800 text-white border-burgundy-800 shadow-burgundy-sm'
+                            : 'bg-slate-50 hover:bg-slate-100 text-slate-800 border-slate-200'
+                    }"
+                >
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-mono text-xs font-bold px-2 py-0.5 rounded ${
+                            isActive ? 'bg-white/20 text-amber-300' : 'bg-burgundy-50 text-burgundy-800'
+                        }">STAGE ${stg.step}</span>
+                        <span class="text-[11px] font-mono ${isActive ? 'text-rose-200' : 'text-slate-400'}">${stg.duration}</span>
+                    </div>
+                    <h3 class="font-display font-bold text-sm sm:text-base leading-snug">${stg.title}</h3>
+                </button>
+                `;
+            }).join('');
+
+            const activeStage = workflowStages[activeWorkflowIndex];
+            detailPanel.innerHTML = `
+                <div class="grid lg:grid-cols-12 gap-8 items-center view-animate">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-burgundy-800 text-amber-300 font-mono text-xs font-bold">
+                            <span>STAGE ${activeStage.step} OF 04</span>
+                            <span>•</span>
+                            <span>${activeStage.subtitle}</span>
+                        </div>
+                        <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-white">
+                            ${activeStage.title}
+                        </h3>
+                        <p class="text-slate-300 text-xs sm:text-base leading-relaxed">
+                            ${activeStage.description}
+                        </p>
+                        <div class="pt-2 flex flex-wrap items-center gap-3">
+                            <div class="px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs text-emerald-300 font-semibold flex items-center gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                <span>${activeStage.benchmark}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 rounded-xl bg-white/5 border border-white/10 p-5 sm:p-6 space-y-3">
+                        <span class="text-xs font-mono uppercase tracking-wider text-amber-300 font-bold block">
+                            Stage ${activeStage.step} Mandatory Deliverables
+                        </span>
+                        <div class="space-y-2.5">
+                            ${activeStage.deliverables.map(item => `
+                                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
+                                    <i data-lucide="file-check" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                                    <span>${item}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        let activeSectorId = 'industrial';
+        function renderSectorsSection(sectorId = 'industrial') {
+            activeSectorId = sectorId;
+            const tabsEl = document.getElementById('sectorFilterTabs');
+            const cardEl = document.getElementById('sectorShowcaseCard');
+
+            tabsEl.innerHTML = protectedSectors.map(sec => {
+                const active = sec.id === activeSectorId;
+                return `
+                <button
+                    onclick="renderSectorsSection('${sec.id}')"
+                    class="shrink-0 px-4 py-2.5 rounded-xl font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all ${
+                        active
+                            ? 'bg-burgundy-800 text-white shadow-burgundy-sm'
+                            : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
+                    }"
+                >
+                    <i data-lucide="${sec.icon}" class="w-4 h-4"></i>
+                    <span>${sec.name}</span>
+                </button>
+                `;
+            }).join('');
+
+            const sec = protectedSectors.find(s => s.id === activeSectorId) || protectedSectors[0];
+            cardEl.innerHTML = `
+                <div class="grid lg:grid-cols-12 view-animate">
+                    <div class="lg:col-span-7 p-6 sm:p-10 space-y-5">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="px-3 py-1 rounded-md bg-burgundy-50 border border-burgundy-200 text-burgundy-800 font-mono text-xs font-bold">
+                                Hazard Profile: ${sec.hazardClass}
+                            </span>
+                            <span class="px-3 py-1 rounded-md bg-slate-100 text-slate-700 font-mono text-xs font-semibold">
+                                ${sec.codes}
+                            </span>
+                        </div>
+
+                        <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">
+                            ${sec.name}
+                        </h3>
+
+                        <p class="text-slate-600 text-xs sm:text-base leading-relaxed">
+                            ${sec.overview}
+                        </p>
+
+                        <div class="pt-3 flex flex-wrap items-center gap-3">
+                            <button
+                                onclick="navigateLandingSection('consultation-section')"
+                                class="px-5 py-3 rounded-xl bg-burgundy-800 hover:bg-burgundy-700 text-white font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all"
+                            >
+                                <span>Request Sector Engineering Proposal</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                            <button
+                                onclick="switchMainView('shop')"
+                                class="px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-display font-bold text-xs sm:text-sm transition-all"
+                            >
+                                Browse Approved Hardware
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 bg-slate-900 text-white p-6 sm:p-10 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-slate-800">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-mono uppercase tracking-wider text-amber-400 font-bold">Recommended Systems Architecture</span>
+                                <i data-lucide="${sec.icon}" class="w-5 h-5 text-slate-400"></i>
+                            </div>
+                            <div class="space-y-2.5">
+                                ${sec.systemsUsed.map(sys => `
+                                    <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-200">
+                                        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                        <span>${sys}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+                            <span class="text-slate-400">Track Record:</span>
+                            <span class="font-mono font-bold text-amber-300">${sec.statLabel}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // =========================================================================
+        // 8. RENDER EQUIPMENT SHOP TAB (FILTERING, SORTING, STEPPERS, PRICING MODE)
+        // =========================================================================
+        let shopCategory = 'all';
+        let shopSearch = '';
+        let shopCert = 'all';
+        let shopSort = 'featured';
+        let showReferencePrices = true;
+        let cardQuantities = {};
+
+        function getCardQty(prdId) {
+            return cardQuantities[prdId] || 1;
+        }
+
+        function stepCardQty(prdId, delta) {
+            const current = getCardQty(prdId);
+            const next = Math.max(1, current + delta);
+            cardQuantities[prdId] = next;
+            const displayEl = document.getElementById(`qty-val-${prdId}`);
+            if (displayEl) displayEl.textContent = next;
+        }
+
+        function setShopPricingMode(showPrice) {
+            showReferencePrices = showPrice;
+            const priceBtn = document.getElementById('modePriceBtn');
+            const boqBtn = document.getElementById('modeBoqBtn');
+            if (showPrice) {
+                priceBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-burgundy-800 text-white transition-all';
+                boqBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition-all';
+            } else {
+                boqBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-burgundy-800 text-white transition-all';
+                priceBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition-all';
+            }
+            renderShopProducts();
+        }
+
+        function renderShopProducts() {
+            const grid = document.getElementById('shopProductsGrid');
+            const emptyEl = document.getElementById('shopEmptyState');
+            const countLabel = document.getElementById('shopCountLabel');
+
+            let filtered = shopProducts.filter(p => {
+                const matchCat = shopCategory === 'all' || p.category === shopCategory;
+                const matchCert = shopCert === 'all' || p.certTag === shopCert || p.cert.toUpperCase().includes(shopCert);
+                const q = shopSearch.trim().toLowerCase();
+                const matchSearch = !q ||
+                    p.name.toLowerCase().includes(q) ||
+                    p.sku.toLowerCase().includes(q) ||
+                    p.specsSummary.toLowerCase().includes(q) ||
+                    p.cert.toLowerCase().includes(q);
+                return matchCat && matchCert && matchSearch;
+            });
+
+            if (shopSort === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (shopSort === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (shopSort === 'name-asc') {
+                filtered.sort((a, b) => a.name.localeCompare(b.name));
+            }
+
+            if (countLabel) {
+                countLabel.textContent = `Showing ${filtered.length} of ${shopProducts.length} Certified Products`;
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyEl.classList.remove('hidden');
+                return;
+            }
+
+            emptyEl.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(prd => {
+                const qty = getCardQty(prd.id);
+                return `
+                <article class="spotlight-card rounded-2xl bg-white border border-slate-200/90 hover:border-burgundy-800/60 shadow-card-clean hover:shadow-card-hover flex flex-col justify-between overflow-hidden">
+                    <div>
+                        <!-- Top Neutral Equipment Showcase Header -->
+                        <div class="bg-slate-100/70 p-4 border-b border-slate-200/70 relative">
+                            <div class="flex items-center justify-between gap-2 mb-2">
+                                <span class="px-2.5 py-0.5 rounded-md bg-slate-900 text-white font-mono font-bold text-[11px]">
+                                    ${prd.sku}
+                                </span>
+                                <span class="px-2.5 py-0.5 rounded-md bg-burgundy-50 border border-burgundy-200 text-burgundy-800 font-bold text-[11px] flex items-center gap-1">
+                                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                                    ${prd.cert}
+                                </span>
+                            </div>
+
+                            <!-- Vector Equipment Illustration -->
+                            <div class="py-2">
+                                ${getEquipmentSvg(prd.svgType)}
+                            </div>
+
+                            <div class="flex items-center justify-between text-[11px] mt-1">
+                                <span class="font-bold uppercase tracking-wider text-slate-500">${prd.categoryLabel}</span>
+                                <span class="inline-flex items-center gap-1 text-emerald-700 font-semibold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    In Stock • Ready to Ship
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card Content Body -->
+                        <div class="p-5 sm:p-6">
+                            <h3 class="font-display text-base sm:text-lg font-extrabold text-slate-900 leading-snug mb-2">
+                                ${prd.name}
+                            </h3>
+                            <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                                ${prd.specsSummary}
+                            </p>
+
+                            <!-- Price / B2B Quote Indicator + Quantity Stepper -->
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between gap-2">
+                                <div>
+                                    ${
+                                        showReferencePrices
+                                            ? `<span class="font-mono text-lg font-extrabold text-slate-900">$${prd.price.toLocaleString()}</span>
+                                               <span class="block text-[10px] text-slate-500">${prd.unit} (Ref. Ex-Works)</span>`
+                                            : `<span class="font-display text-xs font-extrabold text-burgundy-800 uppercase tracking-wider">B2B BOQ Pricing</span>
+                                               <span class="block text-[10px] text-slate-500">${prd.unit}</span>`
+                                    }
+                                </div>
+
+                                <!-- Quantity Stepper -->
+                                <div class="flex items-center bg-white rounded-lg border border-slate-300 p-0.5">
+                                    <button
+                                        type="button"
+                                        onclick="stepCardQty('${prd.id}', -1)"
+                                        class="w-7 h-7 rounded-md hover:bg-slate-100 text-slate-700 font-bold text-sm flex items-center justify-center"
+                                        aria-label="Decrease quantity"
+                                    >−</button>
+                                    <span id="qty-val-${prd.id}" class="w-8 text-center font-mono font-bold text-xs text-slate-900">${qty}</span>
+                                    <button
+                                        type="button"
+                                        onclick="stepCardQty('${prd.id}', 1)"
+                                        class="w-7 h-7 rounded-md hover:bg-slate-100 text-slate-700 font-bold text-sm flex items-center justify-center"
+                                        aria-label="Increase quantity"
+                                    >+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Actions Footer -->
+                    <div class="px-5 sm:px-6 pb-5 pt-1 flex items-center gap-2">
+                        <button
+                            onclick="openProductDatasheetModal('${prd.id}')"
+                            class="py-3 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-display font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+                            title="View Full Technical Datasheet"
+                        >
+                            <i data-lucide="sliders" class="w-4 h-4 text-burgundy-800"></i>
+                            <span>Specs</span>
+                        </button>
+                        <button
+                            onclick="addToBoqCart('${prd.id}', 'product', getCardQty('${prd.id}'))"
+                            class="flex-1 py-3 px-4 rounded-xl bg-burgundy-800 hover:bg-burgundy-700 text-white font-display font-bold text-xs flex items-center justify-center gap-1.5 shadow-burgundy-sm transition-all"
+                        >
+                            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                            <span>Add to BOQ / Cart</span>
+                        </button>
+                    </div>
+                </article>
+                `;
+            }).join('');
+
+            lucide.createIcons();
+            bindCardSpotlights();
+        }
+
+        function setShopCategory(cat) {
+            shopCategory = cat;
+            document.querySelectorAll('.shop-cat-pill').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.className = 'shop-cat-pill shrink-0 px-3.5 py-2 rounded-xl bg-burgundy-800 text-white font-display font-bold text-xs shadow-xs transition-all';
+                } else {
+                    btn.className = 'shop-cat-pill shrink-0 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-display font-semibold text-xs transition-all';
+                }
+            });
+            renderShopProducts();
+        }
+
+        function handleShopSearch(val) {
+            shopSearch = val;
+            const clearBtn = document.getElementById('clearShopSearchBtn');
+            if (val.trim().length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+            renderShopProducts();
+        }
+
+        function clearShopSearch() {
+            document.getElementById('shopSearchInput').value = '';
+            shopSearch = '';
+            document.getElementById('clearShopSearchBtn').classList.add('hidden');
+            renderShopProducts();
+        }
+
+        function handleShopCertChange(val) {
+            shopCert = val;
+            renderShopProducts();
+        }
+
+        function handleShopSortChange(val) {
+            shopSort = val;
+            renderShopProducts();
+        }
+
+        function resetAllShopFilters() {
+            shopCategory = 'all';
+            shopSearch = '';
+            shopCert = 'all';
+            shopSort = 'featured';
+            document.getElementById('shopSearchInput').value = '';
+            document.getElementById('shopCertFilter').value = 'all';
+            document.getElementById('shopSortSelect').value = 'featured';
+            document.getElementById('clearShopSearchBtn').classList.add('hidden');
+            setShopCategory('all');
+        }
+
+        // =========================================================================
+        // 9. MODALS FOR PRODUCT DATASHEETS & SERVICE ENGINEERING SCOPES
+        // =========================================================================
+        function openProductDatasheetModal(prdId) {
+            const prd = shopProducts.find(p => p.id === prdId);
+            if (!prd) return;
+
+            document.getElementById('modalCodeBadge').textContent = prd.sku;
+            document.getElementById('modalCertBadge').textContent = prd.cert;
+            document.getElementById('modalTitle').textContent = prd.name;
+            document.getElementById('modalDescription').textContent = prd.description;
+            document.getElementById('modalApplications').textContent = prd.applications;
+
+            const table = document.getElementById('modalSpecsTable');
+            table.innerHTML = prd.datasheet.map(([k, v]) => `
+                <div class="grid grid-cols-3 px-4 py-3 gap-2">
+                    <span class="font-bold text-slate-700 col-span-1">${k}</span>
+                    <span class="text-slate-900 font-medium col-span-2">${v}</span>
+                </div>
+            `).join('');
+
+            const addBtn = document.getElementById('modalAddBoqBtn');
+            addBtn.onclick = () => {
+                addToBoqCart(prd.id, 'product', getCardQty(prd.id));
+                closeSpecModal();
+            };
+
+            document.getElementById('specModal').classList.remove('hidden');
+        }
+
+        function openServiceScopeModal(srvId) {
+            const srv = fireLinkServices.find(s => s.id === srvId);
+            if (!srv) return;
+
+            document.getElementById('modalCodeBadge').textContent = srv.code;
+            document.getElementById('modalCertBadge').textContent = srv.standard;
+            document.getElementById('modalTitle').textContent = srv.title;
+            document.getElementById('modalDescription').textContent = srv.summary;
+            document.getElementById('modalApplications').textContent = srv.applications;
+
+            const table = document.getElementById('modalSpecsTable');
+            table.innerHTML = srv.specs.map(([k, v]) => `
+                <div class="grid grid-cols-3 px-4 py-3 gap-2">
+                    <span class="font-bold text-slate-700 col-span-1">${k}</span>
+                    <span class="text-slate-900 font-medium col-span-2">${v}</span>
+                </div>
+            `).join('');
+
+            const addBtn = document.getElementById('modalAddBoqBtn');
+            addBtn.onclick = () => {
+                addToBoqCart(srv.id, 'service', 1);
+                closeSpecModal();
+            };
+
+            document.getElementById('specModal').classList.remove('hidden');
+        }
+
+        function closeSpecModal() {
+            document.getElementById('specModal').classList.add('hidden');
+        }
+
+        // =========================================================================
+        // 10. BILL OF QUANTITIES (BOQ) & EQUIPMENT CART ENGINE
+        // =========================================================================
+        let boqCart = [];
+
+        function addToBoqCart(itemId, itemType, qtyToAdd = 1) {
+            const existing = boqCart.find(i => i.id === itemId);
+            if (existing) {
+                existing.qty += qtyToAdd;
+            } else {
+                if (itemType === 'product') {
+                    const prd = shopProducts.find(p => p.id === itemId);
+                    if (prd) {
+                        boqCart.push({
+                            id: prd.id,
+                            code: prd.sku,
+                            title: prd.name,
+                            type: 'Equipment',
+                            price: prd.price,
+                            unit: prd.unit,
+                            qty: qtyToAdd
+                        });
+                    }
+                } else {
+                    const srv = fireLinkServices.find(s => s.id === itemId);
+                    if (srv) {
+                        boqCart.push({
+                            id: srv.id,
+                            code: srv.code,
+                            title: srv.title,
+                            type: 'Turnkey Service',
+                            price: 0,
+                            unit: 'Site Survey / BOQ',
+                            qty: 1
+                        });
+                    }
+                }
+            }
+
+            syncBoqCartUI();
+            triggerToast(`Added (${qtyToAdd}) to your Bill of Quantities!`);
+        }
+
+        function changeBoqItemQty(itemId, delta) {
+            const idx = boqCart.findIndex(i => i.id === itemId);
+            if (idx === -1) return;
+            boqCart[idx].qty += delta;
+            if (boqCart[idx].qty <= 0) {
+                boqCart.splice(idx, 1);
+            }
+            syncBoqCartUI();
+        }
+
+        function syncBoqCartUI() {
+            const totalUnits = boqCart.reduce((sum, item) => sum + item.qty, 0);
+            const totalHardwarePrice = boqCart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            document.getElementById('headerBoqBadge').textContent = totalUnits;
+            document.getElementById('mobNavBoqBadge').textContent = totalUnits;
+            document.getElementById('shopBannerBoqCount').textContent = totalUnits;
+            document.getElementById('drawerItemCount').textContent = `${boqCart.length} Line Item(s) (${totalUnits} Units)`;
+            document.getElementById('drawerSubtotalAmount').textContent = totalHardwarePrice > 0
+                ? `$${totalHardwarePrice.toLocaleString()}.00`
+                : 'Custom Survey Quote';
+
+            const drawerList = document.getElementById('boqDrawerItemsList');
+            const previewBox = document.getElementById('consultationBoqPreview');
+            const formTextarea = document.getElementById('consultationTextarea');
+
+            if (boqCart.length === 0) {
+                drawerList.innerHTML = `
+                    <div class="text-center py-12 px-4">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="clipboard-list" class="w-6 h-6"></i>
+                        </div>
+                        <p class="font-display font-bold text-slate-800 text-sm">Your Bill of Quantities is Empty</p>
+                        <p class="text-xs text-slate-500 mt-1">Add certified equipment from the Shop Tab or attach turnkey engineering services to build your project schedule.</p>
+                        <button onclick="toggleBoqDrawer(false); switchMainView('shop');" class="mt-4 px-4 py-2 rounded-xl bg-burgundy-800 text-white font-display font-bold text-xs">
+                            Browse Equipment Shop
+                        </button>
+                    </div>
+                `;
+                previewBox.innerHTML = `<p class="italic text-slate-400">No items attached yet. You can attach services or shop products at any time.</p>`;
+            } else {
+                drawerList.innerHTML = boqCart.map(item => `
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-3">
+                        <div class="min-w-0">
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-900 text-white">${item.code}</span>
+                                <span class="text-[10px] font-semibold text-burgundy-800">${item.type}</span>
+                            </div>
+                            <h4 class="font-display font-bold text-slate-900 text-xs sm:text-sm truncate mt-1">${item.title}</h4>
+                            <span class="text-[11px] font-mono text-slate-500">
+                                ${item.price > 0 ? `$${item.price.toLocaleString()} × ${item.qty} = $${(item.price * item.qty).toLocaleString()}` : 'Turnkey Scope Survey'}
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-1.5 shrink-0">
+                            <button onclick="changeBoqItemQty('${item.id}', -1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 text-slate-700 font-bold text-xs hover:bg-slate-100">−</button>
+                            <span class="font-mono font-bold text-xs w-6 text-center">${item.qty}</span>
+                            <button onclick="changeBoqItemQty('${item.id}', 1)" class="w-7 h-7 rounded-lg bg-burgundy-800 text-white font-bold text-xs hover:bg-burgundy-700">+</button>
+                        </div>
+                    </div>
+                `).join('');
+
+                previewBox.innerHTML = boqCart.map(item => `
+                    <div class="flex items-center justify-between py-1 border-b border-white/10">
+                        <span class="truncate pr-2 text-white font-medium">${item.code} — ${item.title}</span>
+                        <span class="px-2 py-0.5 rounded bg-burgundy-800 text-amber-300 font-mono font-bold shrink-0">Qty: ${item.qty}</span>
+                    </div>
+                `).join('');
+
+                const boqTextLines = boqCart.map(i => `• [${i.code}] ${i.title} — Qty: ${i.qty} (${i.price > 0 ? '$' + (i.price * i.qty).toLocaleString() : 'Survey Scope'})`).join('\n');
+                formTextarea.value = `Attached Fire Link Bill of Quantities (BOQ):\n${boqTextLines}\n\nProject Delivery Location & Notes: `;
+            }
+
+            lucide.createIcons();
+        }
+
+        function toggleBoqDrawer(open) {
+            const drawer = document.getElementById('boqDrawer');
+            const backdrop = document.getElementById('boqDrawerBackdrop');
+            if (open) {
+                backdrop.classList.remove('hidden');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                backdrop.classList.add('hidden');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        function attachBoqToConsultation() {
+            toggleBoqDrawer(false);
+            navigateLandingSection('consultation-section');
+        }
+
+        function openPrintableBoqModal() {
+            if (boqCart.length === 0) {
+                triggerToast('Add at least 1 product or service to generate a BOQ!');
+                return;
+            }
+            const totalHardware = boqCart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+            const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+            const bodyEl = document.getElementById('boqPrintableBody');
+
+            bodyEl.innerHTML = `
+                <div class="border-b-2 border-slate-900 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="font-display font-extrabold text-2xl text-slate-900">FIRE LINK ENGINEERING &amp; SYSTEMS</h2>
+                        <p class="text-xs text-slate-500">UL / FM / NFPA Certified Fire Protection Equipment &amp; Contracting Schedule</p>
+                    </div>
+                    <div class="text-xs font-mono text-slate-700 sm:text-right">
+                        <div><strong>BOQ REF:</strong> #FL-BOQ-${Math.floor(1000 + Math.random() * 9000)}</div>
+                        <div><strong>DATE:</strong> ${dateStr}</div>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                        <thead>
+                            <tr class="border-b border-slate-300 bg-slate-100 text-slate-800 font-display">
+                                <th class="py-2.5 px-3">Item Code</th>
+                                <th class="py-2.5 px-3">Description</th>
+                                <th class="py-2.5 px-3 text-center">Qty</th>
+                                <th class="py-2.5 px-3 text-right">Ref. Unit Price</th>
+                                <th class="py-2.5 px-3 text-right">Line Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            ${boqCart.map(item => `
+                                <tr>
+                                    <td class="py-3 px-3 font-mono font-bold text-burgundy-800">${item.code}</td>
+                                    <td class="py-3 px-3 font-medium text-slate-900">${item.title}</td>
+                                    <td class="py-3 px-3 font-mono text-center">${item.qty}</td>
+                                    <td class="py-3 px-3 font-mono text-right">${item.price > 0 ? '$' + item.price.toLocaleString() : 'Survey'}</td>
+                                    <td class="py-3 px-3 font-mono font-bold text-right">${item.price > 0 ? '$' + (item.price * item.qty).toLocaleString() : 'Included in RFQ'}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                        <tfoot>
+                            <tr class="border-t-2 border-slate-900 font-bold text-slate-900">
+                                <td colspan="4" class="py-3 px-3 text-right">Estimated Hardware Reference Total (Ex-Works):</td>
+                                <td class="py-3 px-3 font-mono text-base text-burgundy-800 text-right">$${totalHardware.toLocaleString()}.00</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1">
+                    <p><strong>Engineering Note:</strong> All listed equipment is supplied with original UL/FM/EN Certificates of Conformity and Civil Defense Material Approval sheets.</p>
+                </div>
+            `;
+
+            document.getElementById('boqPrintModal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closePrintableBoqModal() {
+            document.getElementById('boqPrintModal').classList.add('hidden');
+        }
+
+        function handleConsultationSubmit(e) {
+            e.preventDefault();
+            document.getElementById('consultationSuccessAlert').classList.remove('hidden');
+            triggerToast('Official Engineering Inquiry Submitted!');
+            e.target.reset();
+            boqCart = [];
+            syncBoqCartUI();
+        }
+
+        function triggerToast(message) {
+            const toast = document.getElementById('toastBanner');
+            document.getElementById('toastText').textContent = message;
+            toast.classList.remove('hidden');
+            clearTimeout(window._flToastTimer);
+            window._flToastTimer = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2600);
+        }
+
+        // =========================================================================
+        // 11. CARD SPOTLIGHT INTERACTION & SUBTLE HERO BLUEPRINT CANVAS
+        // =========================================================================
+        function bindCardSpotlights() {
+            document.querySelectorAll('.spotlight-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+                });
+            });
+        }
+
+        function initHeroBlueprintCanvas() {
+            const canvas = document.getElementById('heroBlueprintCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let nodes = [];
+
+            function resize() {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            for (let i = 0; i < 38; i++) {
+                nodes.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.35,
+                    vy: (Math.random() - 0.5) * 0.35,
+                    r: Math.random() * 2 + 1
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < nodes.length; i++) {
+                    const n = nodes[i];
+                    n.x += n.vx;
+                    n.y += n.vy;
+                    if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+                    if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(245, 158, 11, 0.35)';
+                    ctx.fill();
+
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const m = nodes[j];
+                        const dist = Math.hypot(n.x - m.x, n.y - m.y);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(n.x, n.y);
+                            ctx.lineTo(m.x, m.y);
+                            ctx.strokeStyle = `rgba(242, 168, 184, ${(1 - dist / 120) * 0.12})`;
+                            ctx.lineWidth = 1;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        // Initialize Everything on Window Load
+        window.onload = function () {
+            renderLandingServices();
+            renderWorkflowSection(0);
+            renderSectorsSection('industrial');
+            renderShopProducts();
+            syncBoqCartUI();
+            bindCardSpotlights();
+            initHeroBlueprintCanvas();
+            lucide.createIcons();
+        };
+    </script>
+</body>
+</html>
