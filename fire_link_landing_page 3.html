@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Link | Fire Protection Systems, Engineering Services & Certified Equipment Catalog</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        firered: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                            950: '#450a0a',
+                        }
+                    },
+                    boxShadow: {
+                        'red-glow': '0 20px 40px -15px rgba(220, 38, 38, 0.35)',
+                        'red-glow-sm': '0 10px 25px -5px rgba(185, 28, 28, 0.25)',
+                        'card-rest': '0 4px 20px -2px rgba(127, 29, 29, 0.06)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Red Scrollbar */
+        ::-webkit-scrollbar {
+            width: 9px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fef2f2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dc2626;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #991b1b;
+        }
+
+        /* Red Architectural Grid Pattern */
+        .red-hero-pattern {
+            background-color: #991b1b;
+            background-image: 
+                radial-gradient(circle at 20% 25%, rgba(239, 68, 68, 0.45) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(69, 10, 10, 0.85) 0%, transparent 55%),
+                linear-gradient(135deg, #7f1d1d 0%, #b91c1c 48%, #dc2626 100%);
+        }
+
+        .red-grid-overlay {
+            background-size: 36px 36px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+        }
+
+        /* 3D Tilt & Red Spotlight Interactive Cards */
+        .interactive-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+            transform-style: preserve-3d;
+        }
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                520px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(220, 38, 38, 0.10),
+                transparent 45%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .interactive-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Product Card Entrance Animation when Filtering */
+        @keyframes cardPopIn {
+            0% {
+                opacity: 0;
+                transform: translateY(18px) scale(0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .product-card-enter {
+            animation: cardPopIn 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Subtle Floating Animation for Hero Showcase Cards */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float-slow {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#FFFDFD] text-slate-900 font-sans antialiased selection:bg-firered-600 selection:text-white">
+
+    <!-- ================= TOP RED ANNOUNCEMENT & EMERGENCY BAR ================= -->
+    <div class="bg-firered-950 text-white border-b border-firered-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-firered-600 text-white font-semibold uppercase tracking-wider text-[10px]">
+                    <i data-lucide="award" class="w-3 h-3"></i> UL / FM / NFPA Certified
+                </span>
+                <span class="text-firered-100 hidden sm:inline">Turnkey Fire Fighting Contracting, Civil Defense Approvals & Direct Equipment Supply</span>
+            </div>
+            <div class="flex items-center gap-5 font-medium">
+                <a href="tel:18005553473" class="flex items-center gap-1.5 text-firered-200 hover:text-white transition-colors">
+                    <i data-lucide="phone-call" class="w-3.5 h-3.5 text-firered-400"></i>
+                    <span>24/7 Emergency Hotline: <strong class="text-white">1-800-555-FIRE</strong></span>
+                </a>
+                <span class="hidden md:inline text-firered-700">|</span>
+                <a href="#products" class="hidden md:flex items-center gap-1 text-amber-300 hover:text-amber-200 transition-colors">
+                    <span>Download 2026 Equipment Catalog</span>
+                    <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= STICKY RED & WHITE NAVIGATION HEADER ================= -->
+    <header id="navbar" class="sticky top-0 z-40 bg-firered-800/95 backdrop-blur-md border-b border-firered-700 text-white shadow-lg transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Identity -->
+            <a href="#" class="flex items-center gap-3.5 group focus:outline-none">
+                <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+                    <svg class="w-8 h-8 text-firered-600" viewBox="0 0 36 36" fill="none">
+                        <path d="M18 3C18 3 28 11.5 28 21C28 26.5228 23.5228 31 18 31C12.4772 31 8 26.5228 8 21C8 17.2 10.1 13.6 13.2 11.2C12.8 14.2 14.5 16.5 16.5 17C14.8 12.8 18 3 18 3Z" fill="currentColor"/>
+                        <path d="M18 17C20.8 19.2 22 21.8 22 24.2C22 26.4 20.2 28.2 18 28.2C15.8 28.2 14 26.4 14 24.2C14 21.8 15.6 19.3 18 17Z" fill="#FBBF24"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="font-display font-extrabold text-2xl tracking-tight text-white flex items-center">
+                        FIRE<span class="text-amber-300 ml-1">LINK</span>
+                    </div>
+                    <span class="block text-[10px] uppercase tracking-[0.2em] text-firered-200 font-semibold -mt-1">Fire Systems & Equipment</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-firered-100">
+                <a href="#services" class="hover:text-white transition-colors py-2">Our Services</a>
+                <a href="#products" class="hover:text-white transition-colors py-2 flex items-center gap-1.5">
+                    <span>Products Catalog</span>
+                    <span class="px-2 py-0.5 text-[10px] rounded-full bg-amber-400 text-firered-950 font-extrabold">12 Models</span>
+                </a>
+                <a href="#why-firelink" class="hover:text-white transition-colors py-2">Turnkey Process</a>
+                <a href="#certifications" class="hover:text-white transition-colors py-2">Approvals</a>
+                <a href="#quote-section" class="hover:text-white transition-colors py-2">Request Quote</a>
+            </nav>
+
+            <!-- Right Actions: Quote List Drawer Trigger & Primary CTA -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleQuoteDrawer(true)" class="relative px-4 py-2.5 rounded-xl bg-firered-900/90 hover:bg-firered-950 border border-firered-600 text-white text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all shadow-sm" title="View Selected Quote Items">
+                    <i data-lucide="clipboard-list" class="w-4 h-4 text-amber-300"></i>
+                    <span class="hidden sm:inline">Quote List</span>
+                    <span id="headerQuoteCount" class="w-5 h-5 rounded-full bg-amber-400 text-firered-950 font-extrabold text-xs flex items-center justify-center">0</span>
+                </button>
+
+                <a href="#quote-section" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-firered-800 hover:bg-firered-50 font-display font-bold text-sm shadow-md transition-all transform hover:-translate-y-0.5">
+                    <span>Get Free Proposal</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-firered-600"></i>
+                </a>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2.5 rounded-xl bg-firered-900 border border-firered-600 text-white" aria-label="Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-firered-900 border-t border-firered-700 px-6 py-5 space-y-3">
+            <a href="#services" class="block py-2 text-base font-semibold text-white hover:text-amber-300">Our Services</a>
+            <a href="#products" class="block py-2 text-base font-semibold text-amber-300">Products Cards Catalog (12 Items)</a>
+            <a href="#why-firelink" class="block py-2 text-base font-semibold text-white hover:text-amber-300">Turnkey Execution Process</a>
+            <a href="#certifications" class="block py-2 text-base font-semibold text-white hover:text-amber-300">UL / FM & Civil Defense Approvals</a>
+            <a href="#quote-section" class="block w-full mt-3 py-3 rounded-xl bg-white text-center font-display font-bold text-firered-800">Request Project Quotation</a>
+        </div>
+    </header>
+
+    <!-- ================= MOSTLY-RED HERO SECTION WITH INTERACTIVE WAVE & PARTICLE CANVAS ================= -->
+    <section class="relative red-hero-pattern text-white overflow-hidden py-16 sm:py-24 lg:py-28 border-b-4 border-firered-900">
+        <!-- Subtle Blueprint Grid Overlay -->
+        <div class="absolute inset-0 red-grid-overlay pointer-events-none"></div>
+
+        <!-- Interactive Floating Crimson/Amber Sparks & Geometric Wave Canvas -->
+        <canvas id="redHeroCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Company Value Proposition & Direct Navigation -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-firered-950/70 border border-firered-400/40 text-amber-300 text-xs font-bold uppercase tracking-widest shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                        <span>Premier Fire Fighting Contracting & Equipment Supplier</span>
+                    </div>
+
+                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
+                        Complete Fire Protection <span class="text-amber-300 underline decoration-firered-400/60 decoration-4 underline-offset-8">Services</span> & Certified Safety <span class="text-amber-300">Products.</span>
+                    </h1>
+
+                    <p class="text-firered-100 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+                        <strong class="text-white">Fire Link</strong> delivers end-to-end life safety engineering—from NFPA hydraulic design, Civil Defense approvals, and turnkey installation to supplying UL/FM listed fire pumps, addressable alarm panels, clean agent suppression skids, and extinguishers.
+                    </p>
+
+                    <!-- Primary Hero CTAs -->
+                    <div class="pt-3 flex flex-wrap items-center gap-4">
+                        <a href="#products" class="px-7 py-4 rounded-2xl bg-white text-firered-800 hover:bg-amber-300 hover:text-firered-950 font-display font-extrabold text-base shadow-xl flex items-center gap-3 group transition-all transform hover:-translate-y-0.5">
+                            <span>Explore Products Catalog</span>
+                            <i data-lucide="package-check" class="w-5 h-5 text-firered-600 group-hover:text-firered-950 transition-colors"></i>
+                        </a>
+                        <a href="#services" class="px-7 py-4 rounded-2xl bg-firered-900/90 hover:bg-firered-950 border-2 border-firered-400/50 text-white font-display font-bold text-base flex items-center gap-2.5 transition-all">
+                            <span>View Contracting Services</span>
+                            <i data-lucide="wrench" class="w-5 h-5 text-amber-300"></i>
+                        </a>
+                    </div>
+
+                    <!-- Certification & Standards Trust Strip -->
+                    <div class="pt-6 border-t border-firered-500/40 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+                        <div class="flex items-center gap-2.5 bg-firered-950/40 px-3.5 py-2.5 rounded-xl border border-firered-500/30">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-amber-300 shrink-0"></i>
+                            <div>
+                                <span class="font-bold text-white block">UL Listed</span>
+                                <span class="text-firered-200 text-[11px]">Certified Hardware</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2.5 bg-firered-950/40 px-3.5 py-2.5 rounded-xl border border-firered-500/30">
+                            <i data-lucide="check-Check" class="w-5 h-5 text-amber-300 shrink-0"></i>
+                            <div>
+                                <span class="font-bold text-white block">FM Approved</span>
+                                <span class="text-firered-200 text-[11px]">Pumps & Valves</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2.5 bg-firered-950/40 px-3.5 py-2.5 rounded-xl border border-firered-500/30">
+                            <i data-lucide="book-open-check" class="w-5 h-5 text-amber-300 shrink-0"></i>
+                            <div>
+                                <span class="font-bold text-white block">NFPA Codes</span>
+                                <span class="text-firered-200 text-[11px]">13, 20, 72 & 2001</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2.5 bg-firered-950/40 px-3.5 py-2.5 rounded-xl border border-firered-500/30">
+                            <i data-lucide="file-badge" class="w-5 h-5 text-amber-300 shrink-0"></i>
+                            <div>
+                                <span class="font-bold text-white block">Civil Defense</span>
+                                <span class="text-firered-200 text-[11px]">Grade-A Licensed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Featured Equipment & Service Highlight Showcase -->
+                <div class="lg:col-span-5">
+                    <div class="relative bg-gradient-to-b from-white/15 to-firered-950/75 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-white/25 shadow-2xl animate-float-slow">
+                        <div class="flex items-center justify-between pb-4 mb-5 border-b border-white/15">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-widest text-amber-300 font-bold block">Direct Supply & Contracting</span>
+                                <h2 class="font-display font-bold text-xl text-white">Core Protection Divisions</h2>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-white text-firered-800 font-extrabold text-xs">In-Stock 2026</span>
+                        </div>
+
+                        <!-- Interactive Quick-Jump Division Cards inside Hero -->
+                        <div class="space-y-3.5">
+                            <a href="#products" onclick="filterProductsByCategory('alarm')" class="group flex items-center justify-between p-4 rounded-2xl bg-white text-slate-900 hover:bg-firered-50 transition-all shadow-md">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-firered-600 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="bell-ring" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[11px] font-bold uppercase tracking-wider text-firered-600">Division 01</span>
+                                        <h3 class="font-display font-bold text-base text-slate-900">Addressable Fire Alarm Systems</h3>
+                                        <p class="text-xs text-slate-500">FACP Panels, Smoke/Heat Detectors & Horn Strobes</p>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-firered-600 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+
+                            <a href="#products" onclick="filterProductsByCategory('pumps')" class="group flex items-center justify-between p-4 rounded-2xl bg-white text-slate-900 hover:bg-firered-50 transition-all shadow-md">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-firered-700 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="gauge" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[11px] font-bold uppercase tracking-wider text-firered-600">Division 02</span>
+                                        <h3 class="font-display font-bold text-base text-slate-900">UL/FM Fire Pumps & Sprinkler Nets</h3>
+                                        <p class="text-xs text-slate-500">500–2500 GPM Pump Skids, OS&Y Valves & Sprinklers</p>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-firered-600 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+
+                            <a href="#products" onclick="filterProductsByCategory('suppression')" class="group flex items-center justify-between p-4 rounded-2xl bg-white text-slate-900 hover:bg-firered-50 transition-all shadow-md">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-firered-800 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="flame-kindling" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[11px] font-bold uppercase tracking-wider text-firered-600">Division 03</span>
+                                        <h3 class="font-display font-bold text-base text-slate-900">FM-200, Novec 1230 & Extinguishers</h3>
+                                        <p class="text-xs text-slate-500">Data Center Clean Agent Gas, Kitchen Hood & CO2</p>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-firered-600 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+
+                        <div class="mt-5 pt-4 border-t border-white/15 flex items-center justify-between text-xs text-firered-100">
+                            <span class="flex items-center gap-1.5">
+                                <i data-lucide="truck" class="w-4 h-4 text-amber-300"></i>
+                                <span>Fast-Track Site Delivery & Installation</span>
+                            </span>
+                            <a href="#quote-section" class="font-bold text-amber-300 hover:underline">Upload BOQ →</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= BOLD RED KEY METRICS BAND ================= -->
+    <section class="bg-firered-900 text-white py-10 border-b border-firered-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center" id="statsBand">
+                <div class="p-4 rounded-2xl bg-firered-950/45 border border-firered-700/60">
+                    <div class="font-display text-3xl sm:text-4xl font-extrabold text-white flex items-center justify-center gap-0.5">
+                        <span class="stat-counter" data-target="1250">0</span>
+                        <span class="text-amber-400">+</span>
+                    </div>
+                    <p class="text-xs sm:text-sm font-semibold text-firered-200 mt-1">Turnkey Projects Handed Over</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-firered-950/45 border border-firered-700/60">
+                    <div class="font-display text-3xl sm:text-4xl font-extrabold text-white flex items-center justify-center gap-0.5">
+                        <span class="stat-counter" data-target="100">0</span>
+                        <span class="text-amber-400">%</span>
+                    </div>
+                    <p class="text-xs sm:text-sm font-semibold text-firered-200 mt-1">Civil Defense & AHJ Approval Rate</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-firered-950/45 border border-firered-700/60">
+                    <div class="font-display text-3xl sm:text-4xl font-extrabold text-white flex items-center justify-center gap-0.5">
+                        <span class="stat-counter" data-target="45000">0</span>
+                        <span class="text-amber-400">+</span>
+                    </div>
+                    <p class="text-xs sm:text-sm font-semibold text-firered-200 mt-1">Certified Equipment Units Supplied</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-firered-950/45 border border-firered-700/60">
+                    <div class="font-display text-3xl sm:text-4xl font-extrabold text-white flex items-center justify-center gap-0.5">
+                        <span class="stat-counter" data-target="24">0</span>
+                        <span class="text-amber-400">/7</span>
+                    </div>
+                    <p class="text-xs sm:text-sm font-semibold text-firered-200 mt-1">Emergency AMC Maintenance Teams</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= COMPANY SERVICES SECTION (6 TURNKEY FIRE LINK SERVICES) ================= -->
+    <section id="services" class="py-20 sm:py-24 bg-gradient-to-b from-firered-50/70 via-white to-firered-50/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6 reveal">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-firered-100 border border-firered-200 text-firered-700 text-xs font-extrabold uppercase tracking-wider mb-3">
+                        <i data-lucide="shield-alert" class="w-4 h-4 text-firered-600"></i>
+                        <span>Turnkey Contracting & Engineering</span>
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+                        Fire Link <span class="text-firered-600">Core Services</span>
+                    </h2>
+                </div>
+                <p class="text-slate-600 max-w-md text-sm sm:text-base">
+                    We provide complete design, supply, installation, testing, commissioning, and annual maintenance across commercial towers, industrial plants, hospitals, and logistics warehouses.
+                </p>
+            </div>
+
+            <!-- 6 Interactive Service Cards Grid (Populated via JS for rich modal & quote integration) -->
+            <div id="servicesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+                <!-- Service cards injected dynamically by script below -->
+            </div>
+
+            <!-- Red Callout Banner inside Services Section -->
+            <div class="mt-14 rounded-3xl bg-gradient-to-r from-firered-900 via-firered-700 to-firered-800 text-white p-8 sm:p-10 shadow-red-glow flex flex-col lg:flex-row items-center justify-between gap-8 reveal">
+                <div class="space-y-2 max-w-2xl">
+                    <div class="inline-flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-widest">
+                        <i data-lucide="file-check-2" class="w-4 h-4"></i>
+                        <span>Need a Custom Bill of Quantities (BOQ) Priced?</span>
+                    </div>
+                    <h3 class="font-display text-2xl sm:text-3xl font-extrabold">
+                        Send Us Your Project Drawings for a 24-Hour Technical & Commercial Offer
+                    </h3>
+                    <p class="text-firered-100 text-sm">
+                        Our MEP & Fire Protection estimators review AutoCAD/Revit layouts, verify hydraulic demand, and provide value-engineered UL/FM alternatives.
+                    </p>
+                </div>
+                <div class="flex flex-wrap items-center gap-4 shrink-0">
+                    <a href="#quote-section" class="px-7 py-4 rounded-2xl bg-white text-firered-800 hover:bg-amber-300 hover:text-firered-950 font-display font-extrabold text-sm shadow-lg transition-all">
+                        Request Contracting Offer
+                    </a>
+                    <a href="#products" class="px-6 py-4 rounded-2xl bg-firered-950/60 hover:bg-firered-950 border border-firered-400/40 text-white font-display font-bold text-sm transition-all">
+                        Browse Equipment Catalog
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= DEDICATED PRODUCTS CARDS CATALOG SECTION (CORE FEATURE) ================= -->
+    <section id="products" class="py-20 sm:py-24 bg-white border-t border-firered-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Products Catalog Top Red Header Banner -->
+            <div class="rounded-3xl bg-gradient-to-br from-firered-800 via-firered-700 to-firered-900 text-white p-8 sm:p-12 mb-10 shadow-red-glow relative overflow-hidden reveal">
+                <div class="absolute inset-0 red-grid-overlay pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+                    <div class="max-w-2xl space-y-3">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/15 border border-white/25 text-amber-300 text-xs font-bold uppercase tracking-widest">
+                            <i data-lucide="box" class="w-4 h-4"></i>
+                            <span>Certified Fire Safety Hardware Catalog</span>
+                        </div>
+                        <h2 class="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+                            Fire Link <span class="text-amber-300">Products Catalog</span>
+                        </h2>
+                        <p class="text-firered-100 text-sm sm:text-base leading-relaxed">
+                            Browse our flagship line of UL Listed, FM Approved, and LPCB certified fire protection products. Click <strong class="text-white">"Full Specs"</strong> on any card to inspect the technical datasheet or <strong class="text-amber-300">"+ Add to Quote"</strong> to build your project requisition list.
+                        </p>
+                    </div>
+
+                    <!-- Live Search Input inside Red Catalog Header -->
+                    <div class="w-full lg:w-80">
+                        <label for="productSearchInput" class="block text-xs font-bold uppercase tracking-wider text-firered-200 mb-2">
+                            Search by Model, Name or Spec
+                        </label>
+                        <div class="relative">
+                            <i data-lucide="search" class="w-4 h-4 text-firered-700 absolute left-4 top-1/2 -translate-y-1/2"></i>
+                            <input
+                                id="productSearchInput"
+                                type="text"
+                                oninput="handleProductSearch(this.value)"
+                                placeholder="e.g. FM-200, Pump, FL-9000, 6kg..."
+                                class="w-full pl-11 pr-9 py-3.5 rounded-2xl bg-white text-slate-900 placeholder-slate-400 text-sm font-medium shadow-inner focus:outline-none focus:ring-2 focus:ring-amber-400"
+                            >
+                            <button id="clearSearchBtn" onclick="clearProductSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-firered-600">
+                                <i data-lucide="x-circle" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Category Filter Pills Bar -->
+                <div class="relative z-10 mt-8 pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex flex-wrap items-center gap-2" id="categoryTabsContainer">
+                        <button onclick="filterProductsByCategory('all')" data-cat="all" class="cat-tab px-4 py-2.5 rounded-xl bg-white text-firered-800 font-display font-bold text-xs sm:text-sm shadow-md transition-all">
+                            All Products (12)
+                        </button>
+                        <button onclick="filterProductsByCategory('alarm')" data-cat="alarm" class="cat-tab px-4 py-2.5 rounded-xl bg-firered-950/50 hover:bg-white/20 text-white border border-white/15 font-display font-semibold text-xs sm:text-sm transition-all">
+                            Fire Alarm Systems
+                        </button>
+                        <button onclick="filterProductsByCategory('pumps')" data-cat="pumps" class="cat-tab px-4 py-2.5 rounded-xl bg-firered-950/50 hover:bg-white/20 text-white border border-white/15 font-display font-semibold text-xs sm:text-sm transition-all">
+                            Fire Pumps & Valves
+                        </button>
+                        <button onclick="filterProductsByCategory('suppression')" data-cat="suppression" class="cat-tab px-4 py-2.5 rounded-xl bg-firered-950/50 hover:bg-white/20 text-white border border-white/15 font-display font-semibold text-xs sm:text-sm transition-all">
+                            Gas & Kitchen Suppression
+                        </button>
+                        <button onclick="filterProductsByCategory('extinguishers')" data-cat="extinguishers" class="cat-tab px-4 py-2.5 rounded-xl bg-firered-950/50 hover:bg-white/20 text-white border border-white/15 font-display font-semibold text-xs sm:text-sm transition-all">
+                            Fire Extinguishers
+                        </button>
+                        <button onclick="filterProductsByCategory('cabinets')" data-cat="cabinets" class="cat-tab px-4 py-2.5 rounded-xl bg-firered-950/50 hover:bg-white/20 text-white border border-white/15 font-display font-semibold text-xs sm:text-sm transition-all">
+                            Cabinets, Hoses & Hydrants
+                        </button>
+                        <button onclick="filterProductsByCategory('sprinklers')" data-cat="sprinklers" class="cat-tab px-4 py-2.5 rounded-xl bg-firered-950/50 hover:bg-white/20 text-white border border-white/15 font-display font-semibold text-xs sm:text-sm transition-all">
+                            Sprinkler Heads
+                        </button>
+                    </div>
+
+                    <div class="text-xs font-semibold text-amber-300" id="productResultsCounter">
+                        Showing all 12 certified products
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Cards Grid (12 Rich Cards) -->
+            <div id="productsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+                <!-- Populated dynamically by JavaScript -->
+            </div>
+
+            <!-- Empty Search State -->
+            <div id="emptyProductsState" class="hidden text-center py-16 px-4 rounded-3xl bg-firered-50 border-2 border-dashed border-firered-200">
+                <div class="w-16 h-16 rounded-2xl bg-firered-600 text-white flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="package-search" class="w-8 h-8"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-slate-900">No Matching Fire Equipment Found</h3>
+                <p class="text-slate-600 text-sm max-w-md mx-auto mt-1 mb-6">
+                    We couldn't find a product matching your filter criteria. Reset the filter to view all 12 flagship systems or request a custom model in your quote.
+                </p>
+                <button onclick="clearProductSearch(); filterProductsByCategory('all');" class="px-6 py-3 rounded-xl bg-firered-600 hover:bg-firered-700 text-white font-display font-bold text-sm shadow-md transition-all">
+                    Show All 12 Products
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= TURNKEY EXECUTION PROCESS & WHY FIRE LINK (RED THEME) ================= -->
+    <section id="why-firelink" class="py-20 bg-firered-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 red-grid-overlay pointer-events-none"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="px-3.5 py-1 rounded-full bg-firered-800 border border-firered-500 text-amber-300 text-xs font-bold uppercase tracking-widest">
+                    How Fire Link Delivers
+                </span>
+                <h2 class="font-display text-3xl sm:text-5xl font-extrabold mt-3 tracking-tight">
+                    4-Stage Turnkey Project Execution
+                </h2>
+                <p class="text-firered-100 text-sm sm:text-base mt-3">
+                    Whether you are outfitting a new industrial plant or upgrading an existing commercial tower, our engineering team manages the entire lifecycle under one roof.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+                <!-- Step 1 -->
+                <div class="rounded-3xl bg-firered-950/70 border border-firered-600/50 p-7 relative group hover:border-amber-400 transition-all">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="font-display font-extrabold text-3xl text-amber-400">01</span>
+                        <div class="w-12 h-12 rounded-2xl bg-firered-700 flex items-center justify-center text-white group-hover:bg-amber-400 group-hover:text-firered-950 transition-colors">
+                            <i data-lucide="compass" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Site Survey & NFPA Design</h3>
+                    <p class="text-firered-100 text-xs sm:text-sm leading-relaxed">
+                        Detailed hazard classification, Elite hydraulic calculations, riser diagrams, and shop drawings stamped by certified engineers.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="rounded-3xl bg-firered-950/70 border border-firered-600/50 p-7 relative group hover:border-amber-400 transition-all">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="font-display font-extrabold text-3xl text-amber-400">02</span>
+                        <div class="w-12 h-12 rounded-2xl bg-firered-700 flex items-center justify-center text-white group-hover:bg-amber-400 group-hover:text-firered-950 transition-colors">
+                            <i data-lucide="package" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">UL/FM Equipment Supply</h3>
+                    <p class="text-firered-100 text-xs sm:text-sm leading-relaxed">
+                        Direct delivery from our regional warehouses—fire pumps, seamless schedule-40 red pipes, grooved fittings, panels, and gas cylinders.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="rounded-3xl bg-firered-950/70 border border-firered-600/50 p-7 relative group hover:border-amber-400 transition-all">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="font-display font-extrabold text-3xl text-amber-400">03</span>
+                        <div class="w-12 h-12 rounded-2xl bg-firered-700 flex items-center justify-center text-white group-hover:bg-amber-400 group-hover:text-firered-950 transition-colors">
+                            <i data-lucide="hard-hat" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Installation & Testing</h3>
+                    <p class="text-firered-100 text-xs sm:text-sm leading-relaxed">
+                        Mechanical piping, addressable loop wiring, 200 PSI hydrostatic pressure testing, room integrity fan tests, and full commissioning.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="rounded-3xl bg-firered-950/70 border border-firered-600/50 p-7 relative group hover:border-amber-400 transition-all">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="font-display font-extrabold text-3xl text-amber-400">04</span>
+                        <div class="w-12 h-12 rounded-2xl bg-firered-700 flex items-center justify-center text-white group-hover:bg-amber-400 group-hover:text-firered-950 transition-colors">
+                            <i data-lucide="BadgeCheck" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Civil Defense & AMC Care</h3>
+                    <p class="text-firered-100 text-xs sm:text-sm leading-relaxed">
+                        Final Civil Defense inspection walkthrough, occupancy clearance certificate issuance, and scheduled 24/7 Annual Maintenance Contracts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CERTIFICATIONS & APPROVALS BAR ================= -->
+    <section id="certifications" class="py-14 bg-firered-50 border-b border-firered-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-firered-700">International Codes & Quality Approvals</span>
+                <h3 class="font-display text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">All Products & Installations Comply With Global Safety Standards</h3>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+                <div class="p-4 rounded-2xl bg-white border border-firered-200 shadow-sm">
+                    <span class="font-display font-extrabold text-xl text-firered-700 block">UL LISTED</span>
+                    <span class="text-[11px] text-slate-500">Underwriters Laboratories</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white border border-firered-200 shadow-sm">
+                    <span class="font-display font-extrabold text-xl text-firered-700 block">FM APPROVED</span>
+                    <span class="text-[11px] text-slate-500">Factory Mutual Global</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white border border-firered-200 shadow-sm">
+                    <span class="font-display font-extrabold text-xl text-firered-700 block">NFPA MEMBER</span>
+                    <span class="text-[11px] text-slate-500">Codes 13, 20, 25, 72, 2001</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white border border-firered-200 shadow-sm">
+                    <span class="font-display font-extrabold text-xl text-firered-700 block">LPCB / EN54</span>
+                    <span class="text-[11px] text-slate-500">Loss Prevention Cert.</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white border border-firered-200 shadow-sm">
+                    <span class="font-display font-extrabold text-xl text-firered-700 block">ISO 9001:2015</span>
+                    <span class="text-[11px] text-slate-500">Quality Management</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white border border-firered-200 shadow-sm">
+                    <span class="font-display font-extrabold text-xl text-firered-700 block">CIVIL DEFENSE</span>
+                    <span class="text-[11px] text-slate-500">Class-A Certified Contractor</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= REQUEST A QUOTATION & PROJECT INQUIRY SECTION ================= -->
+    <section id="quote-section" class="py-20 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-start reveal">
+                
+                <!-- Left Column: Red Contact & Direct Sales Information Card -->
+                <div class="lg:col-span-5 rounded-3xl bg-gradient-to-br from-firered-800 via-firered-700 to-firered-950 text-white p-8 sm:p-10 shadow-red-glow space-y-8 relative overflow-hidden">
+                    <div class="absolute inset-0 red-grid-overlay pointer-events-none"></div>
+                    <div class="relative z-10 space-y-3">
+                        <span class="px-3 py-1 rounded-full bg-white/15 text-amber-300 text-xs font-bold uppercase tracking-wider">
+                            Direct Sales & Contracting Desk
+                        </span>
+                        <h2 class="font-display text-3xl font-extrabold text-white">
+                            Request Your Official Fire Link Quotation
+                        </h2>
+                        <p class="text-firered-100 text-sm leading-relaxed">
+                            Any products or services you added using the <strong class="text-white">"+ Add to Quote"</strong> buttons are automatically attached to this inquiry form.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 space-y-5 pt-4 border-t border-white/15 text-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center text-amber-300 shrink-0">
+                                <i data-lucide="phone-Call" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs uppercase tracking-wider text-firered-200 font-bold block">Sales & Tender Hotline</span>
+                                <span class="font-display font-bold text-lg text-white">+1 (800) 555-3473 / Ext. 1</span>
+                                <span class="block text-xs text-firered-200">24/7 Emergency AMC Dispatch: Ext. 9</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center text-amber-300 shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs uppercase tracking-wider text-firered-200 font-bold block">Engineering & Estimation Email</span>
+                                <span class="font-display font-bold text-base text-white">tenders@firelink-systems.com</span>
+                                <span class="block text-xs text-firered-200">sales@firelink-systems.com</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center text-amber-300 shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs uppercase tracking-wider text-firered-200 font-bold block">Headquarters & Central Warehouse</span>
+                                <span class="font-display font-bold text-base text-white">Fire Link Industrial Complex, Zone B4</span>
+                                <span class="block text-xs text-firered-200">Showroom Open Sat–Thu: 8:00 AM – 6:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Selected Quote Items Summary Box inside Left Panel -->
+                    <div class="relative z-10 p-5 rounded-2xl bg-firered-950/80 border border-firered-500/40">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                                <span>Attached Products & Services</span>
+                            </span>
+                            <button type="button" onclick="toggleQuoteDrawer(true)" class="text-xs text-white underline hover:text-amber-300">
+                                Edit List
+                            </button>
+                        </div>
+                        <div id="formQuoteSummaryList" class="text-xs text-firered-100 space-y-1.5 max-h-40 overflow-y-auto">
+                            <p class="italic text-firered-300">No specific items attached yet. Click "+ Add to Quote" on any product or service card above, or type your needs on the right.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Quotation Form -->
+                <div class="lg:col-span-7">
+                    <form id="officialQuoteForm" onsubmit="submitOfficialQuote(event)" class="rounded-3xl bg-white border-2 border-firered-100 p-7 sm:p-10 shadow-xl space-y-6">
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                            <div>
+                                <span class="text-xs font-extrabold uppercase tracking-wider text-firered-600">Fast-Track Commercial Offer</span>
+                                <h3 class="font-display text-2xl font-extrabold text-slate-900">Project & Equipment Inquiry Form</h3>
+                            </div>
+                            <div class="w-12 h-12 rounded-2xl bg-firered-50 border border-firered-200 flex items-center justify-center text-firered-600">
+                                <i data-lucide="file-text" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Full Name *</label>
+                                <input type="text" required placeholder="Eng. Kareem Mansour" class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-firered-600 focus:bg-white focus:outline-none text-sm text-slate-900">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Company / Organization *</label>
+                                <input type="text" required placeholder="Delta Industrial Group" class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-firered-600 focus:bg-white focus:outline-none text-sm text-slate-900">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Business Email *</label>
+                                <input type="email" required placeholder="procurement@company.com" class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-firered-600 focus:bg-white focus:outline-none text-sm text-slate-900">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Phone / WhatsApp Number *</label>
+                                <input type="tel" required placeholder="+20 100 123 4567" class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-firered-600 focus:bg-white focus:outline-none text-sm text-slate-900">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Inquiry Type *</label>
+                                <select class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-firered-600 focus:bg-white focus:outline-none text-sm text-slate-900 font-medium">
+                                    <option>Equipment Supply + Turnkey Installation</option>
+                                    <option>Direct Fire Equipment Supply Only (BOQ)</option>
+                                    <option>Annual Maintenance Contract (AMC)</option>
+                                    <option>Engineering Design & Civil Defense Approval</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Facility Type</label>
+                                <select class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-firered-600 focus:bg-white focus:outline-none text-sm text-slate-900 font-medium">
+                                    <option>Industrial Factory / Warehouse</option>
+                                    <option>Commercial Tower / Administrative Building</option>
+                                    <option>Data Center / Telecom Room</option>
+                                    <option>Hospital / Healthcare Facility</option>
+                                    <option>Hotel / Retail Mall / Restaurant</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Project Notes, Quantities & Specifications</label>
+                            <textarea id="quoteTextarea" rows="4" placeholder="Specify required quantities, delivery location, or project timeline..." class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-firered-600 focus:bg-white focus:outline-none text-sm text-slate-900"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-firered-700 via-firered-600 to-firered-700 hover:from-firered-800 hover:to-firered-900 text-white font-display font-extrabold text-base shadow-red-glow flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5">
+                            <span>Submit Official Quotation Request</span>
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+
+                        <!-- Confirmation Alert Banner -->
+                        <div id="quoteSubmittedBanner" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs sm:text-sm flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i>
+                                <span><strong>Quotation Request Received (#FL-2026-884):</strong> Our Fire Link sales engineering team will contact you with a formal priced offer within 2 business hours.</span>
+                            </div>
+                            <button type="button" onclick="document.getElementById('quoteSubmittedBanner').classList.add('hidden')" class="text-xs font-bold underline ml-3">Close</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= DEEP CRIMSON FOOTER ================= -->
+    <footer class="bg-firered-950 text-firered-100 border-t-4 border-firered-600 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-firered-800/80">
+                <!-- Col 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-firered-600 font-extrabold">
+                            <i data-lucide="flame" class="w-6 h-6"></i>
+                        </div>
+                        <span class="font-display font-extrabold text-2xl text-white">FIRE<span class="text-amber-400">LINK</span></span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-firered-200 leading-relaxed">
+                        Your trusted partner for UL/FM certified fire fighting equipment, addressable alarm systems, gas suppression skids, and turnkey MEP fire contracting.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider mb-4">Company Services</h4>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-firered-200">
+                        <li><a href="#services" class="hover:text-white transition-colors">Fire Alarm & Detection Systems</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Sprinkler & Hydrant Networks</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">FM-200 & Novec 1230 Suppression</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">UL/FM Fire Pump Packages</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">AMC Maintenance & Civil Defense</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider mb-4">Products Catalog</h4>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-firered-200">
+                        <li><button onclick="filterProductsByCategory('alarm'); document.getElementById('products').scrollIntoView();" class="hover:text-amber-300 transition-colors">Addressable FACP Panels & Detectors</button></li>
+                        <li><button onclick="filterProductsByCategory('pumps'); document.getElementById('products').scrollIntoView();" class="hover:text-amber-300 transition-colors">UL/FM Fire Pumps & OS&Y Valves</button></li>
+                        <li><button onclick="filterProductsByCategory('suppression'); document.getElementById('products').scrollIntoView();" class="hover:text-amber-300 transition-colors">Clean Agent Cylinders & Kitchen Hood</button></li>
+                        <li><button onclick="filterProductsByCategory('extinguishers'); document.getElementById('products').scrollIntoView();" class="hover:text-amber-300 transition-colors">Dry Powder & CO2 Extinguishers</button></li>
+                        <li><button onclick="filterProductsByCategory('cabinets'); document.getElementById('products').scrollIntoView();" class="hover:text-amber-300 transition-colors">Hose Reel Cabinets & Fire Hydrants</button></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider mb-4">Emergency & Tenders</h4>
+                    <p class="text-xs text-firered-200 mb-4">Need urgent spare parts, cylinder refilling, or Civil Defense inspection support?</p>
+                    <a href="tel:18005553473" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-firered-700 hover:bg-firered-600 text-white font-display font-bold text-xs shadow-md transition-all">
+                        <i data-lucide="phone" class="w-4 h-4 text-amber-300"></i>
+                        <span>Call 1-800-555-FIRE</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-firered-300 gap-4">
+                <p>© 2026 Fire Link Fire Fighting Systems & Contracting Co. All rights reserved.</p>
+                <p>Engineered to NFPA, UL, FM & Civil Defense Standards.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= INTERACTIVE PRODUCT & SERVICE SPECIFICATION MODAL ================= -->
+    <div id="specModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-firered-950/75 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border-2 border-firered-600 animate-[cardPopIn_0.25s_ease-out]">
+            <!-- Red Modal Top Header -->
+            <div class="bg-gradient-to-r from-firered-800 via-firered-700 to-firered-900 text-white p-6 flex items-start justify-between gap-4">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span id="modalCodeBadge" class="px-2.5 py-0.5 rounded-md bg-amber-400 text-firered-950 font-mono font-extrabold text-xs">MODEL</span>
+                        <span id="modalCertBadge" class="px-2.5 py-0.5 rounded-md bg-white/15 text-white font-semibold text-xs">UL / FM Listed</span>
+                    </div>
+                    <h3 id="modalTitle" class="font-display text-xl sm:text-2xl font-extrabold text-white">Product Title</h3>
+                </div>
+                <button onclick="closeSpecModal()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Close Modal">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 sm:p-8 max-h-[75vh] overflow-y-auto space-y-6">
+                <p id="modalDescription" class="text-slate-600 text-sm sm:text-base leading-relaxed"></p>
+
+                <!-- Technical Datasheet Table -->
+                <div>
+                    <h4 class="font-display font-bold text-xs uppercase tracking-wider text-firered-700 mb-3 flex items-center gap-1.5">
+                        <i data-lucide="sliders" class="w-4 h-4"></i>
+                        <span>Technical Datasheet & Key Specifications</span>
+                    </h4>
+                    <div id="modalSpecsTable" class="divide-y divide-firered-100 rounded-2xl border border-firered-100 bg-firered-50/40 overflow-hidden text-xs sm:text-sm">
+                        <!-- Rows populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Recommended Applications -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Recommended Facility Applications</span>
+                    <p id="modalApplications" class="text-xs sm:text-sm font-medium text-slate-800"></p>
+                </div>
+
+                <!-- Modal Footer Actions -->
+                <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                    <button onclick="closeSpecModal()" class="px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs sm:text-sm transition-colors">
+                        Close Window
+                    </button>
+                    <button id="modalAddQuoteBtn" class="px-6 py-3 rounded-xl bg-firered-600 hover:bg-firered-700 text-white font-display font-bold text-xs sm:text-sm shadow-md flex items-center gap-2 transition-all">
+                        <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                        <span>Add to Quote Requisition</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SLIDE-OVER QUOTE REQUISITION DRAWER ================= -->
+    <div id="quoteDrawerBackdrop" onclick="toggleQuoteDrawer(false)" class="fixed inset-0 z-50 hidden bg-firered-950/60 backdrop-blur-xs transition-opacity"></div>
+    <aside id="quoteDrawer" class="fixed top-0 right-0 bottom-0 z-50 w-full max-w-md bg-white shadow-2xl border-l-4 border-firered-600 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+        <!-- Drawer Header -->
+        <div class="p-6 bg-gradient-to-r from-firered-800 to-firered-700 text-white flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-amber-300">
+                    <i data-lucide="clipboard-list" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-display font-extrabold text-lg">Project Quote List</h3>
+                    <p class="text-xs text-firered-100">Selected Fire Link Products & Services</p>
+                </div>
+            </div>
+            <button onclick="toggleQuoteDrawer(false)" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Drawer Item List -->
+        <div id="quoteDrawerItems" class="p-6 flex-1 overflow-y-auto space-y-3">
+            <!-- Populated dynamically -->
+        </div>
+
+        <!-- Drawer Footer -->
+        <div class="p-6 bg-firered-50 border-t border-firered-100 space-y-3">
+            <div class="flex items-center justify-between text-xs font-bold text-slate-700">
+                <span>Total Selected Line Items:</span>
+                <span id="drawerTotalCount" class="text-firered-700 font-extrabold text-sm">0 Items</span>
+            </div>
+            <button onclick="proceedToQuoteForm()" class="w-full py-3.5 rounded-xl bg-firered-600 hover:bg-firered-700 text-white font-display font-bold text-sm shadow-md flex items-center justify-center gap-2 transition-all">
+                <span>Attach to Official Quote Form</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ================= TOAST NOTIFICATION ================= -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 hidden px-5 py-3.5 rounded-2xl bg-firered-900 text-white border border-firered-500 shadow-2xl flex items-center gap-3 text-xs sm:text-sm font-semibold">
+        <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-400 shrink-0"></i>
+        <span id="toastMessage">Added to Quote List!</span>
+    </div>
+
+    <!-- ================= JAVASCRIPT: DATA, SVG ILLUSTRATIONS, ANIMATIONS & INTERACTIVITY ================= -->
+    <script>
+        // =========================================================================
+        // 1. COMPANY SERVICES DATA (6 Core Fire Link Contracting Services)
+        // =========================================================================
+        const fireLinkServices = [
+            {
+                id: 'srv-alarm',
+                number: '01',
+                title: 'Fire Alarm & Detection Systems',
+                badge: 'NFPA 72 / UL 864',
+                icon: 'bell-ring',
+                shortDesc: 'Complete design, loop cabling, and commissioning of addressable and conventional fire alarm networks, voice evacuation, and aspirating smoke detection.',
+                deliverables: [
+                    '1 to 8 Loop Addressable FACP Control Panels',
+                    'Optical Smoke, Multi-Sensor & Linear Heat Cables',
+                    'Voice Evacuation (PAVA) & Emergency Strobe Networks',
+                    'Explosion-Proof & Intrinsically Safe Industrial Zones'
+                ],
+                specs: [
+                    ['Governing Standard', 'NFPA 72 & EN-54 Part 2/4'],
+                    ['Cabling Specification', '2x1.5mm² Fire Resistant FP200 Red Cable'],
+                    ['System Architecture', 'Fully Addressable / Conventional / Hybrid'],
+                    ['Warranty & Support', '2-Year Defect Liability + 24/7 Callout']
+                ],
+                applications: 'Commercial Towers, Hospitals, Shopping Malls, Hotels, Educational Campuses, and Industrial Plants.'
+            },
+            {
+                id: 'srv-water',
+                number: '02',
+                title: 'Water-Based Fire Fighting Networks',
+                badge: 'NFPA 13 / NFPA 14',
+                icon: 'droplets',
+                shortDesc: 'Turnkey mechanical piping and installation of wet, dry, pre-action, and deluge sprinkler networks, indoor hose reels, and external fire hydrant rings.',
+                deliverables: [
+                    'Wet, Dry & Pre-Action Automatic Sprinkler Grids',
+                    'Class I, II & III Standpipe & Landing Valve Risers',
+                    'High-Velocity Foam-Water Deluge Systems',
+                    'External Underground HDPE/Steel Hydrant Ring Mains'
+                ],
+                specs: [
+                    ['Governing Standard', 'NFPA 13, NFPA 14 & NFPA 24'],
+                    ['Piping Material', 'ASTM A53 / A106 Seamless Sch. 40 Red Coated'],
+                    ['Hydrostatic Test', '200 PSI (13.8 Bar) for 2 Hours Certified'],
+                    ['Fittings & Valves', 'UL/FM Grooved Couplings & OS&Y Gate Valves']
+                ],
+                applications: 'Logistics Warehouses, High-Rise Towers, Underground Parking Garages, Hangars, and Manufacturing Lines.'
+            },
+            {
+                id: 'srv-gas',
+                number: '03',
+                title: 'Clean Agent & Gas Suppression',
+                badge: 'NFPA 2001 / UL-300',
+                icon: 'wind',
+                shortDesc: 'Waterless, zero-residue total flooding gas suppression systems engineered to extinguish fires in under 10 seconds without harming sensitive electronics.',
+                deliverables: [
+                    'FM-200® (HFC-227ea) & Novec™ 1230 Clean Agent Skids',
+                    'High-Pressure CO2 Total Flooding & Local Application',
+                    'UL-300 Wet Chemical Commercial Kitchen Hood Systems',
+                    'Room Door-Fan Enclosure Integrity Testing'
+                ],
+                specs: [
+                    ['Governing Standard', 'NFPA 2001, NFPA 12 & NFPA 17A'],
+                    ['Discharge Time', '≤ 10 Seconds Total Flooding'],
+                    ['Cylinder Pressure', '25 Bar / 42 Bar / 50 Bar Seamless Banks'],
+                    ['Release Control', 'Cross-Zone Solenoid Actuator + Manual Release']
+                ],
+                applications: 'Server Rooms, Data Centers, Switchgear & Transformer Vaults, Archives, Telecom Hubs, and Commercial Kitchens.'
+            },
+            {
+                id: 'srv-pumps',
+                number: '04',
+                title: 'UL / FM Fire Pump Stations',
+                badge: 'NFPA 20 Certified',
+                icon: 'gauge',
+                shortDesc: 'Supply, pump-room mechanical erection, alignment, and flow-meter testing of complete UL/FM listed Electric, Diesel, and Jockey fire pump sets.',
+                deliverables: [
+                    'Horizontal Split-Case & Vertical Turbine Pump Sets',
+                    'Main Electric + Standby Diesel + Jockey Pump Skids',
+                    'UL/FM Microprocessor Pump Controllers with ATS',
+                    'PRV Station, Collector Header & Flow Meter Loop'
+                ],
+                specs: [
+                    ['Governing Standard', 'NFPA 20 Standard for Stationary Pumps'],
+                    ['Flow Capacities', '250 GPM up to 3,000 GPM'],
+                    ['Pressure Ratings', '7 Bar to 16 Bar (100 – 230 PSI)'],
+                    ['Certification', 'UL Listed & FM Approved Nameplate Skids']
+                ],
+                applications: 'High-Rise Buildings, Industrial Complexes, Oil & Gas Terminals, Power Plants, and District Pump Stations.'
+            },
+            {
+                id: 'srv-eng',
+                number: '05',
+                title: 'Engineering Design & Hydraulic Calc.',
+                badge: 'Elite / AutoCAD / BIM',
+                icon: 'DraftingCompass',
+                shortDesc: 'In-house fire protection engineering consultancy providing code compliance studies, BIM/Revit 3D coordination, and Authority Having Jurisdiction submittals.',
+                deliverables: [
+                    'Elite™ Fire Sprinkler & Gas Hydraulic Calculations',
+                    'IFC Shop Drawings, Riser Schematics & As-Builts',
+                    'Cause & Effect Matrix & Battery Load Calculations',
+                    'BIM LOD-400 Clash-Free MEP Coordination'
+                ],
+                specs: [
+                    ['Design Software', 'AutoCAD, Revit BIM, Elite Fire & Pipenet'],
+                    ['Code Frameworks', 'NFPA, IBC, SBC, UAE Fire Code & Local Civil Defense'],
+                    ['Submittal Package', 'Material Submittals (MAS), Method Statements & ITP'],
+                    ['Turnaround Speed', '5–7 Business Days per Facility Package']
+                ],
+                applications: 'Consultants, Main Contractors, Industrial Developers, and Facility Owners seeking code approval.'
+            },
+            {
+                id: 'srv-amc',
+                number: '06',
+                title: 'Maintenance (AMC) & Civil Defense',
+                badge: 'NFPA 25 / Grade-A',
+                icon: 'clipboard-check',
+                shortDesc: 'Preventive and corrective Annual Maintenance Contracts (AMC), extinguisher hydrostatic refilling, and official Civil Defense annual license renewal.',
+                deliverables: [
+                    'Monthly, Quarterly & Annual NFPA-25 Inspections',
+                    '24/7 Emergency Breakdown & False-Alarm Response',
+                    'Extinguisher & FM-200/CO2 Cylinder Refilling & Testing',
+                    'Official Civil Defense Certificate Issuance & Renewal'
+                ],
+                specs: [
+                    ['Inspection Standard', 'NFPA 25 & NFPA 72 Chapter 14'],
+                    ['Emergency SLA', 'Under 4 Hours On-Site Technician Dispatch'],
+                    ['Digital Reporting', 'Signed Inspection Logs & Deficiency Reports'],
+                    ['Licensing', 'Grade-A Approved Civil Defense Contractor']
+                ],
+                applications: 'Existing Commercial Buildings, Factories, Banks, Schools, Hospitals, and Residential Compounds.'
+            }
+        ];
+
+        // =========================================================================
+        // 2. DEDICATED PRODUCTS CATALOG DATA (12 Realistic Fire Equipment Products)
+        // =========================================================================
+        const fireLinkProducts = [
+            {
+                id: 'prd-01',
+                model: 'FL-9000-8L',
+                category: 'alarm',
+                categoryLabel: 'Fire Alarm Systems',
+                name: 'Addressable Fire Alarm Control Panel (1–8 Loops)',
+                cert: 'UL 864 / EN54-2',
+                stockStatus: 'In Stock',
+                specsPills: ['1 to 8 Loops', 'Up to 2,016 Devices', '7" Color Touch LCD'],
+                shortDesc: 'Intelligent modular microprocessor-based Addressable FACP featuring 7-inch touch display, cause-and-effect logic programming, and 72-hour battery backup.',
+                svgType: 'panel',
+                datasheet: [
+                    ['Model Number', 'FL-9000-8L Intelligent FACP'],
+                    ['Loop Capacity', 'Expandable 1 to 8 Addressable Loops (252 devices/loop)'],
+                    ['Networkability', 'Peer-to-peer RS485 / Fiber Optic up to 64 Panels'],
+                    ['Power Supply', '230V AC, 50/60Hz with Dual 24V Sealed Lead Acid Batteries'],
+                    ['Enclosure Rating', 'IP30 Heavy-Gauge Fire-Red Powder-Coated Steel'],
+                    ['Approvals', 'UL 864 10th Edition, FM Approved, EN54 Parts 2 & 4']
+                ],
+                applications: 'High-rise commercial buildings, hospitals, shopping malls, industrial plants, and multi-building campuses.'
+            },
+            {
+                id: 'prd-02',
+                model: 'FL-S400-MC',
+                category: 'alarm',
+                categoryLabel: 'Fire Alarm Systems',
+                name: 'Multi-Criteria Optical Smoke & Thermal Detector',
+                cert: 'UL 268 / LPCB',
+                stockStatus: 'In Stock',
+                specsPills: ['Optical + Rate-of-Rise', '360° Dual LED', 'Built-in Isolator'],
+                shortDesc: 'Digital addressable dual-criteria detector combining photoelectric smoke sensing with rate-of-rise 58°C thermal thermistor and drift compensation.',
+                svgType: 'detector',
+                datasheet: [
+                    ['Model Number', 'FL-S400-MC Addressable Multi-Sensor'],
+                    ['Detection Principle', 'Infrared Light Scatter + NTC Thermal Sensor'],
+                    ['Operating Voltage', '17 – 28V DC Loop Powered (Low 320µA Quiescent)'],
+                    ['Short-Circuit Isolator', 'Integrated Dual-Direction Loop Isolator'],
+                    ['Sensitivity Range', '0.08 to 0.14 dB/m Programmable Day/Night Mode'],
+                    ['Protection Rating', 'IP43 with Insect-Resistant Stainless Mesh Chamber']
+                ],
+                applications: 'Offices, hotel guest rooms, corridors, server rooms, electrical risers, and clean manufacturing rooms.'
+            },
+            {
+                id: 'prd-03',
+                model: 'FL-PMP-1000',
+                category: 'pumps',
+                categoryLabel: 'Fire Pumps & Valves',
+                name: 'UL/FM Listed Fire Pump Set (Electric + Diesel + Jockey)',
+                cert: 'UL / FM / NFPA 20',
+                stockStatus: 'Custom Skid',
+                specsPills: ['500–2500 GPM', '8 to 16 Bar', 'Complete Manifold'],
+                shortDesc: 'Factory-assembled and hydrostatically testedNFPA 20 fire pump package with Horizontal Split-Case Electric Pump, Turbo Diesel Engine Pump, Jockey Pump, and UL/FM Controllers.',
+                svgType: 'pump',
+                datasheet: [
+                    ['Model Series', 'FL-PMP-1000 Split-Case Turnkey Skid'],
+                    ['Rated Flow Capacities', '500, 750, 1000, 1500, 2000 & 2500 US GPM'],
+                    ['Pressure Head Range', '100 PSI to 230 PSI (7 Bar – 16 Bar)'],
+                    ['Pump Casing & Impeller', 'Ductile Iron ASTM A536 Casing / Bronze ASTM B62 Impeller'],
+                    ['Control Panels', 'UL/FM Wye-Delta / Soft-Starter Electric + Automatic Diesel Controller'],
+                    ['Included Accessories', 'OS&Y Gate Valves, Check Valves, Flow Meter, Relief Cone & Header']
+                ],
+                applications: 'Main fire pump rooms for towers, warehouses, factories, petrochemical depots, and infrastructure hubs.'
+            },
+            {
+                id: 'prd-04',
+                model: 'FL-FM200-150L',
+                category: 'suppression',
+                categoryLabel: 'Gas & Kitchen Suppression',
+                name: 'FM-200® (HFC-227ea) Clean Agent Cylinder Bank System',
+                cert: 'UL Listed / FM',
+                stockStatus: 'In Stock',
+                specsPills: ['40L to 180L Cylinders', '25 / 42 Bar', '≤10s Discharge'],
+                shortDesc: 'Total flooding clean agent gas suppression system stored in seamless red steel cylinders with solenoid release valve, pressure gauge, and radial discharge nozzles.',
+                svgType: 'fm200',
+                datasheet: [
+                    ['Extinguishing Agent', 'HFC-227ea (Heptafluoropropane / FM-200) Zero ODP'],
+                    ['Cylinder Capacities', '40L, 70L, 100L, 120L, 150L & 180L Seamless Steel'],
+                    ['Working Pressure', '25 Bar (360 PSI) or 42 Bar (600 PSI) Super-Pressurized w/ N2'],
+                    ['Actuation Modes', '24V DC Electric Solenoid + Pneumatic + Local Manual Lever'],
+                    ['Design Concentration', '7.2% to 9.0% v/v per NFPA 2001'],
+                    ['Hardware Included', 'Manifold Check Valves, Flexible Discharge Hose, Low-Pressure Switch']
+                ],
+                applications: 'Data centers, server rooms, UPS battery rooms, switchgear vaults, control rooms, and medical imaging suites.'
+            },
+            {
+                id: 'prd-05',
+                model: 'FL-EXT-PRO',
+                category: 'extinguishers',
+                categoryLabel: 'Fire Extinguishers',
+                name: 'Dry Chemical Powder & CO2 Fire Extinguishers (6kg / 9kg / 50kg)',
+                cert: 'UL / EN3 / Civil Defense',
+                stockStatus: 'In Stock',
+                specsPills: ['ABC Powder 85% MAP', 'CO2 Seamless', 'Portable & Trolley'],
+                shortDesc: 'Heavy-duty portable and wheeled fire extinguishers charged with mono-ammonium phosphate ABC dry powder or pure Carbon Dioxide (CO2) with brass nickel-plated valves.',
+                svgType: 'extinguisher',
+                datasheet: [
+                    ['Available Types', 'ABC Dry Powder (2kg, 6kg, 9kg, 50kg) & CO2 (2kg, 5kg, 10kg, 22kg)'],
+                    ['Fire Class Rating', 'Class A, B, C & Electrical Fires (55A 233B C Certified)'],
+                    ['Cylinder Construction', 'Deep-Drawn Cold Rolled Steel (Powder) / Alloy Seamless Steel (CO2)'],
+                    ['External Coating', 'UV-Resistant RAL 3000 Flame-Red Polyester Epoxy Powder Coat'],
+                    ['Working / Burst Pressure', '15 Bar Working / 55 Bar Minimum Burst (Powder)'],
+                    ['Accessories', 'EPDM High-Pressure Hose, Snow Horn (CO2), Wall Bracket']
+                ],
+                applications: 'All commercial, industrial, residential, marine, and electrical utility environments.'
+            },
+            {
+                id: 'prd-06',
+                model: 'FL-CAB-D2',
+                category: 'cabinets',
+                categoryLabel: 'Cabinets, Hoses & Hydrants',
+                name: 'Double-Door Fire Hose Reel & Extinguisher Cabinet',
+                cert: 'UL / BS EN 671-1',
+                stockStatus: 'In Stock',
+                specsPills: ['1" x 30m Hose Reel', '1.5" Landing Valve', 'Electro-Galvanized'],
+                shortDesc: 'Recessed or surface-mounted double vertical/horizontal red steel fire cabinet complete with swing-type manual/automatic 30m hose reel, 1.5" flat canvas hose, and extinguisher bay.',
+                svgType: 'cabinet',
+                datasheet: [
+                    ['Cabinet Dimensions', '800mm (W) x 1600mm (H) x 300mm (D) — Double Compartment'],
+                    ['Material & Finish', '1.5mm Electro-Galvanized Steel or SS304, RAL 3000 Red Electrostatic Coat'],
+                    ['Hose Reel Spec', '1 inch (25mm) x 30 Meters UL/EN 671-1 Semi-Rigid Red Rubber Hose'],
+                    ['Landing Valve', '2.5" x 1.5" Brass Oblique Pressure-Regulating Landing Valve'],
+                    ['Nozzle Type', '3-Position Jet / Spray / Shut-Off Brass/Chrome Nozzle'],
+                    ['Door Options', 'Solid Steel, Tempered Wired Glass Window, or Frameless Architectural']
+                ],
+                applications: 'Building lobbies, stairwells, parking basements, industrial corridors, and shopping malls.'
+            },
+            {
+                id: 'prd-07',
+                model: 'FL-SPK-68C',
+                category: 'sprinklers',
+                categoryLabel: 'Sprinkler Heads',
+                name: 'Quick-Response Pendent, Upright & Sidewall Sprinklers',
+                cert: 'UL Listed / FM',
+                stockStatus: 'In Stock',
+                specsPills: ['68°C (155°F) Red Bulb', 'K5.6 & K8.0', 'Chrome / Brass / White'],
+                shortDesc: '3mm frangible glass-bulb quick-response automatic fire sprinkler heads with forged brass frames, two-piece rosetta escutcheon plates, and 175/250 PSI pressure rating.',
+                svgType: 'sprinkler',
+                datasheet: [
+                    ['K-Factor Options', 'K5.6 (80 Metric) 1/2" NPT & K8.0 (115 Metric) 3/4" NPT'],
+                    ['Temperature Ratings', '57°C (Orange), 68°C (Red), 79°C (Yellow), 93°C (Green)'],
+                    ['Response Type', 'Quick Response (3mm Glass Bulb) & Standard Response (5mm)'],
+                    ['Deflector Styles', 'Pendent, Upright, Horizontal Sidewall & Concealed Flush'],
+                    ['Max Working Pressure', '175 PSI (12.1 Bar) / 250 PSI High-Pressure Option'],
+                    ['Finishes', 'Natural Brass, Bright Chrome Plated, Pure White RAL 9010']
+                ],
+                applications: 'Offices, hotels, hospitals, retail stores, high-piled storage racks, and residential towers.'
+            },
+            {
+                id: 'prd-08',
+                model: 'FL-VLV-300',
+                category: 'pumps',
+                categoryLabel: 'Fire Pumps & Valves',
+                name: 'Alarm Check Valve, Zone Control Riser & OS&Y Gate Valve',
+                cert: 'UL / FM 300 PSI',
+                stockStatus: 'In Stock',
+                specsPills: ['DN65 to DN300', '300 PSI Rated', 'With Water Motor Gong'],
+                shortDesc: 'Ductile iron grooved and flanged wet pipe Alarm Check Valve assembly with retard chamber, pressure switch, hydraulic water motor alarm gong, and monitored OS&Y gate valve.',
+                svgType: 'valve',
+                datasheet: [
+                    ['Available Sizes', '2.5", 3", 4", 6", 8", 10" & 12" (DN65 – DN300)'],
+                    ['Working Pressure', '300 PSI (20.7 Bar) UL Listed & FM Approved'],
+                    ['Body Material', 'ASTM A536 Ductile Iron with Fusion-Bonded Red Epoxy Inside/Out'],
+                    ['Trim Package', 'Galvanized/Brass Trim, Retard Chamber, UL Pressure Switch & Gong'],
+                    ['Supervision', 'Tamper Switch Ready for OS&Y & Butterfly Valves'],
+                    ['End Connections', 'ANSI Class 150 Flanged or AWWA C606 Grooved Ends']
+                ],
+                applications: 'Main sprinkler risers, floor zone control assemblies, and fire pump room headers.'
+            },
+            {
+                id: 'prd-09',
+                model: 'FL-MCP-HS',
+                category: 'alarm',
+                categoryLabel: 'Fire Alarm Systems',
+                name: 'Resettable Manual Call Point & 110dB LED Horn Strobe',
+                cert: 'UL 1971 / EN54-11',
+                stockStatus: 'In Stock',
+                specsPills: ['Resettable Element', '110 dB Sounder', 'IP67 Weatherproof Option'],
+                shortDesc: 'Addressable non-breaking resettable manual pull station paired with high-intensity Xenon/LED visual strobe and multi-tone 110dB evacuation horn.',
+                svgType: 'callpoint',
+                datasheet: [
+                    ['Call Point Mechanism', 'Non-Fragile Resettable Acrylic Plate with Test Key'],
+                    ['Sounder Output', '95 – 110 dB(A) @ 1m with 32 Selectable Evacuation Tones'],
+                    ['Strobe Flash Rate', '1 Hz Synchronized High-Output LED (15/30/75/110 Candela)'],
+                    ['Ingress Protection', 'IP24 Indoor Standard / IP67 Weatherproof Outdoor Model'],
+                    ['Housing Material', 'Flame-Retardant V-0 Red ABS Polycarbonate'],
+                    ['Loop Interface', 'Built-in Address Dip-Switch or Soft-Addressing']
+                ],
+                applications: 'Exit doors, escape staircases, plant floors, outdoor chemical yards, and noisy workshops.'
+            },
+            {
+                id: 'prd-10',
+                model: 'FL-NVC-1230',
+                category: 'suppression',
+                categoryLabel: 'Gas & Kitchen Suppression',
+                name: 'Novec™ 1230 (FK-5-1-12) Green Clean Agent Suppression Skid',
+                cert: 'UL / FM / Green Cert.',
+                stockStatus: 'In Stock',
+                specsPills: ['GWP = 1 (Eco-Safe)', 'Zero Ozone Depletion', '25 / 50 Bar'],
+                shortDesc: 'Next-generation environmentally sustainable FK-5-1-12 clean agent gas suppression system offering highest safety margin for occupied mission-critical rooms.',
+                svgType: 'novec',
+                datasheet: [
+                    ['Chemical Agent', 'FK-5-1-12 (3M™ Novec™ 1230 Fluid Equivalent)'],
+                    ['Environmental Profile', '0.0 Ozone Depletion Potential, 1.0 GWP, 5-Day Atmospheric Lifetime'],
+                    ['Design Concentration', '4.5% to 5.6% v/v (Highest NOAEL Safety Margin for Personnel)'],
+                    ['Cylinder Pressures', '25 Bar, 42 Bar & 50 Bar Nitrogen Super-Pressurized'],
+                    ['Nozzle Coverage', '180° Sidewall & 360° Central Brass Orifice Nozzles'],
+                    ['Approvals', 'UL 2166, FM Approved, LPCB & NFPA 2001 Compliant']
+                ],
+                applications: 'Tier-III/IV Data Centers, air traffic control towers, museums, bank vaults, and hospital ICU electronics.'
+            },
+            {
+                id: 'prd-11',
+                model: 'FL-KCH-UL300',
+                category: 'suppression',
+                categoryLabel: 'Gas & Kitchen Suppression',
+                name: 'Wet Chemical Kitchen Hood Suppression System (UL-300)',
+                cert: 'UL-300 / NFPA 17A',
+                stockStatus: 'In Stock',
+                specsPills: ['Stainless Enclosure', 'Fusible Link + Manual', 'Auto Gas Shut-Off'],
+                shortDesc: 'Pre-engineered automatic low-pH potassium-acetate wet chemical suppression system for commercial cooking hoods, ducts, plenums, and deep-fat fryers.',
+                svgType: 'kitchen',
+                datasheet: [
+                    ['Standard Compliance', 'UL-300 Listed, NFPA 17A & NFPA 96 Compliant'],
+                    ['Agent Cylinder Sizes', '1.5 Gallon, 3.0 Gallon & 4.5 Gallon Stainless/Red Cylinders'],
+                    ['Detection Network', 'Stainless Steel Wire Rope with 182°C / 232°C Thermo-Bulbs'],
+                    ['Automatic Interlocks', 'Mechanical/Electric LPG Gas Shut-Off Valve + Alarm Microswitch'],
+                    ['Piping & Nozzles', 'Schedule 40 Chrome/Stainless Piping with Swivel Grease Caps'],
+                    ['Manual Actuation', 'Remote Stainless Steel Pull Station at Kitchen Exit']
+                ],
+                applications: 'Hotel kitchens, restaurant chains, hospital cafeterias, industrial catering, and food processing plants.'
+            },
+            {
+                id: 'prd-12',
+                model: 'FL-HYD-BS750',
+                category: 'cabinets',
+                categoryLabel: 'Cabinets, Hoses & Hydrants',
+                name: 'Pillar Fire Hydrant & 4-Way Breeching Inlet Assembly',
+                cert: 'UL / FM / BS 750',
+                stockStatus: 'In Stock',
+                specsPills: ['Wet & Dry Barrel', '2-Way & 4-Way Inlet', '250 PSI Ductile Iron'],
+                shortDesc: 'Heavy-duty external Pillar Fire Hydrant with dual 2.5" instantaneous outlets and 4" pumper connection, plus Civil Defense 4-Way Fire Department Breeching Inlet.',
+                svgType: 'hydrant',
+                datasheet: [
+                    ['Hydrant Types', 'UL/FM Dry-Barrel Traffic Model & BS 750 Wet-Barrel Pillar Hydrant'],
+                    ['Inlet Flange', '4 inch (DN100) or 6 inch (DN150) ANSI Class 150 / PN16 Flange'],
+                    ['Hydrant Outlets', '2 x 2.5" BS336 Female Instantaneous + 1 x 4.5" NST Pumper Nozzle'],
+                    ['Breeching Inlet', '2-Way (4" Outlet) & 4-Way (6" Outlet) Ductile Iron w/ NRV Valves'],
+                    ['Test Pressure', '300 PSI Body Hydrostatic Test / 200 PSI Seat Test'],
+                    ['Coating', '250 Micron UV-Stabilized Signal-Red Fusion Bonded Epoxy']
+                ],
+                applications: 'External building perimeters, industrial estates, municipal ring mains, and Civil Defense truck hookups.'
+            }
+        ];
+
+        // =========================================================================
+        // 3. CUSTOM TECHNICAL SVG ILLUSTRATIONS FOR EACH PRODUCT CARD
+        // =========================================================================
+        function getProductSvgIllustration(type) {
+            switch (type) {
+                case 'panel':
+                    return `
+                    <svg viewBox="0 0 220 150" class="w-44 h-32 mx-auto drop-shadow-md">
+                        <rect x="35" y="12" width="150" height="126" rx="10" fill="#B91C1C" stroke="#7F1D1D" stroke-width="3"/>
+                        <rect x="45" y="22" width="130" height="106" rx="6" fill="#DC2626" stroke="#FCA5A5" stroke-width="1"/>
+                        <!-- Touch Screen -->
+                        <rect x="58" y="34" width="76" height="46" rx="4" fill="#0F172A" stroke="#F87171" stroke-width="1.5"/>
+                        <rect x="64" y="41" width="42" height="6" rx="2" fill="#EF4444"/>
+                        <rect x="64" y="51" width="62" height="4" rx="2" fill="#38BDF8"/>
+                        <rect x="64" y="59" width="54" height="4" rx="2" fill="#34D399"/>
+                        <rect x="64" y="67" width="35" height="4" rx="2" fill="#FBBF24"/>
+                        <!-- Status LEDs -->
+                        <circle cx="150" cy="40" r="4" fill="#22C55E"/>
+                        <circle cx="150" cy="52" r="4" fill="#EF4444"/>
+                        <circle cx="150" cy="64" r="4" fill="#FBBF24"/>
+                        <circle cx="150" cy="76" r="4" fill="#38BDF8"/>
+                        <!-- Keypad & Keylock -->
+                        <rect x="58" y="90" width="50" height="26" rx="3" fill="#7F1D1D"/>
+                        <circle cx="148" cy="103" r="9" fill="#E2E8F0" stroke="#475569" stroke-width="2"/>
+                        <text x="64" y="107" fill="#FEF2F2" font-size="8" font-family="monospace" font-weight="bold">FIRELINK</text>
+                    </svg>`;
+                case 'detector':
+                    return `
+                    <svg viewBox="0 0 220 150" class="w-44 h-32 mx-auto drop-shadow-md">
+                        <!-- Mounting Base -->
+                        <ellipse cx="110" cy="52" rx="68" ry="18" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
+                        <path d="M50 52 L64 95 C64 108 156 108 156 95 L170 52 Z" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+                        <!-- Vent Chamber Slots -->
+                        <rect x="74" y="68" width="8" height="16" rx="2" fill="#334155"/>
+                        <rect x="90" y="70" width="8" height="16" rx="2" fill="#334155"/>
+                        <rect x="106" y="71" width="8" height="16" rx="2" fill="#334155"/>
+                        <rect x="122" y="70" width="8" height="16" rx="2" fill="#334155"/>
+                        <rect x="138" y="68" width="8" height="16" rx="2" fill="#334155"/>
+                        <!-- Red Dual Alarm LEDs & Thermal Dome -->
+                        <ellipse cx="110" cy="104" rx="28" ry="9" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5"/>
+                        <circle cx="94" cy="96" r="4.5" fill="#DC2626"/>
+                        <circle cx="126" cy="96" r="4.5" fill="#DC2626"/>
+                        <circle cx="94" cy="96" r="9" fill="none" stroke="#EF4444" stroke-width="1" stroke-dasharray="2 2"/>
+                        <circle cx="126" cy="96" r="9" fill="none" stroke="#EF4444" stroke-width="1" stroke-dasharray="2 2"/>
+                        <circle cx="110" cy="110" r="7" fill="#B91C1C"/>
+                    </svg>`;
+                case 'pump':
+                    return `
+                    <svg viewBox="0 0 220 150" class="w-44 h-32 mx-auto drop-shadow-md">
+                        <!-- Heavy Red Skid Base -->
+                        <rect x="20" y="118" width="180" height="14" rx="3" fill="#7F1D1D"/>
+                        <!-- Header Pipe -->
+                        <rect x="30" y="28" width="160" height="14" rx="4" fill="#DC2626" stroke="#991B1B" stroke-width="2"/>
+                        <!-- Electric Split-Case Pump -->
+                        <rect x="35" y="72" width="46" height="46" rx="6" fill="#B91C1C" stroke="#7F1D1D" stroke-width="2"/>
+                        <circle cx="58" cy="95" r="14" fill="#EF4444" stroke="#FEF2F2" stroke-width="2"/>
+                        <rect x="52" y="42" width="12" height="30" fill="#DC2626"/>
+                        <!-- Jockey Pump (Center) -->
+                        <rect x="98" y="54" width="24" height="64" rx="4" fill="#991B1B" stroke="#FCA5A5" stroke-width="1.5"/>
+                        <!-- Diesel Pump & Controller -->
+                        <rect x="138" y="66" width="48" height="52" rx="5" fill="#DC2626" stroke="#7F1D1D" stroke-width="2"/>
+                        <rect x="154" y="42" width="12" height="24" fill="#DC2626"/>
+                        <circle cx="162" cy="92" r="12" fill="#FBBF24" stroke="#7F1D1D" stroke-width="2"/>
+                        <!-- Pressure Gauges -->
+                        <circle cx="58" cy="28" r="7" fill="#FFFFFF" stroke="#7F1D1D" stroke-width="2"/>
+                        <circle cx="110" cy="28" r="7" fill="#FFFFFF" stroke="#7F1D1D" stroke-width="2"/>
+                        <circle cx="162" cy="28" r="7" fill="#FFFFFF" stroke="#7F1D1D" stroke-width="2"/>
+                    </svg>`;
+                case 'fm200':
+                case 'novec':
+                    return `
+                    <svg viewBox="0 0 220 150" class="w-44 h-32 mx-auto drop-shadow-md">
+                        <!-- Top Discharge Manifold -->
+                        <rect x="42" y="16" width="136" height="10" rx="3" fill="#475569"/>
+                        <!-- Cylinder 1 -->
+                        <path d="M55 48 C55 36 85 36 85 48 L85 132 L55 132 Z" fill="#DC2626" stroke="#7F1D1D" stroke-width="2"/>
+                        <rect x="65" y="26" width="10" height="14" fill="#D97706"/>
+                        <rect x="55" y="68" width="30" height="18" fill="#FEF2F2"/>
+                        <text x="58" y="80" fill="#991B1B" font-size="7" font-weight="bold">FM-200</text>
+                        <!-- Cylinder 2 -->
+                        <path d="M95 48 C95 36 125 36 125 48 L125 132 L95 132 Z" fill="#DC2626" stroke="#7F1D1D" stroke-width="2"/>
+                        <rect x="105" y="26" width="10" height="14" fill="#D97706"/>
+                        <rect x="95" y="68" width="30" height="18" fill="#FEF2F2"/>
+                        <text x="98" y="80" fill="#991B1B" font-size="7" font-weight="bold">CLEAN</text>
+                        <!-- Cylinder 3 -->
+                        <path d="M135 48 C135 36 165 36 165 48 L165 132 L135 132 Z" fill="#DC2626" stroke="#7F1D1D" stroke-width="2"/>
+                        <rect x="145" y="26" width="10" height="14" fill="#D97706"/>
+                        <rect x="135" y="68" width="30" height="18" fill="#FEF2F2"/>
+                        <text x="139" y="80" fill="#991B1B" font-size="7" font-weight="bold">250BAR</text>
+                        <!-- Bracketing Straps -->
+                        <rect x="48" y="98" width="124" height="6" rx="2" fill="#1E293B"/>
+                    </svg>`;
+                case 'extinguisher':
+                    return `
+                    <svg viewBox="0 0 220 150" class="w-44 h-32 mx-auto drop-shadow-md">
+                        <!-- 6kg Powder Extinguisher -->
+                        <path d="M68 50 C68 36 108 36 108 50 L108 134 rounded L68 134 Z" fill="#DC2626" stroke="#7F1D1D" stroke-width="2.5"/>
+                        <rect x="83" y="24" width="10" height="16" fill="#CBD5E1"/>
+                        <path d="M83 26 L112 18 M83 30 L110 32" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M68 48 C52 55 52 105 56 125" fill="none" stroke="#1E293B" stroke-width="4" stroke-linecap="round"/>
+                        <rect x="68" y="68" width="40" height="32" fill="#FEF2F2"/>
+                        <text x="74" y="83" fill="#991B1B" font-size="8" font-weight="bold">POWDER</text>
+                        <text x="76" y="93" fill="#475569" font-size="7">ABC 6KG</text>
+                        <!-- CO2 Extinguisher -->
+                        <path d="M132 54 C132 40 164 40 164 54 L164 134 L132 134 Z" fill="#B91C1C" stroke="#7F1D1D" stroke-width="2.5"/>
+                        <rect x="144" y="30" width="8" height="14" fill="#FBBF24"/>
+                        <!-- CO2 Discharge Horn -->
+                        <polygon points="164,46 184,36 184,56" fill="#1E293B"/>
+                        <rect x="132" y="74" width="32" height="24" fill="#1E293B"/>
+                        <text x="140" y="89" fill="#FFFFFF" font-size="8" font-weight="bold">CO2</text>
+                    </svg>`;
+                case 'cabinet':
+                    return `
+                    <svg viewBox="0 0 220 150" class="w-44 h-32 mx-auto drop-shadow-md">
+                        <rect x="40" y="14" width="140" height="122" rx="6" fill="#DC2626" stroke="#7F1D1D" stroke-width="3"/>
+                        <!-- Left Compartment (Hose Reel) -->
+                        <rect x="50" y="24" width="58" height="102" rx="3" fill="#FEF2F2" stroke="#991B1B" stroke-width="1.5"/>
+                        <circle cx="79" cy="68" r="22" fill="#DC2626" stroke="#7F1D1D" stroke-width="3"/>
+                        <circle cx="79" cy="68" r="14" fill="none" stroke="#FCA5A5" stroke-width="2" stroke-dasharray="4 2"/>
+                        <circle cx="79" cy="68" r="5" fill="#FBBF24"/>
+                        <!-- Right Compartment (Extinguisher & Flat Hose) -->
+                        <rect x="114" y="24" width="56" height="102" rx="3" fill="#FEF2F2" stroke="#991B1B" stroke-width="1.5"/>
+                        <rect x="132" y="68" width="22" height="48" rx="4" fill="#DC2626"/>
+                        <rect x="139" y="60" width="8" height="8" fill="#1E293B"/>
+                        <circle cx="142" cy="42" r="11" fill="#E2E8F0" stroke="#64748B" stroke-width="2"/>
+                    </svg>`;
+                case 'sprinkler':
+                    return `
+                    <svg viewBox="0 0 220 150" class="w-44 h-32 mx-auto drop-shadow-md">
+                        <!-- Brass Thread Top -->
+                        <rect x="92" y="16" width="36" height="24" rx="3" fill="#D97706" stroke="#92400E" stroke-width="2"/>
+                        <polygon points="84,40 136,40 128,54 92,54" fill="#F59E0B" stroke="#92400E" stroke-width="2"/>
+                        <!-- Frame Arms -->
+                        <path d="M95 54 C76 75 76 102 95 118 L125 118 C144 102 144 75 125 54" fill="none" stroke="#D97706" stroke-width="6"/>
+                        <!-- 68C Red Thermal Glass Bulb -->
+                        <rect x="104" y="60" width="12" height="46" rx="6" fill="#DC2626" stroke="#7F1D1D" stroke-width="2"/>
+                        <circle cx="110" cy="74" r="3" fill="#FCA5A5"/>
+                        <!-- Deflector Plate -->
+                        <rect x="78" y="120" width="64" height="7" rx="3" fill="#B45309"/>
+                        <line x1="82" y1="127" x2="76" y2="134" stroke="#B45309" stroke-width="3"/>
+                        <line x1="96" y1="127" x2="93" y2="135" stroke="#B45309" stroke-width="3"/>
+                        <line x1="110" y1="127" x2="110" y2="136" stroke="#B45309" stroke-width="3"/>
+                        <line x1="124" y1="127" x2="127" y2="135" stroke="#B45309" stroke-width="3"/>
+                        <line x1="138" y1="127" x2="144" y2="134" stroke="#B45309" stroke-width="3"/>
+                    </svg>`;
+                case 'valve':
+                    return `
+                    <svg viewBox="0 0 220 150" class="w-44 h-32 mx-auto drop-shadow-md">
+                        <!-- Flanged Valve Body -->
+                        <rect x="76" y="120" width="68" height="12" rx="3" fill="#991B1B"/>
+                        <rect x="76" y="42" width="68" height="12" rx="3" fill="#991B1B"/>
+                        <ellipse cx="110" cy="86" rx="38" ry="28" fill="#DC2626" stroke="#7F1D1D" stroke-width="3"/>
+                        <!-- Water Motor Gong & Trim -->
+                        <circle cx="166" cy="64" r="20" fill="#EF4444" stroke="#7F1D1D" stroke-width="2.5"/>
+                        <circle cx="166" cy="64" r="6" fill="#FBBF24"/>
+                        <path d="M144 82 L166 82 L166 84" stroke="#64748B" stroke-width="3" fill="none"/>
+                        <!-- OS&Y Handwheel -->
+                        <ellipse cx="54" cy="75" rx="8" ry="26" fill="none" stroke="#B91C1C" stroke-width="5"/>
+                        <line x1="54" y1="75" x2="76" y2="75" stroke="#D97706" stroke-width="5"/>
+                        <!-- Pressure Gauges -->
+                        <circle cx="110" cy="78" r="9" fill="#FFFFFF" stroke="#1E293B" stroke-width="2"/>
+                        <line x1="110" y1="78" x2="115" y2="73" stroke="#DC2626" stroke-width="2"/>
+                    </svg>`;
+                case 'callpoint':
+                    return `
+                    <svg viewBox="0 0 220 150" class="w-44 h-32 mx-auto drop-shadow-md">
+                        <!-- Manual Call Point (Left) -->
+                        <rect x="28" y="34" width="76" height="82" rx="8" fill="#DC2626" stroke="#7F1D1D" stroke-width="3"/>
+                        <rect x="42" y="48" width="48" height="44" rx="4" fill="#FFFFFF" stroke="#991B1B" stroke-width="1.5"/>
+                        <circle cx="66" cy="70" r="8" fill="#DC2626"/>
+                        <path d="M52 70 L58 70 M74 70 L80 70" stroke="#DC2626" stroke-width="2"/>
+                        <text x="48" y="106" fill="#FEF2F2" font-size="8" font-weight="bold">PRESS HERE</text>
+                        <!-- Horn Strobe (Right) -->
+                        <rect x="120" y="26" width="72" height="96" rx="10" fill="#B91C1C" stroke="#7F1D1D" stroke-width="3"/>
+                        <circle cx="156" cy="58" r="20" fill="#991B1B" stroke="#FCA5A5" stroke-width="1.5"/>
+                        <circle cx="156" cy="58" r="10" fill="#7F1D1D"/>
+                        <!-- Xenon/LED Strobe Lens -->
+                        <rect x="136" y="88" width="40" height="22" rx="6" fill="#FEF08A" stroke="#F59E0B" stroke-width="2"/>
+                        <text x="144" y="102" fill="#991B1B" font-size="8" font-weight="bold">FIRE</text>
+                    </svg>`;
+                case 'kitchen':
+                    return `
+                    <svg viewBox="0 0 220 150" class="w-44 h-32 mx-auto drop-shadow-md">
+                        <!-- Stainless Kitchen Hood -->
+                        <polygon points="30,44 160,44 145,18 45,18" fill="#CBD5E1" stroke="#64748B" stroke-width="2"/>
+                        <!-- Distribution Pipe & Nozzles -->
+                        <path d="M55 44 L55 62 M95 44 L95 62 M135 44 L135 62" stroke="#475569" stroke-width="3"/>
+                        <polygon points="50,62 60,62 64,70 46,70" fill="#F59E0B"/>
+                        <polygon points="90,62 100,62 104,70 86,70" fill="#F59E0B"/>
+                        <polygon points="130,62 140,62 144,70 126,70" fill="#F59E0B"/>
+                        <!-- Wet Chemical Red Cylinder & Release Box -->
+                        <rect x="168" y="48" width="32" height="82" rx="6" fill="#DC2626" stroke="#7F1D1D" stroke-width="2.5"/>
+                        <rect x="172" y="24" width="24" height="20" rx="3" fill="#B91C1C"/>
+                        <path d="M160 34 L172 34" stroke="#DC2626" stroke-width="3"/>
+                        <!-- Spray Mist Graphic -->
+                        <path d="M55 74 L48 92 M55 74 L62 92 M95 74 L88 92 M95 74 L102 92" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3 3"/>
+                    </svg>`;
+                case 'hydrant':
+                default:
+                    return `
+                    <svg viewBox="0 0 220 150" class="w-44 h-32 mx-auto drop-shadow-md">
+                        <!-- Pillar Hydrant Base & Body -->
+                        <rect x="68" y="124" width="84" height="12" rx="3" fill="#7F1D1D"/>
+                        <rect x="84" y="48" width="52" height="76" rx="6" fill="#DC2626" stroke="#7F1D1D" stroke-width="3"/>
+                        <path d="M80 48 C80 24 140 24 140 48 Z" fill="#B91C1C" stroke="#7F1D1D" stroke-width="3"/>
+                        <rect x="102" y="16" width="16" height="12" rx="2" fill="#FBBF24" stroke="#92400E" stroke-width="2"/>
+                        <!-- Side 2.5" Outlets -->
+                        <rect x="62" y="64" width="22" height="22" rx="4" fill="#D97706" stroke="#92400E" stroke-width="2"/>
+                        <rect x="136" y="64" width="22" height="22" rx="4" fill="#D97706" stroke="#92400E" stroke-width="2"/>
+                        <!-- Center 4.5" Pumper Nozzle -->
+                        <circle cx="110" cy="82" r="16" fill="#F59E0B" stroke="#78350F" stroke-width="3"/>
+                        <circle cx="110" cy="82" r="8" fill="#FEF3C7"/>
+                    </svg>`;
+            }
+        }
+
+        // =========================================================================
+        // 4. RENDER COMPANY SERVICES CARDS
+        // =========================================================================
+        function renderServices() {
+            const grid = document.getElementById('servicesGrid');
+            grid.innerHTML = fireLinkServices.map(srv => `
+                <div class="interactive-card rounded-3xl bg-white border-2 border-firered-100 hover:border-firered-500 shadow-card-rest hover:shadow-red-glow flex flex-col justify-between transition-all duration-300">
+                    <!-- Top Red Header Bar -->
+                    <div>
+                        <div class="bg-gradient-to-r from-firered-800 via-firered-700 to-firered-600 text-white px-6 py-4 flex items-center justify-between">
+                            <span class="font-display font-extrabold text-xs uppercase tracking-widest text-amber-300">
+                                SERVICE ${srv.number}
+                            </span>
+                            <span class="px-2.5 py-0.5 rounded-full bg-white/15 border border-white/25 text-[11px] font-bold text-white">
+                                ${srv.badge}
+                            </span>
+                        </div>
+
+                        <div class="p-6 sm:p-7">
+                            <div class="flex items-start justify-between gap-4 mb-4">
+                                <h3 class="font-display text-xl font-extrabold text-slate-900 leading-snug">
+                                    ${srv.title}
+                                </h3>
+                                <div class="w-12 h-12 rounded-2xl bg-firered-50 border border-firered-200 text-firered-600 flex items-center justify-center shrink-0">
+                                    <i data-lucide="${srv.icon}" class="w-6 h-6"></i>
+                                </div>
+                            </div>
+
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5">
+                                ${srv.shortDesc}
+                            </p>
+
+                            <div class="space-y-2 pt-4 border-t border-firered-100">
+                                <span class="text-[11px] font-extrabold uppercase tracking-wider text-firered-700 block mb-2">
+                                    Key Scope & Deliverables:
+                                </span>
+                                ${srv.deliverables.map(item => `
+                                    <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-firered-600 shrink-0"></i>
+                                        <span>${item}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Actions Footer -->
+                    <div class="px-6 pb-6 pt-3 flex items-center gap-2.5">
+                        <button onclick="openServiceModal('${srv.id}')" class="flex-1 py-3 px-3 rounded-xl bg-firered-50 hover:bg-firered-100 text-firered-800 font-display font-bold text-xs flex items-center justify-center gap-1.5 transition-colors">
+                            <i data-lucide="file-text" class="w-4 h-4 text-firered-600"></i>
+                            <span>Scope & Standards</span>
+                        </button>
+                        <button onclick="addItemToQuote('${srv.id}', 'service')" class="flex-1 py-3 px-3 rounded-xl bg-firered-600 hover:bg-firered-700 text-white font-display font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            <span>Add Service</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+            bindInteractiveTiltCards();
+        }
+
+        // =========================================================================
+        // 5. RENDER PRODUCTS CATALOG CARDS (WITH FILTERING & SEARCH)
+        // =========================================================================
+        let activeCategory = 'all';
+        let activeSearchQuery = '';
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const emptyState = document.getElementById('emptyProductsState');
+            const counterEl = document.getElementById('productResultsCounter');
+
+            const filtered = fireLinkProducts.filter(p => {
+                const matchesCat = activeCategory === 'all' || p.category === activeCategory;
+                const q = activeSearchQuery.trim().toLowerCase();
+                const matchesQuery = !q ||
+                    p.name.toLowerCase().includes(q) ||
+                    p.model.toLowerCase().includes(q) ||
+                    p.shortDesc.toLowerCase().includes(q) ||
+                    p.categoryLabel.toLowerCase().includes(q) ||
+                    p.specsPills.some(sp => sp.toLowerCase().includes(q));
+                return matchesCat && matchesQuery;
+            });
+
+            counterEl.textContent = `Showing ${filtered.length} of ${fireLinkProducts.length} certified products`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            grid.innerHTML = filtered.map((prd, idx) => `
+                <article
+                    style="animation-delay: ${idx * 45}ms"
+                    class="product-card-enter interactive-card rounded-3xl bg-white border-2 border-firered-100 hover:border-firered-600 shadow-card-rest hover:shadow-red-glow flex flex-col justify-between transition-all duration-300"
+                >
+                    <div>
+                        <!-- Top Red Badge Bar + SVG Illustration Showcase -->
+                        <div class="relative bg-gradient-to-b from-firered-50 via-firered-50/40 to-white pt-4 pb-3 px-5 border-b border-firered-100">
+                            <div class="flex items-center justify-between gap-2 mb-2">
+                                <span class="px-2.5 py-1 rounded-lg bg-firered-700 text-white font-mono font-bold text-[11px]">
+                                    ${prd.model}
+                                </span>
+                                <span class="px-2.5 py-1 rounded-lg bg-firered-100 border border-firered-200 text-firered-800 font-bold text-[11px] flex items-center gap-1">
+                                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-firered-600"></i>
+                                    ${prd.cert}
+                                </span>
+                            </div>
+
+                            <!-- Custom Vector Fire Equipment Illustration -->
+                            <div class="py-2 group-hover:scale-105 transition-transform">
+                                ${getProductSvgIllustration(prd.svgType)}
+                            </div>
+
+                            <div class="flex items-center justify-between text-[11px] mt-1">
+                                <span class="font-bold uppercase tracking-wider text-firered-600">${prd.categoryLabel}</span>
+                                <span class="inline-flex items-center gap-1 text-emerald-700 font-semibold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    ${prd.stockStatus}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Product Details Body -->
+                        <div class="p-6">
+                            <h3 class="font-display text-lg font-extrabold text-slate-900 leading-snug mb-2">
+                                ${prd.name}
+                            </h3>
+                            <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                                ${prd.shortDesc}
+                            </p>
+
+                            <!-- Technical Spec Pills -->
+                            <div class="flex flex-wrap gap-1.5">
+                                ${prd.specsPills.map(pill => `
+                                    <span class="px-2.5 py-1 rounded-lg bg-firered-50 border border-firered-200/80 text-firered-900 font-semibold text-[11px]">
+                                        ${pill}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card Action Buttons -->
+                    <div class="px-6 pb-6 pt-2 flex items-center gap-2.5">
+                        <button
+                            onclick="openProductModal('${prd.id}')"
+                            class="flex-1 py-3 px-3 rounded-xl bg-slate-100 hover:bg-firered-50 hover:text-firered-800 text-slate-700 font-display font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+                        >
+                            <i data-lucide="SlidersHorizontal" class="w-4 h-4 text-firered-600"></i>
+                            <span>Full Specs</span>
+                        </button>
+                        <button
+                            onclick="addItemToQuote('${prd.id}', 'product')"
+                            class="flex-1 py-3 px-3 rounded-xl bg-gradient-to-r from-firered-700 to-firered-600 hover:from-firered-800 hover:to-firered-700 text-white font-display font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                        >
+                            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                            <span>Add to Quote</span>
+                        </button>
+                    </div>
+                </article>
+            `).join('');
+
+            lucide.createIcons();
+            bindInteractiveTiltCards();
+        }
+
+        function filterProductsByCategory(cat) {
+            activeCategory = cat;
+            const buttons = document.querySelectorAll('.cat-tab');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.className = 'cat-tab px-4 py-2.5 rounded-xl bg-white text-firered-800 font-display font-bold text-xs sm:text-sm shadow-md transition-all';
+                } else {
+                    btn.className = 'cat-tab px-4 py-2.5 rounded-xl bg-firered-950/50 hover:bg-white/20 text-white border border-white/15 font-display font-semibold text-xs sm:text-sm transition-all';
+                }
+            });
+            renderProducts();
+        }
+
+        function handleProductSearch(val) {
+            activeSearchQuery = val;
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if (val.trim().length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+            renderProducts();
+        }
+
+        function clearProductSearch() {
+            const input = document.getElementById('productSearchInput');
+            input.value = '';
+            activeSearchQuery = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            renderProducts();
+        }
+
+        // =========================================================================
+        // 6. TECHNICAL DATASHEET MODAL FOR PRODUCTS & SERVICES
+        // =========================================================================
+        function openProductModal(productId) {
+            const prd = fireLinkProducts.find(p => p.id === productId);
+            if (!prd) return;
+
+            document.getElementById('modalCodeBadge').textContent = prd.model;
+            document.getElementById('modalCertBadge').textContent = prd.cert;
+            document.getElementById('modalTitle').textContent = prd.name;
+            document.getElementById('modalDescription').textContent = prd.shortDesc;
+            document.getElementById('modalApplications').textContent = prd.applications;
+
+            const table = document.getElementById('modalSpecsTable');
+            table.innerHTML = prd.datasheet.map(([label, val]) => `
+                <div class="grid grid-cols-3 px-4 py-3 gap-2">
+                    <span class="font-bold text-slate-700 col-span-1">${label}</span>
+                    <span class="text-slate-900 font-medium col-span-2">${val}</span>
+                </div>
+            `).join('');
+
+            const addBtn = document.getElementById('modalAddQuoteBtn');
+            addBtn.onclick = () => {
+                addItemToQuote(prd.id, 'product');
+                closeSpecModal();
+            };
+
+            document.getElementById('specModal').classList.remove('hidden');
+        }
+
+        function openServiceModal(serviceId) {
+            const srv = fireLinkServices.find(s => s.id === serviceId);
+            if (!srv) return;
+
+            document.getElementById('modalCodeBadge').textContent = `SERVICE ${srv.number}`;
+            document.getElementById('modalCertBadge').textContent = srv.badge;
+            document.getElementById('modalTitle').textContent = srv.title;
+            document.getElementById('modalDescription').textContent = srv.shortDesc;
+            document.getElementById('modalApplications').textContent = srv.applications;
+
+            const table = document.getElementById('modalSpecsTable');
+            table.innerHTML = srv.specs.map(([label, val]) => `
+                <div class="grid grid-cols-3 px-4 py-3 gap-2">
+                    <span class="font-bold text-slate-700 col-span-1">${label}</span>
+                    <span class="text-slate-900 font-medium col-span-2">${val}</span>
+                </div>
+            `).join('');
+
+            const addBtn = document.getElementById('modalAddQuoteBtn');
+            addBtn.onclick = () => {
+                addItemToQuote(srv.id, 'service');
+                closeSpecModal();
+            };
+
+            document.getElementById('specModal').classList.remove('hidden');
+        }
+
+        function closeSpecModal() {
+            document.getElementById('specModal').classList.add('hidden');
+        }
+
+        // =========================================================================
+        // 7. QUOTE REQUISITION LIST & SLIDE-OVER DRAWER LOGIC
+        // =========================================================================
+        let quoteItems = [];
+
+        function addItemToQuote(itemId, itemType) {
+            const existing = quoteItems.find(i => i.id === itemId);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                if (itemType === 'product') {
+                    const prd = fireLinkProducts.find(p => p.id === itemId);
+                    if (prd) {
+                        quoteItems.push({
+                            id: prd.id,
+                            code: prd.model,
+                            title: prd.name,
+                            type: 'Product',
+                            qty: 1
+                        });
+                    }
+                } else {
+                    const srv = fireLinkServices.find(s => s.id === itemId);
+                    if (srv) {
+                        quoteItems.push({
+                            id: srv.id,
+                            code: `SRV-${srv.number}`,
+                            title: srv.title,
+                            type: 'Contracting Service',
+                            qty: 1
+                        });
+                    }
+                }
+            }
+
+            updateQuoteUI();
+            showToast('Added to your Project Quote List!');
+        }
+
+        function updateQuoteQty(itemId, delta) {
+            const idx = quoteItems.findIndex(i => i.id === itemId);
+            if (idx === -1) return;
+            quoteItems[idx].qty += delta;
+            if (quoteItems[idx].qty <= 0) {
+                quoteItems.splice(idx, 1);
+            }
+            updateQuoteUI();
+        }
+
+        function updateQuoteUI() {
+            const totalUnits = quoteItems.reduce((acc, item) => acc + item.qty, 0);
+            document.getElementById('headerQuoteCount').textContent = totalUnits;
+            document.getElementById('drawerTotalCount').textContent = `${totalUnits} Item(s)`;
+
+            const drawerList = document.getElementById('quoteDrawerItems');
+            const formSummaryList = document.getElementById('formQuoteSummaryList');
+            const textarea = document.getElementById('quoteTextarea');
+
+            if (quoteItems.length === 0) {
+                drawerList.innerHTML = `
+                    <div class="text-center py-12 px-4">
+                        <div class="w-12 h-12 rounded-2xl bg-firered-50 text-firered-600 flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="package-plus" class="w-6 h-6"></i>
+                        </div>
+                        <p class="font-display font-bold text-slate-800 text-sm">Your Quote List is Empty</p>
+                        <p class="text-xs text-slate-500 mt-1">Click "+ Add to Quote" on any Fire Link product or contracting service card to build your inquiry.</p>
+                    </div>
+                `;
+                formSummaryList.innerHTML = `<p class="italic text-firered-300">No specific items attached yet. Click "+ Add to Quote" on any product or service card above.</p>`;
+            } else {
+                drawerList.innerHTML = quoteItems.map(item => `
+                    <div class="p-4 rounded-2xl bg-firered-50/60 border border-firered-200 flex items-center justify-between gap-3">
+                        <div>
+                            <span class="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-firered-700 text-white">${item.code}</span>
+                            <span class="text-[10px] font-semibold text-firered-700 ml-1">${item.type}</span>
+                            <h4 class="font-display font-bold text-slate-900 text-xs sm:text-sm mt-1">${item.title}</h4>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button onclick="updateQuoteQty('${item.id}', -1)" class="w-7 h-7 rounded-lg bg-white border border-firered-200 text-firered-700 font-bold text-sm hover:bg-firered-100">-</button>
+                            <span class="font-mono font-bold text-xs w-5 text-center">${item.qty}</span>
+                            <button onclick="updateQuoteQty('${item.id}', 1)" class="w-7 h-7 rounded-lg bg-firered-600 text-white font-bold text-sm hover:bg-firered-700">+</button>
+                        </div>
+                    </div>
+                `).join('');
+
+                formSummaryList.innerHTML = quoteItems.map(item => `
+                    <div class="flex items-center justify-between py-1 border-b border-firered-800/60">
+                        <span class="font-semibold text-white">${item.code} — ${item.title}</span>
+                        <span class="px-2 py-0.5 rounded bg-amber-400 text-firered-950 font-bold">Qty: ${item.qty}</span>
+                    </div>
+                `).join('');
+
+                // Sync summary text into form textarea
+                const summaryLines = quoteItems.map(i => `• [${i.code}] ${i.title} (Qty: ${i.qty})`).join('\n');
+                textarea.value = `Requested Fire Link Items:\n${summaryLines}\n\nAdditional Project Notes: `;
+            }
+
+            lucide.createIcons();
+        }
+
+        function toggleQuoteDrawer(open) {
+            const drawer = document.getElementById('quoteDrawer');
+            const backdrop = document.getElementById('quoteDrawerBackdrop');
+            if (open) {
+                backdrop.classList.remove('hidden');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                backdrop.classList.add('hidden');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        function proceedToQuoteForm() {
+            toggleQuoteDrawer(false);
+            document.getElementById('quote-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.remove('hidden');
+            clearTimeout(window._toastTimer);
+            window._toastTimer = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2600);
+        }
+
+        function submitOfficialQuote(e) {
+            e.preventDefault();
+            document.getElementById('quoteSubmittedBanner').classList.remove('hidden');
+            showToast('Official Quotation Request Transmitted!');
+            e.target.reset();
+            quoteItems = [];
+            updateQuoteUI();
+        }
+
+        // =========================================================================
+        // 8. 3D PERSPECTIVE HOVER TILT & RED SPOTLIGHT FOR ALL CARDS
+        // =========================================================================
+        function bindInteractiveTiltCards() {
+            const cards = document.querySelectorAll('.interactive-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -3.5;
+                    const rotateY = ((x - centerX) / centerX) * 3.5;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+                });
+            });
+        }
+
+        // =========================================================================
+        // 9. INTERACTIVE RED HERO PARTICLE & WAVE CANVAS
+        // =========================================================================
+        const heroCanvas = document.getElementById('redHeroCanvas');
+        const hCtx = heroCanvas.getContext('2d');
+        let embers = [];
+        let heroMouse = { x: -500, y: -500 };
+
+        function resizeHeroCanvas() {
+            heroCanvas.width = heroCanvas.parentElement.clientWidth;
+            heroCanvas.height = heroCanvas.parentElement.clientHeight;
+        }
+        window.addEventListener('resize', resizeHeroCanvas);
+
+        heroCanvas.parentElement.addEventListener('mousemove', (e) => {
+            const rect = heroCanvas.getBoundingClientRect();
+            heroMouse.x = e.clientX - rect.left;
+            heroMouse.y = e.clientY - rect.top;
+        });
+
+        class RedGlowNode {
+            constructor() {
+                this.reset(true);
+            }
+            reset(init = false) {
+                this.x = Math.random() * heroCanvas.width;
+                this.y = init ? Math.random() * heroCanvas.height : heroCanvas.height + 15;
+                this.r = Math.random() * 3 + 1.2;
+                this.vy = -(Math.random() * 0.75 + 0.25);
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.alpha = Math.random() * 0.55 + 0.15;
+                this.isAmber = Math.random() > 0.55;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Subtle interactive cursor attraction/wave
+                const dx = this.x - heroMouse.x;
+                const dy = this.y - heroMouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 130 && dist > 0) {
+                    this.x += (dx / dist) * 1.8;
+                    this.y += (dy / dist) * 1.8;
+                }
+
+                if (this.y < -20 || this.x < -20 || this.x > heroCanvas.width + 20) {
+                    this.reset(false);
+                }
+            }
+            draw() {
+                hCtx.beginPath();
+                hCtx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+                hCtx.fillStyle = this.isAmber
+                    ? `rgba(251, 191, 36, ${this.alpha})`
+                    : `rgba(254, 202, 202, ${this.alpha})`;
+                hCtx.fill();
+            }
+        }
+
+        function initHeroNodes() {
+            embers = [];
+            for (let i = 0; i < 65; i++) {
+                embers.push(new RedGlowNode());
+            }
+        }
+
+        function animateRedHero() {
+            hCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+
+            // Connect nearby glowing nodes with subtle geometric safety lines
+            for (let i = 0; i < embers.length; i++) {
+                embers[i].update();
+                embers[i].draw();
+                for (let j = i + 1; j < embers.length; j++) {
+                    const dx = embers[i].x - embers[j].x;
+                    const dy = embers[i].y - embers[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 110) {
+                        hCtx.beginPath();
+                        hCtx.moveTo(embers[i].x, embers[i].y);
+                        hCtx.lineTo(embers[j].x, embers[j].y);
+                        hCtx.strokeStyle = `rgba(254, 226, 226, ${(1 - dist / 110) * 0.14})`;
+                        hCtx.lineWidth = 1;
+                        hCtx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateRedHero);
+        }
+
+        // =========================================================================
+        // 10. SCROLL REVEAL & ANIMATED NUMBER COUNTERS
+        // =========================================================================
+        function initScrollAnimations() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+            reveals.forEach(el => observer.observe(el));
+
+            // Animated Number Counters
+            let counted = false;
+            const statsBand = document.getElementById('statsBand');
+            const countObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !counted) {
+                    counted = true;
+                    document.querySelectorAll('.stat-counter').forEach(el => {
+                        const target = parseInt(el.getAttribute('data-target'), 10);
+                        const duration = 1600;
+                        const start = performance.now();
+                        function step(now) {
+                            const progress = Math.min((now - start) / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            el.textContent = Math.round(target * eased).toLocaleString();
+                            if (progress < 1) requestAnimationFrame(step);
+                        }
+                        requestAnimationFrame(step);
+                    });
+                }
+            }, { threshold: 0.25 });
+
+            if (statsBand) countObserver.observe(statsBand);
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+
+        // Initialize Everything on Window Load
+        window.onload = function () {
+            resizeHeroCanvas();
+            initHeroNodes();
+            animateRedHero();
+            renderServices();
+            renderProducts();
+            updateQuoteUI();
+            initScrollAnimations();
+            lucide.createIcons();
+        };
+    </script>
+</body>
+</html>
