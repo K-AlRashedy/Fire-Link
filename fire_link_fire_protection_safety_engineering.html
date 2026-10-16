@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Link | Next-Gen Fire Protection & Life Safety Engineering</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: '#0a0d14',
+                        slateDark: '#111622',
+                        slateCard: '#161d2e',
+                        fireRed: '#ef4444',
+                        fireOrange: '#f97316',
+                        agentCyan: '#06b6d4',
+                        safeGreen: '#10b981'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a0d14;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0d14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ef4444;
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(22, 29, 46, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-nav {
+            background: rgba(10, 13, 20, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        /* Industrial Grid Background */
+        .blueprint-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Animated Pipe Flow for SVG */
+        @keyframes pipeFlow {
+            to {
+                stroke-dashoffset: -40;
+            }
+        }
+        .pipe-flowing {
+            stroke-dasharray: 10 10;
+            animation: pipeFlow 0.6s linear infinite;
+        }
+
+        /* Strobe Flash Animation */
+        @keyframes strobeAlert {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 12px #ef4444); }
+            50% { opacity: 0.2; filter: drop-shadow(0 0 2px #ef4444); }
+        }
+        .strobe-active {
+            animation: strobeAlert 0.4s ease-in-out infinite;
+        }
+
+        @keyframes suppressPulse {
+            0%, 100% { opacity: 0.75; filter: drop-shadow(0 0 15px #06b6d4); }
+            50% { opacity: 0.35; filter: drop-shadow(0 0 4px #06b6d4); }
+        }
+        .suppress-active {
+            animation: suppressPulse 0.8s ease-in-out infinite;
+        }
+
+        /* 3D Tilt Card Effect */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transition: transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .tilt-card-content {
+            transform: translateZ(24px);
+        }
+
+        /* Range Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            height: 8px;
+            border-radius: 4px;
+            background: #1e293b;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: #ef4444;
+            cursor: pointer;
+            margin-top: -7px;
+            box-shadow: 0 0 12px rgba(239, 68, 68, 0.8);
+            border: 2px solid #ffffff;
+            transition: transform 0.15s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+
+        /* Reveal on Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-fireRed selection:text-white blueprint-grid">
+
+    <!-- ================= STICKY NAVIGATION BAR ================= -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group focus:outline-none">
+                <div class="relative w-11 h-11 rounded-xl bg-gradient-to-br from-fireRed via-fireOrange to-amber-600 p-[1px] shadow-lg shadow-fireRed/25 group-hover:shadow-fireRed/50 transition-all">
+                    <div class="w-full h-full bg-charcoal rounded-[11px] flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-fireRed/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <!-- Custom Animated Flame + Shield SVG -->
+                        <svg class="w-6 h-6 text-fireRed group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" class="stroke-slate-400" stroke-width="1.5"/>
+                            <path d="M12 18c2.76 0 5-2.24 5-5 0-3.2-3-5.5-5-8-2 2.5-5 4.8-5 8 0 2.76 2.24 5 5 5z" fill="currentColor" class="text-fireRed"/>
+                            <path d="M12 18c1.5 0 2.5-1.2 2.5-2.7 0-1.6-1.5-2.8-2.5-4.3-1 1.5-2.5 2.7-2.5 4.3 0 1.5 1 2.7 2.5 2.7z" fill="#f97316"/>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="font-display font-bold text-xl tracking-tight text-white">FIRE</span>
+                        <span class="font-display font-bold text-xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-fireRed to-fireOrange">LINK</span>
+                    </div>
+                    <span class="block font-mono text-[10px] tracking-widest uppercase text-slate-400 -mt-1">Life Safety Engineering</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#simulator" class="hover:text-white transition-colors flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-agentCyan"></span>
+                    Live Simulator
+                </a>
+                <a href="#solutions" class="hover:text-white transition-colors">Core Systems</a>
+                <a href="#calculator" class="hover:text-white transition-colors">Hazard Calculator</a>
+                <a href="#compliance" class="hover:text-white transition-colors">Compliance</a>
+                <a href="#contact" class="hover:text-white transition-colors">Engineering Quote</a>
+            </nav>
+
+            <!-- Emergency Dispatch Button & Audio Toggle -->
+            <div class="hidden sm:flex items-center gap-3">
+                <button id="soundToggleBtn" onclick="toggleAudioEngine()" class="p-2.5 rounded-xl glass-panel text-slate-400 hover:text-white hover:border-slate-600 transition-all" title="Toggle Interactive Synth SFX">
+                    <i data-lucide="volume-2" class="w-4 h-4" id="soundIcon"></i>
+                </button>
+                <button onclick="openEmergencyModal()" class="relative group overflow-hidden rounded-xl bg-fireRed/15 border border-fireRed/40 px-4 py-2.5 text-xs font-mono font-semibold uppercase tracking-wider text-red-200 hover:bg-fireRed hover:text-white hover:border-fireRed transition-all duration-300 flex items-center gap-2.5 shadow-lg shadow-fireRed/10">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-fireRed opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-fireRed group-hover:bg-white"></span>
+                    </span>
+                    <span>24/7 Emergency Dispatch</span>
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden glass-nav border-t border-slate-800 px-4 pt-3 pb-6 space-y-3">
+            <a href="#simulator" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white font-medium">Interactive Simulator</a>
+            <a href="#solutions" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white font-medium">Core Solutions</a>
+            <a href="#calculator" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white font-medium">Hazard Calculator</a>
+            <a href="#compliance" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white font-medium">NFPA & UL Compliance</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white font-medium">Contact Engineering</a>
+            <button onclick="openEmergencyModal(); toggleMobileMenu();" class="w-full mt-2 py-3 rounded-xl bg-fireRed text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2">
+                <i data-lucide="phone-call" class="w-4 h-4"></i> 24/7 Emergency Dispatch
+            </button>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION WITH INTERACTIVE CANVAS ================= -->
+    <section class="relative min-h-screen pt-28 pb-20 flex items-center overflow-hidden">
+        <!-- HTML5 Interactive Ember & Suppression Canvas -->
+        <canvas id="heroCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+        <!-- Ambient Radial Glows -->
+        <div class="absolute top-1/4 -left-32 w-96 h-96 bg-fireRed/15 rounded-full blur-[128px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-agentCyan/15 rounded-full blur-[128px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Column: Hero Copy & CTAs -->
+                <div class="lg:col-span-7 space-y-8">
+                    <!-- Interactive Hint Badge -->
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-panel border-agentCyan/30 text-xs font-mono text-slate-300">
+                        <span class="w-2 h-2 rounded-full bg-agentCyan animate-pulse"></span>
+                        <span>NFPA 20 / 72 / 2001 CERTIFIED TURNKEY INTEGRATOR</span>
+                        <span class="hidden sm:inline text-agentCyan font-semibold">• Move cursor to deploy suppression field</span>
+                    </div>
+
+                    <h1 class="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.08] text-white">
+                        Next-Generation <br />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-fireRed via-fireOrange to-amber-400">Fire Protection</span>
+                        &amp; Life Safety Systems
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-300 max-w-2xl leading-relaxed font-light">
+                        Precision-engineered suppression networks, UL/FM hydraulic pumping stations, and intelligent addressable detection designed to neutralize industrial &amp; mission-critical hazards in milliseconds.
+                    </p>
+
+                    <!-- Dual CTAs -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="#simulator" class="px-7 py-4 rounded-xl bg-gradient-to-r from-fireRed to-fireOrange text-white font-semibold text-sm sm:text-base shadow-xl shadow-fireRed/25 hover:shadow-fireRed/40 hover:scale-[1.02] active:scale-[0.99] transition-all flex items-center gap-2.5">
+                            <i data-lucide="cpu" class="w-5 h-5"></i>
+                            <span>Test Live Suppression Simulator</span>
+                        </a>
+                        <a href="#solutions" class="px-7 py-4 rounded-xl glass-panel hover:bg-slate-800/80 text-white font-semibold text-sm sm:text-base border border-slate-700 hover:border-slate-500 transition-all flex items-center gap-2.5">
+                            <span>Explore Systems</span>
+                            <i data-lucide="arrow-up-right" class="w-5 h-5 text-slate-400"></i>
+                        </a>
+                    </div>
+
+                    <!-- Live Telemetry Micro-Bar -->
+                    <div class="pt-4 flex flex-wrap items-center gap-6 text-xs font-mono text-slate-400 border-t border-slate-800/80">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-safeGreen"></i>
+                            <span>CIVIL DEFENSE APPROVED</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="activity" class="w-4 h-4 text-agentCyan"></i>
+                            <span>SIL-3 RATED CONTROL PANELS</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="clock" class="w-4 h-4 text-fireOrange"></i>
+                            <span>&lt; 10s CLEAN AGENT DISCHARGE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Live Interactive Command Card -->
+                <div class="lg:col-span-5">
+                    <div class="glass-panel rounded-2xl p-6 sm:p-8 border border-slate-700/60 shadow-2xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-fireRed/15 to-transparent rounded-bl-full pointer-events-none"></div>
+
+                        <div class="flex items-center justify-between pb-5 mb-6 border-b border-slate-800">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-safeGreen animate-pulse"></div>
+                                <div>
+                                    <h2 class="font-mono text-xs uppercase tracking-widest text-slate-400">FIRE LINK TELEMETRY CORE</h2>
+                                    <p class="font-display font-semibold text-white text-sm">Active Cloud Supervision Matrix</p>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-md bg-safeGreen/10 border border-safeGreen/30 font-mono text-xs text-safeGreen">ONLINE</span>
+                        </div>
+
+                        <!-- 4 Live Animated Counters -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-charcoal/80 border border-slate-800/90">
+                                <div class="flex items-center justify-between text-slate-400 mb-1">
+                                    <span class="text-xs font-mono uppercase">Systems Installed</span>
+                                    <i data-lucide="Flame" class="w-4 h-4 text-fireOrange"></i>
+                                </div>
+                                <div class="font-display font-bold text-3xl sm:text-4xl text-white">
+                                    <span class="stat-counter" data-target="1480">0</span>+
+                                </div>
+                                <span class="text-[11px] text-slate-400 mt-1 block">Industrial &amp; High-Rise</span>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-charcoal/80 border border-slate-800/90">
+                                <div class="flex items-center justify-between text-slate-400 mb-1">
+                                    <span class="text-xs font-mono uppercase">NFPA Compliance</span>
+                                    <i data-lucide="award" class="w-4 h-4 text-agentCyan"></i>
+                                </div>
+                                <div class="font-display font-bold text-3xl sm:text-4xl text-agentCyan">
+                                    <span class="stat-counter" data-target="100">0</span>%
+                                </div>
+                                <span class="text-[11px] text-slate-400 mt-1 block">UL Listed / FM Approved</span>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-charcoal/80 border border-slate-800/90">
+                                <div class="flex items-center justify-between text-slate-400 mb-1">
+                                    <span class="text-xs font-mono uppercase">Trigger Response</span>
+                                    <i data-lucide="zap" class="w-4 h-4 text-fireRed"></i>
+                                </div>
+                                <div class="font-display font-bold text-3xl sm:text-4xl text-white">
+                                    0.<span class="stat-counter" data-target="8">0</span>s
+                                </div>
+                                <span class="text-[11px] text-slate-400 mt-1 block">Optical &amp; Laser VESDA</span>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-charcoal/80 border border-slate-800/90">
+                                <div class="flex items-center justify-between text-slate-400 mb-1">
+                                    <span class="text-xs font-mono uppercase">Protected Assets</span>
+                                    <i data-lucide="building-2" class="w-4 h-4 text-safeGreen"></i>
+                                </div>
+                                <div class="font-display font-bold text-3xl sm:text-4xl text-white">
+                                    <span class="stat-counter" data-target="620">0</span>+
+                                </div>
+                                <span class="text-[11px] text-slate-400 mt-1 block">24/7 Monitored Facilities</span>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Pressure Bar inside Hero Card -->
+                        <div class="mt-6 p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-2.5">
+                            <div class="flex justify-between items-center text-xs font-mono">
+                                <span class="text-slate-400">MAIN HEADER MANIFOLD PRESSURE</span>
+                                <span id="heroPressureValue" class="text-agentCyan font-bold">12.4 BAR (180 PSI)</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div id="heroPressureBar" class="h-full bg-gradient-to-r from-agentCyan to-safeGreen w-[88%] transition-all duration-700"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] font-mono text-slate-500">
+                                <span>JOCKEY PUMP: STANDBY</span>
+                                <span>DIESEL BACKUP: AUTO-READY</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= KEY FEATURE: INTERACTIVE BUILDING FIRE-SYSTEM SIMULATOR ================= -->
+    <section id="simulator" class="py-24 relative border-t border-slate-800/80 bg-slateDark/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fireRed/10 border border-fireRed/30 text-fireRed font-mono text-xs uppercase tracking-wider mb-3">
+                        <i data-lucide="radio" class="w-3.5 h-3.5"></i> Interactive Digital Twin
+                    </div>
+                    <h2 class="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight">
+                        Multi-Zone Suppression Simulator
+                    </h2>
+                </div>
+                <p class="text-slate-400 max-w-md text-sm sm:text-base">
+                    Click any facility sector on the blueprint below to inspect its dedicated fire protection engineering, then trigger a live heat/smoke test to observe automated agent discharge.
+                </p>
+            </div>
+
+            <!-- Main Simulator Workspace -->
+            <div class="grid lg:grid-cols-12 gap-8 items-start reveal">
+                
+                <!-- Left 8 Cols: Interactive SVG Facility Schematic Blueprint -->
+                <div class="lg:col-span-8 glass-panel rounded-2xl p-4 sm:p-6 border border-slate-700/70 relative overflow-hidden">
+                    <!-- Top Status Bar inside Blueprint -->
+                    <div class="flex flex-wrap items-center justify-between gap-4 pb-4 mb-4 border-b border-slate-800">
+                        <div class="flex items-center gap-3">
+                            <span id="simGlobalBadge" class="px-3 py-1 rounded-md bg-safeGreen/15 border border-safeGreen/40 text-safeGreen font-mono text-xs font-bold flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-safeGreen animate-ping"></span>
+                                SYSTEM NORMAL • ARMED
+                            </span>
+                            <span class="font-mono text-xs text-slate-400 hidden sm:inline">CAD SCHEMATIC: FL-904-REV4</span>
+                        </div>
+
+                        <!-- Zone Quick Selector Pills -->
+                        <div class="flex flex-wrap gap-1.5">
+                            <button onclick="selectZone(0)" id="zoneTab0" class="zone-tab px-3 py-1.5 rounded-lg font-mono text-xs transition-all bg-fireRed text-white font-semibold">
+                                Z1: Server Core
+                            </button>
+                            <button onclick="selectZone(1)" id="zoneTab1" class="zone-tab px-3 py-1.5 rounded-lg font-mono text-xs transition-all bg-slate-800/90 text-slate-300 hover:bg-slate-700">
+                                Z2: Logistics Bay
+                            </button>
+                            <button onclick="selectZone(2)" id="zoneTab2" class="zone-tab px-3 py-1.5 rounded-lg font-mono text-xs transition-all bg-slate-800/90 text-slate-300 hover:bg-slate-700">
+                                Z3: HazMat Vault
+                            </button>
+                            <button onclick="selectZone(3)" id="zoneTab3" class="zone-tab px-3 py-1.5 rounded-lg font-mono text-xs transition-all bg-slate-800/90 text-slate-300 hover:bg-slate-700">
+                                Z4: Atrium Lobby
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Interactive SVG Blueprint Schematic -->
+                    <div class="relative w-full bg-[#070a10] rounded-xl border border-slate-800/90 p-2 sm:p-4 overflow-hidden">
+                        <svg id="facilityBlueprint" viewBox="0 0 800 480" class="w-full h-auto select-none">
+                            <defs>
+                                <!-- Blueprint Grid Pattern -->
+                                <pattern id="cadGrid" width="25" height="25" patternUnits="userSpaceOnUse">
+                                    <path d="M 25 0 L 0 0 0 25" fill="none" stroke="rgba(148, 163, 184, 0.07)" stroke-width="1"/>
+                                </pattern>
+                                <!-- Agent Mist Radial Gradients -->
+                                <radialGradient id="fireGlow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#ef4444" stop-opacity="0.65"/>
+                                    <stop offset="60%" stop-color="#f97316" stop-opacity="0.25"/>
+                                    <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+                                </radialGradient>
+                                <radialGradient id="cyanMist" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.65"/>
+                                    <stop offset="70%" stop-color="#0891b2" stop-opacity="0.25"/>
+                                    <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+                                </radialGradient>
+                            </defs>
+
+                            <!-- Background Grid -->
+                            <rect width="800" height="480" fill="url(#cadGrid)" />
+
+                            <!-- Outer Building Structural Walls -->
+                            <rect x="30" y="25" width="740" height="390" rx="8" fill="none" stroke="#334155" stroke-width="4"/>
+
+                            <!-- ================= PUMP ROOM & RISER MANIFOLD (Bottom Bar) ================= -->
+                            <g transform="translate(30, 425)">
+                                <rect x="0" y="0" width="740" height="42" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+                                <circle cx="35" cy="21" r="11" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+                                <text x="56" y="25" fill="#94a3b8" font-family="JetBrains Mono" font-size="11" font-weight="bold">UL/FM PUMP HOUSE &amp; CLEAN AGENT MANIFOLD RISER (12.4 BAR)</text>
+                                <text x="615" y="25" fill="#06b6d4" font-family="JetBrains Mono" font-size="11" id="svgManifoldStatus">VALVES: ARMED</text>
+                            </g>
+
+                            <!-- ================= ZONE 0: SERVER CORE (TOP LEFT) ================= -->
+                            <g id="svgZone0" onclick="selectZone(0)" class="cursor-pointer transition-all">
+                                <rect id="zoneRect0" x="40" y="35" width="350" height="180" rx="6" fill="rgba(15, 23, 42, 0.75)" stroke="#ef4444" stroke-width="2.5"/>
+                                <!-- Server Racks Illustration -->
+                                <g stroke="#334155" stroke-width="1.5" fill="#0f172a">
+                                    <rect x="70" y="85" width="45" height="90" rx="2"/>
+                                    <rect x="130" y="85" width="45" height="90" rx="2"/>
+                                    <rect x="190" y="85" width="45" height="90" rx="2"/>
+                                    <rect x="250" y="85" width="45" height="90" rx="2"/>
+                                </g>
+                                <!-- Blinking Server LEDs -->
+                                <g fill="#06b6d4" opacity="0.7">
+                                    <circle cx="82" cy="100" r="2"/><circle cx="82" cy="115" r="2"/><circle cx="82" cy="130" r="2"/>
+                                    <circle cx="142" cy="100" r="2"/><circle cx="142" cy="115" r="2"/><circle cx="142" cy="130" r="2"/>
+                                    <circle cx="202" cy="100" r="2"/><circle cx="202" cy="115" r="2"/><circle cx="202" cy="130" r="2"/>
+                                    <circle cx="262" cy="100" r="2"/><circle cx="262" cy="115" r="2"/><circle cx="262" cy="130" r="2"/>
+                                </g>
+                                <!-- Zone Title & Tag -->
+                                <text x="58" y="62" fill="#f8fafc" font-family="Space Grotesk" font-size="15" font-weight="bold">ZONE 01 // TIER-4 SERVER ROOM</text>
+                                <text x="58" y="77" fill="#06b6d4" font-family="JetBrains Mono" font-size="10">FM-200 / NOVEC 1230 GAS + VESDA LASER</text>
+                                <!-- Nozzles & Sensors -->
+                                <circle id="sensor0_1" cx="135" cy="195" r="6" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                                <circle id="sensor0_2" cx="285" cy="195" r="6" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                                <!-- Dynamic Overlay for Fire / Suppression -->
+                                <circle id="hazardGlow0" cx="215" cy="130" r="95" fill="url(#fireGlow)" opacity="0" class="pointer-events-none transition-opacity duration-300"/>
+                                <circle id="agentGlow0" cx="215" cy="130" r="120" fill="url(#cyanMist)" opacity="0" class="pointer-events-none transition-opacity duration-500"/>
+                            </g>
+
+                            <!-- ================= ZONE 1: INDUSTRIAL WAREHOUSE (TOP RIGHT) ================= -->
+                            <g id="svgZone1" onclick="selectZone(1)" class="cursor-pointer transition-all">
+                                <rect id="zoneRect1" x="410" y="35" width="350" height="180" rx="6" fill="rgba(15, 23, 42, 0.5)" stroke="#334155" stroke-width="2"/>
+                                <!-- High-Bay Storage Racks -->
+                                <g stroke="#334155" stroke-width="1.5" fill="#0f172a">
+                                    <rect x="440" y="90" width="85" height="35" rx="2"/>
+                                    <rect x="440" y="140" width="85" height="35" rx="2"/>
+                                    <rect x="550" y="90" width="85" height="35" rx="2"/>
+                                    <rect x="550" y="140" width="85" height="35" rx="2"/>
+                                    <rect x="655" y="90" width="75" height="85" rx="2"/>
+                                </g>
+                                <text x="428" y="62" fill="#f8fafc" font-family="Space Grotesk" font-size="15" font-weight="bold">ZONE 02 // LOGISTICS WAREHOUSE</text>
+                                <text x="428" y="77" fill="#38bdf8" font-family="JetBrains Mono" font-size="10">ESFR HIGH-PRESSURE WATER MIST MATRIX</text>
+                                <circle id="sensor1_1" cx="505" cy="195" r="6" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                                <circle id="sensor1_2" cx="655" cy="195" r="6" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                                <circle id="hazardGlow1" cx="585" cy="130" r="95" fill="url(#fireGlow)" opacity="0" class="pointer-events-none transition-opacity duration-300"/>
+                                <circle id="agentGlow1" cx="585" cy="130" r="120" fill="url(#cyanMist)" opacity="0" class="pointer-events-none transition-opacity duration-500"/>
+                            </g>
+
+                            <!-- ================= ZONE 2: CHEMICAL VAULT (BOTTOM LEFT) ================= -->
+                            <g id="svgZone2" onclick="selectZone(2)" class="cursor-pointer transition-all">
+                                <rect id="zoneRect2" x="40" y="225" width="350" height="180" rx="6" fill="rgba(15, 23, 42, 0.5)" stroke="#334155" stroke-width="2"/>
+                                <!-- Chemical Containment Tanks -->
+                                <g stroke="#334155" stroke-width="2" fill="#0f172a">
+                                    <circle cx="115" cy="325" r="34"/>
+                                    <circle cx="205" cy="325" r="34"/>
+                                    <circle cx="295" cy="325" r="34"/>
+                                </g>
+                                <text x="58" y="252" fill="#f8fafc" font-family="Space Grotesk" font-size="15" font-weight="bold">ZONE 03 // CHEMICAL &amp; FUEL STORAGE</text>
+                                <text x="58" y="267" fill="#f97316" font-family="JetBrains Mono" font-size="10">AFFF FOAM DELUGE + IR3 FLAME DETECTORS</text>
+                                <circle id="sensor2_1" cx="135" cy="385" r="6" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                                <circle id="sensor2_2" cx="285" cy="385" r="6" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                                <circle id="hazardGlow2" cx="205" cy="325" r="95" fill="url(#fireGlow)" opacity="0" class="pointer-events-none transition-opacity duration-300"/>
+                                <circle id="agentGlow2" cx="205" cy="325" r="120" fill="url(#cyanMist)" opacity="0" class="pointer-events-none transition-opacity duration-500"/>
+                            </g>
+
+                            <!-- ================= ZONE 3: MAIN ATRIUM LOBBY (BOTTOM RIGHT) ================= -->
+                            <g id="svgZone3" onclick="selectZone(3)" class="cursor-pointer transition-all">
+                                <rect id="zoneRect3" x="410" y="225" width="350" height="180" rx="6" fill="rgba(15, 23, 42, 0.5)" stroke="#334155" stroke-width="2"/>
+                                <!-- Atrium Architectural Layout -->
+                                <g stroke="#334155" stroke-width="1.5" fill="#0f172a">
+                                    <rect x="450" y="285" width="120" height="75" rx="6"/>
+                                    <rect x="600" y="285" width="120" height="75" rx="6"/>
+                                </g>
+                                <text x="428" y="252" fill="#f8fafc" font-family="Space Grotesk" font-size="15" font-weight="bold">ZONE 04 // EXECUTIVE ATRIUM &amp; HVAC</text>
+                                <text x="428" y="267" fill="#10b981" font-family="JetBrains Mono" font-size="10">ADDRESSABLE PHOTOELECTRIC + SMOKE DAMPERS</text>
+                                <circle id="sensor3_1" cx="505" cy="385" r="6" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                                <circle id="sensor3_2" cx="655" cy="385" r="6" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                                <circle id="hazardGlow3" cx="585" cy="320" r="95" fill="url(#fireGlow)" opacity="0" class="pointer-events-none transition-opacity duration-300"/>
+                                <circle id="agentGlow3" cx="585" cy="320" r="120" fill="url(#cyanMist)" opacity="0" class="pointer-events-none transition-opacity duration-500"/>
+                            </g>
+
+                            <!-- ================= SUPPRESSION PIPING NETWORK (OVERLAY) ================= -->
+                            <g fill="none" stroke-linecap="round">
+                                <!-- Pipe to Zone 0 -->
+                                <path id="pipeZone0" d="M 398 425 L 398 130 L 100 130" stroke="#1e293b" stroke-width="4"/>
+                                <!-- Pipe to Zone 1 -->
+                                <path id="pipeZone1" d="M 402 425 L 402 130 L 700 130" stroke="#1e293b" stroke-width="4"/>
+                                <!-- Pipe to Zone 2 -->
+                                <path id="pipeZone2" d="M 398 425 L 398 325 L 100 325" stroke="#1e293b" stroke-width="4"/>
+                                <!-- Pipe to Zone 3 -->
+                                <path id="pipeZone3" d="M 402 425 L 402 325 L 700 325" stroke="#1e293b" stroke-width="4"/>
+                            </g>
+
+                            <!-- Alarm Strobe Beacons in Corners of Zones -->
+                            <circle id="strobe0" cx="372" cy="53" r="7" fill="#334155" />
+                            <circle id="strobe1" cx="742" cy="53" r="7" fill="#334155" />
+                            <circle id="strobe2" cx="372" cy="243" r="7" fill="#334155" />
+                            <circle id="strobe3" cx="742" cy="243" r="7" fill="#334155" />
+                        </svg>
+
+                        <!-- Legend Bar below SVG -->
+                        <div class="mt-3 pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono text-slate-400">
+                            <div class="flex items-center gap-4">
+                                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-fireRed inline-block"></span> Thermal/Smoke Trigger</span>
+                                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-agentCyan inline-block"></span> Active Agent Flow</span>
+                                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-safeGreen inline-block"></span> Sensor Armed</span>
+                            </div>
+                            <span>CLICK ANY ZONE ON BLUEPRINT TO INSPECT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right 4 Cols: Selected Zone Inspector, Trigger Button & Real-Time Log -->
+                <div class="lg:col-span-4 space-y-6">
+                    <!-- Zone Telemetry Card -->
+                    <div class="glass-panel rounded-2xl p-6 border border-slate-700/80 space-y-5">
+                        <div class="flex items-start justify-between gap-3">
+                            <div>
+                                <span id="inspectorZoneCode" class="font-mono text-xs text-fireOrange uppercase tracking-widest">ZONE 01 // SELECTED</span>
+                                <h3 id="inspectorZoneTitle" class="font-display font-bold text-2xl text-white mt-0.5">Tier-4 Server Room</h3>
+                            </div>
+                            <span id="inspectorZoneState" class="px-2.5 py-1 rounded bg-safeGreen/15 text-safeGreen border border-safeGreen/30 font-mono text-xs">STANDBY</span>
+                        </div>
+
+                        <p id="inspectorZoneDesc" class="text-sm text-slate-300 leading-relaxed">
+                            Protected by waterless 3M™ Novec™ 1230 / FM-200 clean agent cylinders paired with sub-micron VESDA laser aspirating smoke detection to prevent hardware damage.
+                        </p>
+
+                        <!-- Technical Spec Rows -->
+                        <div class="space-y-2.5 pt-2 border-t border-slate-800 text-xs font-mono">
+                            <div class="flex justify-between py-1.5 border-b border-slate-800/60">
+                                <span class="text-slate-400">SUPPRESSION AGENT:</span>
+                                <span id="specAgent" class="text-agentCyan font-semibold">FM-200 / Novec 1230 Gas</span>
+                            </div>
+                            <div class="flex justify-between py-1.5 border-b border-slate-800/60">
+                                <span class="text-slate-400">DETECTION TYPE:</span>
+                                <span id="specSensors" class="text-white">VESDA Laser + Dual-Optical</span>
+                            </div>
+                            <div class="flex justify-between py-1.5 border-b border-slate-800/60">
+                                <span class="text-slate-400">DISCHARGE TARGET:</span>
+                                <span id="specDischarge" class="text-white">&lt; 8.5 Seconds</span>
+                            </div>
+                            <div class="flex justify-between py-1.5">
+                                <span class="text-slate-400">NFPA STANDARD:</span>
+                                <span id="specNfpa" class="text-fireOrange">NFPA 2001 &amp; NFPA 75</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Trigger Buttons -->
+                        <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                            <button id="simulateTriggerBtn" onclick="triggerZoneSimulation()" class="flex-1 py-3.5 px-4 rounded-xl bg-gradient-to-r from-fireRed to-fireOrange hover:from-red-600 hover:to-orange-600 text-white font-display font-semibold text-sm shadow-lg shadow-fireRed/25 transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="flame" class="w-4 h-4"></i>
+                                <span>Simulate Heat/Smoke Trigger</span>
+                            </button>
+                            <button onclick="resetSimulator()" class="py-3.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5" title="Reset System">
+                                <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                                <span>Reset</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Real-Time Event Log Terminal -->
+                    <div class="glass-panel rounded-2xl p-5 border border-slate-700/80">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="terminal" class="w-4 h-4 text-agentCyan"></i>
+                                <span class="font-mono text-xs font-bold uppercase tracking-wider text-slate-200">FACP Live Event Sequence Log</span>
+                            </div>
+                            <span class="text-[10px] font-mono text-slate-500">BAUD 115200</span>
+                        </div>
+                        <div id="simulatorLogContainer" class="h-48 overflow-y-auto font-mono text-xs space-y-2 pr-1">
+                            <div class="text-slate-400">[<span class="text-safeGreen">SYS-OK</span>] Addressable Loop 1-4 initialized. All 256 sensors polling normal.</div>
+                            <div class="text-slate-500">[INFO] Select a facility zone and click "Simulate Heat/Smoke Trigger" to test response.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CORE SOLUTIONS & PRODUCTS GRID (3D TILT CARDS) ================= -->
+    <section id="solutions" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-agentCyan/10 border border-agentCyan/30 text-agentCyan font-mono text-xs uppercase tracking-wider mb-3">
+                    <i data-lucide="layers" class="w-3.5 h-3.5"></i> Turnkey Engineering Portfolio
+                </div>
+                <h2 class="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight">
+                    Mission-Critical Protection Systems
+                </h2>
+                <p class="mt-4 text-slate-400 text-base sm:text-lg">
+                    Engineered, hydraulically calculated, and commissioned to the strictest international UL, FM Global, and NFPA life-safety codes.
+                </p>
+            </div>
+
+            <!-- 3D Tilt Cards Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+                
+                <!-- Solution Card 1: Pumping Stations -->
+                <div class="tilt-card glass-panel rounded-2xl p-7 border border-slate-800 hover:border-fireRed/50 group relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-fireRed/10 rounded-full blur-2xl group-hover:bg-fireRed/25 transition-all"></div>
+                    <div class="tilt-card-content space-y-5">
+                        <div class="w-12 h-12 rounded-xl bg-fireRed/15 border border-fireRed/30 flex items-center justify-center text-fireRed">
+                            <i data-lucide="gauge" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="font-mono text-[11px] uppercase tracking-widest text-fireOrange">NFPA 20 STANDARD</span>
+                            <h3 class="font-display font-bold text-xl text-white mt-1">UL/FM Firefighting Pumping Stations</h3>
+                        </div>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Skid-mounted horizontal split-case &amp; vertical turbine fire pump packages (500 to 5,000 GPM) with Electric, Diesel-driven, and Jockey pump redundancy.
+                        </p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-400 pt-2 border-t border-slate-800/80">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-fireRed"></i> Tornatech / Metron Controllers</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-fireRed"></i> Automated Weekly Test Loops</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Solution Card 2: Clean Agent & Gas -->
+                <div class="tilt-card glass-panel rounded-2xl p-7 border border-slate-800 hover:border-agentCyan/50 group relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-agentCyan/10 rounded-full blur-2xl group-hover:bg-agentCyan/25 transition-all"></div>
+                    <div class="tilt-card-content space-y-5">
+                        <div class="w-12 h-12 rounded-xl bg-agentCyan/15 border border-agentCyan/30 flex items-center justify-center text-agentCyan">
+                            <i data-lucide="wind" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="font-mono text-[11px] uppercase tracking-widest text-agentCyan">NFPA 2001 &amp; NFPA 12</span>
+                            <h3 class="font-display font-bold text-xl text-white mt-1">Clean Agent &amp; Gas Suppression</h3>
+                        </div>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Zero-residue total flooding systems utilizing FK-5-1-12 (Novec 1230), FM-200, IG-541 Inert Gas, and High-Pressure CO2 for data centers and switchgear vaults.
+                        </p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-400 pt-2 border-t border-slate-800/80">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-agentCyan"></i> Safe for Live Electronics</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-agentCyan"></i> Room Integrity Door Fan Tested</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Solution Card 3: Addressable Fire Alarm Panels -->
+                <div class="tilt-card glass-panel rounded-2xl p-7 border border-slate-800 hover:border-fireOrange/50 group relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-fireOrange/10 rounded-full blur-2xl group-hover:bg-fireOrange/25 transition-all"></div>
+                    <div class="tilt-card-content space-y-5">
+                        <div class="w-12 h-12 rounded-xl bg-fireOrange/15 border border-fireOrange/30 flex items-center justify-center text-fireOrange">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="font-mono text-[11px] uppercase tracking-widest text-fireOrange">NFPA 72 LIFE SAFETY</span>
+                            <h3 class="font-display font-bold text-xl text-white mt-1">Intelligent Addressable Fire Alarms</h3>
+                        </div>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Networked multi-loop Fire Alarm Control Panels (FACP), VESDA laser aspirating smoke systems, linear heat cables, and phased voice evacuation matrices.
+                        </p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-400 pt-2 border-t border-slate-800/80">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-fireOrange"></i> 3D BMS Graphic Workstations</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-fireOrange"></i> Zero False-Alarm Algorithms</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Solution Card 4: Industrial Foam & Deluge -->
+                <div class="tilt-card glass-panel rounded-2xl p-7 border border-slate-800 hover:border-fireRed/50 group relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-fireRed/10 rounded-full blur-2xl group-hover:bg-fireRed/25 transition-all"></div>
+                    <div class="tilt-card-content space-y-5">
+                        <div class="w-12 h-12 rounded-xl bg-fireRed/15 border border-fireRed/30 flex items-center justify-center text-fireRed">
+                            <i data-lucide="droplets" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="font-mono text-[11px] uppercase tracking-widest text-fireRed">NFPA 11 / 13 / 15</span>
+                            <h3 class="font-display font-bold text-xl text-white mt-1">Industrial Foam &amp; Deluge Networks</h3>
+                        </div>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            High-expansion foam bladder tanks, deluge valves, and ESFR sprinkler grids engineered for petrochemical storage, aircraft hangars, and logistics hubs.
+                        </p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-400 pt-2 border-t border-slate-800/80">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-fireRed"></i> Fluorine-Free &amp; AFFF Concentrates</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-fireRed"></i> Hydraulic PIPENET Verification</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Solution Card 5: Smoke Management & HVAC -->
+                <div class="tilt-card glass-panel rounded-2xl p-7 border border-slate-800 hover:border-safeGreen/50 group relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-safeGreen/10 rounded-full blur-2xl group-hover:bg-safeGreen/25 transition-all"></div>
+                    <div class="tilt-card-content space-y-5">
+                        <div class="w-12 h-12 rounded-xl bg-safeGreen/15 border border-safeGreen/30 flex items-center justify-center text-safeGreen">
+                            <i data-lucide="fan" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="font-mono text-[11px] uppercase tracking-widest text-safeGreen">NFPA 92 STANDARD</span>
+                            <h3 class="font-display font-bold text-xl text-white mt-1">Smoke Management &amp; Pressurization</h3>
+                        </div>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Automated stairwell pressurization fans, UL-555 motorized fire/smoke dampers, and jet-fan tunnel ventilation ensuring smoke-free egress routes.
+                        </p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-400 pt-2 border-t border-slate-800/80">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-safeGreen"></i> Differential Pressure Sensors</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-safeGreen"></i> 400°C Rated Axial Extractors</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Solution Card 6: 24/7 AMC & Civil Defense -->
+                <div class="tilt-card glass-panel rounded-2xl p-7 border border-slate-800 hover:border-agentCyan/50 group relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-agentCyan/10 rounded-full blur-2xl group-hover:bg-agentCyan/25 transition-all"></div>
+                    <div class="tilt-card-content space-y-5">
+                        <div class="w-12 h-12 rounded-xl bg-agentCyan/15 border border-agentCyan/30 flex items-center justify-center text-agentCyan">
+                            <i data-lucide="wrench" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="font-mono text-[11px] uppercase tracking-widest text-agentCyan">NFPA 25 INSPECTION</span>
+                            <h3 class="font-display font-bold text-xl text-white mt-1">Annual Maintenance &amp; Certification</h3>
+                        </div>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Preventive quarterly testing, ultrasonic liquid level verification for gas cylinders, hydro-testing, and turnkey Civil Defense licensing renewals.
+                        </p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-400 pt-2 border-t border-slate-800/80">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-agentCyan"></i> 2-Hour Emergency SLA Response</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-agentCyan"></i> Digital Inspection Reports</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= INTERACTIVE HAZARD CLASS & SYSTEM ESTIMATOR ================= -->
+    <section id="calculator" class="py-24 relative bg-slateDark/70 border-y border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fireOrange/10 border border-fireOrange/30 text-fireOrange font-mono text-xs uppercase tracking-wider mb-3">
+                    <i data-lucide="sliders" class="w-3.5 h-3.5"></i> Hydraulic &amp; Hazard Class Estimator
+                </div>
+                <h2 class="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight">
+                    Configure Your Protection Package
+                </h2>
+                <p class="mt-3 text-slate-400">
+                    Select your facility profile, protected floor area, and NFPA occupancy hazard classification to compute preliminary engineering parameters.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-stretch reveal">
+                <!-- Left 7 Cols: Configurator Inputs -->
+                <div class="lg:col-span-7 glass-panel rounded-2xl p-6 sm:p-8 border border-slate-700/70 flex flex-col justify-between space-y-8">
+                    
+                    <!-- Step 1: Facility Type -->
+                    <div class="space-y-3">
+                        <label class="block font-mono text-xs uppercase tracking-wider text-slate-400">
+                            01. Select Facility Occupancy Profile
+                        </label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <button type="button" onclick="setCalcFacility('warehouse')" id="facBtn-warehouse" class="calc-fac-btn p-4 rounded-xl border border-fireRed bg-fireRed/15 text-left transition-all">
+                                <i data-lucide="package" class="w-5 h-5 text-fireRed mb-2"></i>
+                                <div class="font-display font-semibold text-sm text-white">Warehouse</div>
+                                <div class="text-[11px] text-slate-400">High-Bay Storage</div>
+                            </button>
+                            <button type="button" onclick="setCalcFacility('datacenter')" id="facBtn-datacenter" class="calc-fac-btn p-4 rounded-xl border border-slate-800 bg-charcoal/60 hover:border-slate-700 text-left transition-all">
+                                <i data-lucide="server" class="w-5 h-5 text-agentCyan mb-2"></i>
+                                <div class="font-display font-semibold text-sm text-white">Data Center</div>
+                                <div class="text-[11px] text-slate-400">Server &amp; UPS</div>
+                            </button>
+                            <button type="button" onclick="setCalcFacility('manufacturing')" id="facBtn-manufacturing" class="calc-fac-btn p-4 rounded-xl border border-slate-800 bg-charcoal/60 hover:border-slate-700 text-left transition-all">
+                                <i data-lucide="factory" class="w-5 h-5 text-fireOrange mb-2"></i>
+                                <div class="font-display font-semibold text-sm text-white">Manufacturing</div>
+                                <div class="text-[11px] text-slate-400">Industrial Plant</div>
+                            </button>
+                            <button type="button" onclick="setCalcFacility('tower')" id="facBtn-tower" class="calc-fac-btn p-4 rounded-xl border border-slate-800 bg-charcoal/60 hover:border-slate-700 text-left transition-all">
+                                <i data-lucide="building" class="w-5 h-5 text-safeGreen mb-2"></i>
+                                <div class="font-display font-semibold text-sm text-white">Commercial</div>
+                                <div class="text-[11px] text-slate-400">High-Rise Tower</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Protected Area Slider -->
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-end">
+                            <label for="areaSlider" class="font-mono text-xs uppercase tracking-wider text-slate-400">
+                                02. Total Protected Floor Area (m²)
+                            </label>
+                            <div class="font-display font-bold text-2xl text-white">
+                                <span id="areaSliderDisplay">3,500</span> <span class="text-sm font-mono text-fireOrange">m²</span>
+                            </div>
+                        </div>
+                        <input id="areaSlider" type="range" min="500" max="25000" step="250" value="3500" oninput="updateCalculator()" class="w-full" />
+                        <div class="flex justify-between text-[11px] font-mono text-slate-500">
+                            <span>500 m² (Single Zone)</span>
+                            <span>12,500 m² (Multi-Sector)</span>
+                            <span>25,000 m² (Industrial Campus)</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: NFPA Hazard Classification -->
+                    <div class="space-y-3">
+                        <label class="block font-mono text-xs uppercase tracking-wider text-slate-400">
+                            03. NFPA 13 Hazard Classification
+                        </label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <button type="button" onclick="setCalcHazard('light')" id="hazBtn-light" class="calc-haz-btn py-3 px-4 rounded-xl border border-slate-800 bg-charcoal/60 text-center transition-all">
+                                <div class="font-display font-semibold text-sm text-white">Light Hazard</div>
+                                <div class="text-[11px] font-mono text-slate-400">Low Combustibility</div>
+                            </button>
+                            <button type="button" onclick="setCalcHazard('ordinary')" id="hazBtn-ordinary" class="calc-haz-btn py-3 px-4 rounded-xl border border-fireOrange bg-fireOrange/15 text-center transition-all">
+                                <div class="font-display font-semibold text-sm text-white">Ordinary Hazard</div>
+                                <div class="text-[11px] font-mono text-fireOrange">Group 1 / Group 2</div>
+                            </button>
+                            <button type="button" onclick="setCalcHazard('extra')" id="hazBtn-extra" class="calc-haz-btn py-3 px-4 rounded-xl border border-slate-800 bg-charcoal/60 text-center transition-all">
+                                <div class="font-display font-semibold text-sm text-white">Extra Hazard</div>
+                                <div class="text-[11px] font-mono text-slate-400">Flammable / High Heat</div>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right 5 Cols: Dynamic Calculation Output Card -->
+                <div class="lg:col-span-5 glass-panel rounded-2xl p-6 sm:p-8 border border-fireRed/40 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute -bottom-16 -right-16 w-56 h-56 bg-fireRed/15 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                            <div>
+                                <span class="font-mono text-xs text-agentCyan uppercase tracking-widest">RECOMMENDED SPECIFICATION</span>
+                                <h3 id="calcOutputPackage" class="font-display font-bold text-2xl text-white mt-0.5">Fire Link Industrial ESFR-Pro</h3>
+                            </div>
+                            <div class="w-10 h-10 rounded-lg bg-fireRed/15 border border-fireRed/40 flex items-center justify-center text-fireRed">
+                                <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+
+                        <!-- Calculated Metrics Grid -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-charcoal/90 border border-slate-800">
+                                <span class="text-[11px] font-mono text-slate-400 uppercase block">Est. Pump Flow Rate</span>
+                                <div id="calcOutputGpm" class="font-display font-bold text-2xl sm:text-3xl text-white mt-1">1,500 GPM</div>
+                                <span id="calcOutputPressure" class="text-[11px] font-mono text-fireOrange">@ 10.5 BAR Rated Head</span>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-charcoal/90 border border-slate-800">
+                                <span class="text-[11px] font-mono text-slate-400 uppercase block">Detection Density</span>
+                                <div id="calcOutputSensors" class="font-display font-bold text-2xl sm:text-3xl text-agentCyan mt-1">118 Units</div>
+                                <span class="text-[11px] font-mono text-slate-400">Addressable Loops</span>
+                            </div>
+                        </div>
+
+                        <!-- Detailed System Breakdown -->
+                        <div class="space-y-2.5 text-xs font-mono bg-charcoal/60 p-4 rounded-xl border border-slate-800/90">
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">PRIMARY AGENT:</span>
+                                <span id="calcOutputAgent" class="text-white font-semibold text-right">Wet Pipe ESFR + In-Rack Sprinklers</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">RESERVE TANK VOLUME:</span>
+                                <span id="calcOutputTank" class="text-safeGreen font-semibold">340 m³ Dedicated Fire Tank</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">CONTROL ARCHITECTURE:</span>
+                                <span id="calcOutputPanel" class="text-white">2-Loop SIL-2 Addressable FACP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 mt-6 border-t border-slate-800">
+                        <button onclick="transferSpecToQuote()" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-fireRed to-fireOrange text-white font-display font-semibold text-sm shadow-xl shadow-fireRed/25 hover:scale-[1.01] transition-all flex items-center justify-center gap-2">
+                            <span>Load Spec into Engineering Quote Form</span>
+                            <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= COMPLIANCE BADGES & CERTIFICATIONS ================= -->
+    <section id="compliance" class="py-16 border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center font-mono text-xs uppercase tracking-widest text-slate-400 mb-8">
+                GLOBAL ACCREDITATIONS, HYDRAULIC STANDARDS &amp; AUTHORITY APPROVALS
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 reveal">
+                <div class="glass-panel rounded-xl p-5 flex items-center gap-3.5 border border-slate-800/90">
+                    <div class="w-11 h-11 rounded-lg bg-fireRed/10 border border-fireRed/30 flex items-center justify-center font-display font-bold text-fireRed text-sm shrink-0">NFPA</div>
+                    <div>
+                        <div class="font-display font-bold text-sm text-white">NFPA Member</div>
+                        <div class="text-xs text-slate-400 font-mono">13, 20, 72, 2001</div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl p-5 flex items-center gap-3.5 border border-slate-800/90">
+                    <div class="w-11 h-11 rounded-lg bg-agentCyan/10 border border-agentCyan/30 flex items-center justify-center font-display font-bold text-agentCyan text-sm shrink-0">UL</div>
+                    <div>
+                        <div class="font-display font-bold text-sm text-white">UL Listed</div>
+                        <div class="text-xs text-slate-400 font-mono">Certified Hardware</div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl p-5 flex items-center gap-3.5 border border-slate-800/90">
+                    <div class="w-11 h-11 rounded-lg bg-safeGreen/10 border border-safeGreen/30 flex items-center justify-center font-display font-bold text-safeGreen text-sm shrink-0">FM</div>
+                    <div>
+                        <div class="font-display font-bold text-sm text-white">FM Approved</div>
+                        <div class="text-xs text-slate-400 font-mono">Industrial Grade</div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl p-5 flex items-center gap-3.5 border border-slate-800/90">
+                    <div class="w-11 h-11 rounded-lg bg-fireOrange/10 border border-fireOrange/30 flex items-center justify-center font-display font-bold text-fireOrange text-sm shrink-0">CD</div>
+                    <div>
+                        <div class="font-display font-bold text-sm text-white">Civil Defense</div>
+                        <div class="text-xs text-slate-400 font-mono">Class-A Integrator</div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl p-5 flex items-center gap-3.5 border border-slate-800/90 col-span-2 md:col-span-1">
+                    <div class="w-11 h-11 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center font-display font-bold text-white text-sm shrink-0">ISO</div>
+                    <div>
+                        <div class="font-display font-bold text-sm text-white">ISO 9001:2015</div>
+                        <div class="text-xs text-slate-400 font-mono">Quality Assured</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ENGINEERING QUOTE & CONTACT FOOTER ================= -->
+    <section id="contact" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-start reveal">
+                
+                <!-- Left 5 Cols: Engineering Contact Details -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fireRed/10 border border-fireRed/30 text-fireRed font-mono text-xs uppercase tracking-wider mb-3">
+                            <i data-lucide="file-check-2" class="w-3.5 h-3.5"></i> Turnkey Submittals &amp; BOQ
+                        </div>
+                        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight">
+                            Request an Engineering Consultation
+                        </h2>
+                        <p class="mt-3 text-slate-400 leading-relaxed">
+                            Submit your project specifications or CAD drawings for a comprehensive hydraulic calculation, Bill of Quantities (BOQ), and NFPA compliance review within 24 hours.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="glass-panel p-4 rounded-xl flex items-center gap-4 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-fireRed/15 text-fireRed flex items-center justify-center shrink-0">
+                                <i data-lucide="phone-forwarded" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-mono text-slate-400">24/7 EMERGENCY &amp; DISPATCH HOTLINE</div>
+                                <div class="font-display font-bold text-white">+1 (800) 555-FIRE // +20 2 2480 9900</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-4 rounded-xl flex items-center gap-4 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-agentCyan/15 text-agentCyan flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-mono text-slate-400">TENDERS &amp; TECHNICAL SUBMITTALS</div>
+                                <div class="font-display font-bold text-white">engineering@firelink-systems.com</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-4 rounded-xl flex items-center gap-4 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-fireOrange/15 text-fireOrange flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-mono text-slate-400">REGIONAL HQ &amp; UL PUMP TESTING LAB</div>
+                                <div class="font-display font-bold text-white">Sector 4 Industrial Zone, Building B12</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right 7 Cols: Interactive Validated Quote Form -->
+                <div class="lg:col-span-7 glass-panel rounded-2xl p-6 sm:p-10 border border-slate-700/80">
+                    <form id="quoteForm" onsubmit="handleQuoteSubmit(event)" class="space-y-5" novalidate>
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-mono uppercase text-slate-300 mb-2">Full Name / Lead Engineer *</label>
+                                <input type="text" id="qName" required placeholder="Eng. Tariq Al-Mansoor" class="w-full px-4 py-3 rounded-xl bg-charcoal border border-slate-700 text-white text-sm focus:outline-none focus:border-fireRed transition-colors" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono uppercase text-slate-300 mb-2">Company / Organization *</label>
+                                <input type="text" id="qCompany" required placeholder="Apex Industrial Logistics" class="w-full px-4 py-3 rounded-xl bg-charcoal border border-slate-700 text-white text-sm focus:outline-none focus:border-fireRed transition-colors" />
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-mono uppercase text-slate-300 mb-2">Corporate Email *</label>
+                                <input type="email" id="qEmail" required placeholder="t.mansoor@company.com" class="w-full px-4 py-3 rounded-xl bg-charcoal border border-slate-700 text-white text-sm focus:outline-none focus:border-fireRed transition-colors" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono uppercase text-slate-300 mb-2">Direct Phone Number *</label>
+                                <input type="tel" id="qPhone" required placeholder="+20 100 000 0000" class="w-full px-4 py-3 rounded-xl bg-charcoal border border-slate-700 text-white text-sm focus:outline-none focus:border-fireRed transition-colors" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-slate-300 mb-2">Required Fire Link System Package</label>
+                            <select id="qPackage" class="w-full px-4 py-3 rounded-xl bg-charcoal border border-slate-700 text-white text-sm focus:outline-none focus:border-fireRed transition-colors">
+                                <option value="Turnkey Multi-System Integration">Turnkey Multi-System Integration (Design + Supply + Install)</option>
+                                <option value="UL/FM Fire Pumping Station">UL/FM Fire Pumping Station (NFPA 20)</option>
+                                <option value="FM-200 / Novec 1230 Clean Agent">FM-200 / Novec 1230 Clean Agent Suppression</option>
+                                <option value="Addressable Fire Alarm & VESDA">Addressable Fire Alarm &amp; VESDA Detection</option>
+                                <option value="Annual Maintenance Contract (AMC)">Annual Maintenance Contract (NFPA 25 AMC)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-slate-300 mb-2">Project Scope &amp; Technical Notes *</label>
+                            <textarea id="qNotes" rows="3" required placeholder="Specify facility area (m²), hazard classification, or Civil Defense requirements..." class="w-full px-4 py-3 rounded-xl bg-charcoal border border-slate-700 text-white text-sm focus:outline-none focus:border-fireRed transition-colors"></textarea>
+                        </div>
+
+                        <!-- Instant Feedback Banner -->
+                        <div id="formFeedback" class="hidden p-4 rounded-xl font-mono text-xs"></div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-fireRed to-fireOrange hover:from-red-600 hover:to-orange-600 text-white font-display font-bold text-sm tracking-wide shadow-xl shadow-fireRed/20 transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            <span>Transmit Engineering RFQ</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="border-t border-slate-800/90 bg-charcoal py-12 text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span class="font-display font-bold text-white text-sm">FIRE <span class="text-fireRed">LINK</span></span>
+                <span>•</span>
+                <span class="font-mono">LIFE SAFETY &amp; SUPPRESSION ENGINEERING</span>
+            </div>
+            <div class="font-mono">
+                © 2026 Fire Link Engineering Corp. All Systems NFPA &amp; UL Compliant.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= 24/7 EMERGENCY DISPATCH MODAL ================= -->
+    <div id="emergencyModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md p-4">
+        <div class="glass-panel max-w-md w-full rounded-2xl p-6 sm:p-8 border border-fireRed/60 shadow-2xl shadow-fireRed/20 relative">
+            <button onclick="closeEmergencyModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="w-12 h-12 rounded-xl bg-fireRed/20 border border-fireRed/50 flex items-center justify-center text-fireRed mb-4">
+                <i data-lucide="siren" class="w-6 h-6 animate-pulse"></i>
+            </div>
+            <span class="font-mono text-xs uppercase tracking-widest text-fireRed font-bold">PRIORITY RAPID RESPONSE</span>
+            <h3 class="font-display font-bold text-2xl text-white mt-1">24/7 Emergency Dispatch</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                For immediate post-discharge cylinder refilling, emergency fire pump lockouts, or critical FACP fault resolution, contact our on-call Rapid Response Field Engineers:
+            </p>
+            <div class="mt-5 p-4 rounded-xl bg-charcoal border border-slate-800 font-mono space-y-2">
+                <div class="text-xs text-slate-400">DIRECT DISPATCH COMMAND:</div>
+                <div class="text-lg font-bold text-white">+1 (800) 555-FIRE</div>
+                <div class="text-xs text-safeGreen flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-safeGreen animate-ping"></span>
+                    Field Crew Standby • Avg. Dispatch &lt; 18 mins
+                </div>
+            </div>
+            <button onclick="closeEmergencyModal()" class="mt-6 w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-mono text-xs uppercase tracking-wider">
+                Acknowledge &amp; Close
+            </button>
+        </div>
+    </div>
+
+    <!-- ================= JAVASCRIPT INTERACTIVITY ENGINE ================= -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // ---------------- 1. WEB AUDIO SYNTHESIZER (OPTIONAL SFX) ----------------
+        let audioCtx = null;
+        let soundEnabled = false;
+
+        function toggleAudioEngine() {
+            soundEnabled = !soundEnabled;
+            const icon = document.getElementById('soundIcon');
+            const btn = document.getElementById('soundToggleBtn');
+            if (soundEnabled) {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                btn.classList.add('border-agentCyan', 'text-agentCyan');
+                playSynthTone(660, 0.08, 'sine');
+            } else {
+                btn.classList.remove('border-agentCyan', 'text-agentCyan');
+            }
+        }
+
+        function playSynthTone(freq, duration, type = 'sine') {
+            if (!soundEnabled || !audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch (e) {}
+        }
+
+        // ---------------- 2. HERO CANVAS EMBER -> SUPPRESSION PARTICLES ----------------
+        const canvas = document.getElementById('heroCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: -1000, y: -1000, radius: 170 };
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        window.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+
+        window.addEventListener('mouseleave', () => {
+            mouse.x = -1000;
+            mouse.y = -1000;
+        });
+
+        class EmberParticle {
+            constructor() {
+                this.reset(true);
+            }
+            reset(initial = false) {
+                this.x = Math.random() * canvas.width;
+                this.y = initial ? Math.random() * canvas.height : canvas.height + 20;
+                this.size = Math.random() * 2.8 + 1.2;
+                this.speedY = -(Math.random() * 1.2 + 0.4);
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.alpha = Math.random() * 0.65 + 0.2;
+                this.suppressed = 0; // 0 = fire ember, 1 = cyan suppression mist
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.y * 0.015) * 0.3;
+
+                // Check distance from mouse cursor (suppression field)
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < mouse.radius) {
+                    this.suppressed = Math.min(1, this.suppressed + 0.08);
+                    // Gentle swirl repulsion near mouse
+                    this.x += (dx / dist) * 1.2;
+                    this.y += (dy / dist) * 0.6;
+                } else {
+                    this.suppressed = Math.max(0, this.suppressed - 0.015);
+                }
+
+                if (this.y < -20 || this.x < -20 || this.x > canvas.width + 20) {
+                    this.reset(false);
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                if (this.suppressed > 0.3) {
+                    // Cool Cyan Clean-Agent Particle
+                    ctx.fillStyle = `rgba(6, 182, 212, ${this.alpha})`;
+                    ctx.shadowBlur = 12;
+                    ctx.shadowColor = '#06b6d4';
+                } else {
+                    // Glowing Fire Ember Particle
+                    ctx.fillStyle = `rgba(249, 115, 22, ${this.alpha})`;
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#ef4444';
+                }
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        for (let i = 0; i < 75; i++) {
+            particles.push(new EmberParticle());
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw subtle suppression halo around mouse if inside hero
+            if (mouse.x > 0 && mouse.y > 0 && mouse.y < canvas.height) {
+                const grad = ctx.createRadialGradient(mouse.x, mouse.y, 5, mouse.x, mouse.y, mouse.radius);
+                grad.addColorStop(0, 'rgba(6, 182, 212, 0.10)');
+                grad.addColorStop(1, 'rgba(6, 182, 212, 0)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(mouse.x, mouse.y, mouse.radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+
+        // ---------------- 3. ANIMATED LIVE COUNTERS ----------------
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 1800;
+                const startTime = performance.now();
+
+                function updateCount(now) {
+                    const progress = Math.min((now - startTime) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    counter.innerText = Math.floor(eased * target).toLocaleString();
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        counter.innerText = target.toLocaleString();
+                    }
+                }
+                requestAnimationFrame(updateCount);
+            });
+        }
+        window.addEventListener('load', animateCounters);
+
+        // ---------------- 4. MULTI-ZONE BUILDING FIRE SIMULATOR ----------------
+        const zoneData = [
+            {
+                id: 0,
+                code: 'ZONE 01 // SELECTED',
+                title: 'Tier-4 Server Room',
+                desc: 'Protected by waterless 3M™ Novec™ 1230 / FM-200 clean agent cylinders paired with sub-micron VESDA laser aspirating smoke detection to prevent hardware damage.',
+                agent: 'FM-200 / Novec 1230 Gas',
+                sensors: 'VESDA Laser + Dual-Optical',
+                discharge: '< 8.5 Seconds',
+                nfpa: 'NFPA 2001 & NFPA 75'
+            },
+            {
+                id: 1,
+                code: 'ZONE 02 // SELECTED',
+                title: 'Logistics Warehouse Bay',
+                desc: 'High-bay rack storage protected by Early Suppression Fast Response (ESFR) K-25.2 ceiling sprinklers and high-pressure water mist curtains.',
+                agent: 'High-Pressure Water Mist & ESFR',
+                sensors: 'Linear Heat Cable + OSID Beam',
+                discharge: 'Immediate Wet-Pipe Flow',
+                nfpa: 'NFPA 13 & FM Data Sheet 8-9'
+            },
+            {
+                id: 2,
+                code: 'ZONE 03 // SELECTED',
+                title: 'Chemical & Fuel Vault',
+                desc: 'Rapid-action AFFF / Fluorine-Free foam deluge manifold triggered by explosion-proof Triple-IR (IR3) optical flame detectors for Class-B hydrocarbon hazards.',
+                agent: '3% AFFF Foam Deluge Blanket',
+                sensors: 'Triple-IR (IR3) Flame Detectors',
+                discharge: '< 4.2 Seconds Deluge Open',
+                nfpa: 'NFPA 11 & NFPA 15'
+            },
+            {
+                id: 3,
+                code: 'ZONE 04 // SELECTED',
+                title: 'Executive Atrium & HVAC',
+                desc: 'Intelligent addressable photoelectric smoke detectors integrated with motorized UL-555 smoke dampers, stairwell pressurization fans, and voice evacuation.',
+                agent: 'Concealed Sprinklers + Smoke Purge',
+                sensors: 'Addressable Multi-Criteria Optical',
+                discharge: 'Automated Damper Isolation',
+                nfpa: 'NFPA 72 & NFPA 92'
+            }
+        ];
+
+        let currentZone = 0;
+        let simTimers = [];
+        let simRunning = false;
+
+        function appendSimLog(message, type = 'info') {
+            const container = document.getElementById('simulatorLogContainer');
+            const time = new Date().toLocaleTimeString('en-US', { hour12: false });
+            const div = document.createElement('div');
+            let badge = `<span class="text-slate-500">[${time}]</span>`;
+            if (type === 'alert') {
+                badge = `<span class="text-fireRed font-bold">[${time} ALARM]</span>`;
+                div.className = 'text-red-200 bg-fireRed/10 px-2 py-1 rounded border-l-2 border-fireRed';
+            } else if (type === 'suppress') {
+                badge = `<span class="text-agentCyan font-bold">[${time} DISCHARGE]</span>`;
+                div.className = 'text-cyan-200 bg-agentCyan/10 px-2 py-1 rounded border-l-2 border-agentCyan';
+            } else if (type === 'safe') {
+                badge = `<span class="text-safeGreen font-bold">[${time} SECURE]</span>`;
+                div.className = 'text-emerald-200 bg-safeGreen/10 px-2 py-1 rounded border-l-2 border-safeGreen';
+            } else {
+                div.className = 'text-slate-300';
+            }
+            div.innerHTML = `${badge} ${message}`;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function selectZone(index) {
+            if (simRunning) resetSimulator();
+            currentZone = index;
+            const z = zoneData[index];
+            playSynthTone(520, 0.05, 'sine');
+
+            // Update Inspector Text
+            document.getElementById('inspectorZoneCode').innerText = z.code;
+            document.getElementById('inspectorZoneTitle').innerText = z.title;
+            document.getElementById('inspectorZoneDesc').innerText = z.desc;
+            document.getElementById('specAgent').innerText = z.agent;
+            document.getElementById('specSensors').innerText = z.sensors;
+            document.getElementById('specDischarge').innerText = z.discharge;
+            document.getElementById('specNfpa').innerText = z.nfpa;
+
+            // Update Tab Pills & SVG Borders
+            for (let i = 0; i < 4; i++) {
+                const tab = document.getElementById(`zoneTab${i}`);
+                const rect = document.getElementById(`zoneRect${i}`);
+                if (i === index) {
+                    tab.className = 'zone-tab px-3 py-1.5 rounded-lg font-mono text-xs transition-all bg-fireRed text-white font-semibold';
+                    rect.setAttribute('stroke', '#ef4444');
+                    rect.setAttribute('stroke-width', '2.5');
+                    rect.setAttribute('fill', 'rgba(15, 23, 42, 0.80)');
+                } else {
+                    tab.className = 'zone-tab px-3 py-1.5 rounded-lg font-mono text-xs transition-all bg-slate-800/90 text-slate-300 hover:bg-slate-700';
+                    rect.setAttribute('stroke', '#334155');
+                    rect.setAttribute('stroke-width', '2');
+                    rect.setAttribute('fill', 'rgba(15, 23, 42, 0.45)');
+                }
+            }
+            appendSimLog(`Inspector locked onto <strong>${z.title}</strong> (${z.agent}).`);
+        }
+
+        function triggerZoneSimulation() {
+            if (simRunning) return;
+            simRunning = true;
+            const z = zoneData[currentZone];
+
+            const btn = document.getElementById('simulateTriggerBtn');
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            const globalBadge = document.getElementById('simGlobalBadge');
+            const zoneState = document.getElementById('inspectorZoneState');
+            const manifoldStatus = document.getElementById('svgManifoldStatus');
+            const hazardGlow = document.getElementById(`hazardGlow${currentZone}`);
+            const agentGlow = document.getElementById(`agentGlow${currentZone}`);
+            const pipe = document.getElementById(`pipeZone${currentZone}`);
+            const strobe = document.getElementById(`strobe${currentZone}`);
+            const s1 = document.getElementById(`sensor${currentZone}_1`);
+            const s2 = document.getElementById(`sensor${currentZone}_2`);
+
+            // STEP 1: Smoke / Thermal Detected (0ms)
+            playSynthTone(880, 0.18, 'sawtooth');
+            globalBadge.className = 'px-3 py-1 rounded-md bg-fireRed/20 border border-fireRed text-fireRed font-mono text-xs font-bold flex items-center gap-2';
+            globalBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-fireRed animate-ping"></span> ALARM ACTIVE • ZONE 0${currentZone + 1}`;
+            zoneState.className = 'px-2.5 py-1 rounded bg-fireRed/20 text-fireRed border border-fireRed/40 font-mono text-xs font-bold';
+            zoneState.innerText = 'FIRE ALARM';
+
+            hazardGlow.setAttribute('opacity', '1');
+            strobe.setAttribute('fill', '#ef4444');
+            strobe.classList.add('strobe-active');
+            s1.setAttribute('stroke', '#ef4444');
+            s2.setAttribute('stroke', '#ef4444');
+
+            appendSimLog(`Smoke & thermal spike detected in <strong>${z.title}</strong>! Sensors S-01 & S-02 latched.`, 'alert');
+
+            // STEP 2: FACP Confirmation & Solenoid Valve Actuation (1.2s)
+            simTimers.push(setTimeout(() => {
+                playSynthTone(980, 0.18, 'sawtooth');
+                manifoldStatus.textContent = 'SOLENOID OPEN • FLOWING';
+                manifoldStatus.setAttribute('fill', '#f97316');
+                appendSimLog(`FACP Cross-Zone verified. Actuating pneumatic solenoid valve & HVAC isolation dampers.`, 'alert');
+            }, 1200));
+
+            // STEP 3: Suppression Agent Flowing through Piping (2.4s)
+            simTimers.push(setTimeout(() => {
+                playSynthTone(440, 0.35, 'triangle');
+                pipe.setAttribute('stroke', '#06b6d4');
+                pipe.classList.add('pipe-flowing');
+                agentGlow.setAttribute('opacity', '1');
+                agentGlow.classList.add('suppress-active');
+                zoneState.className = 'px-2.5 py-1 rounded bg-agentCyan/20 text-agentCyan border border-agentCyan/40 font-mono text-xs font-bold';
+                zoneState.innerText = 'DISCHARGING';
+                appendSimLog(`Discharging <strong>${z.agent}</strong> at design concentration through manifold riser.`, 'suppress');
+            }, 2400));
+
+            // STEP 4: Fire Neutralized & Zone Secured (4.5s)
+            simTimers.push(setTimeout(() => {
+                playSynthTone(660, 0.25, 'sine');
+                hazardGlow.setAttribute('opacity', '0');
+                agentGlow.classList.remove('suppress-active');
+                agentGlow.setAttribute('opacity', '0.35');
+                pipe.classList.remove('pipe-flowing');
+                strobe.classList.remove('strobe-active');
+                strobe.setAttribute('fill', '#10b981');
+                s1.setAttribute('stroke', '#10b981');
+                s2.setAttribute('stroke', '#10b981');
+
+                globalBadge.className = 'px-3 py-1 rounded-md bg-safeGreen/15 border border-safeGreen/40 text-safeGreen font-mono text-xs font-bold flex items-center gap-2';
+                globalBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-safeGreen"></span> THREAT NEUTRALIZED • ZONE SECURE`;
+                zoneState.className = 'px-2.5 py-1 rounded bg-safeGreen/15 text-safeGreen border border-safeGreen/30 font-mono text-xs font-bold';
+                zoneState.innerText = 'SUPPRESSED';
+                manifoldStatus.textContent = 'PRESSURE STABLE';
+                manifoldStatus.setAttribute('fill', '#10b981');
+
+                appendSimLog(`Thermal signature extinguished in <strong>${z.title}</strong>. O2 & pressure levels nominal.`, 'safe');
+
+                btn.disabled = false;
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                simRunning = false;
+            }, 4600));
+        }
+
+        function resetSimulator() {
+            simTimers.forEach(t => clearTimeout(t));
+            simTimers = [];
+            simRunning = false;
+
+            const btn = document.getElementById('simulateTriggerBtn');
+            btn.disabled = false;
+            btn.classList.remove('opacity-50', 'cursor-not-allowed');
+
+            const globalBadge = document.getElementById('simGlobalBadge');
+            globalBadge.className = 'px-3 py-1 rounded-md bg-safeGreen/15 border border-safeGreen/40 text-safeGreen font-mono text-xs font-bold flex items-center gap-2';
+            globalBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-safeGreen animate-ping"></span> SYSTEM NORMAL • ARMED`;
+
+            document.getElementById('inspectorZoneState').className = 'px-2.5 py-1 rounded bg-safeGreen/15 text-safeGreen border border-safeGreen/30 font-mono text-xs';
+            document.getElementById('inspectorZoneState').innerText = 'STANDBY';
+            document.getElementById('svgManifoldStatus').textContent = 'VALVES: ARMED';
+            document.getElementById('svgManifoldStatus').setAttribute('fill', '#06b6d4');
+
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`hazardGlow${i}`).setAttribute('opacity', '0');
+                const ag = document.getElementById(`agentGlow${i}`);
+                ag.setAttribute('opacity', '0');
+                ag.classList.remove('suppress-active');
+
+                const p = document.getElementById(`pipeZone${i}`);
+                p.setAttribute('stroke', '#1e293b');
+                p.classList.remove('pipe-flowing');
+
+                const st = document.getElementById(`strobe${i}`);
+                st.setAttribute('fill', '#334155');
+                st.classList.remove('strobe-active');
+
+                document.getElementById(`sensor${i}_1`).setAttribute('stroke', '#64748b');
+                document.getElementById(`sensor${i}_2`).setAttribute('stroke', '#64748b');
+            }
+            appendSimLog('FACP Manual Reset executed. All zone solenoids re-armed.');
+        }
+
+        // ---------------- 5. 3D TILT HOVER CARDS ----------------
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -6;
+                const rotateY = ((x - centerX) / centerX) * 6;
+                card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+            });
+        });
+
+        // ---------------- 6. INTERACTIVE SYSTEM ESTIMATOR / HAZARD CALCULATOR ----------------
+        let calcState = {
+            facility: 'warehouse',
+            area: 3500,
+            hazard: 'ordinary'
+        };
+
+        function setCalcFacility(type) {
+            calcState.facility = type;
+            playSynthTone(580, 0.05, 'sine');
+            ['warehouse', 'datacenter', 'manufacturing', 'tower'].forEach(t => {
+                const btn = document.getElementById(`facBtn-${t}`);
+                if (t === type) {
+                    btn.className = 'calc-fac-btn p-4 rounded-xl border border-fireRed bg-fireRed/15 text-left transition-all';
+                } else {
+                    btn.className = 'calc-fac-btn p-4 rounded-xl border border-slate-800 bg-charcoal/60 hover:border-slate-700 text-left transition-all';
+                }
+            });
+            updateCalculator();
+        }
+
+        function setCalcHazard(level) {
+            calcState.hazard = level;
+            playSynthTone(640, 0.05, 'sine');
+            ['light', 'ordinary', 'extra'].forEach(l => {
+                const btn = document.getElementById(`hazBtn-${l}`);
+                if (l === level) {
+                    btn.className = 'calc-haz-btn py-3 px-4 rounded-xl border border-fireOrange bg-fireOrange/15 text-center transition-all';
+                } else {
+                    btn.className = 'calc-haz-btn py-3 px-4 rounded-xl border border-slate-800 bg-charcoal/60 text-center transition-all';
+                }
+            });
+            updateCalculator();
+        }
+
+        function updateCalculator() {
+            const area = parseInt(document.getElementById('areaSlider').value, 10);
+            calcState.area = area;
+            document.getElementById('areaSliderDisplay').innerText = area.toLocaleString();
+
+            const hazMultiplier = calcState.hazard === 'light' ? 0.75 : (calcState.hazard === 'ordinary' ? 1.0 : 1.45);
+            const sensors = Math.max(16, Math.round((area / 32) * hazMultiplier));
+            const loops = Math.max(1, Math.ceil(sensors / 125));
+
+            let pkgName = '';
+            let gpm = 1000;
+            let pressure = '@ 10.5 BAR Rated Head';
+            let agent = '';
+            let tank = '';
+
+            if (calcState.facility === 'datacenter') {
+                pkgName = 'Fire Link CleanGuard™ Tier-4';
+                gpm = Math.round((area * 0.15 * hazMultiplier) / 50) * 50 + 500;
+                pressure = '42 BAR Manifold Cylinders';
+                agent = 'Novec 1230 / FM-200 + VESDA Laser';
+                tank = `${Math.max(4, Math.ceil(area / 350))}x Modular Cylinder Banks`;
+            } else if (calcState.facility === 'warehouse') {
+                pkgName = 'Fire Link Industrial ESFR-Pro';
+                gpm = Math.min(4500, Math.max(750, Math.round((area * 0.35 * hazMultiplier) / 250) * 250));
+                pressure = '@ 11.2 BAR UL/FM Split-Case';
+                agent = 'Wet Pipe ESFR K-25.2 + In-Rack Grid';
+                tank = `${Math.round(gpm * 0.22)} m³ Dedicated Steel Tank`;
+            } else if (calcState.facility === 'manufacturing') {
+                pkgName = 'Fire Link DelugeFoam™ HD';
+                gpm = Math.min(5000, Math.max(1000, Math.round((area * 0.42 * hazMultiplier) / 250) * 250));
+                pressure = '@ 12.0 BAR Diesel + Electric Skid';
+                agent = 'AFFF Foam Deluge + IR3 Flame Array';
+                tank = `${Math.round(gpm * 0.26)} m³ Water + Foam Bladder`;
+            } else {
+                pkgName = 'Fire Link High-Rise LifeSafe™';
+                gpm = Math.min(3000, Math.max(500, Math.round((area * 0.22 * hazMultiplier) / 250) * 250));
+                pressure = '@ 14.0 BAR Multi-Stage Vertical';
+                agent = 'Zone Standpipes + HVAC Smoke Purge';
+                tank = `${Math.round(gpm * 0.18)} m³ Basement Cistern`;
+            }
+
+            document.getElementById('calcOutputPackage').innerText = pkgName;
+            document.getElementById('calcOutputGpm').innerText = `${gpm.toLocaleString()} GPM`;
+            document.getElementById('calcOutputPressure').innerText = pressure;
+            document.getElementById('calcOutputSensors').innerText = `${sensors.toLocaleString()} Units`;
+            document.getElementById('calcOutputAgent').innerText = agent;
+            document.getElementById('calcOutputTank').innerText = tank;
+            document.getElementById('calcOutputPanel').innerText = `${loops}-Loop SIL-3 Addressable FACP`;
+        }
+
+        function transferSpecToQuote() {
+            const pkg = document.getElementById('calcOutputPackage').innerText;
+            const gpm = document.getElementById('calcOutputGpm').innerText;
+            const sensors = document.getElementById('calcOutputSensors').innerText;
+            const agent = document.getElementById('calcOutputAgent').innerText;
+
+            const notesField = document.getElementById('qNotes');
+            notesField.value = `[AUTO-IMPORTED CONFIG] Facility: ${calcState.facility.toUpperCase()} | Area: ${calcState.area.toLocaleString()} m² | Hazard Class: ${calcState.hazard.toUpperCase()} | Package: ${pkg} (${gpm}, ${sensors}, ${agent}). Please provide formal hydraulic calculation & BOQ.`;
+
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            notesField.focus();
+        }
+
+        // ---------------- 7. QUOTE FORM VALIDATION & SUBMISSION ----------------
+        function handleQuoteSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('qName').value.trim();
+            const company = document.getElementById('qCompany').value.trim();
+            const email = document.getElementById('qEmail').value.trim();
+            const phone = document.getElementById('qPhone').value.trim();
+            const notes = document.getElementById('qNotes').value.trim();
+            const feedback = document.getElementById('formFeedback');
+
+            if (!name || !company || !email.includes('@') || !phone || !notes) {
+                feedback.className = 'block p-4 rounded-xl font-mono text-xs bg-fireRed/15 border border-fireRed text-red-200';
+                feedback.innerHTML = '⚠️ VALIDATION ERROR: Please complete all mandatory engineering contact fields and valid corporate email.';
+                playSynthTone(220, 0.2, 'sawtooth');
+                return;
+            }
+
+            playSynthTone(740, 0.15, 'sine');
+            const refCode = 'FL-RFQ-' + Math.floor(100000 + Math.random() * 900000);
+            feedback.className = 'block p-4 rounded-xl font-mono text-xs bg-safeGreen/15 border border-safeGreen text-emerald-200';
+            feedback.innerHTML = `✅ TRANSMISSION CONFIRMED [${refCode}]: Thank you, ${name}. Your project specs for ${company} have been routed to our Senior Hydraulic Engineering Desk. Expect your formal submittal within 24 hours.`;
+            document.getElementById('quoteForm').reset();
+        }
+
+        // ---------------- 8. MODALS, MOBILE MENU & SCROLL REVEAL ----------------
+        function openEmergencyModal() {
+            const modal = document.getElementById('emergencyModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            playSynthTone(880, 0.12, 'triangle');
+        }
+
+        function closeEmergencyModal() {
+            const modal = document.getElementById('emergencyModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Scroll Reveal Observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
