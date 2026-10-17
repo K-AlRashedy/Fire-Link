@@ -53,6 +53,12 @@
     </script>
 
     <style>
+        /* Prevent horizontal scroll bleed on mobile */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
         /* Custom Engineering Blue Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -136,6 +142,17 @@
             opacity: 1;
         }
 
+        /* Disable 3D tilt on mobile touch devices for smooth scrolling */
+        @media (hover: none) and (pointer: coarse) {
+            .tilt-card {
+                transform: none !important;
+                will-change: auto;
+            }
+            .tilt-card::before {
+                display: none;
+            }
+        }
+
         /* Print Styles for Official BOQ Schedule */
         @media print {
             body * {
@@ -158,71 +175,69 @@
         }
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-cobalt-700 selection:text-white pb-20 md:pb-0">
+<body class="bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-cobalt-700 selection:text-white pb-24 md:pb-0">
 
     <!-- ================= TOP EXECUTIVE COMPLIANCE & DISPATCH BAR ================= -->
     <div class="bg-[#0A192F] text-slate-300 border-b border-sky-500/20 text-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-2">
-            <div class="flex items-center gap-2.5">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-cobalt-700 text-white font-semibold uppercase tracking-wider text-[10px] border border-sky-400/30">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-cobalt-700 text-white font-semibold uppercase tracking-wider text-[9px] sm:text-[10px] border border-sky-400/30">
                     <i data-lucide="shield-check" class="w-3 h-3 text-sky-300"></i>
                     UL / FM / NFPA / EN-54
                 </span>
                 <span class="hidden md:inline text-slate-300">Grade-A Civil Defense Approved Fire Protection Engineering &amp; Equipment Supply</span>
             </div>
-            <div class="flex items-center gap-4 ml-auto sm:ml-0">
+            <div class="flex items-center gap-3 ml-auto sm:ml-0">
                 <a href="tel:18005553473" class="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors font-medium">
                     <i data-lucide="phone-call" class="w-3.5 h-3.5 text-sky-400"></i>
-                    <span>24/7 Dispatch: <strong class="text-white font-mono">1-800-555-FIRE</strong></span>
+                    <span>Dispatch: <strong class="text-white font-mono">1-800-555-FIRE</strong></span>
                 </a>
                 <span class="hidden sm:inline text-slate-700">|</span>
                 <button onclick="switchMainView('shop')" class="hidden sm:inline-flex items-center gap-1 text-sky-400 hover:text-sky-300 font-semibold transition-colors">
-                    <span>Direct B2B Equipment Catalog</span>
+                    <span>Direct B2B Catalog</span>
                     <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- ================= STICKY TOP NAVIGATION BAR (LAPTOPS & DESKTOPS) ================= -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
+    <!-- ================= STICKY TOP NAVIGATION BAR ================= -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
             
-            <!-- Brand Logo with Blue Shield / Hydro-Thermal Emblem -->
-            <button onclick="switchMainView('landing'); window.scrollTo({top: 0, behavior: 'smooth'});" class="flex items-center gap-3 text-left group focus:outline-none shrink-0">
-                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-cobalt-700 via-cobalt-600 to-sky-600 group-hover:from-cobalt-800 group-hover:to-cobalt-600 flex items-center justify-center text-white shadow-cobalt-sm transition-all">
-                    <svg class="w-6 h-6 text-white" viewBox="0 0 36 36" fill="none">
-                        <!-- Outer Protection Shield -->
+            <!-- Brand Logo -->
+            <button onclick="switchMainView('landing'); window.scrollTo({top: 0, behavior: 'smooth'});" class="flex items-center gap-2.5 sm:gap-3 text-left group focus:outline-none shrink-0">
+                <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-cobalt-700 via-cobalt-600 to-sky-600 group-hover:from-cobalt-800 group-hover:to-cobalt-600 flex items-center justify-center text-white shadow-cobalt-sm transition-all">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" viewBox="0 0 36 36" fill="none">
                         <path d="M18 3L6 8.2V17.5C6 25.4 11.1 32.3 18 34.5C24.9 32.3 30 25.4 30 17.5V8.2L18 3Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="2.2"/>
-                        <!-- Inner Flame-Water Protection Core -->
                         <path d="M18 9.5C18 9.5 24.5 15.2 24.5 21C24.5 24.6 21.6 27.5 18 27.5C14.4 27.5 11.5 24.6 11.5 21C11.5 18.2 13.1 15.6 15.2 14C14.9 16.1 16.1 17.7 17.5 18C16.2 15.1 18 9.5 18 9.5Z" fill="#38BDF8"/>
                         <path d="M18 17.5C20 19.2 21 21 21 22.8C21 24.5 19.7 25.8 18 25.8C16.3 25.8 15 24.5 15 22.8C15 21 16.2 19.2 18 17.5Z" fill="#FFFFFF"/>
                     </svg>
                 </div>
                 <div>
-                    <div class="font-display font-extrabold text-xl sm:text-2xl tracking-tight text-[#0A192F] flex items-center">
+                    <div class="font-display font-extrabold text-lg sm:text-2xl tracking-tight text-[#0A192F] flex items-center">
                         FIRE<span class="text-cobalt-600 ml-0.5">LINK</span>
                     </div>
-                    <span class="block text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-slate-500 font-semibold -mt-1">
+                    <span class="block text-[8px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.18em] text-slate-500 font-semibold -mt-1">
                         Engineering &amp; Systems
                     </span>
                 </div>
             </button>
 
-            <!-- CENTER: SEGMENTED TWO-TAB VIEW SWITCHER -->
-            <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200/90">
+            <!-- CENTER: SEGMENTED TWO-TAB VIEW SWITCHER (Hidden on mobile, uses bottom nav instead; visible on md+) -->
+            <div class="hidden md:flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200/90">
                 <button
                     id="topTabLanding"
                     onclick="switchMainView('landing')"
-                    class="px-3 sm:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all bg-cobalt-700 text-white shadow-xs"
+                    class="px-4 lg:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all bg-cobalt-700 text-white shadow-sm"
                 >
                     <i data-lucide="building-2" class="w-4 h-4"></i>
-                    <span>Company <span class="hidden md:inline">&amp; Services</span></span>
+                    <span>Company &amp; Services</span>
                 </button>
                 <button
                     id="topTabShop"
                     onclick="switchMainView('shop')"
-                    class="px-3 sm:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all text-slate-600 hover:text-slate-900"
+                    class="px-4 lg:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all text-slate-600 hover:text-slate-900"
                 >
                     <i data-lucide="shopping-bag" class="w-4 h-4 text-cobalt-600"></i>
                     <span>Equipment Shop</span>
@@ -239,14 +254,15 @@
             </nav>
 
             <!-- Right Actions: Live BOQ / Quote Cart Button & Consultation CTA -->
-            <div class="flex items-center gap-2.5 shrink-0">
+            <div class="flex items-center gap-2 shrink-0">
                 <button
                     onclick="toggleBoqDrawer(true)"
-                    class="relative px-3.5 py-2.5 rounded-xl bg-[#0A192F] hover:bg-[#0F2942] text-white text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all shadow-xs border border-sky-500/20"
+                    class="relative px-3 sm:px-3.5 py-2.5 rounded-xl bg-[#0A192F] hover:bg-[#0F2942] text-white text-xs sm:text-sm font-semibold flex items-center gap-1.5 sm:gap-2 transition-all shadow-sm border border-sky-500/20"
                     title="Open Bill of Quantities & Quote Cart"
                 >
                     <i data-lucide="clipboard-list" class="w-4 h-4 text-sky-400"></i>
-                    <span class="hidden sm:inline">BOQ / Quote Cart</span>
+                    <span class="hidden sm:inline">BOQ / Cart</span>
+                    <span class="sm:hidden">Cart</span>
                     <span id="headerBoqBadge" class="min-w-5 h-5 px-1.5 rounded-full bg-cobalt-600 text-white font-mono font-bold text-xs flex items-center justify-center">0</span>
                 </button>
 
@@ -267,21 +283,21 @@
     <!-- ===================================================================================== -->
     <main id="viewLanding" class="view-animate">
 
-        <!-- 1. INTERACTIVE HERO SECTION (Deep Engineering Blue Gradient + Interactive Blueprint/Node Canvas) -->
-        <section id="heroSection" class="relative engineering-hero-bg text-white overflow-hidden py-14 sm:py-20 lg:py-24 border-b border-sky-500/20">
+        <!-- 1. INTERACTIVE HERO SECTION -->
+        <section id="heroSection" class="relative engineering-hero-bg text-white overflow-hidden py-12 sm:py-20 lg:py-24 border-b border-sky-500/20">
             <!-- Architectural Blueprint Grid Overlay -->
             <div class="absolute inset-0 blueprint-grid pointer-events-none"></div>
-            <!-- Interactive Hydro-Thermal Sensor Node Canvas (reacts to mouse & touch) -->
-            <canvas id="heroBlueprintCanvas" class="absolute inset-0 w-full h-full z-0 cursor-crosshair"></canvas>
+            <!-- Interactive Hydro-Thermal Sensor Node Canvas (Disabled pointer-events on mobile so touch scrolling is buttery smooth) -->
+            <canvas id="heroBlueprintCanvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none md:pointer-events-auto md:cursor-crosshair"></canvas>
 
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pointer-events-none">
-                <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                     
                     <!-- Left Column: Core Engineering Value Proposition -->
-                    <div class="lg:col-span-7 space-y-6 pointer-events-auto">
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/15 border border-sky-400/30 backdrop-blur-xs text-sky-300 text-[11px] sm:text-xs font-semibold tracking-wider uppercase">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                            <span>TURNKEY MEP CONTRACTING • UL / FM SYSTEMS • CIVIL DEFENSE APPROVED</span>
+                    <div class="lg:col-span-7 space-y-5 sm:space-y-6 pointer-events-auto">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/15 border border-sky-400/30 backdrop-blur-xs text-sky-300 text-[10px] sm:text-xs font-semibold tracking-wide sm:tracking-wider uppercase">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                            <span>TURNKEY MEP • UL / FM SYSTEMS • CIVIL DEFENSE APPROVED</span>
                         </div>
 
                         <h1 class="font-display text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight leading-[1.12] text-white">
@@ -296,7 +312,7 @@
                         <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
                             <button
                                 onclick="navigateLandingSection('services-section')"
-                                class="px-7 py-4 rounded-xl bg-cobalt-600 hover:bg-cobalt-500 text-white font-display font-bold text-sm sm:text-base shadow-cobalt-lg flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5"
+                                class="px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-cobalt-600 hover:bg-cobalt-500 text-white font-display font-bold text-sm sm:text-base shadow-cobalt-lg flex items-center justify-center gap-2.5 transition-all"
                             >
                                 <span>Explore Engineering Services</span>
                                 <i data-lucide="arrow-down-right" class="w-5 h-5 text-sky-200"></i>
@@ -304,23 +320,23 @@
 
                             <button
                                 onclick="switchMainView('shop')"
-                                class="px-7 py-4 rounded-xl bg-white hover:bg-cobalt-50 text-[#0A192F] font-display font-bold text-sm sm:text-base shadow-lg flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5"
+                                class="px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-white hover:bg-cobalt-50 text-[#0A192F] font-display font-bold text-sm sm:text-base shadow-lg flex items-center justify-center gap-2.5 transition-all"
                             >
                                 <i data-lucide="shopping-bag" class="w-5 h-5 text-cobalt-700"></i>
                                 <span>Open Equipment Shop</span>
-                                <span class="px-2 py-0.5 rounded-md bg-cobalt-100 text-cobalt-800 font-mono text-xs font-bold">12 Models</span>
+                                <span class="px-2 py-0.5 rounded-md bg-cobalt-100 text-cobalt-800 font-mono text-xs font-bold">12</span>
                             </button>
                         </div>
 
                         <!-- Interactive System Compliance Badge Bar -->
                         <div class="pt-6 border-t border-sky-400/20">
                             <div class="flex items-center justify-between mb-2.5">
-                                <span class="text-[11px] font-mono uppercase tracking-wider text-sky-300 font-semibold">Interactive System Compliance Standards (Click to Inspect):</span>
+                                <span class="text-[11px] font-mono uppercase tracking-wider text-sky-300 font-semibold">System Compliance Standards (Click to Inspect):</span>
                                 <span id="activeComplianceNote" class="text-[11px] font-mono text-emerald-300 hidden sm:inline">100% Code Verified</span>
                             </div>
                             <div class="flex flex-wrap gap-2">
                                 <button onclick="showComplianceToast('NFPA: National Fire Protection Association Codes 13, 14, 20, 25, 72 & 2001')" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-cobalt-600/60 border border-sky-400/30 text-xs font-semibold text-white flex items-center gap-1.5 transition-all">
-                                    <i data-lucide="Flame" class="w-3.5 h-3.5 text-sky-300"></i>
+                                    <i data-lucide="flame" class="w-3.5 h-3.5 text-sky-300"></i>
                                     <span>NFPA</span>
                                 </button>
                                 <button onclick="showComplianceToast('UL Listed: Underwriters Laboratories Certified Life Safety & Pumping Hardware')" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-cobalt-600/60 border border-sky-400/30 text-xs font-semibold text-white flex items-center gap-1.5 transition-all">
@@ -337,7 +353,7 @@
                                 </button>
                                 <button onclick="showComplianceToast('Civil Defense Approved: Grade-A Licensed Turnkey Installation & Annual Licensing')" class="px-3 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-xs font-semibold text-emerald-200 flex items-center gap-1.5 transition-all">
                                     <i data-lucide="file-check-2" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                    <span>Civil Defense Approved</span>
+                                    <span>Civil Defense</span>
                                 </button>
                             </div>
                         </div>
@@ -353,7 +369,7 @@
                                 </div>
                                 <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 font-mono text-xs font-semibold flex items-center gap-1">
                                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                                    ISO 9001:2015
+                                    ISO 9001
                                 </span>
                             </div>
 
@@ -365,7 +381,7 @@
                                     </div>
                                     <div class="flex-1">
                                         <div class="flex items-center justify-between">
-                                            <h3 class="font-display font-bold text-sm text-white group-hover:text-sky-300 transition-colors">Fire Alarm &amp; Voice Evacuation</h3>
+                                            <h3 class="font-display font-bold text-sm text-white group-hover:text-sky-300 transition-colors">Fire Alarm &amp; Voice Evac</h3>
                                             <span class="text-[11px] font-mono text-sky-400">NFPA 72</span>
                                         </div>
                                         <p class="text-xs text-slate-300 mt-1">Multi-loop addressable panels, VESDA laser smoke sensing &amp; phased PAVA audio.</p>
@@ -378,7 +394,7 @@
                                     </div>
                                     <div class="flex-1">
                                         <div class="flex items-center justify-between">
-                                            <h3 class="font-display font-bold text-sm text-white group-hover:text-sky-300 transition-colors">UL/FM Pumping &amp; Sprinkler Grids</h3>
+                                            <h3 class="font-display font-bold text-sm text-white group-hover:text-sky-300 transition-colors">UL/FM Pumping &amp; Sprinklers</h3>
                                             <span class="text-[11px] font-mono text-sky-400">NFPA 13 / 20</span>
                                         </div>
                                         <p class="text-xs text-slate-300 mt-1">Horizontal split-case pump skids, ESFR warehouse protection &amp; pre-action risers.</p>
@@ -391,7 +407,7 @@
                                     </div>
                                     <div class="flex-1">
                                         <div class="flex items-center justify-between">
-                                            <h3 class="font-display font-bold text-sm text-white group-hover:text-sky-300 transition-colors">Clean Agent Gas &amp; CO2 Systems</h3>
+                                            <h3 class="font-display font-bold text-sm text-white group-hover:text-sky-300 transition-colors">Clean Agent Gas &amp; CO2</h3>
                                             <span class="text-[11px] font-mono text-sky-400">NFPA 2001</span>
                                         </div>
                                         <p class="text-xs text-slate-300 mt-1">10-second total flooding FM-200® &amp; Novec™ 1230 skids with room integrity testing.</p>
@@ -403,7 +419,7 @@
                             <div class="pt-3 border-t border-sky-400/20 flex items-center justify-between gap-2 text-xs">
                                 <span class="text-slate-300 flex items-center gap-1.5">
                                     <i data-lucide="sparkles" class="w-3.5 h-3.5 text-sky-400"></i>
-                                    <span>Move cursor or touch background to ping sensor nodes</span>
+                                    <span>Interactive blueprint sensor node canvas</span>
                                 </span>
                                 <button onclick="switchMainView('shop')" class="text-sky-400 hover:text-sky-300 font-bold inline-flex items-center gap-1 shrink-0">
                                     <span>Shop Catalog</span>
@@ -420,63 +436,62 @@
         <!-- 2. ANIMATED KEY METRICS BAR -->
         <section id="metricsSection" class="bg-white border-b border-slate-200 py-8 sm:py-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-7">
-                    <div class="flex items-center gap-4 p-4 rounded-2xl bg-cobalt-50/60 border border-cobalt-100">
-                        <div class="w-12 h-12 rounded-xl bg-cobalt-700 text-white flex items-center justify-center shrink-0 shadow-cobalt-sm">
-                            <i data-lucide="building" class="w-6 h-6"></i>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-7">
+                    <div class="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-cobalt-50/60 border border-cobalt-100">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-cobalt-700 text-white flex items-center justify-center shrink-0 shadow-cobalt-sm">
+                            <i data-lucide="building" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                         </div>
                         <div>
-                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-[#0A192F]">
+                            <div class="font-display text-xl sm:text-3xl font-extrabold text-[#0A192F]">
                                 <span class="metric-counter" data-target="480" data-suffix="+">0</span>
                             </div>
-                            <p class="text-xs font-semibold text-slate-600">Completed Turnkey Projects</p>
+                            <p class="text-[11px] sm:text-xs font-semibold text-slate-600">Turnkey Projects</p>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-4 p-4 rounded-2xl bg-cobalt-50/60 border border-cobalt-100">
-                        <div class="w-12 h-12 rounded-xl bg-sky-600 text-white flex items-center justify-center shrink-0 shadow-xs">
-                            <i data-lucide="gauge" class="w-6 h-6"></i>
+                    <div class="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-cobalt-50/60 border border-cobalt-100">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-sky-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                            <i data-lucide="gauge" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                         </div>
                         <div>
-                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-[#0A192F]">
+                            <div class="font-display text-xl sm:text-3xl font-extrabold text-[#0A192F]">
                                 <span class="metric-counter" data-target="1250" data-suffix="+">0</span>
                             </div>
-                            <p class="text-xs font-semibold text-slate-600">UL/FM Listed Skids Installed</p>
+                            <p class="text-[11px] sm:text-xs font-semibold text-slate-600">UL/FM Skids Installed</p>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-4 p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/70">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
-                            <i data-lucide="file-badge" class="w-6 h-6"></i>
+                    <div class="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/70">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                            <i data-lucide="file-badge" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                         </div>
                         <div>
-                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-[#0A192F]">
+                            <div class="font-display text-xl sm:text-3xl font-extrabold text-[#0A192F]">
                                 <span class="metric-counter" data-target="100" data-suffix="%">0</span>
                             </div>
-                            <p class="text-xs font-semibold text-slate-600">Civil Defense Approval Rate</p>
+                            <p class="text-[11px] sm:text-xs font-semibold text-slate-600">Civil Defense Approval</p>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-4 p-4 rounded-2xl bg-cobalt-50/60 border border-cobalt-100">
-                        <div class="w-12 h-12 rounded-xl bg-[#0A192F] text-sky-400 flex items-center justify-center shrink-0 shadow-xs">
-                            <i data-lucide="clock" class="w-6 h-6"></i>
+                    <div class="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-cobalt-50/60 border border-cobalt-100">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#0A192F] text-sky-400 flex items-center justify-center shrink-0 shadow-sm">
+                            <i data-lucide="clock" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                         </div>
                         <div>
-                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-[#0A192F]">
+                            <div class="font-display text-xl sm:text-3xl font-extrabold text-[#0A192F]">
                                 <span class="metric-counter" data-target="24" data-suffix="/7">0</span>
                             </div>
-                            <p class="text-xs font-semibold text-slate-600">Emergency AMC Support</p>
+                            <p class="text-[11px] sm:text-xs font-semibold text-slate-600">Emergency AMC Support</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. 6 TURNKEY FIRE PROTECTION SERVICES (3D TILT CARDS) -->
+        <!-- 3. 6 TURNKEY FIRE PROTECTION SERVICES -->
         <section id="services-section" class="py-16 sm:py-24 bg-[#F8FAFC]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <!-- Section Header -->
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                     <div>
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cobalt-50 border border-cobalt-200 text-cobalt-700 text-xs font-bold uppercase tracking-wider mb-3">
@@ -488,11 +503,10 @@
                         </h2>
                     </div>
                     <p class="text-slate-600 max-w-md text-sm sm:text-base">
-                        Hover over any division card to inspect deliverables, view full NFPA engineering specifications, or attach a turnkey service directly to your RFQ.
+                        Inspect deliverables, view full NFPA engineering specifications, or attach a turnkey service directly to your RFQ.
                     </p>
                 </div>
 
-                <!-- 6 Interactive 3D Tilt Service Cards -->
                 <div id="servicesGridContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
                     <!-- Injected via JS -->
                 </div>
@@ -500,7 +514,7 @@
             </div>
         </section>
 
-        <!-- 4. INTERACTIVE 4-STAGE TURNKEY EXECUTION WORKFLOW -->
+        <!-- 4. 4-STAGE TURNKEY EXECUTION WORKFLOW -->
         <section id="workflow-section" class="py-16 sm:py-24 bg-white border-y border-slate-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
@@ -512,16 +526,14 @@
                         Interactive 4-Stage Execution Workflow
                     </h2>
                     <p class="text-slate-600 text-sm sm:text-base mt-2">
-                        Select any stage below to inspect our engineering deliverables, specialized software tools, and quality assurance checklists.
+                        Select any stage below to inspect our engineering deliverables and quality assurance checklists.
                     </p>
                 </div>
 
-                <!-- Clickable Step Tabs -->
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8" id="workflowStepsTabs">
                     <!-- Populated via JS -->
                 </div>
 
-                <!-- Dynamic Active Stage Detail Panel -->
                 <div id="workflowDetailPanel" class="rounded-2xl bg-[#0A192F] text-white p-6 sm:p-10 border border-sky-500/25 shadow-2xl relative overflow-hidden">
                     <!-- Populated via JS -->
                 </div>
@@ -529,7 +541,7 @@
             </div>
         </section>
 
-        <!-- 5. INTERACTIVE INDUSTRIAL & COMMERCIAL SECTORS SHOWCASE -->
+        <!-- 5. INDUSTRIAL & COMMERCIAL SECTORS SHOWCASE -->
         <section id="sectors-section" class="py-16 sm:py-24 bg-[#F8FAFC]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
@@ -544,13 +556,11 @@
                         </h2>
                     </div>
 
-                    <!-- Sector Filter Tabs -->
                     <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="sectorFilterTabs">
                         <!-- Injected via JS -->
                     </div>
                 </div>
 
-                <!-- Active Sector Showcase Panel -->
                 <div id="sectorShowcaseCard" class="rounded-2xl bg-white border border-slate-200 shadow-card-clean overflow-hidden">
                     <!-- Injected via JS -->
                 </div>
@@ -566,7 +576,7 @@
                             Need Direct Supply of Certified Fire Safety Equipment?
                         </h3>
                         <p class="text-slate-300 text-xs sm:text-sm">
-                            Switch to our dedicated <strong class="text-white">Equipment Shop Tab</strong> to browse 12 UL/FM listed pumps, addressable FACP panels, clean agent cylinders, and build a printable Bill of Quantities (BOQ).
+                            Switch to our dedicated <strong class="text-white">Equipment Shop</strong> to browse 12 UL/FM listed pumps, addressable panels, clean agent cylinders, and build a printable Bill of Quantities (BOQ).
                         </p>
                     </div>
                     <button
@@ -587,8 +597,8 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
                     
-                    <!-- Left Column: Executive Contact Card & Attached BOQ Preview -->
-                    <div class="lg:col-span-5 rounded-2xl bg-[#0A192F] text-white p-7 sm:p-9 space-y-7 relative overflow-hidden border border-sky-500/20">
+                    <!-- Left Column: Contact Card & Attached BOQ Preview -->
+                    <div class="lg:col-span-5 rounded-2xl bg-[#0A192F] text-white p-6 sm:p-9 space-y-7 relative overflow-hidden border border-sky-500/20">
                         <div class="absolute inset-0 blueprint-grid pointer-events-none"></div>
                         <div class="relative z-10 space-y-3">
                             <span class="px-3 py-1 rounded-md bg-cobalt-700 text-sky-200 text-xs font-mono font-bold uppercase border border-sky-400/30">
@@ -598,7 +608,7 @@
                                 Request an Engineering Consultation or Site Survey
                             </h2>
                             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                                Whether you require a turnkey electromechanical contracting proposal, Civil Defense compliance audit, or custom BOQ pricing, our senior fire protection engineers respond within 4 business hours.
+                                Whether you require a turnkey electromechanical contracting proposal, Civil Defense compliance audit, or custom BOQ pricing, our senior engineers respond within 4 business hours.
                             </p>
                         </div>
 
@@ -609,7 +619,7 @@
                                 </div>
                                 <div>
                                     <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Central Contracting Desk</span>
-                                    <span class="font-mono font-bold text-base text-white">+1 (800) 555-3473 • Ext. 101</span>
+                                    <span class="font-mono font-bold text-sm sm:text-base text-white">+1 (800) 555-3473 • Ext. 101</span>
                                     <span class="block text-xs text-sky-300">24/7 Emergency AMC Support: Ext. 999</span>
                                 </div>
                             </div>
@@ -620,8 +630,7 @@
                                 </div>
                                 <div>
                                     <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Tenders &amp; Estimation Email</span>
-                                    <span class="font-mono font-bold text-sm text-white">tenders@firelink-engineering.com</span>
-                                    <span class="block text-xs text-slate-400">procurement@firelink-engineering.com</span>
+                                    <span class="font-mono font-bold text-xs sm:text-sm text-white break-all">tenders@firelink-engineering.com</span>
                                 </div>
                             </div>
 
@@ -656,13 +665,13 @@
 
                     <!-- Right Column: Consultation & RFQ Form -->
                     <div class="lg:col-span-7">
-                        <form id="consultationForm" onsubmit="handleConsultationSubmit(event)" class="rounded-2xl bg-[#F8FAFC] border border-slate-200 p-6 sm:p-9 shadow-card-clean space-y-5">
+                        <form id="consultationForm" onsubmit="handleConsultationSubmit(event)" class="rounded-2xl bg-[#F8FAFC] border border-slate-200 p-6 sm:p-9 space-y-5">
                             <div class="flex items-center justify-between pb-4 border-b border-slate-200">
                                 <div>
-                                    <span class="text-xs font-bold uppercase tracking-wider text-cobalt-700">Fast-Track Engineering Response</span>
-                                    <h3 class="font-display text-xl sm:text-2xl font-extrabold text-[#0A192F]">Submit Project Inquiry / Official RFQ</h3>
+                                    <span class="text-xs font-bold uppercase tracking-wider text-cobalt-700">Fast-Track Response</span>
+                                    <h3 class="font-display text-xl sm:text-2xl font-extrabold text-[#0A192F]">Submit Project Inquiry / RFQ</h3>
                                 </div>
-                                <div class="w-11 h-11 rounded-xl bg-cobalt-50 border border-cobalt-200 flex items-center justify-center text-cobalt-700">
+                                <div class="w-11 h-11 rounded-xl bg-cobalt-50 border border-cobalt-200 flex items-center justify-center text-cobalt-700 shrink-0">
                                     <i data-lucide="send" class="w-5 h-5"></i>
                                 </div>
                             </div>
@@ -696,7 +705,7 @@
                                         <option>Turnkey Supply &amp; Electromechanical Installation</option>
                                         <option>Equipment Supply Only (Per Attached BOQ)</option>
                                         <option>Annual Maintenance Contract (AMC) &amp; Licensing</option>
-                                        <option>BIM Modeling, Shop Drawings &amp; Hydraulic Calculations</option>
+                                        <option>BIM Modeling, Shop Drawings &amp; Calculations</option>
                                     </select>
                                 </div>
                                 <div>
@@ -712,7 +721,7 @@
 
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Project Details &amp; Attached BOQ Requisition</label>
-                                <textarea id="consultationTextarea" rows="4" placeholder="Describe your project timeline, site location, or specific UL/FM hardware requirements..." class="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-cobalt-600 focus:outline-none text-sm text-slate-900"></textarea>
+                                <textarea id="consultationTextarea" rows="4" placeholder="Describe your project timeline, site location, or hardware requirements..." class="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-cobalt-600 focus:outline-none text-sm text-slate-900"></textarea>
                             </div>
 
                             <button type="submit" class="w-full py-4 rounded-xl bg-cobalt-700 hover:bg-cobalt-600 text-white font-display font-bold text-sm sm:text-base shadow-cobalt-sm flex items-center justify-center gap-2 transition-all">
@@ -720,13 +729,12 @@
                                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </button>
 
-                            <!-- Instant Submission Confirmation -->
                             <div id="consultationSuccessAlert" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-950 text-xs sm:text-sm flex items-start justify-between gap-3">
                                 <div class="flex items-start gap-2.5">
                                     <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
                                     <div>
                                         <strong class="font-bold block">Inquiry Registered (Ref #FL-ENG-2026):</strong>
-                                        <span>Our Fire Link estimation &amp; technical office has received your request and will contact you within 4 business hours.</span>
+                                        <span>Our estimation &amp; technical office has received your request and will contact you within 4 business hours.</span>
                                     </div>
                                 </div>
                                 <button type="button" onclick="this.parentElement.classList.add('hidden')" class="text-xs font-bold underline shrink-0">Dismiss</button>
@@ -745,7 +753,7 @@
     <!-- ===================================================================================== -->
     <main id="viewShop" class="hidden view-animate min-h-screen bg-[#F8FAFC]">
         
-        <!-- 1. SHOP HEADER BANNER -->
+        <!-- Shop Header Banner -->
         <section class="engineering-hero-bg text-white py-10 sm:py-12 border-b border-sky-500/20 relative overflow-hidden">
             <div class="absolute inset-0 blueprint-grid pointer-events-none"></div>
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -759,11 +767,10 @@
                             Fire Link Certified Equipment Shop
                         </h1>
                         <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                            Order UL Listed, FM Approved, and EN54/LPCB certified fire safety equipment directly or switch to <strong class="text-white">B2B BOQ Requisition Mode</strong> to generate an official project schedule.
+                            Order UL Listed, FM Approved, and EN54/LPCB certified fire safety equipment or switch to <strong class="text-white">B2B BOQ Requisition Mode</strong>.
                         </p>
                     </div>
 
-                    <!-- Pricing Mode Switcher (Unit Prices vs B2B BOQ Requisition Mode) + Open BOQ -->
                     <div class="flex flex-wrap items-center gap-3">
                         <div class="bg-[#0A192F]/90 border border-sky-400/30 p-1.5 rounded-xl flex items-center gap-1.5">
                             <span class="text-xs font-medium text-slate-300 pl-2 hidden sm:inline">Mode:</span>
@@ -779,7 +786,7 @@
                                 onclick="setShopPricingMode(false)"
                                 class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition-all"
                             >
-                                B2B BOQ Requisition Mode
+                                B2B BOQ Mode
                             </button>
                         </div>
 
@@ -795,21 +802,19 @@
             </div>
         </section>
 
-        <!-- 2. STICKY FILTER CONTROL BAR (Search, Category Pills, Certification Chips, Sort) -->
+        <!-- Sticky Filter Control Bar -->
         <section class="sticky top-16 sm:top-20 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 space-y-3">
                 
-                <!-- Top Row: Instant Keyword Search + Certification Filter Chips + Sort Dropdown -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-center">
                     
-                    <!-- Instant Keyword Search Bar -->
                     <div class="lg:col-span-5 relative">
                         <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
                         <input
                             id="shopSearchInput"
                             type="text"
                             oninput="handleShopSearch(this.value)"
-                            placeholder="Search by model name, SKU (e.g. FL-9000), or spec..."
+                            placeholder="Search by model, SKU, or spec..."
                             class="w-full pl-10 pr-9 py-2.5 rounded-xl bg-slate-100 focus:bg-white border border-slate-200 focus:border-cobalt-600 text-xs sm:text-sm text-slate-900 focus:outline-none transition-all"
                         >
                         <button id="clearShopSearchBtn" onclick="clearShopSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-cobalt-700">
@@ -817,7 +822,6 @@
                         </button>
                     </div>
 
-                    <!-- Certification Filter Chips (All, UL Listed, FM Approved, EN54 / LPCB) -->
                     <div class="lg:col-span-4 flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5" id="certFilterChips">
                         <button onclick="handleShopCertChange('all')" data-cert="all" class="cert-chip shrink-0 px-3 py-2 rounded-xl text-xs font-bold bg-[#0A192F] text-white transition-all">
                             All Certs
@@ -833,7 +837,6 @@
                         </button>
                     </div>
 
-                    <!-- Sort Dropdown -->
                     <div class="lg:col-span-3 flex items-center bg-slate-100 rounded-xl px-3 py-2 border border-slate-200">
                         <i data-lucide="arrow-up-down" class="w-4 h-4 text-cobalt-700 mr-2 shrink-0"></i>
                         <select id="shopSortSelect" onchange="handleShopSortChange(this.value)" class="w-full bg-transparent text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none">
@@ -845,14 +848,13 @@
                     </div>
                 </div>
 
-                <!-- Bottom Row: Category Filter Pills -->
                 <div class="flex items-center justify-between gap-4 pt-1">
                     <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="shopCategoryPills">
                         <button onclick="setShopCategory('all')" data-cat="all" class="shop-cat-pill shrink-0 px-3.5 py-2 rounded-xl bg-cobalt-700 text-white font-display font-bold text-xs shadow-xs transition-all">
                             All Equipment (12)
                         </button>
                         <button onclick="setShopCategory('alarm')" data-cat="alarm" class="shop-cat-pill shrink-0 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-cobalt-50 text-slate-700 font-display font-semibold text-xs transition-all">
-                            Fire Alarm &amp; Detection
+                            Alarm &amp; Detection
                         </button>
                         <button onclick="setShopCategory('pumps')" data-cat="pumps" class="shop-cat-pill shrink-0 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-cobalt-50 text-slate-700 font-display font-semibold text-xs transition-all">
                             Pumps &amp; Valves
@@ -876,7 +878,7 @@
             </div>
         </section>
 
-        <!-- 3. 12 CERTIFIED FIRE PROTECTION PRODUCT CARDS -->
+        <!-- Product Cards Grid -->
         <section class="py-10 sm:py-14">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
@@ -884,14 +886,13 @@
                     <!-- Populated via JavaScript -->
                 </div>
 
-                <!-- Empty Search/Filter State -->
                 <div id="shopEmptyState" class="hidden text-center py-16 px-4 rounded-2xl bg-white border border-slate-200 max-w-lg mx-auto my-8">
                     <div class="w-14 h-14 rounded-2xl bg-cobalt-50 text-cobalt-700 flex items-center justify-center mx-auto mb-4">
                         <i data-lucide="package-search" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="font-display text-lg font-extrabold text-[#0A192F]">No Matching Fire Safety Equipment</h3>
+                    <h3 class="font-display text-lg font-extrabold text-[#0A192F]">No Matching Equipment Found</h3>
                     <p class="text-slate-600 text-xs sm:text-sm mt-1 mb-5">
-                        No products matched your current filter combination. Reset filters to view all 12 UL/FM certified models.
+                        No products matched your current filter combination. Reset filters to view all 12 models.
                     </p>
                     <button onclick="resetAllShopFilters()" class="px-5 py-2.5 rounded-xl bg-cobalt-700 hover:bg-cobalt-600 text-white font-display font-bold text-xs shadow-xs">
                         Reset All Shop Filters
@@ -903,7 +904,7 @@
 
     </main>
 
-    <!-- ================= EXECUTIVE FOOTER (DEEP NAVY) ================= -->
+    <!-- ================= EXECUTIVE FOOTER ================= -->
     <footer class="bg-[#0A192F] text-slate-400 border-t border-sky-500/20 pt-14 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
@@ -922,9 +923,9 @@
                 <div>
                     <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-3">Turnkey Services</h4>
                     <ul class="space-y-2 text-xs">
-                        <li><button onclick="navigateLandingSection('services-section')" class="hover:text-sky-300 transition-colors">Fire Alarm &amp; Voice Evacuation</button></li>
+                        <li><button onclick="navigateLandingSection('services-section')" class="hover:text-sky-300 transition-colors">Fire Alarm &amp; Voice Evac</button></li>
                         <li><button onclick="navigateLandingSection('services-section')" class="hover:text-sky-300 transition-colors">Water-Based Sprinkler Networks</button></li>
-                        <li><button onclick="navigateLandingSection('services-section')" class="hover:text-sky-300 transition-colors">Clean Agent (FM-200 / Novec 1230)</button></li>
+                        <li><button onclick="navigateLandingSection('services-section')" class="hover:text-sky-300 transition-colors">Clean Agent (FM-200 / Novec)</button></li>
                         <li><button onclick="navigateLandingSection('services-section')" class="hover:text-sky-300 transition-colors">UL/FM Fire Pump Stations</button></li>
                         <li><button onclick="navigateLandingSection('services-section')" class="hover:text-sky-300 transition-colors">AMC &amp; Civil Defense Licensing</button></li>
                     </ul>
@@ -933,7 +934,7 @@
                 <div>
                     <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-3">Equipment Shop</h4>
                     <ul class="space-y-2 text-xs">
-                        <li><button onclick="switchMainView('shop'); setShopCategory('alarm');" class="hover:text-sky-300 transition-colors">Fire Alarm &amp; Detection</button></li>
+                        <li><button onclick="switchMainView('shop'); setShopCategory('alarm');" class="hover:text-sky-300 transition-colors">Alarm &amp; Detection</button></li>
                         <li><button onclick="switchMainView('shop'); setShopCategory('pumps');" class="hover:text-sky-300 transition-colors">UL/FM Pumps &amp; Valves</button></li>
                         <li><button onclick="switchMainView('shop'); setShopCategory('suppression');" class="hover:text-sky-300 transition-colors">Gas &amp; Foam Suppression</button></li>
                         <li><button onclick="switchMainView('shop'); setShopCategory('extinguishers');" class="hover:text-sky-300 transition-colors">Extinguishers &amp; Cabinets</button></li>
@@ -942,7 +943,7 @@
                 </div>
 
                 <div>
-                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-3">24/7 Emergency &amp; Tenders</h4>
+                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-3">24/7 Emergency</h4>
                     <p class="text-xs text-slate-400 mb-3">Immediate dispatch for system impairments, cylinder refilling, and Civil Defense inspections.</p>
                     <a href="tel:18005553473" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cobalt-700 hover:bg-cobalt-600 text-white font-display font-bold text-xs transition-all">
                         <i data-lucide="phone-call" class="w-4 h-4 text-sky-300"></i>
@@ -958,30 +959,30 @@
         </div>
     </footer>
 
-    <!-- ================= NATIVE-STYLE 4-TAB BOTTOM NAVIGATION BAR (PHONES <768px) ================= -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-1.5 shadow-[0_-4px_20px_rgba(10,25,47,0.08)]">
+    <!-- ================= MOBILE NATIVE-STYLE BOTTOM NAVIGATION BAR (<768px) ================= -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-2 shadow-[0_-4px_20px_rgba(10,25,47,0.12)]">
         <div class="grid grid-cols-4 gap-1 max-w-md mx-auto">
-            <button id="mobNavServices" onclick="switchMainView('landing'); window.scrollTo({top:0, behavior:'smooth'});" class="flex flex-col items-center justify-center py-1.5 rounded-xl text-cobalt-700 font-bold">
+            <button id="mobNavServices" onclick="switchMainView('landing'); window.scrollTo({top:0, behavior:'smooth'});" class="flex flex-col items-center justify-center py-1 rounded-xl text-cobalt-700 font-bold">
                 <i data-lucide="shield" class="w-5 h-5"></i>
-                <span class="text-[11px] mt-0.5">Services</span>
+                <span class="text-[10px] mt-0.5">Services</span>
             </button>
 
-            <button id="mobNavShop" onclick="switchMainView('shop')" class="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 hover:text-slate-900 font-medium">
+            <button id="mobNavShop" onclick="switchMainView('shop')" class="flex flex-col items-center justify-center py-1 rounded-xl text-slate-500 hover:text-slate-900 font-medium">
                 <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-                <span class="text-[11px] mt-0.5">Shop</span>
+                <span class="text-[10px] mt-0.5">Shop</span>
             </button>
 
-            <button id="mobNavBoq" onclick="toggleBoqDrawer(true)" class="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 hover:text-slate-900 font-medium relative">
+            <button id="mobNavBoq" onclick="toggleBoqDrawer(true)" class="flex flex-col items-center justify-center py-1 rounded-xl text-slate-500 hover:text-slate-900 font-medium relative">
                 <div class="relative">
                     <i data-lucide="clipboard-list" class="w-5 h-5"></i>
                     <span id="mobNavBoqBadge" class="absolute -top-1.5 -right-3 min-w-4 h-4 px-1 rounded-full bg-cobalt-700 text-white font-mono text-[9px] font-bold flex items-center justify-center">0</span>
                 </div>
-                <span class="text-[11px] mt-0.5">BOQ Cart</span>
+                <span class="text-[10px] mt-0.5">BOQ Cart</span>
             </button>
 
-            <button id="mobNavInquiry" onclick="navigateLandingSection('consultation-section')" class="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 hover:text-slate-900 font-medium">
+            <button id="mobNavInquiry" onclick="navigateLandingSection('consultation-section')" class="flex flex-col items-center justify-center py-1 rounded-xl text-slate-500 hover:text-slate-900 font-medium">
                 <i data-lucide="send" class="w-5 h-5"></i>
-                <span class="text-[11px] mt-0.5">Inquiry</span>
+                <span class="text-[10px] mt-0.5">Inquiry</span>
             </button>
         </div>
     </nav>
@@ -989,21 +990,19 @@
     <!-- ================= TECHNICAL DATASHEET & SERVICE SCOPE MODAL ================= -->
     <div id="specModal" class="fixed inset-0 z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4 bg-[#0A192F]/80 backdrop-blur-xs">
         <div class="bg-white rounded-t-3xl sm:rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200 view-animate max-h-[90vh] flex flex-col">
-            <!-- Modal Header -->
             <div class="bg-[#0A192F] text-white px-6 py-5 flex items-start justify-between gap-4 border-b border-sky-500/30">
                 <div>
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
                         <span id="modalCodeBadge" class="px-2.5 py-0.5 rounded-md bg-cobalt-700 text-sky-200 font-mono font-bold text-xs">SKU</span>
                         <span id="modalCertBadge" class="px-2.5 py-0.5 rounded-md bg-white/10 text-emerald-300 font-semibold text-xs">UL / FM Listed</span>
                     </div>
-                    <h3 id="modalTitle" class="font-display text-lg sm:text-2xl font-extrabold text-white">Equipment / Service Title</h3>
+                    <h3 id="modalTitle" class="font-display text-lg sm:text-2xl font-extrabold text-white">Title</h3>
                 </div>
                 <button onclick="closeSpecModal()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Close">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
 
-            <!-- Modal Scrollable Content -->
             <div class="p-6 sm:p-7 overflow-y-auto space-y-5 flex-1">
                 <p id="modalDescription" class="text-slate-600 text-xs sm:text-sm leading-relaxed"></p>
 
@@ -1012,9 +1011,7 @@
                         <i data-lucide="sliders" class="w-4 h-4"></i>
                         <span>Engineering Specifications &amp; Compliance Parameters</span>
                     </h4>
-                    <div id="modalSpecsTable" class="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-slate-50 overflow-hidden text-xs sm:text-sm">
-                        <!-- Populated via JS -->
-                    </div>
+                    <div id="modalSpecsTable" class="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-slate-50 overflow-hidden text-xs sm:text-sm"></div>
                 </div>
 
                 <div class="p-4 rounded-xl bg-cobalt-50 border border-cobalt-100">
@@ -1023,7 +1020,6 @@
                 </div>
             </div>
 
-            <!-- Modal Footer -->
             <div class="px-6 py-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-3">
                 <button onclick="closeSpecModal()" class="px-4 py-2.5 rounded-xl bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold text-xs sm:text-sm">
                     Close Window
@@ -1040,7 +1036,6 @@
     <div id="boqDrawerBackdrop" onclick="toggleBoqDrawer(false)" class="fixed inset-0 z-50 hidden bg-[#0A192F]/65 backdrop-blur-xs"></div>
     <aside id="boqDrawer" class="fixed top-0 right-0 bottom-0 z-50 w-full max-w-md bg-white shadow-2xl border-l border-slate-200 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
         
-        <!-- Drawer Header -->
         <div class="p-5 sm:p-6 bg-[#0A192F] text-white border-b border-sky-500/30 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-cobalt-700 flex items-center justify-center text-sky-300">
@@ -1048,7 +1043,7 @@
                 </div>
                 <div>
                     <h3 class="font-display font-extrabold text-base sm:text-lg">BOQ &amp; Quote Cart</h3>
-                    <p class="text-xs text-slate-400">Equipment Procurement &amp; Engineering Scope</p>
+                    <p class="text-xs text-slate-400">Equipment &amp; Engineering Scope</p>
                 </div>
             </div>
             <button onclick="toggleBoqDrawer(false)" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white">
@@ -1056,25 +1051,18 @@
             </button>
         </div>
 
-        <!-- Drawer Line Items -->
-        <div id="boqDrawerItemsList" class="p-5 sm:p-6 flex-1 overflow-y-auto space-y-3">
-            <!-- Populated dynamically -->
-        </div>
+        <div id="boqDrawerItemsList" class="p-5 sm:p-6 flex-1 overflow-y-auto space-y-3"></div>
 
-        <!-- Drawer Footer Summary & Actions -->
         <div class="p-5 sm:p-6 bg-slate-50 border-t border-slate-200 space-y-3">
             <div class="space-y-1.5 text-xs">
                 <div class="flex items-center justify-between text-slate-600">
-                    <span>Selected Line Items:</span>
+                    <span>Selected Items:</span>
                     <span id="drawerItemCount" class="font-mono font-bold text-slate-900">0 Items</span>
                 </div>
                 <div class="flex items-center justify-between text-sm font-bold text-slate-900 pt-1 border-t border-slate-200">
                     <span>Estimated Hardware Budget:</span>
                     <span id="drawerSubtotalAmount" class="font-mono text-base text-cobalt-700">$0.00</span>
                 </div>
-                <p class="text-[11px] text-slate-500">
-                    *Official contractor volume discounts &amp; turnkey installation labor calculated upon RFQ submission.
-                </p>
             </div>
 
             <div class="grid grid-cols-2 gap-2.5 pt-1">
@@ -1083,7 +1071,7 @@
                     class="py-3 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 font-display font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
                 >
                     <i data-lucide="printer" class="w-4 h-4 text-cobalt-700"></i>
-                    <span>Print / Export BOQ</span>
+                    <span>Print BOQ</span>
                 </button>
                 <button
                     onclick="attachBoqToConsultation()"
@@ -1096,7 +1084,7 @@
         </div>
     </aside>
 
-    <!-- ================= PRINTABLE BILL OF QUANTITIES (BOQ) SCHEDULE MODAL ================= -->
+    <!-- ================= PRINTABLE BOQ SCHEDULE MODAL ================= -->
     <div id="boqPrintModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-[#0A192F]/80 backdrop-blur-xs">
         <div class="bg-white rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-200 max-h-[90vh] flex flex-col">
             <div class="p-6 bg-[#0A192F] text-white flex items-center justify-between no-print">
@@ -1115,13 +1103,11 @@
                 </div>
             </div>
 
-            <div class="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1" id="boqPrintableBody">
-                <!-- Populated dynamically -->
-            </div>
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1" id="boqPrintableBody"></div>
         </div>
     </div>
 
-    <!-- ================= TOAST FEEDBACK NOTIFICATION ================= -->
+    <!-- ================= TOAST NOTIFICATION ================= -->
     <div id="toastBanner" class="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-50 hidden px-4 py-3 rounded-xl bg-[#0A192F] text-white border border-sky-400/40 shadow-2xl flex items-center gap-2.5 text-xs sm:text-sm font-semibold">
         <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
         <span id="toastText">Added to BOQ!</span>
@@ -1129,9 +1115,6 @@
 
     <!-- ================= APPLICATION LOGIC & DATA ================= -->
     <script>
-        // =========================================================================
-        // 1. 6 TURNKEY FIRE PROTECTION SERVICES (VIEW 1: LANDING PAGE)
-        // =========================================================================
         const fireLinkServices = [
             {
                 id: 'srv-alarm',
@@ -1261,9 +1244,6 @@
             }
         ];
 
-        // =========================================================================
-        // 2. 4-STAGE TURNKEY EXECUTION WORKFLOW DATA
-        // =========================================================================
         const workflowStages = [
             {
                 step: '01',
@@ -1343,9 +1323,6 @@
             }
         ];
 
-        // =========================================================================
-        // 3. INTERACTIVE INDUSTRIAL & COMMERCIAL SECTORS DATA
-        // =========================================================================
         const protectedSectors = [
             {
                 id: 'industrial',
@@ -1409,15 +1386,12 @@
             }
         ];
 
-        // =========================================================================
-        // 4. 12 CERTIFIED PRODUCTS FOR THE EQUIPMENT SHOP TAB (VIEW 2)
-        // =========================================================================
         const shopProducts = [
             {
                 id: 'prd-01',
                 sku: 'FL-9000-8L',
                 category: 'alarm',
-                categoryLabel: 'Fire Alarm & Detection',
+                categoryLabel: 'Alarm & Detection',
                 name: 'Addressable Fire Alarm Control Panel (1–8 Loops)',
                 cert: 'UL 864 / EN54-2',
                 certTags: ['UL', 'EN'],
@@ -1439,7 +1413,7 @@
                 id: 'prd-02',
                 sku: 'FL-S400-MC',
                 category: 'alarm',
-                categoryLabel: 'Fire Alarm & Detection',
+                categoryLabel: 'Alarm & Detection',
                 name: 'Multi-Criteria Optical Smoke & Heat Detector (With Base)',
                 cert: 'UL 268 / EN54-7',
                 certTags: ['UL', 'EN'],
@@ -1461,7 +1435,7 @@
                 id: 'prd-03',
                 sku: 'FL-MCP-HS',
                 category: 'alarm',
-                categoryLabel: 'Fire Alarm & Detection',
+                categoryLabel: 'Alarm & Detection',
                 name: 'Addressable Resettable Call Point & 110dB Horn Strobe Set',
                 cert: 'UL 1971 / EN54-11',
                 certTags: ['UL', 'EN'],
@@ -1679,9 +1653,6 @@
             }
         ];
 
-        // =========================================================================
-        // 5. CUSTOM TECHNICAL SVG ILLUSTRATIONS (BLUE ENGINEERING + REALISTIC ACCENTS)
-        // =========================================================================
         function getEquipmentSvg(type) {
             switch (type) {
                 case 'panel':
@@ -1834,9 +1805,6 @@
             }
         }
 
-        // =========================================================================
-        // 6. TWO-TAB SOLO VIEW NAVIGATION CONTROLLER
-        // =========================================================================
         let currentMainView = 'landing';
 
         function switchMainView(viewName, scrollToTop = true) {
@@ -1847,7 +1815,6 @@
             const topTabShop = document.getElementById('topTabShop');
             const desktopLandingNav = document.getElementById('desktopLandingNav');
 
-            // Mobile 4-tab bottom bar buttons
             const mobServices = document.getElementById('mobNavServices');
             const mobShop = document.getElementById('mobNavShop');
 
@@ -1856,21 +1823,25 @@
                 shopEl.classList.remove('hidden');
                 desktopLandingNav.classList.add('xl:hidden');
 
-                topTabShop.className = 'px-3 sm:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all bg-cobalt-700 text-white shadow-xs';
-                topTabLanding.className = 'px-3 sm:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all text-slate-600 hover:text-slate-900';
+                if (topTabShop) {
+                    topTabShop.className = 'px-4 lg:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all bg-cobalt-700 text-white shadow-sm';
+                    topTabLanding.className = 'px-4 lg:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all text-slate-600 hover:text-slate-900';
+                }
 
-                mobShop.className = 'flex flex-col items-center justify-center py-1.5 rounded-xl text-cobalt-700 font-bold';
-                mobServices.className = 'flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 font-medium';
+                mobShop.className = 'flex flex-col items-center justify-center py-1 rounded-xl text-cobalt-700 font-bold';
+                mobServices.className = 'flex flex-col items-center justify-center py-1 rounded-xl text-slate-500 font-medium';
             } else {
                 shopEl.classList.add('hidden');
                 landingEl.classList.remove('hidden');
                 desktopLandingNav.classList.remove('xl:hidden');
 
-                topTabLanding.className = 'px-3 sm:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all bg-cobalt-700 text-white shadow-xs';
-                topTabShop.className = 'px-3 sm:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all text-slate-600 hover:text-slate-900';
+                if (topTabLanding) {
+                    topTabLanding.className = 'px-4 lg:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all bg-cobalt-700 text-white shadow-sm';
+                    topTabShop.className = 'px-4 lg:px-5 py-2 rounded-lg font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all text-slate-600 hover:text-slate-900';
+                }
 
-                mobServices.className = 'flex flex-col items-center justify-center py-1.5 rounded-xl text-cobalt-700 font-bold';
-                mobShop.className = 'flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 font-medium';
+                mobServices.className = 'flex flex-col items-center justify-center py-1 rounded-xl text-cobalt-700 font-bold';
+                mobShop.className = 'flex flex-col items-center justify-center py-1 rounded-xl text-slate-500 font-medium';
             }
 
             if (scrollToTop) {
@@ -1899,9 +1870,6 @@
             triggerToast(msg);
         }
 
-        // =========================================================================
-        // 7. RENDER LANDING PAGE SECTIONS (SERVICES, WORKFLOW, SECTORS)
-        // =========================================================================
         function renderLandingServices() {
             const container = document.getElementById('servicesGridContainer');
             container.innerHTML = fireLinkServices.map(srv => `
@@ -1948,7 +1916,7 @@
                             class="flex-1 py-2.5 px-3 rounded-xl bg-cobalt-50 hover:bg-cobalt-100 text-cobalt-800 font-display font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
                         >
                             <i data-lucide="file-text" class="w-3.5 h-3.5 text-cobalt-700"></i>
-                            <span>View Engineering Scope</span>
+                            <span>View Scope</span>
                         </button>
                         <button
                             onclick="addToBoqCart('${srv.id}', 'service', 1)"
@@ -1956,7 +1924,7 @@
                             title="Add Service to RFQ"
                         >
                             <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-                            <span>Add Service to RFQ</span>
+                            <span>Add</span>
                         </button>
                     </div>
                 </article>
@@ -1974,7 +1942,7 @@
                 return `
                 <button
                     onclick="renderWorkflowSection(${idx})"
-                    class="text-left p-4 sm:p-5 rounded-2xl border transition-all ${
+                    class="text-left p-3.5 sm:p-5 rounded-2xl border transition-all ${
                         isActive
                             ? 'bg-cobalt-700 text-white border-cobalt-700 shadow-cobalt-sm'
                             : 'bg-[#F8FAFC] hover:bg-cobalt-50 text-[#0A192F] border-slate-200'
@@ -1984,9 +1952,9 @@
                         <span class="font-mono text-xs font-bold px-2 py-0.5 rounded ${
                             isActive ? 'bg-white/20 text-sky-200' : 'bg-cobalt-100 text-cobalt-800'
                         }">${stg.step}.</span>
-                        <span class="text-[11px] font-mono ${isActive ? 'text-sky-200' : 'text-slate-400'}">${stg.duration}</span>
+                        <span class="text-[10px] sm:text-[11px] font-mono ${isActive ? 'text-sky-200' : 'text-slate-400'}">${stg.duration}</span>
                     </div>
-                    <h3 class="font-display font-bold text-sm sm:text-base leading-snug">${stg.title}</h3>
+                    <h3 class="font-display font-bold text-xs sm:text-base leading-snug">${stg.title}</h3>
                 </button>
                 `;
             }).join('');
@@ -2008,10 +1976,9 @@
                             ${activeStage.description}
                         </p>
 
-                        <!-- Software & Engineering Tools Used -->
                         <div class="space-y-2 pt-1">
                             <span class="text-[11px] font-mono uppercase tracking-wider text-sky-300 font-bold block">
-                                Engineering Software &amp; Diagnostic Tools Used:
+                                Engineering Tools Used:
                             </span>
                             <div class="flex flex-wrap gap-2">
                                 ${activeStage.softwareTools.map(tool => `
@@ -2027,7 +1994,7 @@
                     <div class="lg:col-span-5 space-y-4">
                         <div class="rounded-xl bg-[#0F2942] border border-sky-400/25 p-5 space-y-3">
                             <span class="text-xs font-mono uppercase tracking-wider text-sky-300 font-bold block">
-                                Stage ${activeStage.step} Engineering Deliverables
+                                Deliverables
                             </span>
                             <div class="space-y-2">
                                 ${activeStage.deliverables.map(item => `
@@ -2042,7 +2009,7 @@
                         <div class="rounded-xl bg-emerald-950/50 border border-emerald-500/30 p-5 space-y-2.5">
                             <span class="text-xs font-mono uppercase tracking-wider text-emerald-300 font-bold flex items-center gap-1.5">
                                 <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
-                                Mandatory QA/QC Verification Checklist
+                                Mandatory QA/QC Checklist
                             </span>
                             <div class="space-y-1.5">
                                 ${activeStage.qaChecklist.map(chk => `
@@ -2088,7 +2055,7 @@
                     <div class="lg:col-span-7 p-6 sm:p-10 space-y-5">
                         <div class="flex flex-wrap items-center gap-2">
                             <span class="px-3 py-1 rounded-md bg-cobalt-50 border border-cobalt-200 text-cobalt-700 font-mono text-xs font-bold">
-                                Hazard Classification: ${sec.hazardClass}
+                                Hazard Class: ${sec.hazardClass}
                             </span>
                             <span class="px-3 py-1 rounded-md bg-slate-100 text-slate-700 font-mono text-xs font-semibold">
                                 ${sec.codes}
@@ -2108,14 +2075,14 @@
                                 onclick="navigateLandingSection('consultation-section')"
                                 class="px-5 py-3 rounded-xl bg-cobalt-700 hover:bg-cobalt-600 text-white font-display font-bold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-cobalt-sm"
                             >
-                                <span>Request Sector Engineering Proposal</span>
+                                <span>Request Engineering Proposal</span>
                                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </button>
                             <button
                                 onclick="switchMainView('shop')"
                                 class="px-5 py-3 rounded-xl bg-cobalt-50 hover:bg-cobalt-100 text-cobalt-800 font-display font-bold text-xs sm:text-sm transition-all"
                             >
-                                Browse Certified Hardware
+                                Browse Hardware
                             </button>
                         </div>
                     </div>
@@ -2123,7 +2090,7 @@
                     <div class="lg:col-span-5 bg-[#0A192F] text-white p-6 sm:p-10 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-sky-500/20">
                         <div class="space-y-4">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-mono uppercase tracking-wider text-sky-400 font-bold">Recommended Protection Architecture</span>
+                                <span class="text-xs font-mono uppercase tracking-wider text-sky-400 font-bold">Protection Architecture</span>
                                 <i data-lucide="${sec.icon}" class="w-5 h-5 text-sky-400"></i>
                             </div>
                             <div class="space-y-2.5">
@@ -2137,7 +2104,7 @@
                         </div>
 
                         <div class="mt-6 pt-4 border-t border-sky-400/20 flex items-center justify-between text-xs">
-                            <span class="text-slate-400">Proven Track Record:</span>
+                            <span class="text-slate-400">Track Record:</span>
                             <span class="font-mono font-bold text-sky-300">${sec.statLabel}</span>
                         </div>
                     </div>
@@ -2146,9 +2113,6 @@
             lucide.createIcons();
         }
 
-        // =========================================================================
-        // 8. RENDER EQUIPMENT SHOP TAB (SEARCH, CATEGORY PILLS, CERT CHIPS, SORT)
-        // =========================================================================
         let shopCategory = 'all';
         let shopSearch = '';
         let shopCert = 'all';
@@ -2208,7 +2172,7 @@
             }
 
             if (countLabel) {
-                countLabel.textContent = `Showing ${filtered.length} of ${shopProducts.length} Certified Products`;
+                countLabel.textContent = `Showing ${filtered.length} of ${shopProducts.length} Products`;
             }
 
             if (filtered.length === 0) {
@@ -2224,7 +2188,6 @@
                 return `
                 <article class="tilt-card rounded-2xl bg-white border border-slate-200 hover:border-cobalt-500 shadow-card-clean hover:shadow-card-hover flex flex-col justify-between overflow-hidden">
                     <div>
-                        <!-- Top Equipment Showcase Header -->
                         <div class="bg-gradient-to-b from-cobalt-50/70 to-slate-100/60 p-4 border-b border-slate-200/80 relative">
                             <div class="flex items-center justify-between gap-2 mb-2">
                                 <span class="px-2.5 py-0.5 rounded-md bg-[#0A192F] text-sky-300 font-mono font-bold text-[11px]">
@@ -2236,7 +2199,6 @@
                                 </span>
                             </div>
 
-                            <!-- Vector Equipment Illustration -->
                             <div class="py-2">
                                 ${getEquipmentSvg(prd.svgType)}
                             </div>
@@ -2245,12 +2207,11 @@
                                 <span class="font-bold uppercase tracking-wider text-cobalt-800">${prd.categoryLabel}</span>
                                 <span class="inline-flex items-center gap-1 text-emerald-700 font-semibold">
                                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                    In Stock • Ready
+                                    In Stock
                                 </span>
                             </div>
                         </div>
 
-                        <!-- Card Content Body -->
                         <div class="p-5 sm:p-6">
                             <h3 class="font-display text-base sm:text-lg font-extrabold text-[#0A192F] leading-snug mb-2">
                                 ${prd.name}
@@ -2259,46 +2220,40 @@
                                 ${prd.specsSummary}
                             </p>
 
-                            <!-- Price / B2B Requisition Indicator + Quantity Stepper -->
                             <div class="p-3 rounded-xl bg-[#F8FAFC] border border-slate-200 flex items-center justify-between gap-2">
                                 <div>
                                     ${
                                         showReferencePrices
-                                            ? `<span class="font-mono text-lg font-extrabold text-[#0A192F]">$${prd.price.toLocaleString()}</span>
-                                               <span class="block text-[10px] text-slate-500">${prd.unit} (Ref. Ex-Works)</span>`
-                                            : `<span class="font-display text-xs font-extrabold text-cobalt-700 uppercase tracking-wider">B2B BOQ Requisition</span>
+                                            ? `<span class="font-mono text-base sm:text-lg font-extrabold text-[#0A192F]">$${prd.price.toLocaleString()}</span>
+                                               <span class="block text-[10px] text-slate-500">${prd.unit}</span>`
+                                            : `<span class="font-display text-xs font-extrabold text-cobalt-700 uppercase tracking-wider">B2B BOQ Mode</span>
                                                <span class="block text-[10px] text-slate-500">${prd.unit}</span>`
                                     }
                                 </div>
 
-                                <!-- Quantity Stepper -->
                                 <div class="flex items-center bg-white rounded-lg border border-slate-300 p-0.5">
                                     <button
                                         type="button"
                                         onclick="stepCardQty('${prd.id}', -1)"
                                         class="w-7 h-7 rounded-md hover:bg-cobalt-50 text-slate-700 font-bold text-sm flex items-center justify-center"
-                                        aria-label="Decrease quantity"
                                     >−</button>
-                                    <span id="qty-val-${prd.id}" class="w-8 text-center font-mono font-bold text-xs text-slate-900">${qty}</span>
+                                    <span id="qty-val-${prd.id}" class="w-7 text-center font-mono font-bold text-xs text-slate-900">${qty}</span>
                                     <button
                                         type="button"
                                         onclick="stepCardQty('${prd.id}', 1)"
                                         class="w-7 h-7 rounded-md hover:bg-cobalt-50 text-slate-700 font-bold text-sm flex items-center justify-center"
-                                        aria-label="Increase quantity"
                                     >+</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card Actions Footer -->
                     <div class="px-5 sm:px-6 pb-5 pt-1 flex items-center gap-2">
                         <button
                             onclick="openProductDatasheetModal('${prd.id}')"
-                            class="py-3 px-3.5 rounded-xl bg-cobalt-50 hover:bg-cobalt-100 text-cobalt-800 font-display font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
-                            title="View Full Technical Datasheet"
+                            class="py-3 px-3 rounded-xl bg-cobalt-50 hover:bg-cobalt-100 text-cobalt-800 font-display font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
                         >
-                            <i data-lucide="file-Spreadsheet" class="w-4 h-4 text-cobalt-700"></i>
+                            <i data-lucide="file-spreadsheet" class="w-4 h-4 text-cobalt-700"></i>
                             <span>Datasheet</span>
                         </button>
                         <button
@@ -2306,7 +2261,7 @@
                             class="flex-1 py-3 px-4 rounded-xl bg-cobalt-700 hover:bg-cobalt-600 text-white font-display font-bold text-xs flex items-center justify-center gap-1.5 shadow-cobalt-sm transition-all"
                         >
                             <i data-lucide="shopping-cart" class="w-4 h-4"></i>
-                            <span>Add to BOQ / Cart</span>
+                            <span>Add to Cart</span>
                         </button>
                     </div>
                 </article>
@@ -2376,9 +2331,6 @@
             setShopCategory('all');
         }
 
-        // =========================================================================
-        // 9. MODALS FOR PRODUCT DATASHEETS & SERVICE ENGINEERING SCOPES
-        // =========================================================================
         function openProductDatasheetModal(prdId) {
             const prd = shopProducts.find(p => p.id === prdId);
             if (!prd) return;
@@ -2437,9 +2389,6 @@
             document.getElementById('specModal').classList.add('hidden');
         }
 
-        // =========================================================================
-        // 10. BILL OF QUANTITIES (BOQ) & QUOTE CART ENGINE
-        // =========================================================================
         let boqCart = [];
 
         function addToBoqCart(itemId, itemType, qtyToAdd = 1) {
@@ -2477,7 +2426,7 @@
             }
 
             syncBoqCartUI();
-            triggerToast(`Added (${qtyToAdd}) to your BOQ / Quote Cart!`);
+            triggerToast(`Added (${qtyToAdd}) to your BOQ / Cart!`);
         }
 
         function changeBoqItemQty(itemId, delta) {
@@ -2512,8 +2461,8 @@
                         <div class="w-12 h-12 rounded-2xl bg-cobalt-50 text-cobalt-700 flex items-center justify-center mx-auto mb-3">
                             <i data-lucide="clipboard-list" class="w-6 h-6"></i>
                         </div>
-                        <p class="font-display font-bold text-[#0A192F] text-sm">Your BOQ / Quote Cart is Empty</p>
-                        <p class="text-xs text-slate-500 mt-1">Add certified equipment from the Shop Tab or attach turnkey engineering services to build your project schedule.</p>
+                        <p class="font-display font-bold text-[#0A192F] text-sm">Your BOQ Cart is Empty</p>
+                        <p class="text-xs text-slate-500 mt-1">Add certified equipment from the Shop or attach turnkey services.</p>
                         <button onclick="toggleBoqDrawer(false); switchMainView('shop');" class="mt-4 px-4 py-2 rounded-xl bg-cobalt-700 text-white font-display font-bold text-xs">
                             Browse Equipment Shop
                         </button>
@@ -2530,7 +2479,7 @@
                             </div>
                             <h4 class="font-display font-bold text-[#0A192F] text-xs sm:text-sm truncate mt-1">${item.title}</h4>
                             <span class="text-[11px] font-mono text-slate-500">
-                                ${item.price > 0 ? `$${item.price.toLocaleString()} × ${item.qty} = $${(item.price * item.qty).toLocaleString()}` : 'Turnkey Scope Survey'}
+                                ${item.price > 0 ? `$${item.price.toLocaleString()} × ${item.qty} =$${(item.price * item.qty).toLocaleString()}` : 'Turnkey Survey Scope'}
                             </span>
                         </div>
                         <div class="flex items-center gap-1.5 shrink-0">
@@ -2574,7 +2523,7 @@
 
         function openPrintableBoqModal() {
             if (boqCart.length === 0) {
-                triggerToast('Add at least 1 product or service to generate a BOQ!');
+                triggerToast('Add at least 1 item to generate a BOQ!');
                 return;
             }
             const totalHardware = boqCart.reduce((sum, i) => sum + (i.price * i.qty), 0);
@@ -2584,8 +2533,8 @@
             bodyEl.innerHTML = `
                 <div class="border-b-2 border-[#0A192F] pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                        <h2 class="font-display font-extrabold text-2xl text-[#0A192F]">FIRE LINK ENGINEERING &amp; SYSTEMS</h2>
-                        <p class="text-xs text-slate-500">UL / FM / NFPA Certified Fire Protection Equipment &amp; Contracting Schedule</p>
+                        <h2 class="font-display font-extrabold text-2xl text-[#0A192F]">FIRE LINK ENGINEERING</h2>
+                        <p class="text-xs text-slate-500">UL / FM / NFPA Certified Fire Protection Equipment Schedule</p>
                     </div>
                     <div class="text-xs font-mono text-slate-700 sm:text-right">
                         <div><strong>BOQ REF:</strong> #FL-BOQ-${Math.floor(1000 + Math.random() * 9000)}</div>
@@ -2600,8 +2549,8 @@
                                 <th class="py-2.5 px-3">Item Code</th>
                                 <th class="py-2.5 px-3">Description</th>
                                 <th class="py-2.5 px-3 text-center">Qty</th>
-                                <th class="py-2.5 px-3 text-right">Ref. Unit Price</th>
-                                <th class="py-2.5 px-3 text-right">Line Subtotal</th>
+                                <th class="py-2.5 px-3 text-right">Unit Price</th>
+                                <th class="py-2.5 px-3 text-right">Subtotal</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-200">
@@ -2611,21 +2560,21 @@
                                     <td class="py-3 px-3 font-medium text-slate-900">${item.title}</td>
                                     <td class="py-3 px-3 font-mono text-center">${item.qty}</td>
                                     <td class="py-3 px-3 font-mono text-right">${item.price > 0 ? '$' + item.price.toLocaleString() : 'Survey'}</td>
-                                    <td class="py-3 px-3 font-mono font-bold text-right">${item.price > 0 ? '$' + (item.price * item.qty).toLocaleString() : 'Included in RFQ'}</td>
+                                    <td class="py-3 px-3 font-mono font-bold text-right">${item.price > 0 ? '$' + (item.price * item.qty).toLocaleString() : 'RFQ'}</td>
                                 </tr>
                             `).join('')}
                         </tbody>
                         <tfoot>
                             <tr class="border-t-2 border-[#0A192F] font-bold text-[#0A192F]">
-                                <td colspan="4" class="py-3 px-3 text-right">Estimated Hardware Reference Total (Ex-Works):</td>
+                                <td colspan="4" class="py-3 px-3 text-right">Hardware Reference Total (Ex-Works):</td>
                                 <td class="py-3 px-3 font-mono text-base text-cobalt-700 text-right">$${totalHardware.toLocaleString()}.00</td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
 
-                <div class="p-4 rounded-xl bg-cobalt-50/70 border border-cobalt-100 text-xs text-slate-700 space-y-1">
-                    <p><strong>Engineering Note:</strong> All listed equipment is supplied with original UL/FM/EN Certificates of Conformity and Civil Defense Material Approval sheets.</p>
+                <div class="p-4 rounded-xl bg-cobalt-50/70 border border-cobalt-100 text-xs text-slate-700">
+                    <p><strong>Note:</strong> All listed equipment includes UL/FM certificates of conformity and Civil Defense submittal sheets.</p>
                 </div>
             `;
 
@@ -2656,9 +2605,6 @@
             }, 2800);
         }
 
-        // =========================================================================
-        // 11. 3D PERSPECTIVE TILT CARDS & ANIMATED METRICS COUNTERS
-        // =========================================================================
         function bind3DTiltCards() {
             const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
             document.querySelectorAll('.tilt-card').forEach(card => {
@@ -2711,9 +2657,6 @@
             counters.forEach(c => observer.observe(c));
         }
 
-        // =========================================================================
-        // 12. INTERACTIVE HYDRO-THERMAL BLUEPRINT NODE CANVAS (MOUSE & TOUCH)
-        // =========================================================================
         function initHeroBlueprintCanvas() {
             const canvas = document.getElementById('heroBlueprintCanvas');
             if (!canvas) return;
@@ -2750,7 +2693,7 @@
                 pointer.active = false;
             });
 
-            const nodeCount = window.innerWidth < 768 ? 26 : 48;
+            const nodeCount = window.innerWidth < 768 ? 20 : 48;
             for (let i = 0; i < nodeCount; i++) {
                 nodes.push({
                     x: Math.random() * canvas.width,
@@ -2774,7 +2717,6 @@
                     if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
                     if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
-                    // Interactive attraction/telemetry link to pointer
                     if (pointer.active) {
                         const dx = pointer.x - n.x;
                         const dy = pointer.y - n.y;
@@ -2789,13 +2731,11 @@
                         }
                     }
 
-                    // Draw Sensor Node
                     ctx.beginPath();
                     ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
                     ctx.fillStyle = 'rgba(56, 189, 248, 0.75)';
                     ctx.fill();
 
-                    // Connect nearby blueprint nodes
                     for (let j = i + 1; j < nodes.length; j++) {
                         const m = nodes[j];
                         const dist = Math.hypot(n.x - m.x, n.y - m.y);
@@ -2810,7 +2750,6 @@
                     }
                 }
 
-                // Draw Subtle Pointer Telemetry Ring
                 if (pointer.active) {
                     ctx.beginPath();
                     ctx.arc(pointer.x, pointer.y, 18, 0, Math.PI * 2);
@@ -2824,7 +2763,6 @@
             draw();
         }
 
-        // Initialize Everything on Window Load
         window.onload = function () {
             renderLandingServices();
             renderWorkflowSection(0);
